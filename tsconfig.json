@@ -1,4 +1,30 @@
 {
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2021", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true, // TS 파일 확장자를 명시적으로 가져올 수 있게 함.
+    "resolveJsonModule": true, // JSON 파일을 모듈로 가져올 수 있게 함.
+    "isolatedModules": true, // 각 파일을 별도의 모듈로 변환해야 함.
+    "noEmit": true, // 출력파일 생성없이 타입 체크만 수행함.
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": false, // 타입 체크 엄격모드.
+    "noUnusedLocals": false, // 사용되지 않는 지역변수 오류 발생 X.
+    "noUnusedParameters": false, // 사용되지 않는 매개변수 오류 발생 X.
+    "noFallthroughCasesInSwitch": true, // switch 문에서 case를 통과하는 이슈 비허용 (== 모든 case에 break 필요)
+    "allowSyntheticDefaultImports": true // 모듈이 기본 내보내기를 갖지 않을 때, 기본 가져오기를 허용
+  },
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },

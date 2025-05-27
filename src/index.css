@@ -11,7 +11,7 @@
   padding: 0;
   margin: 0;
   scrollbar-width: none;
-  font-family: "CHO-GOON", sans-serif !important;
+  font-family: "Pretendard", sans-serif !important;
   color: black;
 }
 
@@ -34,29 +34,11 @@ a {
 }
 
 @font-face {
-  font-family: "CHO-GOON";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2408-2@1.0/CHOGOONCHICKENSCRATCHV3.woff2")
-    format("woff2");
+  font-family: "Pretendard";
+  src: url("/src/assets/fonts/Pretendard-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
-}
-
-.CHO-GOON {
-  font-family: "CHO-GOON";
-}
-
-@font-face {
-  font-family: "cafe24-Ssurround";
-  src: url("/src/assets/fonts/Cafe24Ssurround-v2.0.ttf");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "mapleStory";
-  src: url("/src/assets/fonts/Maplestory Bold.ttf");
-  font-weight: normal;
-  font-style: normal;
+  font-display: swap;
 }
 
 /*********************************** custom class ***********************************/

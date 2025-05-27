@@ -1,0 +1,61 @@
+@import "tailwindcss";
+@import "tailwindcss/utilities";
+
+/** initialization **/
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scrollbar-width: none;
+  font-family: "CHO-GOON", sans-serif !important;
+  color: black;
+}
+
+#root {
+  position: relative;
+}
+html,
+body {
+  max-width: 100vw;
+  /* background-color: #47668b; */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@font-face {
+  font-family: "CHO-GOON";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2408-2@1.0/CHOGOONCHICKENSCRATCHV3.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.CHO-GOON {
+  font-family: "CHO-GOON";
+}
+
+@font-face {
+  font-family: "cafe24-Ssurround";
+  src: url("/src/assets/fonts/Cafe24Ssurround-v2.0.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "mapleStory";
+  src: url("/src/assets/fonts/Maplestory Bold.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*********************************** custom class ***********************************/
+
+/*********************************** lib customize class ***********************************/

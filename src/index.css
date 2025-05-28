@@ -51,6 +51,15 @@ a {
   @apply basis-full max-w-full sm:basis-5/6 sm:max-w-5/6 md:basis-3/4 md:max-w-3/4 lg:basis-2/3 lg:max-w-2/3;
 }
 
+.line-clamp-2 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
 /*********************************** lib customize class ***********************************/
 
 /*---break---*/

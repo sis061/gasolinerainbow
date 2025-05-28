@@ -4,8 +4,8 @@ export default function Home() {
   const isReleased: boolean = false;
 
   return (
-    <section className="wrapper w-full h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center border-1">
-      <div className="inner flex-grow-0 w-full h-full bg-orange-50 ">
+    <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center border-1">
+      <div className="inner flex-grow-0 w-full bg-orange-50 ">
         {isReleased ? (
           <>
             <div className="w-full h-full border-2 flex justify-between items-center gap-6">
@@ -33,7 +33,7 @@ export default function Home() {
             <div className="w-full h-1/4">여기에 타이머</div>
           </>
         )}
-        <div className="w-full h-full bg-red-50 flex justify-between items-center gap-6">
+        <div className="w-full bg-red-50 flex justify-between items-center gap-6">
           {/* TODO: 앨범 소개 컴포넌트 구분해서 만들기 */}
           <div>
             <h1>정규 앨범 [HM]</h1>

@@ -8,7 +8,7 @@ import {
 
 export default function Discography() {
   return (
-    <section className="wrapper w-full h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center border-1">
+    <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center border-1">
       <div className="inner flex-grow-0 w-full h-full">
         {/* 정규 앨범 컴포넌트 형식 */}
         <Carousel className="w-full h-full">
@@ -49,6 +49,7 @@ export default function Discography() {
                   </ol>
                 </li>
                 <li className="w-2/3 max-h-[85%] bg-gray-600 overflow-scroll flex-grow">
+                  {/* TODO: 여기도 DOMpurify 넣기 */}
                   <p>
                     앨범 소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
                     소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
@@ -154,7 +155,7 @@ export default function Discography() {
           <CarouselPrevious />
           <CarouselNext />
         </Carousel>
-        {/* EP Single 컴포넌트 형식 */}
+        {/* EP Single, OST 컴포넌트 형식 */}
         <Carousel className="w-full h-full">
           <CarouselContent className="w-full h-[calc(100dvh-8rem)]">
             <CarouselItem className="w-full h-full bg-blue-200 flex items-center justify-center">
@@ -164,7 +165,7 @@ export default function Discography() {
                 </li>
                 <li className="border-2 flex-grow h-auto flex flex-col gap-6 items-center justify-center">
                   <span className="text-sm">2021 ~</span>
-                  <span className="text-3xl ">EPs & SINGLEs</span>
+                  <span className="text-3xl ">EP & SINGLE</span>
                 </li>
               </ul>
             </CarouselItem>

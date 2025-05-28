@@ -24,10 +24,10 @@ const Header = () => {
             <Link to="discography">디스코그라피</Link>
           </li>
           <li>
-            <Link to="/">작가의 말</Link>
+            <Link to="/authornote">작가의 말</Link>
           </li>
           <li>
-            <Link to="/">소식</Link>
+            <Link to="/news">소식</Link>
           </li>
           <li>
             <Link to="/">링크</Link>

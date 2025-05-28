@@ -151,8 +151,8 @@ export default function AuthorNote() {
   }, [page, noteMockData, rowsPerPage]);
 
   return (
-    <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center border-1">
-      <div className="inner flex-grow-0 w-full overflow-hidden flex flex-col !pt-10 items-start justify-between ">
+    <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center">
+      <div className="inner flex-grow-0 w-full flex flex-col !my-10 items-start justify-between bg-white !px-6">
         <Table>
           <TableHeader>
             <TableRow>
@@ -186,7 +186,7 @@ export default function AuthorNote() {
             })}
           </TableBody>
         </Table>
-        <Pagination className="!pb-10">
+        <Pagination className="!pb-3 !pt-4.5">
           <PaginationContent>
             {/* 이전 페이지 그룹 */}
             {startPage > 1 && (

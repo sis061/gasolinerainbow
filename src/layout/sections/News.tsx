@@ -202,7 +202,7 @@ export default function News() {
   };
 
   return (
-    <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-scroll !mx-auto flex justify-center border-1">
+    <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-scroll !mx-auto flex justify-center">
       <div className="inner flex-grow-0 w-full flex flex-col !pt-10 items-start justify-between ">
         <Accordion type="single" collapsible className="max-w-full w-full">
           {_.map(newsMockData, (news, i) => {

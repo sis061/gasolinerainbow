@@ -4,8 +4,8 @@ export default function Home() {
   const isReleased: boolean = false;
 
   return (
-    <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center border-1">
-      <div className="inner flex-grow-0 w-full bg-orange-50 ">
+    <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center">
+      <div className="inner flex-grow-0 w-full bg-orange-50 !my-10 !px-6 shadow-2xl">
         {isReleased ? (
           <>
             <div className="w-full h-full border-2 flex justify-between items-center gap-6">

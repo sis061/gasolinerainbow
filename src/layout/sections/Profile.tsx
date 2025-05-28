@@ -1,8 +1,8 @@
 export default function Profile() {
   return (
-    <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center border-1">
-      <div className="inner flex-grow-0 w-full flex items-center justify-center">
-        <ul className="w-full flex bg-orange-50 gap-10">
+    <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center">
+      <div className="inner flex-grow-0 w-full flex items-center justify-center !my-10 ">
+        <ul className="w-full flex bg-orange-50 gap-10 shadow-2xl !pr-6 ">
           <li>
             <div className="w-96 h-96 bg-gray-600">
               <img src="" alt="프로필 이미지" className="w-full h-full" />

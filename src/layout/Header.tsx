@@ -24,13 +24,10 @@ const Header = () => {
             <Link to="discography">디스코그라피</Link>
           </li>
           <li>
-            <Link to="/authornote">작가의 말</Link>
-          </li>
-          <li>
             <Link to="/news">소식</Link>
           </li>
           <li>
-            <Link to="/">링크</Link>
+            <Link to="/authornote">작가의 말</Link>
           </li>
         </ul>
         <div>한영 변환 셀렉트</div>

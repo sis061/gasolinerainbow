@@ -1,9 +1,9 @@
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 w-full h-full relative z-[10] min-h-40 [&>*]:!text-white mx-auto">
-      <div className="wrapper flex items-center w-full h-full justify-center">
-        <ul className="bg-orange-50 inner breakpoint w-full min-h-40 h-full !p-3 max-w-2/3 flex flex-col flex-grow-0 justify-between items-center gap-6">
-          <li>
+    <footer className="min-h-40 z-[10] w-screen h-40 !mx-auto flex justify-center border-1 bg-orange-200">
+      <div className="wrapper w-full flex-grow-0 bg-blue-50 relative">
+        <ul className="flex flex-col items-center justify-between h-full">
+          <li className="bg-blue-50">
             <ol className="grid grid-cols-2 grid-rows-2 gap-3">
               <li className="row-span-2">Contact Me</li>
               <li>himinnjeong@gmail.com</li>

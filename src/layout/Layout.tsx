@@ -4,7 +4,7 @@ import Header from "./Header";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <main className="transition-all duration-200 ease-in-out mx-auto">
+    <main className="transition-all duration-200 ease-in-out ">
       <Header />
       {children}
       <Footer />

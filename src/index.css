@@ -21,11 +21,10 @@
 html,
 body {
   max-width: 100vw;
-
-  background-color: #222;
-  background-size: cover;
+  background-color: #666;
+  /* background-size: cover;
   background-repeat: no-repeat;
-  background-position: left bottom;
+  background-position: left bottom; */
   scroll-behavior: smooth;
 }
 

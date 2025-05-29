@@ -34,7 +34,7 @@ const AlbumCarousel = () => {
         opts={{ loop: true, watchDrag: true }}
         className="w-full h-full !px-20 relative"
       >
-        <CarouselContent className="w-full h-[calc(100dvh-8rem)]">
+        <CarouselContent className="w-full h-[calc(100dvh-8rem)] ">
           <CarouselItem className="w-full h-full  flex items-center justify-center">
             <ul className=" w-full flex gap-10 ">
               <li className="min-w-1/2 bg-gray-600 overflow-hidden ">
@@ -44,7 +44,7 @@ const AlbumCarousel = () => {
                   className="w-full h-full"
                 />
               </li>
-              <li className="border-2 flex-grow h-auto flex flex-col gap-16 items-center justify-center">
+              <li className="flex-grow h-auto flex flex-col gap-16 items-center justify-center [&_*]:!text-white">
                 <span className="text-sm">2022</span>
                 <span className="text-3xl ">앨범 타이틀</span>
                 <ol className="flex gap-6">
@@ -56,11 +56,11 @@ const AlbumCarousel = () => {
           </CarouselItem>
           <CarouselItem className="w-full h-full  flex items-center justify-center">
             <ul className=" w-full h-full flex gap-10 items-center">
-              <li className="w-1/3 max-h-96 h-auto flex flex-col gap-3 items-end justify-start">
+              <li className="w-[35%] h-auto flex flex-col gap-6 items-end justify-start [&_*]:!text-white ">
                 <span className="text-sm">2022</span>
                 <span className="text-2xl ">앨범 타이틀</span>
                 <span className="">앨범 소개</span>
-                <ol className="flex flex-col">
+                <ol className="flex flex-col gap-2 text-right">
                   <li>1. 트랙리스트</li>
                   <li>2. 트랙리스트</li>
                   <li>3. 트랙리스트</li>
@@ -74,7 +74,7 @@ const AlbumCarousel = () => {
                   <li>11. 트랙리스트</li>
                 </ol>
               </li>
-              <li className="w-2/3 max-h-[85%] bg-white !p-10 shadow-xl overflow-scroll flex-grow">
+              <li className="w-[65%] max-h-[85%] bg-white !p-10 shadow-xl overflow-scroll flex-grow">
                 {/* TODO: 여기도 DOMpurify 넣기 */}
                 <p>
                   앨범 소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
@@ -212,7 +212,7 @@ const OthersCarousel = () => {
                   className="w-full h-full"
                 />
               </li>
-              <li className="border-2 flex-grow h-auto flex flex-col gap-6 items-center justify-center">
+              <li className="flex-grow h-auto flex flex-col gap-6 items-center justify-center [&_*]:!text-white">
                 <span className="text-sm">2021 ~</span>
                 <span className="text-3xl ">EP & SINGLE</span>
               </li>
@@ -228,13 +228,13 @@ const OthersCarousel = () => {
                     className="w-full h-full"
                   />
                 </div>
-                <ul className="flex gap-10 w-full justify-between items-start">
-                  <li className="w-1/2 h-full flex flex-col items-end justify-center gap-6">
+                <ul className="flex gap-10 w-full justify-between items-start [&_*]:!text-white">
+                  <li className="w-1/2 h-full flex flex-col items-end justify-center gap-6 ">
                     <span className="text-sm">2021</span>
                     <span className="text-2xl ">앨범 타이틀</span>
                     <span>노래 듣기</span>
                   </li>
-                  <li className="w-1/2 flex flex-col justify-start items-start gap-3">
+                  <li className="w-1/2 flex flex-col justify-start items-start gap-2">
                     <span className="">소개</span>
                     <ol className="flex flex-col">
                       <li>1. 트랙리스트</li>

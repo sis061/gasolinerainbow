@@ -27,8 +27,6 @@ export default function Discography() {
   );
 }
 
-// 크레딧? 트랙리스트 가사 앨범 소개
-
 const AlbumCarousel = () => {
   const carouselRef = useRef<CarouselApi | null>(null);
   return (

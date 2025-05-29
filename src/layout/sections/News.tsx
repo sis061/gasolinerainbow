@@ -219,7 +219,7 @@ export default function News() {
                   className="w-full !-mt-0.5 [&>svg]:hidden group hover:shadow-md"
                 >
                   <div
-                    className="!bg-[length:105%] bg-center bg-no-repeat group-hover:!bg-[length:100%] w-full h-64 flex items-end justify-start cursor-pointer transition-all hover:opacity-90 duration-200 hover:[&_>span]:opacity-100"
+                    className="!bg-[length:105%] bg-center bg-no-repeat group-hover:!bg-[length:100%] w-full h-72 flex items-end justify-start cursor-pointer transition-all hover:opacity-90 duration-200 hover:[&_>span]:opacity-100"
                     style={{
                       backgroundImage: `url(${news.img})`,
                     }}

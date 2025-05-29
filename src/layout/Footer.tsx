@@ -1,17 +1,20 @@
+import { Separator } from "@/components/ui/separator";
+
 const Footer = () => {
   return (
-    <footer className="min-h-40 z-[10] w-screen h-40 !mx-auto flex justify-center border-1 bg-orange-200">
-      <div className="wrapper w-full flex-grow-0 bg-blue-50 relative">
-        <ul className="flex flex-col items-center justify-between h-full">
-          <li className="bg-blue-50">
-            <ol className="grid grid-cols-2 grid-rows-2 gap-3">
-              <li className="row-span-2">Contact Me</li>
-              <li>himinnjeong@gmail.com</li>
-              <li>인스타그램 DM</li>
-            </ol>
-          </li>
+    <footer className="z-[10] w-screen h-20 !mx-auto flex justify-center bg-[#000]">
+      <div className="wrapper w-full bg-[#000] relative !p-3 !pt-4">
+        <ul className="flex items-center justify-between h-full border-t-1">
           <li>
-            <p className="font-light text-xs">
+            <p className="!text-white text-xl">
+              H<span className="!text-white text-2xl">í</span>M
+              <span className="!text-white text-2xl">í</span>NN
+            </p>
+          </li>
+          <li className="flex items-center justify-center gap-3 h-4 !pt-1">
+            <span className="!text-white ">Contact</span>
+            <Separator orientation="vertical" />
+            <p className="text-sm  !text-white">
               &copy; 2025 HIMINN&#46; All Rights Reserved&#46;
             </p>
           </li>

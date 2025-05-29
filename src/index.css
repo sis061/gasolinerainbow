@@ -68,6 +68,15 @@ a {
   -webkit-box-orient: vertical;
 }
 
+.line-clamp-4 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
 /*********************************** lib customize class ***********************************/
 
 /*---break---*/

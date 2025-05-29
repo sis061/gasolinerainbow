@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.11",
+    "@radix-ui/react-separator": "^1.1.7",
     "@radix-ui/react-slot": "^1.2.3",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "class-variance-authority": "^0.7.1",
@@ -24,6 +25,7 @@
     "react-dom": "^19.1.0",
     "react-responsive": "^10.0.1",
     "react-router-dom": "^7.6.1",
+    "react-youtube": "^10.1.0",
     "swiper": "^11.2.8",
     "tailwind-merge": "^3.3.0",
     "zustand": "^5.0.5"

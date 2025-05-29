@@ -152,7 +152,7 @@ export default function AuthorNote() {
 
   return (
     <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center">
-      <div className="inner flex-grow-0 w-full flex flex-col !my-10 items-start justify-between bg-white !px-6 shadow-2xl">
+      <div className="inner flex-grow-0 w-full flex flex-col !my-10 items-start justify-between bg-white !px-6 !py-3 shadow-2xl">
         <Table>
           <TableHeader>
             <TableRow>

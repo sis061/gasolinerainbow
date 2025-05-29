@@ -10,6 +10,9 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import mockImg from "@/assets/images/HM.jpg";
 import { useRef } from "react";
 
+import { mockDiskData } from "@/layout/sections/mockDiskData";
+import _ from "lodash";
+
 export default function Discography() {
   return (
     <section className="wrapper-full w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center ">
@@ -18,6 +21,7 @@ export default function Discography() {
         <AlbumCarousel />
         {/* EP Single, OST 컴포넌트 형식 */}
         <OthersCarousel />
+        <OSTCarousel />
       </div>
     </section>
   );
@@ -219,8 +223,8 @@ const OthersCarousel = () => {
             </ul>
           </CarouselItem>
           <CarouselItem className="w-full h-full flex items-center justify-center">
-            <ul className=" w-full h-full flex gap-10 items-center">
-              <li className="w-1/2 h-auto flex flex-col gap-10 items-center justify-start">
+            <ul className="w-full h-full flex gap-10 items-center">
+              <li className="w-2/3 h-auto flex flex-col gap-10 items-center justify-start">
                 <div className="max-w-1/2  bg-gray-600 overflow-hidden ">
                   <img
                     src={mockImg}
@@ -246,7 +250,7 @@ const OthersCarousel = () => {
                   </li>
                 </ul>
               </li>
-              <li className="w-2/3 max-h-[85%] bg-white overflow-scroll flex-grow !p-10 shadow-xl">
+              <li className="w-1/3 max-h-[85%] bg-white overflow-scroll !p-10 shadow-xl">
                 {/* TODO: 여기도 DOMpurify 넣기 */}
                 <p>
                   앨범 소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
@@ -292,6 +296,84 @@ const OthersCarousel = () => {
                   소개글...앨범 소개글...앨범 소개글... 소개글...앨범 소개글...
                   소개글...앨범 소개글...
                 </p>
+              </li>
+            </ul>
+          </CarouselItem>
+        </CarouselContent>
+        <ChevronLeft
+          size={40}
+          color="#fff"
+          onClick={() => carouselRef.current?.scrollPrev()}
+          className="transition-all disabled:pointer-events-none disabled:opacity-50 shrink-0 outline-none absolute rounded-full top-1/2 -left-12 -translate-y-1/2 cursor-pointer bg-transparent "
+        />
+        <ChevronRight
+          size={40}
+          color="#fff"
+          onClick={() => carouselRef.current?.scrollNext()}
+          className="transition-all disabled:pointer-events-none disabled:opacity-50 shrink-0 outline-none  absolute rounded-full top-1/2 -right-12 -translate-y-1/2 cursor-pointer bg-transparent"
+        />
+      </Carousel>
+    </>
+  );
+};
+
+const OSTCarousel = () => {
+  const carouselRef = useRef<CarouselApi | null>(null);
+  return (
+    <>
+      <Carousel
+        setApi={(api) => (carouselRef.current = api)}
+        opts={{ loop: true, watchDrag: true }}
+        className="w-full h-full !px-20 relative"
+      >
+        <CarouselContent className="w-full h-[calc(100dvh-8rem)]">
+          <CarouselItem className="w-full h-full  flex items-center justify-center">
+            <ul className=" w-full flex gap-10 ">
+              <li className="min-w-1/2 bg-gray-600 overflow-hidden ">
+                <img
+                  src={mockImg}
+                  alt="앨범 아트워크"
+                  className="w-full h-full"
+                />
+              </li>
+              <li className="flex-grow h-auto flex flex-col gap-6 items-center justify-center [&_*]:!text-white">
+                <span className="text-sm">2024 ~</span>
+                <span className="text-3xl ">ORIGINAL SOUNDTRACKs</span>
+              </li>
+            </ul>
+          </CarouselItem>
+          <CarouselItem className="w-full h-full flex items-center justify-center">
+            <ul className=" w-full h-full flex gap-10 items-center ">
+              <li className="w-2/3 h-auto flex flex-col gap-10 items-center justify-start ">
+                <div className="max-w-1/2  bg-gray-600 overflow-hidden ">
+                  <img
+                    src={mockImg}
+                    alt="앨범 아트워크"
+                    className="w-full h-full"
+                  />
+                </div>
+                <ul className="flex gap-10 w-full justify-between items-center [&_*]:!text-white ">
+                  <li className=" w-full h-full flex flex-col items-center justify-center gap-6 ">
+                    <span className="text-sm">2024</span>
+                    <span className="text-2xl ">앨범 타이틀</span>
+                    <span>노래 듣기</span>
+                  </li>
+                </ul>
+              </li>
+              <li className="w-1/3 flex flex-col max-h-[85%] overflow-scroll  justify-start items-start gap-2 ">
+                <ol className="flex flex-col gap-2 [&_>li]:!text-white">
+                  <li>1. 트랙리스트</li>
+                  <li>2. 트랙리스트</li>
+                  <li>3. 트랙리스트</li>
+                  <li>4. 트랙리스트</li>
+                  <li>5. 트랙리스트</li>
+                  <li>1. 트랙리스트</li>
+                  <li>2. 트랙리스트</li>
+                  <li>3. 트랙리스트</li>
+                  <li>4. 트랙리스트</li>
+                  <li>5. 트랙리스트</li>
+                  <li>11. 트랙리스트</li>
+                </ol>
               </li>
             </ul>
           </CarouselItem>

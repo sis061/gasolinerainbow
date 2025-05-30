@@ -9,14 +9,18 @@ import { Mail, Send } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="z-[10] w-screen min-h-24 !mx-auto flex justify-center bg-[#000]">
-      <div className="wrapper w-full bg-[#000] relative !p-3 !pt-4">
+    <footer className="z-[10] w-screen !px-3 md:!px-[2.25rem] max-md:!pb-32 max-lg:!pb-16 min-h-32 md:min-h-24 !mx-auto flex justify-center bg-[#000] !shadow-2xl">
+      <div className="wrapper w-full relative !p-3 !pt-4">
         <ul className="flex flex-col items-center justify-around h-full border-t-1 md:flex-row md:justify-between">
           <li>
-            <p className="!text-white text-md">
-              H<span className="!text-white text-lg">í</span>M
-              <span className="!text-white text-lg">í</span>NN
-            </p>
+            <div className="w-auto min-h-16 flex flex-col items-center justify-center md:items-start">
+              <p className="text-lg font-extrabold !-mb-2 !text-white">
+                GasolineRainbow
+              </p>
+              <p className="text-md font-extrabold  [&_>span]:text-xl [&_>span]:font-normal !text-white [&_>span]:!text-white">
+                SpilledByH<span>í</span>M<span>í</span>NN
+              </p>
+            </div>
           </li>
           <li className="flex items-center justify-center gap-3 h-4 !pt-1">
             <DropdownMenu>

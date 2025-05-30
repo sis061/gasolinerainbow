@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 import BandcampLogo from "@/assets/logos/bandcamp.svg?react";
 import ApplemusicLogo from "@/assets/logos/applemusic.svg?react";
 import InstagramLogo from "@/assets/logos/instagram.svg?react";
@@ -15,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import _ from "lodash";
 import { Separator } from "@/components/ui/separator";
 import { useMediaQuery } from "react-responsive";
+import { useScrollState } from "@/hooks/useScrollState";
 
 const navLinks = [
   { to: "/", label: "홈" },
@@ -35,24 +34,23 @@ const logos = [
 ];
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const isScrolled = useScrollState();
   const minLaptop = useMediaQuery({ minWidth: 1024 });
   const minTablet = useMediaQuery({ minWidth: 768 });
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
+  //   const handleScroll = () => {
+  //     if (window.scrollY > 0) {
+  //       setIsScrolled(true);
+  //     } else {
+  //       setIsScrolled(false);
+  //     }
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
   return (
     <>
       <header
@@ -103,7 +101,6 @@ const Header = () => {
             )}
           </>
         )}
-
         {/* LANG */}
         <div className="flex items-center justify-end max-lg:w-[169px] ">
           <Button
@@ -137,22 +134,8 @@ export default Header;
 
 const Nav = () => {
   const minTablet = useMediaQuery({ minWidth: 768 });
-  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const isScrolled = useScrollState();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
   return (
     <ul className="max-md:w-full max-md:justify-between flex items-center justify-start gap-4 xl:gap-6 [&_>li]:flex [&_>li]:justify-center [&_>li]:items-center">
       {_.map(navLinks, ({ to, label }) => (
@@ -176,22 +159,8 @@ const Nav = () => {
 
 const SocialMedia = () => {
   const minLaptop = useMediaQuery({ minWidth: 1024 });
-  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const isScrolled = useScrollState();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
   return (
     <ul className="flex items-center justify-between gap-4">
       {_.map(logos, ({ Component, name }) => (

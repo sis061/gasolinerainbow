@@ -9,9 +9,9 @@ import { Mail, Send } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="z-[10] w-screen h-20 !mx-auto flex justify-center bg-[#000]">
+    <footer className="z-[10] w-screen min-h-24 !mx-auto flex justify-center bg-[#000]">
       <div className="wrapper w-full bg-[#000] relative !p-3 !pt-4">
-        <ul className="flex items-center justify-between h-full border-t-1">
+        <ul className="flex flex-col items-center justify-around h-full border-t-1 md:flex-row md:justify-between">
           <li>
             <p className="!text-white text-md">
               H<span className="!text-white text-lg">í</span>M

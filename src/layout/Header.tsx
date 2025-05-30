@@ -12,9 +12,32 @@ import cx from "classnames";
 import { Link } from "react-router-dom";
 import { Languages } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import _ from "lodash";
+import { Separator } from "@/components/ui/separator";
+import { useMediaQuery } from "react-responsive";
+
+const navLinks = [
+  { to: "/", label: "홈" },
+  { to: "/profile", label: "소개" },
+  { to: "/discography", label: "디스코그라피" },
+  { to: "/news", label: "소식" },
+  { to: "/authornote", label: "작가의 말" },
+];
+
+const logos = [
+  { Component: SpotifyLogo, name: "spotify" },
+  { Component: YoutubeMusicLogo, name: "ytmusic" },
+  { Component: ApplemusicLogo, name: "applemusic" },
+  { Component: BandcampLogo, name: "bandcamp" },
+  { Component: SoundcloudLogo, name: "soundcloud" },
+  { Component: InstagramLogo, name: "instagram" },
+  { Component: YoutubeLogo, name: "youtube" },
+];
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const minLaptop = useMediaQuery({ minWidth: 1024 });
+  const minTablet = useMediaQuery({ minWidth: 768 });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,131 +57,154 @@ const Header = () => {
     <>
       <header
         className={cx(
-          "z-50 w-screen min-h-32 !px-[10rem] sticky top-0 overflow-hidden lg:px-10 lg:h-24 flex justify-between items-center gap-10 duration-150",
-          isScrolled && "bg-[#1b2838]/50 backdrop-blur-sm shadow-2xl"
+          "z-50 w-screen h-32 max-lg:h-24 !px-4 sm:!px-8 md:!px-[3rem] lg:!px-[6rem] xl:!px-[10rem] sticky top-0 overflow-hidden flex justify-between items-center gap-2 duration-150",
+          isScrolled && "bg-[#000]/50 backdrop-blur-sm shadow-2xl"
         )}
       >
-        <div className="overflow-hidden flex-grow-0">
-          <Link to="/">
-            <div className="w-auto min-h-16 flex flex-col items-center justify-center">
-              <p
-                className={cx(
-                  "text-lg font-extrabold !-mb-2 !mr-11 ",
-                  isScrolled
-                    ? "!text-white"
-                    : "!bg-clip-text !text-transparent bg-[url('@/assets/images/bg01Img.PNG')] bg-center bg-cover"
-                )}
-              >
-                GasolineRainbow
-              </p>
-              <p
-                className={cx(
-                  "text-md font-extrabold  [&_>span]:text-xl [&_>span]:font-normal ",
-                  isScrolled
-                    ? "!text-white [&_>span]:!text-white"
-                    : "!bg-clip-text !text-transparent bg-[url('@/assets/images/bg01Img.PNG')] bg-center bg-cover [&_>span]:!bg-clip-text [&_>span]:!text-transparent"
-                )}
-              >
-                SpilledByH<span>í</span>M<span>í</span>NN
-              </p>
-            </div>
-          </Link>
-        </div>
-        <div className="flex items-center justify-between flex-grow">
-          <ul className="flex gap-5 [&_>li]:!p-3 [&_>li]:flex [&_>li]:justify-center [&_>li]:items-center">
-            <li>
-              <Link
-                to="/"
-                className={cx(
-                  "font-extrabold text-lg hover:border-b-1 transition-all duration-100 border-[#1b2838]",
-                  isScrolled && "!text-white !border-white duration-150"
-                )}
-              >
-                홈
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/profile"
-                className="font-extrabold text-lg hover:border-b-1 transition-all duration-100 border-[#1b2838]"
-              >
-                소개
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="discography"
-                className="font-extrabold text-lg hover:border-b-1 transition-all duration-100 border-[#1b2838]"
-              >
-                디스코그라피
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/news"
-                className="font-extrabold text-lg hover:border-b-1 transition-all duration-100 border-[#1b2838]"
-              >
-                소식
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/authornote"
-                className="font-extrabold text-lg hover:border-b-1 transition-all duration-100 border-[#1b2838]"
-              >
-                작가의 말
-              </Link>
-            </li>
-          </ul>
-          <div className="flex flex-grow-0 items-center justify-start gap-10 h-full">
-            <div className="flex items-center justify-between border-r-1 border-[#f9f9f9] !pr-5">
-              <Button
-                variant={"ghost"}
-                className={cx(
-                  " min-w-8 min-h-6 max-w-9 max-h-8 rounded-full bg-white",
-                  isScrolled && "bg-black"
-                )}
-              >
-                <Languages
-                  size={28}
-                  color={isScrolled ? "#fff" : "#000"}
-                  className="duration-150"
-                />
-              </Button>
-            </div>
-            <ul className="!-ml-5 flex-grow flex items-center justify-between gap-6 [&_>li]:max-w-8 [&_>li]:max-h-8 [&_>li]:min-w-6 [&_>li]:min-h-6 [&_>li]:flex [&_>li]:items-center [&_>li]:justify-center">
-              <li>
-                <SpotifyLogo
-                  className="w-full h-full duration-150"
-                  fill={cx(isScrolled && "#fff")}
-                />
-              </li>
-              <li>
-                <YoutubeMusicLogo className="w-full h-full" />
-              </li>
-              <li>
-                <ApplemusicLogo className="w-full h-full" />
-              </li>
-              <li>
-                <BandcampLogo className="w-full h-full" />
-              </li>
-              <li>
-                <SoundcloudLogo className="w-full h-full" />
-              </li>
-              <li>
-                <InstagramLogo className="w-full h-full" />
-              </li>
-              <li>
-                <YoutubeLogo className="w-full h-full" />
-              </li>
-            </ul>
+        {/* LOGO */}
+        <Link to="/">
+          <div className="w-auto min-h-16 flex flex-col items-center justify-center *:transition-all *:duration-150">
+            <p
+              className={cx(
+                "text-lg font-extrabold !-mb-2 !mr-11 ",
+                isScrolled
+                  ? "!text-white"
+                  : "!bg-clip-text !text-transparent bg-[url('@/assets/images/bg01Img.PNG')] bg-center bg-cover"
+              )}
+            >
+              GasolineRainbow
+            </p>
+            <p
+              className={cx(
+                "text-md font-extrabold  [&_>span]:text-xl [&_>span]:font-normal ",
+                isScrolled
+                  ? "!text-white [&_>span]:!text-white"
+                  : "!bg-clip-text !text-transparent bg-[url('@/assets/images/bg01Img.PNG')] bg-center bg-cover [&_>span]:!bg-clip-text [&_>span]:!text-transparent"
+              )}
+            >
+              SpilledByH<span>í</span>M<span>í</span>NN
+            </p>
           </div>
+        </Link>
+
+        {minTablet && (
+          <>
+            <div className="flex gap-2.5 items-center justify-between max-lg:justify-center flex-1 w-full">
+              {/* NAV */}
+              <Nav />
+              {/* Social */}
+              {minLaptop && <SocialMedia />}
+            </div>
+            {minLaptop && (
+              <Separator
+                orientation="vertical"
+                className="!h-7 !mx-2 xl:!mx-1.5"
+              />
+            )}
+          </>
+        )}
+
+        {/* LANG */}
+        <div className="flex items-center justify-end max-lg:w-[169px] ">
+          <Button
+            variant={"ghost"}
+            className={cx(
+              "w-6 h-6 xl:w-8 xl:h-8 rounded-full bg-white",
+              isScrolled && "bg-black"
+            )}
+          >
+            <Languages
+              size={28}
+              color={isScrolled ? "#fff" : "#000"}
+              className="duration-150 w-full h-full"
+            />
+          </Button>
         </div>
       </header>
+      {!minLaptop && (
+        <nav className="h-32 md:h-16 !px-4 sm:!px-8 md:!px-[3rem] lg:!px-[6rem] fixed bottom-0 left-0 flex flex-col md:flex-row items-center justify-around w-screen !p-3 bg-[#000]/75 backdrop-blur-sm *:transition-opacity z-[50] shadow-[0_-6px_12px_2px_rgba(0,0,0,0.4)]">
+          {/* NAV */}
+          {!minTablet && <Nav />}
+          {/* Social */}
+          <SocialMedia />
+        </nav>
+      )}
     </>
   );
 };
 
 export default Header;
 
-//  스포티파이, 유튜브뮤직, 애플뮤직, 밴캠, 사클, 인스타, 유튜브
+const Nav = () => {
+  const minTablet = useMediaQuery({ minWidth: 768 });
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  return (
+    <ul className="max-md:w-full max-md:justify-between flex items-center justify-start gap-4 xl:gap-6 [&_>li]:flex [&_>li]:justify-center [&_>li]:items-center">
+      {_.map(navLinks, ({ to, label }) => (
+        <li key={to}>
+          <Link
+            to={to}
+            className={cx(
+              "font-extrabold text-lg hover:border-b-1 transition-all border-[#1b2838]",
+              minTablet
+                ? isScrolled && "!text-white !border-white"
+                : "!text-white !border-white"
+            )}
+          >
+            {label}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+const SocialMedia = () => {
+  const minLaptop = useMediaQuery({ minWidth: 1024 });
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  return (
+    <ul className="flex items-center justify-between gap-4">
+      {_.map(logos, ({ Component, name }) => (
+        <li
+          key={name}
+          className="flex items-center justify-center w-6 h-6 xl:w-8 xl:h-8"
+        >
+          <Component
+            className="w-full h-full duration-150"
+            fill={minLaptop ? (isScrolled ? "#fff" : "#000") : "#fff"}
+          />
+        </li>
+      ))}
+    </ul>
+  );
+};

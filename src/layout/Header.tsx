@@ -37,25 +37,11 @@ const Header = () => {
   const isScrolled = useScrollState();
   const minLaptop = useMediaQuery({ minWidth: 1024 });
   const minTablet = useMediaQuery({ minWidth: 768 });
-
-  //   const handleScroll = () => {
-  //     if (window.scrollY > 0) {
-  //       setIsScrolled(true);
-  //     } else {
-  //       setIsScrolled(false);
-  //     }
-  //   };
-
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
   return (
     <>
       <header
         className={cx(
-          "z-50 w-screen h-32 max-lg:h-24 !px-4 sm:!px-8 md:!px-[3rem] lg:!px-[6rem] xl:!px-[10rem] sticky top-0 overflow-hidden flex justify-between items-center gap-2 duration-150",
+          "z-50 w-screen h-32 max-lg:h-24 !px-8 sm:!px-16 md:!px-[3rem] lg:!px-[6rem] xl:!px-[10rem] sticky top-0 overflow-hidden flex justify-between items-center gap-2 duration-150",
           isScrolled && "bg-[#000]/50 backdrop-blur-sm shadow-2xl"
         )}
       >
@@ -119,7 +105,7 @@ const Header = () => {
         </div>
       </header>
       {!minLaptop && (
-        <nav className="h-32 md:h-16 !px-4 sm:!px-8 md:!px-[3rem] lg:!px-[6rem] fixed bottom-0 left-0 flex flex-col md:flex-row items-center justify-around w-screen !p-3 bg-[#000]/75 backdrop-blur-sm *:transition-opacity z-[50] shadow-[0_-6px_12px_2px_rgba(0,0,0,0.4)]">
+        <nav className="h-32 md:h-16 !px-8 sm:!px-16 md:!px-[3rem] lg:!px-[6rem] fixed bottom-0 left-0 flex flex-col md:flex-row items-center justify-around w-screen !p-3 bg-[#000]/75 backdrop-blur-sm *:transition-opacity z-[50] shadow-[0_-6px_12px_2px_rgba(0,0,0,0.4)]">
           {/* NAV */}
           {!minTablet && <Nav />}
           {/* Social */}
@@ -143,7 +129,7 @@ const Nav = () => {
           <Link
             to={to}
             className={cx(
-              "font-extrabold text-lg hover:border-b-1 transition-all border-[#1b2838]",
+              "font-extrabold text-lg [@media(max-width:365px)]:text-sm hover:border-b-1 transition-all border-[#1b2838]",
               minTablet
                 ? isScrolled && "!text-white !border-white"
                 : "!text-white !border-white"

@@ -71,7 +71,7 @@ export default function Home() {
           <>
             <div className="grid grid-rows-1 lg:grid-rows-2 grid-cols-4 w-full h-full gap-2">
               {/* TODO: 앨범 소개 컴포넌트 구분해서 만들기 */}
-              <div className="w-auto shadow-2xl row-start-2 col-start-1 col-span-4 bg-white flex flex-col justify-between gap-10 !-mt-4 lg:!-mt-18 lg:!mr-12 !p-6 ">
+              <div className="w-auto shadow-2xl row-start-2 col-start-1 col-span-4 bg-white/75 flex flex-col justify-between gap-10 !-mt-4 lg:!-mt-18 lg:!mr-12 !p-6 ">
                 <h1 className="text-lg font-bold !p-2">
                   앨범 <span className="text-4xl">[ HM ]</span>
                 </h1>

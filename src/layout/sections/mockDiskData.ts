@@ -20,8 +20,8 @@ export const mockDiskData = [
     cdUrl: "https://123.com",
     description: `HIMINN 첫 정규 앨범 [HM]
 
-  저에게 제 노래는 일종의 방어입니다. 자신을 바라보고 제 속의 갈등—주로 고독 및 자기 비난—을 다시 곱게 빚어내는 자기 방어. 그러니 제가 저를 직접 내보이기는 아직도 부끄럽기에, 이번에는 마치 셀프 타이틀 같지 않은 셀프 타이틀 앨범 [HM]에 열한 곡의 노래들을 엮었습니다. 언제는 외로움에 어찌할 바를 모르다가도 또 가끔은 초연해지는, 저 그리고 모두가 가진 본연의 모습을 담고 싶었습니다.
-
+  저에게 제 노래는 일종의 방어입니다. 자신을 바라보고 제 속의 갈등—주로 고독 및 자기 비난—을 다시 곱게 빚어내는 자기 방어. \n\n 그러니 제가 저를 직접 내보이기는 아직도 부끄럽기에, 이번에는 마치 셀프 타이틀 같지 않은 셀프 타이틀 앨범 [HM]에 열한 곡의 노래들을 엮었습니다. \n\n 언제는 외로움에 어찌할 바를 모르다가도 또 가끔은 초연해지는, 저 그리고 모두가 가진 본연의 모습을 담고 싶었습니다.
+\n
   하나 : 새벽에, 혼자, 어둡게 그리고 정말 크게 들어주세요.
   둘 : 후회하고 슬퍼하세요. 그래도 어디 한편에는 희망이 남아있습니다.
   셋 : 떠나야 합니다. 사라져야 합니다. 하지만 붙잡아주세요.
@@ -34,9 +34,9 @@ export const mockDiskData = [
   열 : 괜찮아, 상관없어, 걱정하지 마. 거긴 다 거짓말이야.
   열하나 : 상상한 찬란한 것들이 사그라지는 마지막.`,
     credits: `Produced by HIMINN, Shinhwan
-  Recorded by Shinhwan @ Phoné Studio
-  Mixed & Mastered by Shinhwan @ Phoné Studio
-  Artwork by namu 나무`,
+Recorded by Shinhwan @ Phoné Studio
+Mixed & Mastered by Shinhwan @ Phoné Studio
+Artwork by namu 나무`,
     tracks: [
       {
         trackNo: 1,
@@ -98,7 +98,7 @@ export const mockDiskData = [
       },
       {
         trackNo: 3,
-        title: "물감(PaintMe,PaintYou)",
+        title: "물감",
         lyrics: `이젠 사라져야겠지
 
 마치 아무것도 아닌
@@ -169,7 +169,7 @@ export const mockDiskData = [
       },
       {
         trackNo: 4,
-        title: "가울(Wintumn)",
+        title: "가울",
         lyrics: `겨울같이 가을이 오면
 
 잡았던 두 손을 놓게 하고
@@ -295,7 +295,7 @@ Will wash away`,
       },
       {
         trackNo: 6,
-        title: "기묘한꿈을꾸었다 Pt.1(DreamtAStrangeDream Pt.1)",
+        title: "기묘한꿈을꾸었다 Pt.1",
         lyrics: `기묘한 꿈을 꾸었다
 
 그것은 눈이 무릎까지 쌓인 산이었는데
@@ -423,7 +423,7 @@ Crawl into your space generously in silence but definitely`,
       },
       {
         trackNo: 8,
-        title: "여름만있는날에살고싶은걸?(WishItWereSummer)",
+        title: "여름만있는날에살고싶은걸?",
         lyrics: `나의 단어들을 흘려
 
 나의 단어들을 흘려 부을 때
@@ -521,7 +521,7 @@ Indeed`,
       },
       {
         trackNo: 10,
-        title: "거짓말거긴말(ThereinLiesTheLie)",
+        title: "거짓말거긴말",
         lyrics: `그 어둔 솜에 나는 파묻혀
 
 거짓말을 내뱉어
@@ -638,13 +638,147 @@ The melody only remains`,
     },
     isCD: false,
     cdUrl: null,
-    description: ``,
-    credits: ``,
+    description: `진부하고 진부한 판도라의 상자 이야기를 빗대어 말하고 싶었습니다.
+후회하세요, 그리고 슬퍼하세요.
+
+그래도 희망은 남아있습니다, 도대체 왜인지 모르겠지만.
+
+아무쪼록 저는 말이죠,
+여전히 같이 울기로 마음먹었습니다.`,
+    credits: `Produced by Shinhwan @ Phoné Studio, HIMINN
+Recorded by Shinhwan @ Phoné Studio
+Mixed & Mastered by Shinhwan @ Phoné Studio
+Artwork by Hansaem Park
+
+Composed by HIMINN
+Lyrics by HIMINN
+Arranged by HIMINN
+Vocal by HIMINN`,
     tracks: [
       {
         trackNo: 1,
         title: "Fool's Box",
         lyrics: `그냥 알렴
+
+그냥 울렴
+
+이미 늦었으니까
+
+열린 상자를
+
+닫아보려 해도
+
+이미 떠났으니까
+
+
+그저 웃어
+
+주저 앉아
+
+이미 가버렸으니까
+
+
+너는 알아 너는 항상
+
+후회하고 늦어버려
+
+똑같은 실수를
+
+반복할 걸 알잖니
+
+
+그래도 어느 한구석에
+
+희망은 왜 남아
+
+
+소릴 질러
+
+울부짖는
+
+이미 못 잊으니까
+
+
+놓친 그들을
+
+잡아보려 해도
+
+이미 놓쳤으니까`,
+      },
+    ],
+  },
+  {
+    type: "EP",
+    year: 2222,
+    title: "In the Need of a Good Cry",
+    image: FoolsboxArtwork,
+    urls: {
+      bandcamp: "https://123.com",
+      spotify: "https://123.com",
+      youtubeMusic: "https://123.com",
+      appleMusic: "https://123.com",
+      melon: "https://123.com",
+      bugs: "https://123.com",
+    },
+    isCD: false,
+    cdUrl: null,
+    description: `123`,
+    credits: `123`,
+    tracks: [
+      {
+        trackNo: 1,
+        title: "Fool's Box",
+        lyrics: `그냥 알렴
+
+그냥 울렴
+
+이미 늦었으니까
+
+열린 상자를
+
+닫아보려 해도
+
+이미 떠났으니까
+
+
+그저 웃어
+
+주저 앉아
+
+이미 가버렸으니까
+
+
+너는 알아 너는 항상
+
+후회하고 늦어버려
+
+똑같은 실수를
+
+반복할 걸 알잖니
+
+
+그래도 어느 한구석에
+
+희망은 왜 남아
+
+
+소릴 질러
+
+울부짖는
+
+이미 못 잊으니까
+
+
+놓친 그들을
+
+잡아보려 해도
+
+이미 놓쳤으니까`,
+      },
+      {
+        trackNo: 2,
+        title: "222Fool's Box",
+        lyrics: `2222그냥 알렴
 
 그냥 울렴
 

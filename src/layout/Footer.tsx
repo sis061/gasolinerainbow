@@ -22,7 +22,7 @@ const Footer = () => {
               </p>
             </div>
           </li>
-          <li className="flex items-center justify-center gap-3 h-4 !pt-1">
+          <li className="flex items-center justify-center gap-3 h-4 !pt-1 [@media(max-width:365px)]:text-sm">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <span className="!text-white cursor-pointer hover:border-b-1 border-white">
@@ -40,7 +40,10 @@ const Footer = () => {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            <Separator orientation="vertical" />
+            <Separator
+              orientation="vertical"
+              className="[@media(max-width:365px)]:hidden"
+            />
             <p className="text-sm  !text-white">
               &copy; 2025 HIMINN&#46; All Rights Reserved&#46;
             </p>

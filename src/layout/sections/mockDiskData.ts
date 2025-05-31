@@ -710,7 +710,7 @@ Vocal by HIMINN`,
   {
     type: "EP",
     year: 2222,
-    title: "Fool's Box 2",
+    title: "In the Need of a Good Cry",
     image: FoolsboxArtwork,
     urls: {
       bandcamp: "https://123.com",

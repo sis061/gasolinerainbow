@@ -638,13 +638,147 @@ The melody only remains`,
     },
     isCD: false,
     cdUrl: null,
-    description: ``,
-    credits: ``,
+    description: `진부하고 진부한 판도라의 상자 이야기를 빗대어 말하고 싶었습니다.
+후회하세요, 그리고 슬퍼하세요.
+
+그래도 희망은 남아있습니다, 도대체 왜인지 모르겠지만.
+
+아무쪼록 저는 말이죠,
+여전히 같이 울기로 마음먹었습니다.`,
+    credits: `Produced by Shinhwan @ Phoné Studio, HIMINN
+Recorded by Shinhwan @ Phoné Studio
+Mixed & Mastered by Shinhwan @ Phoné Studio
+Artwork by Hansaem Park
+
+Composed by HIMINN
+Lyrics by HIMINN
+Arranged by HIMINN
+Vocal by HIMINN`,
     tracks: [
       {
         trackNo: 1,
         title: "Fool's Box",
         lyrics: `그냥 알렴
+
+그냥 울렴
+
+이미 늦었으니까
+
+열린 상자를
+
+닫아보려 해도
+
+이미 떠났으니까
+
+
+그저 웃어
+
+주저 앉아
+
+이미 가버렸으니까
+
+
+너는 알아 너는 항상
+
+후회하고 늦어버려
+
+똑같은 실수를
+
+반복할 걸 알잖니
+
+
+그래도 어느 한구석에
+
+희망은 왜 남아
+
+
+소릴 질러
+
+울부짖는
+
+이미 못 잊으니까
+
+
+놓친 그들을
+
+잡아보려 해도
+
+이미 놓쳤으니까`,
+      },
+    ],
+  },
+  {
+    type: "EP",
+    year: 2222,
+    title: "Fool's Box 2",
+    image: FoolsboxArtwork,
+    urls: {
+      bandcamp: "https://123.com",
+      spotify: "https://123.com",
+      youtubeMusic: "https://123.com",
+      appleMusic: "https://123.com",
+      melon: "https://123.com",
+      bugs: "https://123.com",
+    },
+    isCD: false,
+    cdUrl: null,
+    description: `123`,
+    credits: `123`,
+    tracks: [
+      {
+        trackNo: 1,
+        title: "Fool's Box",
+        lyrics: `그냥 알렴
+
+그냥 울렴
+
+이미 늦었으니까
+
+열린 상자를
+
+닫아보려 해도
+
+이미 떠났으니까
+
+
+그저 웃어
+
+주저 앉아
+
+이미 가버렸으니까
+
+
+너는 알아 너는 항상
+
+후회하고 늦어버려
+
+똑같은 실수를
+
+반복할 걸 알잖니
+
+
+그래도 어느 한구석에
+
+희망은 왜 남아
+
+
+소릴 질러
+
+울부짖는
+
+이미 못 잊으니까
+
+
+놓친 그들을
+
+잡아보려 해도
+
+이미 놓쳤으니까`,
+      },
+      {
+        trackNo: 2,
+        title: "222Fool's Box",
+        lyrics: `2222그냥 알렴
 
 그냥 울렴
 

@@ -27,13 +27,18 @@ import cx from "classnames";
 import { useMediaQuery } from "react-responsive";
 
 export default function Discography() {
+  const othersData = _.filter(
+    mockDiskData,
+    (data) => data.type !== "album" && data.type !== "ost"
+  );
+
   return (
     <section className="wrapper-full w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center ">
       <div className="inner-full flex-grow-0 w-full h-full ">
         {/* 정규 앨범 컴포넌트 형식 */}
         <AlbumCarousel albumMeta={mockDiskData[0]} />
         {/* EP Single, OST 컴포넌트 형식 */}
-        <OthersCarousel />
+        <OthersCarousel albumMetas={othersData} />
         <OSTCarousel />
       </div>
     </section>
@@ -52,19 +57,21 @@ const AlbumCarousel = ({ albumMeta }) => {
         opts={{ loop: true, watchDrag: true }}
         className="w-full h-full relative !px-10 lg:!px-20"
       >
-        <CarouselContent className="w-full h-[calc(100dvh-8rem)] ">
+        <CarouselContent className="w-full h-[calc(100dvh-8rem)]">
           <CarouselItem className="w-full h-full flex items-center justify-center">
             <ul className="w-full flex items-center gap-10 max-lg:flex-col ">
               <li className="bg-gray-600 overflow-hidden w-full md:w-2/3 lg:w-auto">
                 <img
-                  src={mockImg}
+                  src={albumMeta.image}
                   alt="앨범 아트워크"
                   className=" w-full h-full"
                 />
               </li>
-              <li className="min-w-[45%] flex-grow h-auto flex flex-col max-lg:gap-6 gap-16 items-center justify-center [&_*]:!text-white">
+              <li className="min-w-full lg:min-w-[45%] flex-grow h-auto flex flex-col max-lg:gap-6 gap-16 items-center justify-center [&_*]:!text-white">
                 <span className="text-sm">{albumMeta.year}</span>
-                <span className="text-3xl text-center">{albumMeta.title}</span>
+                <span className="text-3xl md:text-5xl text-center">
+                  {albumMeta.title}
+                </span>
                 <ol className="flex gap-6">
                   <li>앨범 듣기</li>
                   {!!albumMeta.isCD && <li>CD 구매</li>}
@@ -74,17 +81,19 @@ const AlbumCarousel = ({ albumMeta }) => {
           </CarouselItem>
           <CarouselItem className="w-full h-full flex items-center justify-center">
             <Drawer>
-              <ul className="w-full h-full flex items-center max-md:justify-center">
-                <li className="!pr-10 w-[45%] max-md:w-full h-full flex flex-col gap-6 items-end max-md:items-center justify-center [&_*]:!text-white overflow-y-scroll">
+              <ul className="w-full h-full flex items-center max-md:justify-center lg:!px-10 ">
+                <li className="md:!pr-10 w-[45%] max-md:w-full h-full flex flex-col gap-6 items-end max-md:items-center justify-center [&_*]:!text-white overflow-y-scroll">
                   <span className="text-sm">{albumMeta.year}</span>
-                  <span className="text-2xl ">{albumMeta.title}</span>
+                  <span className="text-4xl text-center">
+                    {albumMeta.title}
+                  </span>
                   <DrawerTrigger
                     onClick={() => setSelectedTrack(null)}
                     className={cx(
-                      "cursor-pointer !px-2 relative",
+                      "cursor-pointer !px-2 relative transition-all duration-200",
                       minLaptop &&
                         !selectedTrack &&
-                        "!bg-white/75 [&_>span]:!text-black"
+                        "!bg-white/75 [&_>span]:!text-black "
                     )}
                   >
                     <span>앨범 소개</span>
@@ -92,7 +101,7 @@ const AlbumCarousel = ({ albumMeta }) => {
                       className={cx(
                         minLaptop &&
                           !selectedTrack &&
-                          "absolute w-10 h-full bg-white/75 top-0 -right-10 z-[50]"
+                          "absolute w-10 h-full bg-white/75 top-0 -right-10 z-[50] transition-all duration-200"
                       )}
                     />
                   </DrawerTrigger>
@@ -103,7 +112,7 @@ const AlbumCarousel = ({ albumMeta }) => {
                           <DrawerTrigger
                             onClick={() => setSelectedTrack(tr)}
                             className={cx(
-                              "cursor-pointer !px-2 relative max-md:text-center text-right",
+                              "cursor-pointer !px-2 relative max-md:text-center text-right transition-all duration-200",
                               minLaptop &&
                                 selectedTrack?.trackNo === i + 1 &&
                                 "!bg-white/75 [&_>span]:!text-black"
@@ -116,7 +125,7 @@ const AlbumCarousel = ({ albumMeta }) => {
                               className={cx(
                                 minLaptop &&
                                   selectedTrack?.trackNo === i + 1 &&
-                                  "absolute w-10 h-full bg-white/75 top-0 -right-10 z-[50]"
+                                  "absolute w-10 h-full bg-white/75 top-0 -right-10 z-[50] transition-all duration-200"
                               )}
                             />
                           </DrawerTrigger>
@@ -130,9 +139,9 @@ const AlbumCarousel = ({ albumMeta }) => {
                   </ol>
                 </li>
                 {minLaptop ? (
-                  <li className="w-[55%] max-h-[85%] bg-white/75 !p-10 shadow-xl overflow-scroll flex-grow">
+                  <li className="w-[55%] max-h-[85%] bg-white/75 !p-10 shadow-xl overflow-scroll flex-grow ">
                     {/* TODO: 여기도 DOMpurify 넣기 */}
-                    <div className="whitespace-break-spaces">
+                    <div className="whitespace-break-spaces transition-all duration-200">
                       {selectedTrack ? (
                         selectedTrack.lyrics
                       ) : (
@@ -149,28 +158,35 @@ const AlbumCarousel = ({ albumMeta }) => {
                     </div>
                   </li>
                 ) : (
-                  <DrawerContent className="flex flex-col items-center !py-6 !bg-black/90 w-full h-[90dvh]">
+                  <DrawerContent
+                    aria-describedby={
+                      selectedTrack ? "drawer-description" : undefined
+                    }
+                    className="flex flex-col items-center !py-6 !bg-black/90 w-full h-[90dvh]"
+                  >
                     <DrawerHeader className="w-full h-[90%] text-center !py-6">
                       <DrawerTitle className="!text-white !pb-6">
                         {selectedTrack
                           ? selectedTrack.title
                           : "앨범 소개와 크레딧"}
                       </DrawerTitle>
-                      <DrawerDescription className="w-full h-full !text-white whitespace-break-spaces !overflow-y-scroll">
+                      <div className="w-full h-full !overflow-y-scroll !px-6">
                         {selectedTrack ? (
-                          selectedTrack.lyrics
+                          <DrawerDescription className="!text-white whitespace-break-spaces">
+                            {selectedTrack.lyrics}
+                          </DrawerDescription>
                         ) : (
                           <>
-                            <div className="!mb-6 !text-white whitespace-break-spaces">
+                            <p className="!mb-6 !text-white whitespace-break-spaces text-sm">
                               {albumMeta.description}
-                            </div>
+                            </p>
                             <hr className="!my-4 border-white/20" />
-                            <div className="text-xs opacity-80 !text-white whitespace-break-spaces">
+                            <p className="text-xs opacity-80 !text-white whitespace-break-spaces">
                               {albumMeta.credits}
-                            </div>
+                            </p>
                           </>
                         )}
-                      </DrawerDescription>
+                      </div>
                     </DrawerHeader>
                     <DrawerFooter className="h-[10%]">
                       <DrawerClose asChild>
@@ -201,8 +217,10 @@ const AlbumCarousel = ({ albumMeta }) => {
   );
 };
 
-const OthersCarousel = () => {
+const OthersCarousel = ({ albumMetas }) => {
   const carouselRef = useRef<CarouselApi | null>(null);
+  const minLaptop = useMediaQuery({ minWidth: 768 });
+  const [selectedTrack, setSelectedTrack] = useState(null);
   return (
     <>
       <Carousel
@@ -213,107 +231,169 @@ const OthersCarousel = () => {
         <CarouselContent className="w-full h-[calc(100dvh-8rem)]">
           <CarouselItem className="w-full h-full flex items-center justify-center">
             <ul className="w-full flex items-center gap-10 max-lg:flex-col">
-              <li className="w-full md:w-2/3 lg:w-auto bg-gray-600 overflow-hidden ">
+              <li className="bg-gray-600 overflow-hidden w-full md:w-2/3 lg:w-auto">
                 <img
-                  src={mockImg}
+                  src={albumMetas[0].image}
                   alt="앨범 아트워크"
                   className="w-full h-full"
                 />
               </li>
-              <li className="min-w-[45%] flex-grow h-auto flex flex-col gap-6 items-center justify-center [&_*]:!text-white">
+              <li className="min-w-full lg:min-w-[45%] flex-grow h-auto flex flex-col gap-6 items-center justify-center [&_*]:!text-white">
                 <span className="text-sm">2021 ~</span>
-                <span className="text-3xl text-center">EPs & SINGLEs</span>
+                <span className="text-3xl md:text-5xl text-center">
+                  EPs & SINGLEs
+                </span>
               </li>
             </ul>
           </CarouselItem>
-          <CarouselItem className="w-full h-full flex items-center justify-center">
-            <ul className="w-full h-full flex gap-10 items-center">
-              <li className="w-2/3 h-auto flex flex-col gap-10 items-center justify-start">
-                <div className="max-w-1/2  bg-gray-600 overflow-hidden ">
-                  <img
-                    src={mockImg}
-                    alt="앨범 아트워크"
-                    className="w-full h-full"
-                  />
-                </div>
-                <ul className="flex gap-10 w-full justify-between items-start [&_*]:!text-white">
-                  <li className="w-1/2 h-full flex flex-col items-end justify-center gap-6 ">
-                    <span className="text-sm">2021</span>
-                    <span className="text-2xl ">앨범 타이틀</span>
-                    <span>노래 듣기</span>
+          {_.map(albumMetas, (albumMeta, i) => (
+            <CarouselItem
+              key={i}
+              className="w-full h-full flex items-center justify-center !px-2.5 md:!px-5"
+            >
+              <Drawer>
+                <ul className="w-full h-full flex items-center max-md:justify-center max-xl:gap-16">
+                  <li className="w-1/2 max-md:w-full h-full flex flex-col gap-6 items-center justify-center [&_*]:!text-white overflow-y-scroll">
+                    <div className="w-full xl:w-3/4 bg-gray-600 overflow-hidden ">
+                      <img
+                        src={albumMeta.image}
+                        alt="앨범 아트워크"
+                        className="w-full h-full"
+                      />
+                    </div>
+                    <ul className="flex max-md:gap-3 max-lg:gap-5 max-xl:gap-7 gap-10 w-full justify-between items-start [&_*]:!text-white ">
+                      <li className="w-1/2 h-full flex flex-col items-end justify-center gap-2">
+                        <span className="text-sm">{albumMeta.year}</span>
+                        <span className="text-3xl text-end !pb-4">
+                          {albumMeta.title}
+                        </span>
+                        <span>노래 듣기</span>
+                      </li>
+                      <li className="w-1/2 flex flex-col justify-start items-start gap-2 ">
+                        <DrawerTrigger
+                          onClick={() => setSelectedTrack(null)}
+                          className={cx(
+                            "cursor-pointer !px-2 relative w-auto text-left transition-all duration-200",
+                            minLaptop &&
+                              !selectedTrack &&
+                              "!bg-white/75 [&_>span]:!text-black"
+                          )}
+                        >
+                          <span>소개</span>
+                          {/* <div
+                            className={cx(
+                              minLaptop &&
+                                !selectedTrack &&
+                                "absolute w-20 h-full bg-white/75 top-0 -right-50 z-[50] transition-all duration-200"
+                            )}
+                          /> */}
+                        </DrawerTrigger>
+                        <ol className="w-full flex flex-col gap-2 [&_>li]:w-full [&_>li]:break-all">
+                          {_.map(albumMeta.tracks, (tr, i) => (
+                            <li key={tr.trackNo}>
+                              {tr.lyrics ? (
+                                <DrawerTrigger
+                                  onClick={() => setSelectedTrack(tr)}
+                                  className={cx(
+                                    "cursor-pointer !px-2 relative text-left w-auto transition-all duration-200",
+                                    minLaptop &&
+                                      selectedTrack?.trackNo === i + 1 &&
+                                      "!bg-white/75 [&_>span]:!text-black"
+                                  )}
+                                >
+                                  <span>
+                                    {tr.trackNo}. {tr.title}
+                                  </span>
+                                </DrawerTrigger>
+                              ) : (
+                                <span>
+                                  {tr.trackNo}. {tr.title}
+                                </span>
+                              )}
+                            </li>
+                          ))}
+                        </ol>
+                      </li>
+                    </ul>
                   </li>
-                  <li className="w-1/2 flex flex-col justify-start items-start gap-2">
-                    <span className="">소개</span>
-                    <ol className="w-1/2 flex flex-col gap-2 [&_>li]:w-full [&_>li]:break-all">
-                      <li>1. 트랙리스트</li>
-                      <li>2. 트랙리스트</li>
-                      <li>3. 트랙리스트</li>
-                      <li>4. 트랙리스트</li>
-                      <li>5. 트랙리스트</li>
-                    </ol>
-                  </li>
+                  {minLaptop ? (
+                    <li className="w-1/2 max-h-[85%] bg-white/75 overflow-scroll !p-10 shadow-xl flex-grow">
+                      {/* TODO: 여기도 DOMpurify 넣기 */}
+                      <div className="whitespace-break-spaces">
+                        {selectedTrack ? (
+                          selectedTrack.lyrics
+                        ) : (
+                          <>
+                            <p className="!mb-6 whitespace-break-spaces">
+                              {albumMeta.description}
+                            </p>
+                            <hr className="!my-4 border-black/20" />
+                            <p className="text-xs opacity-80 whitespace-break-spaces">
+                              {albumMeta.credits}
+                            </p>
+                          </>
+                        )}
+                      </div>
+                    </li>
+                  ) : (
+                    <DrawerContent
+                      aria-describedby={
+                        selectedTrack ? "drawer-description" : undefined
+                      }
+                      className="flex flex-col items-center !py-6 !bg-black/90 w-full h-[90dvh]"
+                    >
+                      <DrawerHeader className="w-full h-[90%] text-center !py-6">
+                        <DrawerTitle className="!text-white !pb-6">
+                          {selectedTrack
+                            ? selectedTrack.title
+                            : "소개와 크레딧"}
+                        </DrawerTitle>
+                        <div className="w-full h-full !overflow-y-scroll !px-6">
+                          {selectedTrack ? (
+                            <DrawerDescription className="!text-white whitespace-break-spaces">
+                              {selectedTrack.lyrics}
+                            </DrawerDescription>
+                          ) : (
+                            <div id="drawer-description">
+                              <p className="!mb-6 !text-white whitespace-break-spaces text-sm">
+                                {albumMeta.description}
+                              </p>
+                              <hr className="!my-4 border-white/20" />
+                              <p className="text-xs opacity-80 !text-white whitespace-break-spaces">
+                                {albumMeta.credits}
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                      </DrawerHeader>
+                      <DrawerFooter className="h-[10%]">
+                        <DrawerClose asChild>
+                          <X size={28} color="#fff" />
+                        </DrawerClose>
+                      </DrawerFooter>
+                    </DrawerContent>
+                  )}
                 </ul>
-              </li>
-              <li className="w-full md:w-2/3 max-h-[85%] bg-white overflow-scroll !p-10 shadow-xl">
-                {/* TODO: 여기도 DOMpurify 넣기 */}
-                <p>
-                  앨범 소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글... 소개글...앨범 소개글... 소개글...앨범
-                  소개글... 소개글...앨범 소개글... 소개글...앨범 소개글...
-                  소개글...앨범 소개글... 소개글...앨범 소개글... 소개글...앨범
-                  소개글...소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글...앨범 소개글...앨범
-                  소개글...앨범 소개글...앨범 소개글... 소개글...앨범 소개글...
-                  소개글...앨범 소개글...
-                </p>
-              </li>
-            </ul>
-          </CarouselItem>
+              </Drawer>
+            </CarouselItem>
+          ))}
         </CarouselContent>
         <ChevronLeft
           size={40}
           color="#fff"
-          onClick={() => carouselRef.current?.scrollPrev()}
+          onClick={() => {
+            carouselRef.current?.scrollPrev();
+            setTimeout(() => setSelectedTrack(null), 200);
+          }}
           className="transition-all disabled:pointer-events-none disabled:opacity-50 shrink-0 outline-none absolute rounded-full top-1/2 -left-3 md:-left-6 lg:-left-12 -translate-y-1/2 cursor-pointer bg-transparent "
         />
         <ChevronRight
           size={40}
           color="#fff"
-          onClick={() => carouselRef.current?.scrollNext()}
+          onClick={() => {
+            carouselRef.current?.scrollNext();
+            setTimeout(() => setSelectedTrack(null), 200);
+          }}
           className="transition-all disabled:pointer-events-none disabled:opacity-50 shrink-0 outline-none  absolute rounded-full top-1/2 -right-3 md:-right-6 lg:-right-12 -translate-y-1/2 cursor-pointer bg-transparent"
         />
       </Carousel>

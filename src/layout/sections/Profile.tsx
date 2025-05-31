@@ -3,7 +3,7 @@ import profileImg from "@/assets/images/profileImg.jpg";
 export default function Profile() {
   return (
     <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center">
-      <div className="inner flex-grow-0 w-full flex items-center justify-center !mb-10 !pt-10">
+      <div className="inner flex-grow-0 w-full flex items-center justify-center !mb-10 md:!pt-10">
         <ul className="w-full h-auto flex flex-col lg:flex-row items-center gap-6 justify-between max-lg:!pt-6 lg:!pr-6 bg-white/75 shadow-2xl">
           <li className="max-w-1/2 z-10">
             <div className="bg-white/75 !p-1 flex items-center justify-center w-full h-full">

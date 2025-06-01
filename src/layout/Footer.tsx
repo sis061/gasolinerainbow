@@ -31,12 +31,24 @@ const Footer = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-black !p-1">
                 <DropdownMenuItem className="!p-2 hover:!bg-[#272727]">
-                  <Mail color="white" />
-                  <span className="!text-white">이메일</span>
+                  <a
+                    href="mailto:himinnjeong@gmail.com"
+                    className="flex items-center justify-between gap-2"
+                  >
+                    <Mail color="white" />
+                    <span className="!text-white">이메일</span>
+                  </a>
                 </DropdownMenuItem>
                 <DropdownMenuItem className="!p-2 hover:!bg-[#272727]">
-                  <Send color="white" />
-                  <span className="!text-white">인스타그램 DM</span>
+                  <a
+                    href="https://www.instagram.com/himinn___/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between gap-2"
+                  >
+                    <Send color="white" />
+                    <span className="!text-white">인스타그램 DM</span>
+                  </a>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -55,9 +67,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-/*
-뭐 집어넣나
-contact : 이메일 인스타그램 디엠
-저작권 표기 c 2025 HIMINN
-*/

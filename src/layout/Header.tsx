@@ -7,7 +7,7 @@ import YoutubeLogo from "@/assets/logos/youtube.svg?react";
 import YoutubeMusicLogo from "@/assets/logos/youtubemusic.svg?react";
 
 import cx from "classnames";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Languages } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import _ from "lodash";
@@ -24,17 +24,47 @@ const navLinks = [
 ];
 
 const logos = [
-  { Component: SpotifyLogo, name: "spotify" },
-  { Component: YoutubeMusicLogo, name: "ytmusic" },
-  { Component: ApplemusicLogo, name: "applemusic" },
-  { Component: BandcampLogo, name: "bandcamp" },
-  { Component: SoundcloudLogo, name: "soundcloud" },
-  { Component: InstagramLogo, name: "instagram" },
-  { Component: YoutubeLogo, name: "youtube" },
+  {
+    Component: SpotifyLogo,
+    name: "spotify",
+    url: "https://open.spotify.com/artist/1XqMSGUousXQqLMInUtVxv?si=u_ybEcAXTwGOUt8-_wjwBQ",
+  },
+  {
+    Component: YoutubeMusicLogo,
+    name: "ytmusic",
+    url: "https://www.youtube.com/channel/UCCsxnJIDEJIMcE4Tzb8fwyw",
+  },
+  {
+    Component: ApplemusicLogo,
+    name: "applemusic",
+    url: "https://music.apple.com/us/artist/himinn/1568514667",
+  },
+  {
+    Component: BandcampLogo,
+    name: "bandcamp",
+    url: "https://himinnn.bandcamp.com/",
+  },
+  {
+    Component: SoundcloudLogo,
+    name: "soundcloud",
+    url: "https://soundcloud.com/himinnn",
+  },
+  {
+    Component: InstagramLogo,
+    name: "instagram",
+    url: "https://www.instagram.com/himinn___/",
+  },
+  {
+    Component: YoutubeLogo,
+    name: "youtube",
+    url: "https://www.youtube.com/channel/UCTcqZG9Q8AbpjbsP-mgzypQ",
+  },
 ];
 
 const Header = () => {
   const isScrolled = useScrollState();
+  const location = useLocation();
+  const isDiscography: boolean = location?.pathname === "/discography";
   const minLaptop = useMediaQuery({ minWidth: 1024 });
   const minTablet = useMediaQuery({ minWidth: 768 });
   return (
@@ -42,7 +72,8 @@ const Header = () => {
       <header
         className={cx(
           "z-50 w-screen h-16 md:h-24 !px-8 sm:!px-16 md:!px-[3rem] lg:!px-[6rem] xl:!px-[10rem] sticky top-0 overflow-hidden flex justify-between items-center gap-2 duration-150",
-          isScrolled && "bg-[#000]/50 backdrop-blur-sm shadow-2xl"
+          (isScrolled || isDiscography) &&
+            "bg-[#000]/50 backdrop-blur-sm shadow-2xl"
         )}
       >
         {/* LOGO */}
@@ -51,7 +82,7 @@ const Header = () => {
             <p
               className={cx(
                 "text-lg font-extrabold !-mb-2 !mr-11 ",
-                isScrolled
+                isScrolled || isDiscography
                   ? "!text-white"
                   : "!bg-clip-text !text-transparent bg-[url('@/assets/images/bg01Img.PNG')] bg-center bg-cover"
               )}
@@ -61,7 +92,7 @@ const Header = () => {
             <p
               className={cx(
                 "text-md font-extrabold  [&_>span]:text-xl [&_>span]:font-normal ",
-                isScrolled
+                isScrolled || isDiscography
                   ? "!text-white [&_>span]:!text-white"
                   : "!bg-clip-text !text-transparent bg-[url('@/assets/images/bg01Img.PNG')] bg-center bg-cover [&_>span]:!bg-clip-text [&_>span]:!text-transparent"
               )}
@@ -75,9 +106,9 @@ const Header = () => {
           <>
             <div className="flex gap-2.5 items-center justify-between max-lg:justify-center flex-1 w-full">
               {/* NAV */}
-              <Nav />
+              <Nav isDiscography={isDiscography} />
               {/* Social */}
-              {minLaptop && <SocialMedia />}
+              {minLaptop && <SocialMedia isDiscography={isDiscography} />}
             </div>
             {minLaptop && (
               <Separator
@@ -93,12 +124,12 @@ const Header = () => {
             variant={"ghost"}
             className={cx(
               "w-6 h-6 xl:w-8 xl:h-8 rounded-full bg-white",
-              isScrolled && "bg-black"
+              (isScrolled || isDiscography) && "bg-black"
             )}
           >
             <Languages
               size={28}
-              color={isScrolled ? "#fff" : "#000"}
+              color={isScrolled || isDiscography ? "#fff" : "#000"}
               className="duration-150 w-full h-full"
             />
           </Button>
@@ -107,9 +138,9 @@ const Header = () => {
       {!minLaptop && (
         <nav className="h-28 md:h-16 !px-8 sm:!px-16 md:!px-[3rem] lg:!px-[6rem] fixed bottom-0 left-0 flex flex-col md:flex-row items-center justify-around w-screen !p-3 bg-[#000]/75 backdrop-blur-sm *:transition-opacity z-[50] shadow-[0_-6px_12px_2px_rgba(0,0,0,0.4)]">
           {/* NAV */}
-          {!minTablet && <Nav />}
+          {!minTablet && <Nav isDiscography={isDiscography} />}
           {/* Social */}
-          <SocialMedia />
+          <SocialMedia isDiscography={isDiscography} />
         </nav>
       )}
     </>
@@ -118,7 +149,7 @@ const Header = () => {
 
 export default Header;
 
-const Nav = () => {
+const Nav = ({ isDiscography }: { isDiscography: boolean }) => {
   const minTablet = useMediaQuery({ minWidth: 768 });
   const isScrolled = useScrollState();
 
@@ -131,7 +162,7 @@ const Nav = () => {
             className={cx(
               "font-extrabold text-lg max-sm:text-sm hover:border-b-1 transition-all border-[#1b2838]",
               minTablet
-                ? isScrolled && "!text-white !border-white"
+                ? (isScrolled || isDiscography) && "!text-white !border-white"
                 : "!text-white !border-white"
             )}
           >
@@ -143,21 +174,29 @@ const Nav = () => {
   );
 };
 
-const SocialMedia = () => {
+const SocialMedia = ({ isDiscography }: { isDiscography: boolean }) => {
   const minLaptop = useMediaQuery({ minWidth: 1024 });
   const isScrolled = useScrollState();
 
   return (
     <ul className="flex items-center justify-between gap-4">
-      {_.map(logos, ({ Component, name }) => (
+      {_.map(logos, ({ Component, name, url }) => (
         <li
           key={name}
           className="flex items-center justify-center w-6 h-6 xl:w-8 xl:h-8"
         >
-          <Component
-            className="w-full h-full duration-150"
-            fill={minLaptop ? (isScrolled ? "#fff" : "#000") : "#fff"}
-          />
+          <Link to={url} target="_blank" rel="noopener noreferrer">
+            <Component
+              className="w-full h-full duration-150"
+              fill={
+                minLaptop
+                  ? isScrolled || isDiscography
+                    ? "#fff"
+                    : "#000"
+                  : "#fff"
+              }
+            />
+          </Link>
         </li>
       ))}
     </ul>

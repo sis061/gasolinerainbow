@@ -36,7 +36,7 @@ export default function Note() {
 
   return (
     <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center ">
-      <div className="inner flex-grow-0 w-full flex items-center justify-center bg-white !px-6 !my-10 shadow-2xl">
+      <div className="inner flex-grow-0 w-full flex items-center justify-center bg-white/75 !px-6 !my-10 shadow-2xl">
         <div className="w-full h-full flex flex-col gap-10 md:!pt-10">
           <h1 className="text-4xl font-semibold">{title}</h1>
           <div

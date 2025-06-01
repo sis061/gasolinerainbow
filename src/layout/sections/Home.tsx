@@ -66,7 +66,7 @@ export default function Home() {
 
   return (
     <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center">
-      <div className="inner flex-grow-0 w-full !mb-10 md:!pt-10">
+      <div className="inner flex-grow-0 w-full h-full !mb-10 md:!pt-10 max-md:!px-4">
         {!isReleased ? (
           <>
             <div className="grid grid-rows-1 lg:grid-rows-2 grid-cols-4 w-full h-full gap-2">

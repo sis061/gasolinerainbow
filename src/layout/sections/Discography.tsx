@@ -452,7 +452,7 @@ const OSTCarousel = ({ albumMetas }) => {
                     <span>노래 듣기</span>
                   </div>
                 </li>
-                <li className="w-1/3 max-md:w-full max-md:text-center flex flex-col max-h-[85%] overflow-scroll  justify-start items-start gap-2 ">
+                <li className="w-1/3 max-md:w-full max-md:text-center flex flex-col max-h-[85%] overflow-scroll justify-start items-start gap-2">
                   <ol className="w-full flex flex-col [&_>li]:w-full [&_>li]:break-all gap-2 ">
                     {_.map(albumMeta.tracks, (tr) => (
                       <li key={tr.trackNo}>

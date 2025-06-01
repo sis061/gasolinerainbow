@@ -26,6 +26,7 @@ import {
   ChevronsRight,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import cx from "classnames";
 
 const noteMockData = [
   {
@@ -33,10 +34,9 @@ const noteMockData = [
     category: "에필로그",
     title: "제목제목제목",
     content: `
-    <img src="/images/sample.jpg" alt="샘플 이미지22" />
     <p>안녕하세요. 이 글은 <strong>마치 블로그처럼</strong> 표현된 콘텐츠입니다.내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...</p>
       <p>줄바꿈도 이렇게 하고, <em>기울임</em>도 사용할 수 있어요.</p>
-      <img src="/images/sample.jpg" alt="샘플 이미지" />
+      <img src="/src/assets/images/rainlight.jpg" alt="샘플 이미지" />
       <p>이미지 위아래로도 텍스트를 넣을 수 있습니다.</p>
       <h2>소제목도 넣고 싶다면?</h2>
       <p>이건 <code>&lt;h2&gt;</code> 태그를 사용하면 됩니다.</p>
@@ -51,7 +51,7 @@ const noteMockData = [
     category: "모디파이는 질병입니다.",
     title: "제목2제목2제목",
     content:
-      "내용2입니다. 내용2...내용2입니다. 내용2...내용2입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...",
+      "<p>내용2입니다.</p> 내용2...내용2입니다. 내용2...내용2입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...",
   },
   {
     idx: 2,
@@ -151,14 +151,18 @@ export default function AuthorNote() {
   }, [page, noteMockData, rowsPerPage]);
 
   return (
-    <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center">
-      <div className="inner flex-grow-0 w-full flex flex-col !mb-10 md:!mt-10 items-start justify-between bg-white/75 !p-6 shadow-2xl">
-        <Table>
+    <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center max-md:!px-4 !mb-10 md:!mt-10">
+      <div className="inner flex-grow-0 h-full w-full flex flex-col items-start justify-between bg-white/75 !p-6 shadow-2xl">
+        <Table className="w-full">
           <TableHeader>
-            <TableRow>
-              <TableHead className="!pr-10">No.</TableHead>
-              <TableHead>카테고리</TableHead>
-              <TableHead className="!pl-10"></TableHead>
+            <TableRow className="hover:bg-transparent flex md:table-row w-full items-center min-h-6">
+              <TableHead className="md:!pl-1 max-md:text-xs order-1 h-full">
+                No.
+              </TableHead>
+              <TableHead className="max-md:!pr-2 md:!pl-1.5 max-md:text-xs order-3 md:!order-2 h-full">
+                카테고리
+              </TableHead>
+              <TableHead className="order-2 md:!order-3 w-full h-full" />
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -172,12 +176,19 @@ export default function AuthorNote() {
                       state: { note, content: sanitizeContent },
                     });
                   }}
+                  className="flex md:table-row w-full items-center relative"
                 >
-                  <TableCell>{note.idx + 1}</TableCell>
-                  <TableCell>{note.category}</TableCell>
-                  <TableCell className="flex flex-col gap-3 !pl-10 !py-3 cursor-pointer">
-                    <span className="text-2xl">{note.title}</span>
-                    <p className="max-w-[600px] min-h-10 whitespace-normal !line-clamp-2">
+                  <TableCell className="order-1 !pr-2 md:!px-2">
+                    {note.idx + 1}
+                  </TableCell>
+                  <TableCell className="max-md:absolute max-md:w-1/2 max-md:text-right top-1.5 right-0 order-3 md:order-2 max-md:text-xs !px-2">
+                    {note.category}
+                  </TableCell>
+                  <TableCell className="order-2 md:order-3 !py-4 max-md:!py-6 flex flex-col gap-3 justify-center cursor-pointer !px-2">
+                    <span className="text-xl lg:text-2xl font-semibold">
+                      {note.title}
+                    </span>
+                    <p className="whitespace-normal !line-clamp-2">
                       {filterHTMLTags(note?.content)}
                     </p>
                   </TableCell>
@@ -186,7 +197,7 @@ export default function AuthorNote() {
             })}
           </TableBody>
         </Table>
-        <Pagination className="!pb-3 !pt-4.5">
+        <Pagination className="!pt-6">
           <PaginationContent>
             {/* 이전 페이지 그룹 */}
             {startPage > 1 && (
@@ -212,6 +223,7 @@ export default function AuthorNote() {
                 <PaginationLink
                   isActive={page === p}
                   onClick={() => setPage(p)}
+                  className={cx(page !== p && "cursor-pointer")}
                 >
                   {p}
                 </PaginationLink>

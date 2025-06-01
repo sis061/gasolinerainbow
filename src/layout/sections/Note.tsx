@@ -2,6 +2,8 @@ import { useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import _ from "lodash";
+import { ArrowLeft } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 interface NoteProps {
   idx: number;
@@ -15,7 +17,7 @@ export default function Note() {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const { idx, category, title }: NoteProps = location.state.note;
+  const { category, title }: NoteProps = location.state.note;
   const content = location.state.content ?? "";
 
   useEffect(() => {
@@ -23,33 +25,47 @@ export default function Note() {
 
     _.map(imgs, (img) => {
       img?.classList.add(
-        "mx-auto",
-        "my-6",
-        "rounded-lg",
+        "!mx-auto",
+        "!my-6",
         "shadow-md",
-        "max-w-full",
-        "min-w-12",
-        "min-h-12"
+        "max-w-2/3",
+        "min-w-1/2",
+        "min-h-1/2"
       );
     });
   }, []);
 
   return (
-    <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center ">
-      <div className="inner flex-grow-0 w-full flex items-center justify-center bg-white/75 !px-6 !my-10 shadow-2xl">
-        <div className="w-full h-full flex flex-col gap-10 md:!pt-10">
-          <h1 className="text-4xl font-semibold">{title}</h1>
+    <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center max-md:!px-4 !mb-10 md:!mt-10">
+      <div className="inner flex-grow-0 w-full h-full flex items-center justify-center bg-white/75 !p-6 !my-10 shadow-2xl ">
+        <div className="w-full h-full flex flex-col">
+          <div className="!mb-6 flex w-full items-center justify-between">
+            <ArrowLeft
+              size={24}
+              className="cursor-pointer hover:animate-pulse"
+              onClick={() => navigate("/authornote")}
+            />
+            <Badge
+              variant="outline"
+              className="border-black !py-1 !px-2 rounded-tr-none"
+            >
+              {category}
+            </Badge>
+          </div>
+
+          <h1 className="text-2xl md:text-4xl font-semibold !pl-1">{title}</h1>
           <div
             ref={imgRef}
-            className="w-full whitespace-pre-wrap border-2"
+            className="w-full whitespace-pre-wrap !py-6"
             dangerouslySetInnerHTML={{ __html: content }}
           />
-          <div className="w-full flex justify-end !pb-10">
+          <div className="w-full flex justify-end ">
             <Button
-              variant="outline"
-              className="!px-6"
+              variant="ghost"
+              className="!px-4 cursor-pointer hover:!bg-accent/50"
               onClick={() => navigate("/authornote")}
             >
+              <ArrowLeft />
               목록으로 돌아가기
             </Button>
           </div>

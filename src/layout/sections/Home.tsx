@@ -1,14 +1,5 @@
 import YouTube from "react-youtube";
 
-import BandcampLogo from "@/assets/logos/bandcamp.svg?react";
-import ApplemusicLogo from "@/assets/logos/applemusic.svg?react";
-import SpotifyLogo from "@/assets/logos/spotify.svg?react";
-import YoutubeMusicLogo from "@/assets/logos/youtubemusic.svg?react";
-import BugsLogo from "@/assets/logos/Bugs_BI_wordmark_white.svg?react";
-import MelonLogo from "@/assets/logos/melonLogo.svg?react";
-// import FloLogo from "@/assets/logos/flo.svg?react";
-import GeniemusicLogo from "@/assets/logos/genie_BI_logotype_white.svg?react";
-import { Button } from "@/components/ui/button";
 import _ from "lodash";
 import { useMediaQuery } from "react-responsive";
 import { useState } from "react";
@@ -16,48 +7,10 @@ import { ChevronDown } from "lucide-react";
 import { ScaleLoader } from "react-spinners";
 import HMimg from "@/assets/images/HM.jpg";
 
-const streamingPlatforms = [
-  {
-    label: "밴드캠프",
-    color: "#09a2c8",
-    Component: BandcampLogo,
-  },
-  {
-    label: "스포티파이",
-    color: "#1DB954",
-    Component: SpotifyLogo,
-  },
-  {
-    label: "유튜브 뮤직",
-    color: "#CD201F",
-    Component: YoutubeMusicLogo,
-  },
-  {
-    label: "애플 뮤직",
-    color: "#FA586A",
-    Component: ApplemusicLogo,
-  },
-  {
-    label: "멜론",
-    color: "#00cd3c",
-    Component: MelonLogo,
-  },
-  {
-    label: "벅스",
-    color: "#FF3B28",
-    Component: BugsLogo,
-  },
-  {
-    label: "지니뮤직",
-    color: "#0096FF",
-    Component: GeniemusicLogo,
-  },
-  // {
-  //   label: "FLO",
-  //   color: "#0096FF",
-  //   Component: FloLogo,
-  // },
-];
+import { mockDiskData } from "@/layout/sections/mockDiskData";
+import StreamingPlatformButtons, {
+  getStreamingPlatformInfo,
+} from "@/components/StreamingPlatformButtons";
 
 export default function Home() {
   // const today: number = +new Date();
@@ -65,6 +18,13 @@ export default function Home() {
   const isReleased: boolean = false;
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const minTablet = useMediaQuery({ minWidth: 768 });
+
+  const [HMData] = _.filter(
+    mockDiskData,
+    (data) => data.title.toLowerCase() === "HM".toLowerCase()
+  );
+
+  const platforms = getStreamingPlatformInfo(HMData.urls);
 
   return (
     <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center">
@@ -75,7 +35,7 @@ export default function Home() {
               {/* TODO: 앨범 소개 컴포넌트 구분해서 만들기 */}
               <div className="w-auto shadow-2xl row-start-2 col-start-1 col-span-4 bg-white/75 flex flex-col justify-between gap-10 !-mt-4 lg:!-mt-18 lg:!mr-12 !p-6 ">
                 <h1 className="text-lg font-bold !p-2">
-                  앨범 <span className="text-4xl">[ HM ]</span>
+                  앨범 <span className="text-3xl !pl-1">[ HM ]</span>
                 </h1>
                 <p className="w-full whitespace-break-spaces">
                   저에게 제 노래는 일종의 방어입니다. 자신을 바라보고 제 속의
@@ -107,7 +67,12 @@ export default function Home() {
                     className={`transition-all duration-300 overflow-hidden ${minTablet || isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}
                   >
                     <div className="pt-2">
-                      <StreamingPlatformButtons />
+                      <StreamingPlatformButtons
+                        platforms={platforms}
+                        customClassName={
+                          "max-md:flex-col [@media(max-width:1239px)]:w-[73%] max-md:!w-full"
+                        }
+                      />
                     </div>
                   </div>
                 </div>
@@ -157,20 +122,3 @@ const HMYoutubeEmbed = () => {
     </>
   );
 };
-
-const StreamingPlatformButtons = () => (
-  <ul className="flex flex-wrap gap-3 max-md:flex-col [@media(max-width:1239px)]:w-[73%] max-md:!w-full">
-    {_.map(streamingPlatforms, ({ label, color, Component }) => (
-      <li key={label}>
-        <Button
-          variant="default"
-          style={{ backgroundColor: color }}
-          className={`min-w-fit max-md:w-full !px-3 !py-2 hover:opacity-75 cursor-pointer`}
-        >
-          <Component fill="#fff" />
-          <span className="!text-white text-sm">{label}</span>
-        </Button>
-      </li>
-    ))}
-  </ul>
-);

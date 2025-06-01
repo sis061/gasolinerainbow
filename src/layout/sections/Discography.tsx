@@ -16,6 +16,15 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 import { useRef, useState } from "react";
@@ -24,6 +33,11 @@ import { mockDiskData } from "@/layout/sections/mockDiskData";
 import _ from "lodash";
 import cx from "classnames";
 import { useMediaQuery } from "react-responsive";
+import { Link } from "react-router-dom";
+
+import StreamingPlatformButtons, {
+  getStreamingPlatformInfo,
+} from "@/components/StreamingPlatformButtons";
 
 //TODO: Mockdata 넣은거 나중에 데이터 넣은 후 타입 지정 제대로 하기.
 
@@ -75,8 +89,20 @@ const AlbumCarousel = ({ albumMeta }) => {
                   {albumMeta.title}
                 </span>
                 <ol className="flex gap-6">
-                  <li>앨범 듣기</li>
-                  {!!albumMeta.isCD && <li>CD 구매</li>}
+                  <li>
+                    <StreamingModal albumMeta={albumMeta} />
+                  </li>
+                  {!!albumMeta.isCD && (
+                    <li className="hover:underline">
+                      <Link
+                        to={albumMeta.cdUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        CD 구매
+                      </Link>
+                    </li>
+                  )}
                 </ol>
               </li>
             </ul>
@@ -269,7 +295,7 @@ const OthersCarousel = ({ albumMetas }) => {
                         <span className="text-3xl text-end !pb-4 max-md:text-2xl max-md:font-bold">
                           {albumMeta.title}
                         </span>
-                        <span>노래 듣기</span>
+                        <StreamingModal albumMeta={albumMeta} />
                       </li>
                       <li className="w-1/2 flex flex-col justify-start items-start gap-2 ">
                         <DrawerTrigger
@@ -449,7 +475,7 @@ const OSTCarousel = ({ albumMetas }) => {
                     <span className="text-3xl !pb-4 max-md:text-xl max-md:font-bold">
                       {albumMeta.title}
                     </span>
-                    <span>노래 듣기</span>
+                    <StreamingModal albumMeta={albumMeta} />
                   </div>
                 </li>
                 <li className="w-1/3 max-md:w-full max-md:text-center flex flex-col max-h-[85%] overflow-scroll justify-start items-start gap-2">
@@ -481,5 +507,74 @@ const OSTCarousel = ({ albumMetas }) => {
         />
       </Carousel>
     </>
+  );
+};
+
+const StreamingModal = ({ albumMeta }) => {
+  const [open, setOpen] = useState<boolean>(false);
+  const minLaptop = useMediaQuery({ minWidth: 768 });
+  const platforms = getStreamingPlatformInfo(albumMeta.urls);
+  const renderType: string = albumMeta.type === "album" ? "앨범" : "노래";
+
+  if (minLaptop) {
+    return (
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogTrigger className="hover:underline cursor-pointer">
+          {renderType} 듣기
+        </DialogTrigger>
+        <DialogContent
+          className="flex flex-col items-center !p-10 !bg-black/90 [&_>button>svg]:!stroke-white [&_>button]:cursor-pointer"
+          aria-describedby="drawer-description"
+        >
+          <DialogHeader>
+            <DialogTitle className="!text-white !pb-6">
+              아래에서 듣기 - {albumMeta.title}
+            </DialogTitle>
+          </DialogHeader>
+          <DialogDescription className="sr-only hidden">
+            스트리밍 목록
+          </DialogDescription>
+          <div className="!overflow-y-scroll w-full h-full">
+            <StreamingPlatformButtons
+              customClassName={"!flex-col !w-full"}
+              platforms={platforms}
+              aria-describedby="drawer-description"
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
+    );
+  }
+
+  return (
+    <Drawer open={open} onOpenChange={setOpen}>
+      <DrawerTrigger className="hover:underline cursor-pointer">
+        {renderType} 듣기
+      </DrawerTrigger>
+      <DrawerContent
+        className="flex flex-col items-center !py-6 !bg-black/90 w-full"
+        aria-describedby="drawer-description"
+      >
+        <DrawerHeader className="w-full h-[90%] text-center !py-6">
+          <DrawerTitle className="!text-white !pb-6 sr-only">
+            Listen {albumMeta.title}
+          </DrawerTitle>
+
+          <div className="w-full h-full !overflow-y-scroll !px-6">
+            <StreamingPlatformButtons
+              customClassName={"max-md:flex-col max-md:!w-full"}
+              platforms={platforms}
+              aria-describedby="drawer-description"
+            />
+          </div>
+        </DrawerHeader>
+        <DrawerDescription className="sr-only">스트리밍 목록</DrawerDescription>
+        <DrawerFooter className="h-[10%]">
+          <DrawerClose asChild>
+            <X size={28} color="#fff" />
+          </DrawerClose>
+        </DrawerFooter>
+      </DrawerContent>
+    </Drawer>
   );
 };

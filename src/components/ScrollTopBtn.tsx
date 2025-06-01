@@ -16,10 +16,10 @@ export default function ScrollTopBtn({
   return (
     <button
       className={cx(
-        "cursor-pointer fixed rounded-full max-md:right-5 right-12 z-50 bg-white/75 hover:bg-white text-black shadow-md transition-all duration-150",
+        "cursor-pointer rounded-full max-md:right-5 right-12 z-50 bg-white/75 hover:bg-white text-black shadow-md transition-all duration-150",
         isFooterVisible
-          ? "bottom-64 md:bottom-44 lg:bottom-32"
-          : "bottom-32 md:bottom-20 lg:bottom-8",
+          ? "absolute -top-16 md:-top-16 lg:-top-18"
+          : "fixed bottom-32 md:bottom-20 lg:bottom-8",
         isScrolled ? "visible" : "hidden"
       )}
       aria-label="Scroll to top"

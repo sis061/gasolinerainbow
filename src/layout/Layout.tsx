@@ -51,9 +51,9 @@ export default function Layout({ children }: { children: ReactNode }) {
       )}
     >
       <Header />
-      <ScrollTopBtn isFooterVisible={isFooterVisible} />
       {children}
-      <div ref={footerRef}>
+      <div ref={footerRef} className="relative">
+        <ScrollTopBtn isFooterVisible={isFooterVisible} />
         <Footer />
       </div>
     </motion.main>

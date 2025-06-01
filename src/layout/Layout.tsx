@@ -9,8 +9,10 @@ import cx from "classnames";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 import DiscographyFAB from "@/components/DiscographyFAB";
+import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
 
 export default function Layout({ children }: { children: ReactNode }) {
+  const { guideButton } = useDiscographyGuideStore();
   const footerRef = useRef<HTMLDivElement | null>(null);
   const [isFooterVisible, setIsFooterVisible] = useState<boolean>(false);
 
@@ -58,9 +60,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       {children}
       <div ref={footerRef} className="relative">
         {minTablet && <ScrollTopBtn isFooterVisible={isFooterVisible} />}
-        {!minTablet && isDiscography && (
-          <DiscographyFAB isFooterVisible={isFooterVisible} />
-        )}
+        {guideButton && <DiscographyFAB isFooterVisible={isFooterVisible} />}
         <Footer />
       </div>
     </motion.main>

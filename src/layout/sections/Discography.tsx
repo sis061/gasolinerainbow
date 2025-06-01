@@ -40,10 +40,12 @@ import { Link } from "react-router-dom";
 import StreamingPlatformButtons, {
   getStreamingPlatformInfo,
 } from "@/components/StreamingPlatformButtons";
+import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
 
 //TODO: Mockdata 넣은거 나중에 데이터 넣은 후 타입 지정 제대로 하기.
 
 export default function Discography() {
+  const { guideButton, setGuideButton } = useDiscographyGuideStore();
   const othersData = _.filter(
     mockDiskData,
     (data) => data.type !== "album" && data.type !== "ost"
@@ -52,10 +54,14 @@ export default function Discography() {
 
   const [isInfoVisible, setIsInfoVisible] = useState<boolean>(false);
 
-  console.log("isInfoVisible:", isInfoVisible);
+  useEffect(() => {
+    if (guideButton !== isInfoVisible) {
+      setGuideButton(isInfoVisible);
+    }
+  }, [guideButton, isInfoVisible]);
 
   return (
-    <section className="wrapper-full w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center border-1">
+    <section className="wrapper-full w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center">
       <div className="inner-full flex-grow-0 w-full h-full ">
         {/* 정규 앨범 컴포넌트 형식 */}
         <AlbumCarousel
@@ -81,7 +87,11 @@ const AlbumCarousel = ({ albumMeta, onChange }) => {
   });
 
   useEffect(() => {
-    onChange(inView);
+    const timeout = setTimeout(() => {
+      onChange(inView);
+    }, 50);
+
+    return () => clearTimeout(timeout);
   }, [inView]);
 
   return (
@@ -424,7 +434,11 @@ const OthersSlide = ({
   });
 
   useEffect(() => {
-    onChange(inView);
+    const timeout = setTimeout(() => {
+      onChange(inView);
+    }, 50);
+
+    return () => clearTimeout(timeout);
   }, [inView]);
 
   return (

@@ -7,6 +7,8 @@ import ScrollTopBtn from "@/components/ScrollTopBtn";
 import { useLocation } from "react-router-dom";
 import cx from "classnames";
 import { motion } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
+import DiscographyFAB from "@/components/DiscographyFAB";
 
 export default function Layout({ children }: { children: ReactNode }) {
   const footerRef = useRef<HTMLDivElement | null>(null);
@@ -15,6 +17,8 @@ export default function Layout({ children }: { children: ReactNode }) {
   const location = useLocation();
   const isDiscography: boolean = location?.pathname === "/discography";
   const isHome: boolean = location?.pathname === "/";
+
+  const minTablet = useMediaQuery({ minWidth: 768 });
 
   const backgroundColor = isDiscography
     ? "rgba(0, 0, 0, 0.5)"
@@ -53,7 +57,10 @@ export default function Layout({ children }: { children: ReactNode }) {
       <Header />
       {children}
       <div ref={footerRef} className="relative">
-        <ScrollTopBtn isFooterVisible={isFooterVisible} />
+        {minTablet && <ScrollTopBtn isFooterVisible={isFooterVisible} />}
+        {!minTablet && isDiscography && (
+          <DiscographyFAB isFooterVisible={isFooterVisible} />
+        )}
         <Footer />
       </div>
     </motion.main>

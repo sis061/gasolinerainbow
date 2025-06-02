@@ -5,9 +5,7 @@ import { useMediaQuery } from "react-responsive";
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { ScaleLoader } from "react-spinners";
-import HMimg from "@/assets/images/HM.jpg";
 
-import { mockDiskData } from "@/layout/sections/mockDiskData";
 import StreamingPlatformButtons, {
   getStreamingPlatformInfo,
 } from "@/components/StreamingPlatformButtons";
@@ -16,6 +14,8 @@ import Countdown from "react-countdown";
 import { renderDiskType } from "@/utils/globalHelper";
 import useLanguageStore from "@/store/useLanguageStore";
 import cx from "classnames";
+import { mockDiskData } from "@/utils/mockDiskData";
+import type { Disk } from "@/types/discography";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
@@ -26,7 +26,6 @@ export default function Home() {
   const [HMData] = _.filter(
     mockDiskData,
     (data) => data.title.toLowerCase() === "Hm".toLowerCase()
-    // (data) => data.title.toLowerCase() === "평화로운 뇌와...".toLowerCase()
   );
 
   // Renderer callback with condition
@@ -113,7 +112,7 @@ export default function Home() {
   );
 }
 
-const HomeAlbumOverview = ({ albumMeta }) => {
+const HomeAlbumOverview = ({ albumMeta }: { albumMeta: Disk }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const minTablet = useMediaQuery({ minWidth: 768 });
   const { language } = useLanguageStore();
@@ -123,7 +122,7 @@ const HomeAlbumOverview = ({ albumMeta }) => {
   return (
     <div className="grid grid-rows-[auto_auto] grid-cols-4 w-full gap-2">
       <div className="!aspect-video z-10 lg:!ml-3 row-start-1 overflow-hidden lg:col-start-2 col-span-4 lg:col-span-3 bg-black w-full h-auto [&_>div]:h-full shadow-xl">
-        <HMYoutubeEmbed />
+        <HMYoutubeEmbed img={albumMeta.image} />
       </div>
       <div className="w-auto shadow-2xl row-start-2 col-start-1 col-span-4 bg-white/75 flex flex-col justify-between gap-10 !-mt-4 lg:!-mt-12 lg:!mr-12 !p-6 ">
         <div className="!py-2 font-bold flex lg:flex-col w-full items-end lg:items-start">
@@ -168,14 +167,14 @@ const HomeAlbumOverview = ({ albumMeta }) => {
   );
 };
 
-const HMYoutubeEmbed = () => {
+const HMYoutubeEmbed = ({ img }: { img: string }) => {
   const [isReady, setIsReady] = useState<boolean>(false);
 
   return (
     <>
       {!isReady && (
         <div
-          style={{ backgroundImage: `url(${HMimg})` }}
+          style={{ backgroundImage: `url(${img})` }}
           className={`w-full h-full flex items-center justify-center bg-contain bg-no-repeat bg-center opacity-50`}
         >
           <ScaleLoader barCount={5} color="#666" margin={5} />

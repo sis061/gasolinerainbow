@@ -1,8 +1,9 @@
 import HMArtwork from "@/assets/images/HM.jpg";
 import FoolsboxArtwork from "@/assets/images/foolsbox.jpg";
 import DevilFishArtwork from "@/assets/images/devilFish.jpg";
+import type { Disk } from "@/types/discography";
 
-export const mockDiskData = [
+export const mockDiskData: Disk[] = [
   {
     type: "album",
     year: 2022,

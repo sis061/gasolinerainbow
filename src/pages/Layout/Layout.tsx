@@ -3,12 +3,12 @@ import { useEffect, useRef, useState } from "react";
 
 import Footer from "./Footer";
 import Header from "./Header";
-import ScrollTopBtn from "@/components/ScrollTopBtn";
+import ScrollTopBtn from "@/pages/Layout/components/ScrollTopBtn";
 import { useLocation } from "react-router-dom";
 import cx from "classnames";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
-import DiscographyFAB from "@/components/DiscographyFAB";
+import DiscographyFAB from "@/pages/Layout/components/DiscographyFAB";
 import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
 
 export default function Layout({ children }: { children: ReactNode }) {

@@ -1,0 +1,131 @@
+import { useRef, useEffect } from "react";
+/************/
+import { CarouselItem } from "@/components/ui/carousel";
+import { Drawer, DrawerTrigger } from "@/components/ui/drawer";
+/************/
+import { cx } from "class-variance-authority";
+import { useInView } from "react-intersection-observer";
+import { useMediaQuery } from "react-responsive";
+import { Link } from "react-router-dom";
+/************/
+import { renderDiskType } from "@/utils/globalHelper";
+import useLanguageStore from "@/store/useLanguageStore";
+/************/
+import TrackList from "../../components/TrackList";
+import LyricsPanel from "../../components/LyricsPanel";
+import StreamingModal from "../../modals/StreamingModal";
+import MobileDrawer from "../../modals/MobileDrawer";
+/************/
+import type { Disk, Track } from "@/types/discography";
+
+interface SingleInfoPanelProps {
+  albumMeta: Disk;
+  onChange: (...params: any) => any;
+  selectedTrack: Track | null;
+  setSelectedTrack: React.Dispatch<React.SetStateAction<Track | null>>;
+}
+
+const SingleInfoPanel = ({
+  albumMeta,
+  selectedTrack,
+  setSelectedTrack,
+  onChange,
+}: SingleInfoPanelProps) => {
+  const lyricsRef = useRef<HTMLLIElement | null>(null);
+  const minLaptop = useMediaQuery({ minWidth: 768 });
+  const { language } = useLanguageStore();
+  const type = renderDiskType(albumMeta.type);
+  const { ref, inView } = useInView({
+    threshold: 0.5,
+    triggerOnce: false, // true: 최초 한 번만 감지
+  });
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      onChange(inView);
+    }, 50);
+
+    return () => clearTimeout(timeout);
+  }, [inView]);
+
+  useEffect(() => {
+    if (lyricsRef.current) {
+      lyricsRef.current.scrollTop = 0;
+    }
+  }, [selectedTrack?.lyrics]);
+
+  return (
+    <CarouselItem className="w-full h-full flex items-center justify-center !px-2.5 md:!px-5">
+      <Drawer>
+        <ul className="w-full h-full flex items-center max-md:justify-center max-xl:gap-16">
+          <li className="w-1/2 max-md:w-full h-full flex flex-col gap-6 items-center justify-center [&_*]:!text-white overflow-y-scroll">
+            <div className="w-full xl:w-3/4 bg-gray-600 overflow-hidden ">
+              <img
+                src={albumMeta.image}
+                alt="앨범 아트워크"
+                className="w-full h-full"
+              />
+            </div>
+            <ul className="flex max-md:gap-3 max-lg:gap-5 max-xl:gap-7 gap-10 w-full justify-between items-start [&_*]:!text-white ">
+              <li className="w-1/2 h-full flex flex-col items-end justify-center gap-2">
+                <div className="flex justify-end items-center gap-2 [&_>span]:text-sm">
+                  <span>{albumMeta.year}</span>
+                  <span>{language === "ko" ? type.kr : type.en}</span>
+                </div>
+                <span className="text-3xl text-end !pb-4 max-md:text-2xl max-md:font-bold">
+                  {albumMeta.title}
+                </span>
+                <StreamingModal albumMeta={albumMeta} />
+                {albumMeta.isCD && albumMeta.cdUrl && (
+                  <div className="transition-all duration-200 hover:opacity-50">
+                    <Link
+                      to={albumMeta.cdUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      CD 구매
+                    </Link>
+                  </div>
+                )}
+              </li>
+              <li
+                id="trigger-observer"
+                ref={ref}
+                className="w-1/2 flex flex-col justify-start items-start gap-2 "
+              >
+                <DrawerTrigger
+                  onClick={() => setSelectedTrack(null)}
+                  className={cx(
+                    "cursor-pointer !px-2 relative w-auto text-left transition-all duration-200 hover:opacity-50",
+                    minLaptop &&
+                      !selectedTrack &&
+                      "!bg-white/75 [&_>span]:!text-black"
+                  )}
+                >
+                  <span>소개</span>
+                </DrawerTrigger>
+                <TrackList
+                  tracks={albumMeta.tracks}
+                  align="left"
+                  selectedTrack={selectedTrack}
+                  onSelect={setSelectedTrack}
+                />
+              </li>
+            </ul>
+          </li>
+          {minLaptop ? (
+            <LyricsPanel
+              lyricsRef={lyricsRef}
+              selectedTrack={selectedTrack}
+              albumMeta={albumMeta}
+            />
+          ) : (
+            <MobileDrawer selectedTrack={selectedTrack} albumMeta={albumMeta} />
+          )}
+        </ul>
+      </Drawer>
+    </CarouselItem>
+  );
+};
+
+export default SingleInfoPanel;

@@ -1,24 +1,21 @@
 import { useEffect, useRef } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+/************/
 import { Button } from "@/components/ui/button";
-import _ from "lodash";
-import { ArrowLeft } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-
-interface NoteProps {
-  idx: number;
-  category: string;
-  title: string;
-  content: any;
-}
+import { ArrowLeft } from "lucide-react";
+/************/
+import { useLocation, useNavigate } from "react-router-dom";
+import _ from "lodash";
+/************/
+import type { NoteProps } from "@/types/authornote";
 
 export default function Note() {
-  const imgRef = useRef<HTMLDivElement>(null);
-
+  const imgRef = useRef<HTMLDivElement | null>(null);
+  /************/
   const navigate = useNavigate();
   const location = useLocation();
   const { category, title }: NoteProps = location.state.note;
-  const content = location.state.content ?? "";
+  const content: string = location?.state.content ?? "";
 
   useEffect(() => {
     const imgs = imgRef.current?.querySelectorAll("img");
@@ -37,7 +34,7 @@ export default function Note() {
 
   return (
     <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center max-md:!px-4 !mb-10 md:!mt-10">
-      <div className="inner flex-grow-0 w-full h-full flex items-center justify-center bg-white/75 !p-6 !my-10 shadow-2xl ">
+      <div className="inner flex-grow-0 w-full h-full flex items-center justify-center bg-white/75 !p-6 shadow-2xl ">
         <div className="w-full h-full flex flex-col">
           <div className="!mb-6 flex w-full items-center justify-between">
             <ArrowLeft

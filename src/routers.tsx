@@ -1,14 +1,15 @@
 import type { JSX } from "react";
+
 import { Route, Routes, useLocation } from "react-router-dom";
 
 /*----------------------------------*/
 
-import Home from "./layout/sections/Home";
-import Profile from "./layout/sections/Profile";
-import Discography from "./layout/sections/Discography";
-import AuthorNote from "./layout/sections/AuthorNote";
-import Note from "./layout/sections/Note";
-import News from "./layout/sections/News";
+import AuthorNote from "./pages/AuthorNote";
+import Note from "./pages/AuthorNote/Note";
+import Discography from "./pages/Discography";
+import News from "./pages/News";
+import Profile from "./pages/Profile";
+import Home from "./pages/Home";
 
 const Routers: React.FC<any> = (): JSX.Element => {
   const location = useLocation();

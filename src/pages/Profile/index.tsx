@@ -20,7 +20,15 @@ export default function Profile() {
                 H<span>í</span>M<span>í</span>NN, HIMINN,
               </h1>
               <h1 className="text-2xl lg:text-3xl xl:text-4xl">
-                himinn, /ˈhɪː.mɪn/
+                himinn,{" "}
+                <a
+                  href="https://youtu.be/YVEo4jbA9QA?si=UvXN6osKgW3nHsyR"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:!text-white transition-all duration-150"
+                >
+                  /ˈhɪː.mɪn/
+                </a>
               </h1>
             </div>
             <p className="max-lg:!p-6">

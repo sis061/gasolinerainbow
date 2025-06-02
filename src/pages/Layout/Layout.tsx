@@ -3,12 +3,12 @@ import { useEffect, useRef, useState } from "react";
 
 import Footer from "./Footer";
 import Header from "./Header";
-import ScrollTopBtn from "@/components/ScrollTopBtn";
+import ScrollTopBtn from "@/pages/Layout/components/ScrollTopBtn";
 import { useLocation } from "react-router-dom";
 import cx from "classnames";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
-import DiscographyFAB from "@/components/DiscographyFAB";
+import DiscographyFAB from "@/pages/Layout/components/DiscographyFAB";
 import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
 
 export default function Layout({ children }: { children: ReactNode }) {
@@ -47,20 +47,28 @@ export default function Layout({ children }: { children: ReactNode }) {
     };
   }, []);
 
+  useEffect(() => {
+    if (!location.pathname.startsWith("/authornote")) {
+      sessionStorage.removeItem("authornotePage");
+    }
+  }, [location.pathname]);
+
   return (
     <motion.main
       initial={{ backgroundColor: "rgba(255, 255, 255, 0)" }}
       animate={{ backgroundColor }}
-      transition={{ duration: 0.6, ease: "easeInOut" }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
       className={cx(
-        "transition-all duration-150 ease-in-out relative min-h-screen"
+        "transition-all duration-300 ease-in-out relative min-h-screen"
       )}
     >
       <Header />
       {children}
       <div ref={footerRef} className="relative">
         {minTablet && <ScrollTopBtn isFooterVisible={isFooterVisible} />}
-        {guideButton && <DiscographyFAB isFooterVisible={isFooterVisible} />}
+        {isDiscography && guideButton && (
+          <DiscographyFAB isFooterVisible={isFooterVisible} />
+        )}
         <Footer />
       </div>
     </motion.main>

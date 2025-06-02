@@ -1,8 +1,9 @@
 import HMArtwork from "@/assets/images/HM.jpg";
 import FoolsboxArtwork from "@/assets/images/foolsbox.jpg";
 import DevilFishArtwork from "@/assets/images/devilFish.jpg";
+import type { Disk } from "@/types/discography";
 
-export const mockDiskData = [
+export const mockDiskData: Disk[] = [
   {
     type: "album",
     year: 2022,
@@ -12,7 +13,7 @@ export const mockDiskData = [
       bandcamp: "https://himinnn.bandcamp.com/album/hm",
       spotify: "https://open.spotify.com/album/2kwKctIlNJCNK5mU9a0FEF",
       youtubeMusic:
-        "https://www.youtube.com/watch?v=mwsQgC6_fTI&list=OLAK5uy_nj00o50uWbflwHaRypDs6zDeTJKDjkDpo&ab_channel=HIMINN-Topic",
+        "https://music.youtube.com/playlist?list=OLAK5uy_mqSbyG7WqaMdeYnQmj7k1jfoqIOho5FUg&si=D_QEKJKzZXiNFTKh",
       appleMusic: "https://music.apple.com/us/album/hm/1659621243",
       melon: "https://www.melon.com/album/detail.htm?albumId=11121710",
       bugs: "https://music.bugs.co.kr/album/20533309",
@@ -20,21 +21,31 @@ export const mockDiskData = [
     },
     isCD: true,
     cdUrl: "https://smartstore.naver.com/6v6recordings/products/9436037351",
-    description: `HIMINN 첫 정규 앨범 [HM]
+    description: `  HIMINN 첫 정규 앨범 [HM]
 
   저에게 제 노래는 일종의 방어입니다. 자신을 바라보고 제 속의 갈등—주로 고독 및 자기 비난—을 다시 곱게 빚어내는 자기 방어. \n\n 그러니 제가 저를 직접 내보이기는 아직도 부끄럽기에, 이번에는 마치 셀프 타이틀 같지 않은 셀프 타이틀 앨범 [HM]에 열한 곡의 노래들을 엮었습니다. \n\n 언제는 외로움에 어찌할 바를 모르다가도 또 가끔은 초연해지는, 저 그리고 모두가 가진 본연의 모습을 담고 싶었습니다.
 \n
   하나 : 새벽에, 혼자, 어둡게 그리고 정말 크게 들어주세요.
-  둘 : 후회하고 슬퍼하세요. 그래도 어디 한편에는 희망이 남아있습니다.
-  셋 : 떠나야 합니다. 사라져야 합니다. 하지만 붙잡아주세요.
+
+  둘 : 후회하고 슬퍼하세요. 그래도 어디 한편에는 희망이 남아있습니다. 도대체 왜인지는 모르겠습니다만.
+
+  셋 : 떠나야 합니다. 사라져야 합니다. 하지만 붙잡아주세요. 울어주세요. 티 내서 말하고 싶진 않았어요.
+
   넷 : 가짜 사랑 노래. 미리 추워져서 다 숨어버리고 나만 남았을 때.
-  다섯 : 모두 씻겨줄 비가 내린다면.
+
+  다섯 : 노력해도 쓸모없고, 숨을 들이쉴 때마다 목이 막히고, 선한 행동이 오히려 적을 낳을 때. 모두 씻겨줄 비가 내린다면.
+
   여섯 : 기묘한 꿈 뒤에 찾아오는 현실에 갑자기 서러워졌다.
-  일곱 : 오롯이 혼자 있는 시공간은 나의 친구이자 선생님이며 거울이다.
-  여덟 : 가장 더운 날에 가장 추운 나를 만나게 될 너.
-  아홉 : A는 돈을, B는 권력을, C는 내 집을, 나는 그들을.
-  열 : 괜찮아, 상관없어, 걱정하지 마. 거긴 다 거짓말이야.
-  열하나 : 상상한 찬란한 것들이 사그라지는 마지막.`,
+
+  일곱 : 오롯이 혼자 있는 시공간은 나의 친구이자 선생님이며 거울이다. 너그럽게, 조용히, 그리고 확실하게.
+
+  여덟 : 비염 치료제. 가장 더운 날에 가장 추운 나를 만나게 될 너.
+
+  아홉 : A는 돈을 좇고, B는 권력을 좇고, C는 내 집 마련을 좇고, 나는 그런 그들을 좇고.
+
+  열 : 괜찮아, 상관없어, 걱정하지 마. 거기에선 말이야. 다 거짓말이야.
+
+  열하나 : 소름 끼치게 대단한 어떤 것들을 상상하세요. 그리고 그것들이 사그라지는 모습을 이어 그리세요. 끝.`,
     credits: `Produced by HIMINN, Shinhwan
 Recorded by Shinhwan @ Phoné Studio
 Mixed & Mastered by Shinhwan @ Phoné Studio

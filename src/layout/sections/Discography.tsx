@@ -80,6 +80,7 @@ export default function Discography() {
 
 const AlbumCarousel = ({ albumMeta, onChange }) => {
   const carouselRef = useRef<CarouselApi | null>(null);
+  const lyricsRef = useRef<HTMLLIElement | null>(null);
   const minLaptop = useMediaQuery({ minWidth: 768 });
   const [selectedTrack, setSelectedTrack] = useState(null);
 
@@ -95,6 +96,12 @@ const AlbumCarousel = ({ albumMeta, onChange }) => {
 
     return () => clearTimeout(timeout);
   }, [inView]);
+
+  useEffect(() => {
+    if (lyricsRef.current) {
+      lyricsRef.current.scrollTop = 0;
+    }
+  }, [selectedTrack?.lyrics]);
 
   return (
     <>
@@ -123,7 +130,7 @@ const AlbumCarousel = ({ albumMeta, onChange }) => {
                     <StreamingModal albumMeta={albumMeta} />
                   </li>
                   {!!albumMeta.isCD && (
-                    <li className="hover:underline underline-offset-4">
+                    <li className="transition-all duration-200 hover:opacity-50">
                       <Link
                         to={albumMeta.cdUrl}
                         target="_blank"
@@ -149,20 +156,20 @@ const AlbumCarousel = ({ albumMeta, onChange }) => {
                     <DrawerTrigger
                       onClick={() => setSelectedTrack(null)}
                       className={cx(
-                        "cursor-pointer !px-2 relative transition-all duration-200",
+                        "cursor-pointer !px-2 relative transition-all duration-200 hover:opacity-50",
                         minLaptop &&
                           !selectedTrack &&
                           "!bg-white/75 [&_>span]:!text-black "
                       )}
                     >
                       <span>앨범 소개</span>
-                      <div
+                      {/* <div
                         className={cx(
                           minLaptop &&
                             !selectedTrack &&
                             "absolute w-10 h-full bg-white/75 top-0 -right-10 z-[50] transition-all duration-200"
                         )}
-                      />
+                      /> */}
                     </DrawerTrigger>
                   </div>
                   <ol className="relative w-full flex flex-col gap-2 text-right max-md:text-center [&_>li]:!w-full [&_>li]:break-all">
@@ -172,7 +179,7 @@ const AlbumCarousel = ({ albumMeta, onChange }) => {
                           <DrawerTrigger
                             onClick={() => setSelectedTrack(tr)}
                             className={cx(
-                              "cursor-pointer !px-2 relative max-md:text-center text-right transition-all duration-200",
+                              "cursor-pointer !px-2 relative max-md:text-center text-right transition-all duration-200 hover:opacity-50",
                               minLaptop &&
                                 selectedTrack?.trackNo === i + 1 &&
                                 "!bg-white/75 [&_>span]:!text-black"
@@ -181,16 +188,16 @@ const AlbumCarousel = ({ albumMeta, onChange }) => {
                             <span>
                               {tr.trackNo}. {tr.title}
                             </span>
-                            <div
+                            {/* <div
                               className={cx(
                                 minLaptop &&
                                   selectedTrack?.trackNo === i + 1 &&
                                   "absolute w-10 h-full bg-white/75 top-0 -right-10 z-[50] transition-all duration-200"
                               )}
-                            />
+                            /> */}
                           </DrawerTrigger>
                         ) : (
-                          <span>
+                          <span className="!px-1.5">
                             {tr.trackNo}. {tr.title}
                           </span>
                         )}
@@ -199,8 +206,10 @@ const AlbumCarousel = ({ albumMeta, onChange }) => {
                   </ol>
                 </li>
                 {minLaptop ? (
-                  <li className="w-[55%] max-h-[85%] bg-white/75 !p-10 shadow-xl overflow-scroll flex-grow ">
-                    {/* TODO: 여기도 DOMpurify 넣기 */}
+                  <li
+                    ref={lyricsRef}
+                    className="w-[55%] max-h-[85%] bg-white/75 !p-10 shadow-xl overflow-scroll flex-grow"
+                  >
                     <div className="whitespace-break-spaces transition-all duration-200">
                       {selectedTrack ? (
                         selectedTrack.lyrics
@@ -429,6 +438,7 @@ const OthersSlide = ({
   setSelectedTrack,
   onChange,
 }) => {
+  const lyricsRef = useRef<HTMLLIElement | null>(null);
   const minLaptop = useMediaQuery({ minWidth: 768 });
   const { language } = useLanguageStore();
   const type = renderDiskType(albumMeta.type);
@@ -444,6 +454,12 @@ const OthersSlide = ({
 
     return () => clearTimeout(timeout);
   }, [inView]);
+
+  useEffect(() => {
+    if (lyricsRef.current) {
+      lyricsRef.current.scrollTop = 0;
+    }
+  }, [selectedTrack?.lyrics]);
 
   return (
     <CarouselItem className="w-full h-full flex items-center justify-center !px-2.5 md:!px-5">
@@ -476,20 +492,13 @@ const OthersSlide = ({
                 <DrawerTrigger
                   onClick={() => setSelectedTrack(null)}
                   className={cx(
-                    "cursor-pointer !px-2 relative w-auto text-left transition-all duration-200",
+                    "cursor-pointer !px-2 relative w-auto text-left transition-all duration-200 hover:opacity-50",
                     minLaptop &&
                       !selectedTrack &&
                       "!bg-white/75 [&_>span]:!text-black"
                   )}
                 >
                   <span>소개</span>
-                  {/* <div
-                className={cx(
-                  minLaptop &&
-                    !selectedTrack &&
-                    "absolute w-20 h-full bg-white/75 top-0 -right-50 z-[50] transition-all duration-200"
-                )}
-              /> */}
                 </DrawerTrigger>
                 <ol className="w-full flex flex-col gap-2 [&_>li]:w-full [&_>li]:break-all">
                   {_.map(albumMeta.tracks, (tr, i) => (
@@ -498,7 +507,7 @@ const OthersSlide = ({
                         <DrawerTrigger
                           onClick={() => setSelectedTrack(tr)}
                           className={cx(
-                            "cursor-pointer !px-2 relative text-left w-auto transition-all duration-200",
+                            "cursor-pointer !px-2 relative text-left w-auto transition-all duration-200 hover:opacity-50",
                             minLaptop &&
                               selectedTrack?.trackNo === i + 1 &&
                               "!bg-white/75 [&_>span]:!text-black"
@@ -509,7 +518,7 @@ const OthersSlide = ({
                           </span>
                         </DrawerTrigger>
                       ) : (
-                        <span>
+                        <span className="!px-1.5">
                           {tr.trackNo}. {tr.title}
                         </span>
                       )}
@@ -520,8 +529,10 @@ const OthersSlide = ({
             </ul>
           </li>
           {minLaptop ? (
-            <li className="w-1/2 max-h-[85%] bg-white/75 overflow-scroll !p-10 shadow-xl flex-grow">
-              {/* TODO: 여기도 DOMpurify 넣기 */}
+            <li
+              ref={lyricsRef}
+              className="w-1/2 max-h-[85%] bg-white/75 overflow-scroll !p-10 shadow-xl flex-grow"
+            >
               <div className="whitespace-break-spaces">
                 {selectedTrack ? (
                   selectedTrack.lyrics
@@ -589,7 +600,7 @@ const StreamingModal = ({ albumMeta }) => {
   if (minLaptop) {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger className="hover:underline underline-offset-4 cursor-pointer">
+        <DialogTrigger className="transition-all duration-200 hover:opacity-50 cursor-pointer">
           {renderType} 듣기
         </DialogTrigger>
         <DialogContent
@@ -618,7 +629,7 @@ const StreamingModal = ({ albumMeta }) => {
 
   return (
     <Drawer open={open} onOpenChange={setOpen}>
-      <DrawerTrigger className="hover:underline underline-offset-4 cursor-pointer">
+      <DrawerTrigger className="transition-all duration-200 hover:opacity-50 cursor-pointer">
         {renderType} 듣기
       </DrawerTrigger>
       <DrawerContent

@@ -25,7 +25,8 @@ export default function Home() {
 
   const [HMData] = _.filter(
     mockDiskData,
-    (data) => data.title.toLowerCase() === "HM".toLowerCase()
+    (data) => data.title.toLowerCase() === "Hm".toLowerCase()
+    // (data) => data.title.toLowerCase() === "평화로운 뇌와...".toLowerCase()
   );
 
   // Renderer callback with condition
@@ -124,11 +125,13 @@ const HomeAlbumOverview = ({ albumMeta }) => {
       <div className="!aspect-video z-10 lg:!ml-3 row-start-1 overflow-hidden lg:col-start-2 col-span-4 lg:col-span-3 bg-black w-full h-auto [&_>div]:h-full shadow-xl">
         <HMYoutubeEmbed />
       </div>
-      <div className="w-auto shadow-2xl row-start-2 col-start-1 col-span-4 bg-white/75 flex flex-col justify-between gap-10 !-mt-4 lg:!-mt-18 lg:!mr-12 !p-6 ">
-        <h1 className="text-lg font-bold !p-2">
-          {language === "ko" ? type.kr : type.en}
-          <span className="text-3xl !pl-1">[ {albumMeta.title} ]</span>
-        </h1>
+      <div className="w-auto shadow-2xl row-start-2 col-start-1 col-span-4 bg-white/75 flex flex-col justify-between gap-10 !-mt-4 lg:!-mt-12 lg:!mr-12 !p-6 ">
+        <div className="!py-2 font-bold flex lg:flex-col w-full items-end lg:items-start">
+          <span className="text-lg lg:!pl-1.5">
+            {language === "ko" ? type.kr : type.en}
+          </span>
+          <h1 className="text-3xl !pl-1">[ {albumMeta.title} ]</h1>
+        </div>
         <p className="w-full whitespace-break-spaces">
           {albumMeta.description}
         </p>

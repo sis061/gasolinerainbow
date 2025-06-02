@@ -15,6 +15,8 @@ import { Separator } from "@/components/ui/separator";
 import { useMediaQuery } from "react-responsive";
 import { useScrollState } from "@/hooks/useScrollState";
 import useLanguageStore from "@/store/useLanguageStore";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const navLinks = [
   // { to: "/", label: "홈" },
@@ -33,7 +35,7 @@ const logos = [
   {
     Component: YoutubeMusicLogo,
     name: "ytmusic",
-    url: "https://www.youtube.com/channel/UCCsxnJIDEJIMcE4Tzb8fwyw",
+    url: "https://music.youtube.com/channel/UCCsxnJIDEJIMcE4Tzb8fwyw",
   },
   {
     Component: ApplemusicLogo,
@@ -69,10 +71,17 @@ const Header = () => {
   const isDiscography: boolean = location?.pathname === "/discography";
   const minLaptop = useMediaQuery({ minWidth: 1024 });
   const minTablet = useMediaQuery({ minWidth: 768 });
+  const [isCurrentLang, setIsCurrentLang] = useState<boolean>(false);
 
   const handleChangeLanguage = (newLanguage: string) => {
     setLanguage(newLanguage);
   };
+
+  useEffect(() => {
+    setIsCurrentLang(true);
+    const timer = setTimeout(() => setIsCurrentLang(false), 1000);
+    return () => clearTimeout(timer);
+  }, [language]);
 
   return (
     <>
@@ -130,7 +139,7 @@ const Header = () => {
           <Button
             variant={"ghost"}
             className={cx(
-              "w-8 h-8 lg:w-6 lg:h-6 xl:w-8 xl:h-8 rounded-full bg-white cursor-pointer"
+              "w-8 h-8 lg:w-6 lg:h-6 xl:w-8 xl:h-8 rounded-full bg-white cursor-pointer relative"
               // (isScrolled || isDiscography) && "bg-black"
             )}
             onClick={() =>
@@ -143,6 +152,21 @@ const Header = () => {
               color={"#000"}
               className="duration-150 w-full h-full"
             />
+            <AnimatePresence>
+              {isCurrentLang && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.1 }}
+                  className="absolute flex items-center justify-center bg-white w-full h-full rounded-full"
+                >
+                  <span className="font-bold text-center">
+                    {language === "ko" ? "한" : "A"}
+                  </span>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </Button>
         </div>
       </header>
@@ -183,7 +207,7 @@ const Nav = ({
               minTablet
                 ? (isScrolled || isDiscography) && "!text-white !border-white"
                 : "!text-white !border-white",
-              location?.pathname === to && "opacity-100"
+              location?.pathname.startsWith(to) && "opacity-100"
             )}
           >
             {label}

@@ -35,9 +35,11 @@ export default function Note() {
     });
   }, []);
 
+  console.log(location.pathname);
+
   return (
     <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center max-md:!px-4 !mb-10 md:!mt-10">
-      <div className="inner flex-grow-0 w-full h-full flex items-center justify-center bg-white/75 !p-6 !my-10 shadow-2xl ">
+      <div className="inner flex-grow-0 w-full h-full flex items-center justify-center bg-white/75 !p-6 shadow-2xl ">
         <div className="w-full h-full flex flex-col">
           <div className="!mb-6 flex w-full items-center justify-between">
             <ArrowLeft

@@ -17,7 +17,7 @@ import {
   PaginationItem,
   PaginationLink,
 } from "@/components/ui/pagination";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import {
   ChevronLeft,
@@ -25,7 +25,7 @@ import {
   ChevronsLeft,
   ChevronsRight,
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import cx from "classnames";
 
 const noteMockData = [
@@ -102,6 +102,109 @@ const noteMockData = [
     content:
       "내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...",
   },
+  {
+    idx: 9,
+    category: "에필로그",
+    title: "제목제목제목",
+    content: `
+    <p>안녕하세요. 이 글은 <strong>마치 블로그처럼</strong> 표현된 콘텐츠입니다.내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...</p>
+      <p>줄바꿈도 이렇게 하고, <em>기울임</em>도 사용할 수 있어요.</p>
+      <img src="/src/assets/images/rainlight.jpg" alt="샘플 이미지" />
+      <p>이미지 위아래로도 텍스트를 넣을 수 있습니다.</p>
+      <h2>소제목도 넣고 싶다면?</h2>
+      <p>이건 <code>&lt;h2&gt;</code> 태그를 사용하면 됩니다.</p>
+      <ul>
+        <li>1. 리스트도 가능</li>
+        <li>2. 이렇게 사용 가능</li>
+      </ul>
+    `,
+  },
+  {
+    idx: 10,
+    category: "에필로그",
+    title: "제목제목제목",
+    content: `
+    <p>안녕하세요. 이 글은 <strong>마치 블로그처럼</strong> 표현된 콘텐츠입니다.내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...</p>
+      <p>줄바꿈도 이렇게 하고, <em>기울임</em>도 사용할 수 있어요.</p>
+      <img src="/src/assets/images/rainlight.jpg" alt="샘플 이미지" />
+      <p>이미지 위아래로도 텍스트를 넣을 수 있습니다.</p>
+      <h2>소제목도 넣고 싶다면?</h2>
+      <p>이건 <code>&lt;h2&gt;</code> 태그를 사용하면 됩니다.</p>
+      <ul>
+        <li>1. 리스트도 가능</li>
+        <li>2. 이렇게 사용 가능</li>
+      </ul>
+    `,
+  },
+  {
+    idx: 11,
+    category: "에필로그",
+    title: "제목제목제목",
+    content: `
+    <p>안녕하세요. 이 글은 <strong>마치 블로그처럼</strong> 표현된 콘텐츠입니다.내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...</p>
+      <p>줄바꿈도 이렇게 하고, <em>기울임</em>도 사용할 수 있어요.</p>
+      <img src="/src/assets/images/rainlight.jpg" alt="샘플 이미지" />
+      <p>이미지 위아래로도 텍스트를 넣을 수 있습니다.</p>
+      <h2>소제목도 넣고 싶다면?</h2>
+      <p>이건 <code>&lt;h2&gt;</code> 태그를 사용하면 됩니다.</p>
+      <ul>
+        <li>1. 리스트도 가능</li>
+        <li>2. 이렇게 사용 가능</li>
+      </ul>
+    `,
+  },
+  {
+    idx: 12,
+    category: "에필로그",
+    title: "제목제목제목",
+    content: `
+    <p>안녕하세요. 이 글은 <strong>마치 블로그처럼</strong> 표현된 콘텐츠입니다.내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...</p>
+      <p>줄바꿈도 이렇게 하고, <em>기울임</em>도 사용할 수 있어요.</p>
+      <img src="/src/assets/images/rainlight.jpg" alt="샘플 이미지" />
+      <p>이미지 위아래로도 텍스트를 넣을 수 있습니다.</p>
+      <h2>소제목도 넣고 싶다면?</h2>
+      <p>이건 <code>&lt;h2&gt;</code> 태그를 사용하면 됩니다.</p>
+      <ul>
+        <li>1. 리스트도 가능</li>
+        <li>2. 이렇게 사용 가능</li>
+      </ul>
+    `,
+  },
+  {
+    idx: 13,
+    category: "에필로그",
+    title: "제목제목제목",
+    content: `
+    <p>안녕하세요. 이 글은 <strong>마치 블로그처럼</strong> 표현된 콘텐츠입니다.내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...</p>
+      <p>줄바꿈도 이렇게 하고, <em>기울임</em>도 사용할 수 있어요.</p>
+      <img src="/src/assets/images/rainlight.jpg" alt="샘플 이미지" />
+      <p>이미지 위아래로도 텍스트를 넣을 수 있습니다.</p>
+      <h2>소제목도 넣고 싶다면?</h2>
+      <p>이건 <code>&lt;h2&gt;</code> 태그를 사용하면 됩니다.</p>
+      <ul>
+        <li>1. 리스트도 가능</li>
+        <li>2. 이렇게 사용 가능</li>
+      </ul>
+    `,
+  },
+  {
+    idx: 14,
+    category: "에필로그",
+    title:
+      "제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목제목",
+    content: `
+    <p>안녕하세요. 이 글은 <strong>마치 블로그처럼</strong> 표현된 콘텐츠입니다.내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...내용입니다. 내용...</p>
+      <p>줄바꿈도 이렇게 하고, <em>기울임</em>도 사용할 수 있어요.</p>
+      <img src="/src/assets/images/rainlight.jpg" alt="샘플 이미지" />
+      <p>이미지 위아래로도 텍스트를 넣을 수 있습니다.</p>
+      <h2>소제목도 넣고 싶다면?</h2>
+      <p>이건 <code>&lt;h2&gt;</code> 태그를 사용하면 됩니다.</p>
+      <ul>
+        <li>1. 리스트도 가능</li>
+        <li>2. 이렇게 사용 가능</li>
+      </ul>
+    `,
+  },
 ];
 
 const filterHTMLTags = (content: string): string => {
@@ -127,14 +230,11 @@ const filterHTMLTags = (content: string): string => {
 
 export default function AuthorNote() {
   const navigate = useNavigate();
-  //TODO: 목록으로 돌아가기 적용하려면 page 값 스토어에 저장해두기
-  const [page, setPage] = useState<number>(1);
+  const [page, setPage] = useState<number>(() => {
+    const restored = Number(sessionStorage.getItem("authornotePage"));
+    return restored > 0 ? restored : 1;
+  });
 
-  //   const maxDesktop = useMediaQuery({ maxWidth: 124 });
-  //   const maxLaptop = useMediaQuery({ maxWidth: 768 });
-  //   const maxTablet = useMediaQuery({ maxWidth: 640 });
-  // 페이지 행 수
-  //   const rowsPerPage = maxTablet ? 12 : maxLaptop ? 9 : maxDesktop ? 6 : 5;
   const rowsPerPage = 6;
   const totalPages = Math.ceil(noteMockData.length / rowsPerPage);
   const pageGroupSize = 5;
@@ -149,6 +249,10 @@ export default function AuthorNote() {
 
     return noteMockData.slice(start, end);
   }, [page, noteMockData, rowsPerPage]);
+
+  useEffect(() => {
+    sessionStorage.setItem("authornotePage", String(page));
+  }, [page]);
 
   return (
     <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center max-md:!px-4 !mb-10 md:!mt-10">
@@ -178,17 +282,17 @@ export default function AuthorNote() {
                   }}
                   className="flex md:table-row w-full items-center relative"
                 >
-                  <TableCell className="order-1 !pr-2 md:!px-2">
+                  <TableCell className="order-1 !pr-2 md:!px-2 text-center">
                     {note.idx + 1}
                   </TableCell>
-                  <TableCell className="max-md:absolute max-md:w-1/2 max-md:text-right top-1.5 right-0 order-3 md:order-2 max-md:text-xs !px-2">
+                  <TableCell className="whitespace-normal md:min-w-[9.25rem] max-md:absolute max-md:w-1/2 max-md:text-right top-1.5 right-0 order-3 md:order-2 max-md:text-xs !px-2">
                     {note.category}
                   </TableCell>
                   <TableCell className="order-2 md:order-3 !py-4 max-md:!py-6 flex flex-col gap-3 justify-center cursor-pointer !px-2">
-                    <span className="text-xl lg:text-2xl font-semibold">
+                    <span className="text-xl lg:text-2xl font-semibold whitespace-normal line-clamp-1">
                       {note.title}
                     </span>
-                    <p className="whitespace-normal !line-clamp-2">
+                    <p className="whitespace-normal line-clamp-1 sm:line-clamp-2">
                       {filterHTMLTags(note?.content)}
                     </p>
                   </TableCell>
@@ -203,7 +307,10 @@ export default function AuthorNote() {
             {startPage > 1 && (
               <PaginationItem>
                 <PaginationLink
-                  onClick={() => setPage(startPage - 1)}
+                  onClick={() => {
+                    setPage(startPage - 1);
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
                   className="hover:bg-accent hover:text-accent-foreground cursor-pointer"
                 >
                   <ChevronsLeft className="h-4 w-4" />
@@ -212,7 +319,10 @@ export default function AuthorNote() {
             )}
             {/* 이전 페이지로 */}
             <PaginationLink
-              onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+              onClick={() => {
+                setPage((prev) => Math.max(prev - 1, 1));
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
               className="hover:bg-accent hover:text-accent-foreground cursor-pointer"
             >
               <ChevronLeft className="h-4 w-4" />
@@ -222,7 +332,10 @@ export default function AuthorNote() {
               <PaginationItem key={p}>
                 <PaginationLink
                   isActive={page === p}
-                  onClick={() => setPage(p)}
+                  onClick={() => {
+                    setPage(p);
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
                   className={cx(page !== p && "cursor-pointer")}
                 >
                   {p}
@@ -233,9 +346,10 @@ export default function AuthorNote() {
             {/* 다음 페이지로 */}
             <PaginationItem>
               <PaginationLink
-                onClick={() =>
-                  setPage((prev) => Math.min(prev + 1, totalPages))
-                }
+                onClick={() => {
+                  setPage((prev) => Math.min(prev + 1, totalPages));
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
                 aria-disabled={page === totalPages}
                 className="hover:bg-accent hover:text-accent-foreground cursor-pointer"
               >
@@ -246,7 +360,10 @@ export default function AuthorNote() {
             {endPage < totalPages && (
               <PaginationItem>
                 <PaginationLink
-                  onClick={() => setPage(endPage + 1)}
+                  onClick={() => {
+                    setPage(endPage + 1);
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
                   className="hover:bg-accent hover:text-accent-foreground cursor-pointer"
                 >
                   <ChevronsRight className="h-4 w-4" />

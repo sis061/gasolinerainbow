@@ -29,11 +29,11 @@ const Footer = () => {
                   Contact
                 </span>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-black !p-1">
+              <DropdownMenuContent side="top" className="bg-black !p-1">
                 <DropdownMenuItem className="!p-2 hover:!bg-[#272727]">
                   <a
                     href="mailto:himinnjeong@gmail.com"
-                    className="flex items-center justify-between gap-2"
+                    className="flex items-center justify-start gap-2 w-full"
                   >
                     <Mail color="white" />
                     <span className="!text-white">이메일</span>
@@ -44,7 +44,7 @@ const Footer = () => {
                     href="https://www.instagram.com/himinn___/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between gap-2"
+                    className="flex items-center justify-start gap-2 w-full"
                   >
                     <Send color="white" />
                     <span className="!text-white">인스타그램 DM</span>

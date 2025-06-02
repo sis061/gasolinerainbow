@@ -47,6 +47,12 @@ export default function Layout({ children }: { children: ReactNode }) {
     };
   }, []);
 
+  useEffect(() => {
+    if (!location.pathname.startsWith("/authornote")) {
+      sessionStorage.removeItem("authornotePage");
+    }
+  }, [location.pathname]);
+
   return (
     <motion.main
       initial={{ backgroundColor: "rgba(255, 255, 255, 0)" }}
@@ -60,7 +66,9 @@ export default function Layout({ children }: { children: ReactNode }) {
       {children}
       <div ref={footerRef} className="relative">
         {minTablet && <ScrollTopBtn isFooterVisible={isFooterVisible} />}
-        {guideButton && <DiscographyFAB isFooterVisible={isFooterVisible} />}
+        {isDiscography && guideButton && (
+          <DiscographyFAB isFooterVisible={isFooterVisible} />
+        )}
         <Footer />
       </div>
     </motion.main>

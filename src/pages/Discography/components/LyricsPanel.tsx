@@ -1,10 +1,4 @@
-import type { Disk, Track } from "@/types/discography";
-
-interface LyricsPanelProps {
-  lyricsRef: React.RefObject<HTMLLIElement | null>;
-  selectedTrack: Track | null;
-  albumMeta: Disk;
-}
+import type { LyricsPanelProps } from "@/types/discography";
 
 const LyricsPanel = ({
   lyricsRef,

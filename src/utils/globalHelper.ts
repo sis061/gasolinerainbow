@@ -57,3 +57,18 @@ export const filterHTMLTags = (content: string): string => {
   // 4. 앞뒤 공백 제거 후 반환
   return text.trim();
 };
+
+/**
+ * @description 밀리세컨드 => DD-MM-YYYY 변환기
+ * @param millis 밀리초
+ * @returns {string} DD-MM-YYYY
+ */
+
+export const formatLocalTimetoDate = (millis: number): string => {
+  const date = new Date(millis);
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = date.getFullYear();
+
+  return `${day}-${month}-${year}`;
+};

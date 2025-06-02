@@ -1,5 +1,6 @@
+// ──────────────────────기본 타입 정의───────────────────────
+
 export type DiskType = "album" | "single" | "EP" | "ost";
-export type MultipleIntroPanelProps = Pick<Disk, "year" | "title" | "image">;
 
 export interface DiskUrls {
   bandcamp?: string;
@@ -29,4 +30,49 @@ export interface Disk {
   description: string;
   credits: string;
   tracks: Track[];
+}
+
+// ──────────────────────공통 유틸 타입───────────────────────
+
+export type TrackOrNull = Track | null;
+export type OnChangeHandler = (...params: any[]) => any;
+export type OnSelectTrackHandler = (track: Track) => void;
+export type SetTrackState = React.Dispatch<React.SetStateAction<TrackOrNull>>;
+
+// ──────────────────────컴포넌트 Props───────────────────────
+
+export type MultipleIntroPanelProps = Pick<Disk, "year" | "title" | "image">;
+export interface CarouselProps {
+  albumMeta: Disk;
+  onChange: OnChangeHandler;
+}
+
+export interface SingleCarouselsProps {
+  albumMetas: Disk[];
+  onChange: OnChangeHandler;
+}
+
+export interface CarouselNavigationProps {
+  onPrev: () => void;
+  onNext: () => void;
+}
+
+export interface LyricsPanelProps {
+  lyricsRef: React.RefObject<HTMLLIElement | null>;
+  selectedTrack: TrackOrNull;
+  albumMeta: Disk;
+}
+
+export interface TrackListProps {
+  tracks: Track[];
+  align: "left" | "right";
+  selectedTrack: TrackOrNull;
+  onSelect: OnSelectTrackHandler;
+}
+
+export interface SingleInfoPanelProps {
+  albumMeta: Disk;
+  onChange: OnChangeHandler;
+  selectedTrack: TrackOrNull;
+  setSelectedTrack: SetTrackState;
 }

@@ -12,12 +12,7 @@ import MultipleIntroPanel from "./components/MultipleIntroPanel";
 import SingleInfoPanel from "./components/SingleInfoPanel";
 import CarouselNavigation from "../components/CarouselNavigation";
 /************/
-import type { Disk, Track } from "@/types/discography";
-
-export interface SingleCarouselsProps {
-  albumMetas: Disk[];
-  onChange: (...params: any) => any;
-}
+import type { SingleCarouselsProps, Track } from "@/types/discography";
 
 const SingleCarousel = ({ albumMetas, onChange }: SingleCarouselsProps) => {
   const carouselRef = useRef<CarouselApi | null>(null);

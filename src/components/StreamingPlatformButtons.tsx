@@ -1,8 +1,9 @@
-import _ from "lodash";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+/************/
+import _ from "lodash";
 import cx from "classnames";
-
+/************/
 import BandcampLogo from "@/assets/logos/bandcamp.svg?react";
 import ApplemusicLogo from "@/assets/logos/applemusic.svg?react";
 import SpotifyLogo from "@/assets/logos/spotify.svg?react";
@@ -97,7 +98,7 @@ export const getStreamingPlatformInfo = (
 
 const StreamingPlatformButtons = ({
   platforms,
-  customClassName,
+  customClassName = "",
 }: {
   platforms: StreamingPlatformInfoProps[];
   customClassName?: string;

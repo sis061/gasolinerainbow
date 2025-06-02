@@ -1,6 +1,6 @@
-import { CircleArrowUp } from "lucide-react";
 import cx from "classnames";
 import { useScrollState } from "@/hooks/useScrollState";
+import { CircleArrowUp } from "lucide-react";
 
 export default function ScrollTopBtn({
   isFooterVisible,

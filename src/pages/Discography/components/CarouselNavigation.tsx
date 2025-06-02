@@ -1,9 +1,5 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
-interface CarouselNavigationProps {
-  onPrev: () => void;
-  onNext: () => void;
-}
+import type { CarouselNavigationProps } from "@/types/discography";
 
 const CarouselNavigation = ({ onPrev, onNext }: CarouselNavigationProps) => (
   <>

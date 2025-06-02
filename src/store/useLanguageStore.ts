@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 interface LanguageState {
-  language: string;
+  language: "ko" | "en" | string;
   setLanguage: (language: string) => void;
 }
 

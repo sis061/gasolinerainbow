@@ -18,12 +18,7 @@ import LyricsPanel from "../components/LyricsPanel";
 import CarouselNavigation from "../components/CarouselNavigation";
 import MobileDrawer from "../modals/MobileDrawer";
 /************/
-import type { Disk, Track } from "@/types/discography";
-
-interface CarouselProps {
-  albumMeta: Disk;
-  onChange: (...params: any) => any;
-}
+import type { CarouselProps, Track } from "@/types/discography";
 
 const AlbumCarousel = ({ albumMeta, onChange }: CarouselProps) => {
   const carouselRef = useRef<CarouselApi | null>(null);

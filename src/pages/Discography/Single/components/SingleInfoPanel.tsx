@@ -16,14 +16,7 @@ import LyricsPanel from "../../components/LyricsPanel";
 import StreamingModal from "../../modals/StreamingModal";
 import MobileDrawer from "../../modals/MobileDrawer";
 /************/
-import type { Disk, Track } from "@/types/discography";
-
-interface SingleInfoPanelProps {
-  albumMeta: Disk;
-  onChange: (...params: any) => any;
-  selectedTrack: Track | null;
-  setSelectedTrack: React.Dispatch<React.SetStateAction<Track | null>>;
-}
+import type { SingleInfoPanelProps } from "@/types/discography";
 
 const SingleInfoPanel = ({
   albumMeta,

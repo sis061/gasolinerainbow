@@ -1,68 +1,20 @@
-import BandcampLogo from "@/assets/logos/bandcamp.svg?react";
-import ApplemusicLogo from "@/assets/logos/applemusic.svg?react";
-import InstagramLogo from "@/assets/logos/instagram.svg?react";
-import SoundcloudLogo from "@/assets/logos/soundcloud.svg?react";
-import SpotifyLogo from "@/assets/logos/spotify.svg?react";
-import YoutubeLogo from "@/assets/logos/youtube.svg?react";
-import YoutubeMusicLogo from "@/assets/logos/youtubemusic.svg?react";
-
-import cx from "classnames";
-import { Link, useLocation } from "react-router-dom";
-import { Languages } from "lucide-react";
+/************/
+import { useEffect, useState } from "react";
+/************/
 import { Button } from "@/components/ui/button";
-import _ from "lodash";
 import { Separator } from "@/components/ui/separator";
+import { Languages } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+/************/
+import cx from "classnames";
+import _ from "lodash";
+import { Link, useLocation } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
+/************/
 import { useScrollState } from "@/hooks/useScrollState";
 import useLanguageStore from "@/store/useLanguageStore";
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-
-const navLinks = [
-  // { to: "/", label: "홈" },
-  { to: "/profile", label: "소개" },
-  { to: "/discography", label: "디스코그라피" },
-  { to: "/news", label: "소식" },
-  { to: "/authornote", label: "작가의 말" },
-];
-
-const logos = [
-  {
-    Component: SpotifyLogo,
-    name: "spotify",
-    url: "https://open.spotify.com/artist/1XqMSGUousXQqLMInUtVxv?si=u_ybEcAXTwGOUt8-_wjwBQ",
-  },
-  {
-    Component: YoutubeMusicLogo,
-    name: "ytmusic",
-    url: "https://music.youtube.com/channel/UCCsxnJIDEJIMcE4Tzb8fwyw",
-  },
-  {
-    Component: ApplemusicLogo,
-    name: "applemusic",
-    url: "https://music.apple.com/us/artist/himinn/1568514667",
-  },
-  {
-    Component: BandcampLogo,
-    name: "bandcamp",
-    url: "https://himinnn.bandcamp.com/",
-  },
-  {
-    Component: SoundcloudLogo,
-    name: "soundcloud",
-    url: "https://soundcloud.com/himinnn",
-  },
-  {
-    Component: InstagramLogo,
-    name: "instagram",
-    url: "https://www.instagram.com/himinn___/",
-  },
-  {
-    Component: YoutubeLogo,
-    name: "youtube",
-    url: "https://www.youtube.com/channel/UCTcqZG9Q8AbpjbsP-mgzypQ",
-  },
-];
+import Nav from "./components/Nav";
+import SocialButtons from "./components/SocialButtons";
 
 const Header = () => {
   const isScrolled = useScrollState();
@@ -73,7 +25,7 @@ const Header = () => {
   const minTablet = useMediaQuery({ minWidth: 768 });
   const [isCurrentLang, setIsCurrentLang] = useState<boolean>(false);
 
-  const handleChangeLanguage = (newLanguage: string) => {
+  const handleChangeLanguage = (newLanguage: string): void => {
     setLanguage(newLanguage);
   };
 
@@ -117,14 +69,13 @@ const Header = () => {
             </p>
           </div>
         </Link>
-
         {minTablet && (
           <>
             <div className="flex gap-2.5 items-center justify-between max-lg:justify-center flex-1 w-full">
               {/* NAV */}
               <Nav isDiscography={isDiscography} location={location} />
               {/* Social */}
-              {minLaptop && <SocialMedia isDiscography={isDiscography} />}
+              {minLaptop && <SocialButtons isDiscography={isDiscography} />}
             </div>
             {minLaptop && (
               <Separator
@@ -177,7 +128,7 @@ const Header = () => {
             <Nav isDiscography={isDiscography} location={location} />
           )}
           {/* Social */}
-          <SocialMedia isDiscography={isDiscography} />
+          <SocialButtons isDiscography={isDiscography} />
         </nav>
       )}
     </>
@@ -185,64 +136,3 @@ const Header = () => {
 };
 
 export default Header;
-
-const Nav = ({
-  isDiscography,
-  location,
-}: {
-  isDiscography: boolean;
-  location: any;
-}) => {
-  const minTablet = useMediaQuery({ minWidth: 768 });
-  const isScrolled = useScrollState();
-
-  return (
-    <ul className="max-md:w-full max-md:justify-between flex items-center justify-start gap-4 xl:gap-6 [&_>li]:flex [&_>li]:justify-center [&_>li]:items-center">
-      {_.map(navLinks, ({ to, label }) => (
-        <li key={to}>
-          <Link
-            to={to}
-            className={cx(
-              "font-extrabold text-lg max-sm:text-sm hover:border-b-1 hover:opacity-100 transition-all border-[#1b2838] opacity-70",
-              minTablet
-                ? (isScrolled || isDiscography) && "!text-white !border-white"
-                : "!text-white !border-white",
-              location?.pathname.startsWith(to) && "opacity-100"
-            )}
-          >
-            {label}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  );
-};
-
-const SocialMedia = ({ isDiscography }: { isDiscography: boolean }) => {
-  const minLaptop = useMediaQuery({ minWidth: 1024 });
-  const isScrolled = useScrollState();
-
-  return (
-    <ul className="flex items-center justify-between gap-4">
-      {_.map(logos, ({ Component, name, url }) => (
-        <li
-          key={name}
-          className="flex items-center justify-center w-6 h-6 xl:w-8 xl:h-8"
-        >
-          <Link to={url} target="_blank" rel="noopener noreferrer">
-            <Component
-              className="w-full h-full duration-150"
-              fill={
-                minLaptop
-                  ? isScrolled || isDiscography
-                    ? "#fff"
-                    : "#000"
-                  : "#fff"
-              }
-            />
-          </Link>
-        </li>
-      ))}
-    </ul>
-  );
-};

@@ -1,16 +1,9 @@
 import { DrawerTrigger } from "@/components/ui/drawer";
-import type { Track } from "@/types/discography";
 /************/
 import cx from "classnames";
 import _ from "lodash";
 /************/
-
-interface TrackListProps {
-  tracks: Track[];
-  align: "left" | "right";
-  selectedTrack: Track | null;
-  onSelect: (...params: any) => any;
-}
+import type { TrackListProps } from "@/types/discography";
 
 const TrackList = ({
   tracks,

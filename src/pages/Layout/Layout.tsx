@@ -1,15 +1,16 @@
 import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
-
-import Footer from "./Footer";
-import Header from "./Header";
-import ScrollTopBtn from "@/pages/Layout/components/ScrollTopBtn";
+/************/
+import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import cx from "classnames";
-import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
-import DiscographyFAB from "@/pages/Layout/components/DiscographyFAB";
+/************/
 import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
+import ScrollTopBtn from "@/pages/Layout/components/ScrollTopBtn";
+import DiscographyFAB from "@/pages/Layout/components/DiscographyFAB";
+import Footer from "./Footer";
+import Header from "./Header";
 
 export default function Layout({ children }: { children: ReactNode }) {
   const { guideButton } = useDiscographyGuideStore();

@@ -1,0 +1,78 @@
+import { useState } from "react";
+/************/
+import { ChevronDown } from "lucide-react";
+/************/
+import { useMediaQuery } from "react-responsive";
+/************/
+import useLanguageStore from "@/store/useLanguageStore";
+import { renderDiskType } from "@/utils/globalHelper";
+import StreamingPlatformButtons, {
+  getStreamingPlatformInfo,
+} from "@/components/StreamingPlatformButtons";
+/************/
+import HomeYoutubeEmbed from "./HomeYoutubeEmbed";
+/************/
+import type { Disk } from "@/types/discography";
+
+const HomeAlbumOverview = ({
+  albumMeta,
+  videoId,
+}: {
+  albumMeta: Disk;
+  videoId: string;
+}) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const minTablet = useMediaQuery({ minWidth: 768 });
+  const { language } = useLanguageStore();
+
+  const platforms = getStreamingPlatformInfo(albumMeta.urls);
+  const type = renderDiskType(albumMeta.type);
+  return (
+    <div className="grid grid-rows-[auto_auto] grid-cols-4 w-full gap-2">
+      <div className="!aspect-video z-10 lg:!ml-3 row-start-1 overflow-hidden lg:col-start-2 col-span-4 lg:col-span-3 bg-black w-full h-auto [&_>div]:h-full shadow-xl">
+        <HomeYoutubeEmbed id={videoId} img={albumMeta.image} />
+      </div>
+      <div className="w-auto shadow-2xl row-start-2 col-start-1 col-span-4 bg-white/75 flex flex-col justify-between gap-10 !-mt-4 lg:!-mt-12 lg:!mr-12 !p-6 ">
+        <div className="!py-2 font-bold flex lg:flex-col w-full items-end lg:items-start">
+          <span className="text-lg lg:!pl-1.5">
+            {language === "ko" ? type.kr : type.en}
+          </span>
+          <h1 className="text-3xl !pl-1">[ {albumMeta.title} ]</h1>
+        </div>
+        <p className="w-full whitespace-break-spaces">
+          {albumMeta.description}
+        </p>
+        <div className="flex flex-col gap-6 w-full">
+          <div
+            className="flex items-center gap-1 max-md:hover:underline underline-offset-4 max-md:hover:cursor-pointer select-none"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <h2 className="font-bold !pl-1">아래에서 듣기</h2>
+            {!minTablet && (
+              <ChevronDown
+                size={20}
+                className={`transition-transform duration-300 ${
+                  isOpen ? "rotate-180" : "rotate-0"
+                }`}
+              />
+            )}
+          </div>
+          <div
+            className={`transition-all duration-300 overflow-hidden ${minTablet || isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}
+          >
+            <div className="pt-2">
+              <StreamingPlatformButtons
+                platforms={platforms}
+                customClassName={
+                  "max-md:flex-col [@media(max-width:1239px)]:w-[73%] max-md:!w-full"
+                }
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default HomeAlbumOverview;

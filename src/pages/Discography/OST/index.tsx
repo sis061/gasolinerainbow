@@ -13,7 +13,7 @@ import MultipleIntroPanel from "../Single/components/MultipleIntroPanel";
 import StreamingModal from "../modals/StreamingModal";
 import CarouselNavigation from "../components/CarouselNavigation";
 /************/
-import type { SingleCarouselsProps } from "../Single";
+import type { SingleCarouselsProps } from "@/types/discography";
 
 const OSTCarousel = ({ albumMetas, onChange }: SingleCarouselsProps) => {
   const carouselRef = useRef<CarouselApi | null>(null);

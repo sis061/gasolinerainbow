@@ -14,9 +14,10 @@ import _ from "lodash";
 import { Separator } from "@/components/ui/separator";
 import { useMediaQuery } from "react-responsive";
 import { useScrollState } from "@/hooks/useScrollState";
+import useLanguageStore from "@/store/useLanguageStore";
 
 const navLinks = [
-  { to: "/", label: "홈" },
+  // { to: "/", label: "홈" },
   { to: "/profile", label: "소개" },
   { to: "/discography", label: "디스코그라피" },
   { to: "/news", label: "소식" },
@@ -64,9 +65,15 @@ const logos = [
 const Header = () => {
   const isScrolled = useScrollState();
   const location = useLocation();
+  const { language, setLanguage } = useLanguageStore();
   const isDiscography: boolean = location?.pathname === "/discography";
   const minLaptop = useMediaQuery({ minWidth: 1024 });
   const minTablet = useMediaQuery({ minWidth: 768 });
+
+  const handleChangeLanguage = (newLanguage: string) => {
+    setLanguage(newLanguage);
+  };
+
   return (
     <>
       <header
@@ -78,7 +85,7 @@ const Header = () => {
       >
         {/* LOGO */}
         <Link to="/">
-          <div className="w-auto min-h-16 flex flex-col items-center justify-center *:transition-all *:duration-150">
+          <div className="w-auto min-h-16 flex flex-col items-center justify-center *:transition-all *:duration-300 hover:animate-pulse">
             <p
               className={cx(
                 "text-lg font-extrabold !-mb-2 !mr-11 ",
@@ -91,7 +98,7 @@ const Header = () => {
             </p>
             <p
               className={cx(
-                "text-md font-extrabold  [&_>span]:text-xl [&_>span]:font-normal ",
+                "text-md font-extrabold  [&_>span]:text-xl [&_>span]:font-normal *:transition-all *:duration-300",
                 isScrolled || isDiscography
                   ? "!text-white [&_>span]:!text-white"
                   : "!bg-clip-text !text-transparent bg-[url('@/assets/images/bg01Img.PNG')] bg-center bg-cover [&_>span]:!bg-clip-text [&_>span]:!text-transparent"
@@ -106,7 +113,7 @@ const Header = () => {
           <>
             <div className="flex gap-2.5 items-center justify-between max-lg:justify-center flex-1 w-full">
               {/* NAV */}
-              <Nav isDiscography={isDiscography} />
+              <Nav isDiscography={isDiscography} location={location} />
               {/* Social */}
               {minLaptop && <SocialMedia isDiscography={isDiscography} />}
             </div>
@@ -123,13 +130,17 @@ const Header = () => {
           <Button
             variant={"ghost"}
             className={cx(
-              "w-6 h-6 xl:w-8 xl:h-8 rounded-full bg-white",
-              (isScrolled || isDiscography) && "bg-black"
+              "w-8 h-8 lg:w-6 lg:h-6 xl:w-8 xl:h-8 rounded-full bg-white cursor-pointer"
+              // (isScrolled || isDiscography) && "bg-black"
             )}
+            onClick={() =>
+              handleChangeLanguage(language === "ko" ? "en" : "ko")
+            }
           >
             <Languages
               size={28}
-              color={isScrolled || isDiscography ? "#fff" : "#000"}
+              // color={isScrolled || isDiscography ? "#fff" : "#000"}
+              color={"#000"}
               className="duration-150 w-full h-full"
             />
           </Button>
@@ -138,7 +149,9 @@ const Header = () => {
       {!minLaptop && (
         <nav className="h-28 md:h-16 !px-8 sm:!px-16 md:!px-[3rem] lg:!px-[6rem] fixed bottom-0 left-0 flex flex-col md:flex-row items-center justify-around w-screen !p-3 bg-[#000]/75 backdrop-blur-sm *:transition-opacity z-[50] shadow-[0_-6px_12px_2px_rgba(0,0,0,0.4)]">
           {/* NAV */}
-          {!minTablet && <Nav isDiscography={isDiscography} />}
+          {!minTablet && (
+            <Nav isDiscography={isDiscography} location={location} />
+          )}
           {/* Social */}
           <SocialMedia isDiscography={isDiscography} />
         </nav>
@@ -149,7 +162,13 @@ const Header = () => {
 
 export default Header;
 
-const Nav = ({ isDiscography }: { isDiscography: boolean }) => {
+const Nav = ({
+  isDiscography,
+  location,
+}: {
+  isDiscography: boolean;
+  location: any;
+}) => {
   const minTablet = useMediaQuery({ minWidth: 768 });
   const isScrolled = useScrollState();
 
@@ -160,10 +179,11 @@ const Nav = ({ isDiscography }: { isDiscography: boolean }) => {
           <Link
             to={to}
             className={cx(
-              "font-extrabold text-lg max-sm:text-sm hover:border-b-1 transition-all border-[#1b2838]",
+              "font-extrabold text-lg max-sm:text-sm hover:border-b-1 hover:opacity-100 transition-all border-[#1b2838] opacity-70",
               minTablet
                 ? (isScrolled || isDiscography) && "!text-white !border-white"
-                : "!text-white !border-white"
+                : "!text-white !border-white",
+              location?.pathname === to && "opacity-100"
             )}
           >
             {label}

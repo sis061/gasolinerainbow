@@ -41,6 +41,8 @@ import StreamingPlatformButtons, {
   getStreamingPlatformInfo,
 } from "@/components/StreamingPlatformButtons";
 import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
+import { renderDiskType } from "@/utils/globalHelper";
+import useLanguageStore from "@/store/useLanguageStore";
 
 //TODO: Mockdata 넣은거 나중에 데이터 넣은 후 타입 지정 제대로 하기.
 
@@ -121,7 +123,7 @@ const AlbumCarousel = ({ albumMeta, onChange }) => {
                     <StreamingModal albumMeta={albumMeta} />
                   </li>
                   {!!albumMeta.isCD && (
-                    <li className="hover:underline">
+                    <li className="hover:underline underline-offset-4">
                       <Link
                         to={albumMeta.cdUrl}
                         target="_blank"
@@ -347,7 +349,7 @@ const OSTCarousel = ({ albumMetas, onChange }) => {
       <Carousel
         setApi={(api) => (carouselRef.current = api)}
         opts={{ loop: true, watchDrag: true }}
-        className="w-full h-full relative !px-10 lg:!px-20 max-md:!pb-10"
+        className="w-full h-full relative !px-10 lg:!px-20"
       >
         <CarouselContent className="w-full h-[calc(100dvh-8rem)]">
           <CarouselItem className="w-full h-full flex items-center justify-center">
@@ -372,7 +374,7 @@ const OSTCarousel = ({ albumMetas, onChange }) => {
               key={i}
               className="w-full h-full flex items-center justify-center"
             >
-              <ul className="w-full h-full flex max-md:flex-col gap-10 items-center max-md:!px-2.5">
+              <ul className="w-full h-auto md:h-full flex max-md:flex-col gap-10 items-center justify-center max-md:!px-2.5">
                 <li className="w-2/3 max-md:w-full h-auto flex flex-col max-md:flex-row gap-10 max-md:gap-5 items-center justify-start">
                   <div className="max-w-1/2 md:max-w-3/4 xl:w-1/2 bg-gray-600 overflow-hidden ">
                     <img
@@ -428,6 +430,8 @@ const OthersSlide = ({
   onChange,
 }) => {
   const minLaptop = useMediaQuery({ minWidth: 768 });
+  const { language } = useLanguageStore();
+  const type = renderDiskType(albumMeta.type);
   const { ref, inView } = useInView({
     threshold: 0.5,
     triggerOnce: false, // true: 최초 한 번만 감지
@@ -455,7 +459,10 @@ const OthersSlide = ({
             </div>
             <ul className="flex max-md:gap-3 max-lg:gap-5 max-xl:gap-7 gap-10 w-full justify-between items-start [&_*]:!text-white ">
               <li className="w-1/2 h-full flex flex-col items-end justify-center gap-2">
-                <span className="text-sm">{albumMeta.year}</span>
+                <div className="flex justify-end items-center gap-2 [&_>span]:text-sm">
+                  <span>{albumMeta.year}</span>
+                  <span>{language === "ko" ? type.kr : type.en}</span>
+                </div>
                 <span className="text-3xl text-end !pb-4 max-md:text-2xl max-md:font-bold">
                   {albumMeta.title}
                 </span>
@@ -582,7 +589,7 @@ const StreamingModal = ({ albumMeta }) => {
   if (minLaptop) {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger className="hover:underline cursor-pointer">
+        <DialogTrigger className="hover:underline underline-offset-4 cursor-pointer">
           {renderType} 듣기
         </DialogTrigger>
         <DialogContent
@@ -611,7 +618,7 @@ const StreamingModal = ({ albumMeta }) => {
 
   return (
     <Drawer open={open} onOpenChange={setOpen}>
-      <DrawerTrigger className="hover:underline cursor-pointer">
+      <DrawerTrigger className="hover:underline underline-offset-4 cursor-pointer">
         {renderType} 듣기
       </DrawerTrigger>
       <DrawerContent

@@ -25,12 +25,12 @@ const SingleInfoPanel = ({
   onChange,
 }: SingleInfoPanelProps) => {
   const lyricsRef = useRef<HTMLLIElement | null>(null);
-  const minLaptop = useMediaQuery({ minWidth: 768 });
+  const minTablet = useMediaQuery({ minWidth: 768 });
   const { language } = useLanguageStore();
   const type = renderDiskType(albumMeta.type);
   const { ref, inView } = useInView({
     threshold: 0.5,
-    triggerOnce: false, // true: 최초 한 번만 감지
+    triggerOnce: false,
   });
 
   useEffect(() => {
@@ -76,7 +76,7 @@ const SingleInfoPanel = ({
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      CD 구매
+                      {language === "ko" ? "CD 구매" : "Order"}
                     </Link>
                   </div>
                 )}
@@ -90,12 +90,12 @@ const SingleInfoPanel = ({
                   onClick={() => setSelectedTrack(null)}
                   className={cx(
                     "cursor-pointer !px-2 relative w-auto text-left transition-all duration-200 hover:opacity-50",
-                    minLaptop &&
+                    minTablet &&
                       !selectedTrack &&
                       "!bg-white/75 [&_>span]:!text-black"
                   )}
                 >
-                  <span>소개</span>
+                  <span>{language === "ko" ? `${type.kr} 소개` : `About`}</span>
                 </DrawerTrigger>
                 <TrackList
                   tracks={albumMeta.tracks}
@@ -106,7 +106,7 @@ const SingleInfoPanel = ({
               </li>
             </ul>
           </li>
-          {minLaptop ? (
+          {minTablet ? (
             <LyricsPanel
               lyricsRef={lyricsRef}
               selectedTrack={selectedTrack}

@@ -1,33 +1,33 @@
 import type { ReactNode } from "react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 /************/
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import cx from "classnames";
-import { useMediaQuery } from "react-responsive";
+import Bowser from "bowser";
 /************/
-import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
 import ScrollTopBtn from "@/pages/Layout/components/ScrollTopBtn";
-import DiscographyFAB from "@/pages/Layout/components/DiscographyFAB";
+import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
 import Footer from "./Footer";
 import Header from "./Header";
+import { useMediaQuery } from "react-responsive";
+import GuideBtn from "@/pages/Layout/components/GuideBtn";
 
 export default function Layout({ children }: { children: ReactNode }) {
-  const { guideButton } = useDiscographyGuideStore();
-  const footerRef = useRef<HTMLDivElement | null>(null);
   const [isFooterVisible, setIsFooterVisible] = useState<boolean>(false);
+  const [isUserAgentPC, setIsUserAgentPC] = useState<boolean>(true);
+  const footerRef = useRef<HTMLDivElement | null>(null);
+
+  const { hasInteractiveTrackList } = useDiscographyGuideStore();
+  const minTablet = useMediaQuery({ minWidth: 768 });
+  const browser = Bowser.getParser(window.navigator.userAgent);
+  const platformType = browser.getPlatformType();
 
   const location = useLocation();
   const isDiscography: boolean = location?.pathname === "/discography";
-  const isHome: boolean = location?.pathname === "/";
-
-  const minTablet = useMediaQuery({ minWidth: 768 });
-
   const backgroundColor = isDiscography
     ? "rgba(0, 0, 0, 0.5)"
-    : isHome
-      ? "rgba(255, 255, 255, 0.25)"
-      : "rgba(255, 255, 255, 0.25)";
+    : "rgba(255, 255, 255, 0.25)";
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -54,6 +54,18 @@ export default function Layout({ children }: { children: ReactNode }) {
     }
   }, [location.pathname]);
 
+  useLayoutEffect(() => {
+    switch (platformType) {
+      case "desktop":
+        setIsUserAgentPC(true);
+        break;
+      case "mobile":
+      case "tablet":
+        setIsUserAgentPC(false);
+        break;
+    }
+  }, [platformType]);
+
   return (
     <motion.main
       initial={{ backgroundColor: "rgba(255, 255, 255, 0)" }}
@@ -66,10 +78,11 @@ export default function Layout({ children }: { children: ReactNode }) {
       <Header />
       {children}
       <div ref={footerRef} className="relative">
-        {minTablet && <ScrollTopBtn isFooterVisible={isFooterVisible} />}
-        {isDiscography && guideButton && (
-          <DiscographyFAB isFooterVisible={isFooterVisible} />
+        {isDiscography && hasInteractiveTrackList && (
+          // && isUserAgentPC
+          <GuideBtn isFooterVisible={isFooterVisible} />
         )}
+        {minTablet && <ScrollTopBtn isFooterVisible={isFooterVisible} />}
         <Footer />
       </div>
     </motion.main>

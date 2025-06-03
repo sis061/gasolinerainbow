@@ -9,13 +9,13 @@ export const renderDiskType = (v: string) => {
 
   switch (v) {
     case "album":
-      type = { kr: "앨범", en: "ALBUM" };
+      type = { kr: "앨범", en: "Album" };
       break;
     case "remix":
-      type = { kr: "리믹스", en: "REMIX" };
+      type = { kr: "리믹스", en: "Remix" };
       break;
     case "single":
-      type = { kr: "싱글", en: "SINGLE" };
+      type = { kr: "싱글", en: "Single" };
       break;
     case "EP":
       type = { kr: "EP", en: "EP" };
@@ -60,15 +60,17 @@ export const filterHTMLTags = (content: string): string => {
 
 /**
  * @description 밀리세컨드 => DD-MM-YYYY 변환기
- * @param millis 밀리초
+ * @param {millis lang} 밀리초, 현재 언어
  * @returns {string} DD-MM-YYYY
  */
 
-export const formatLocalTimetoDate = (millis: number): string => {
+export const formatTimestamp = (millis: number, lang: string): string => {
   const date = new Date(millis);
   const day = String(date.getDate()).padStart(2, "0");
   const month = String(date.getMonth() + 1).padStart(2, "0");
   const year = date.getFullYear();
+  const render =
+    lang === "ko" ? `${year}-${month}-${day}` : `${day}-${month}-${year}`;
 
-  return `${day}-${month}-${year}`;
+  return render;
 };

@@ -8,12 +8,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import _ from "lodash";
 /************/
 import type { NoteProps } from "@/types/authornote";
+import useLanguageStore from "@/store/useLanguageStore";
 
 export default function Note() {
   const imgRef = useRef<HTMLDivElement | null>(null);
   /************/
   const navigate = useNavigate();
   const location = useLocation();
+  const { language } = useLanguageStore();
   const { category, title }: NoteProps = location.state.note;
   const content: string = location?.state.content ?? "";
 
@@ -63,7 +65,7 @@ export default function Note() {
               onClick={() => navigate("/authornote")}
             >
               <ArrowLeft />
-              목록으로 돌아가기
+              {language === "ko" ? "목록으로 돌아가기" : "Back to list"}
             </Button>
           </div>
         </div>

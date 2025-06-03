@@ -11,12 +11,14 @@ import _ from "lodash";
 import DOMPurify from "dompurify";
 import { useMediaQuery } from "react-responsive";
 /************/
+import useLanguageStore from "@/store/useLanguageStore";
 import { newsMockData } from "@/utils/newsMockData";
-import { formatLocalTimetoDate } from "@/utils/globalHelper";
+import { formatTimestamp } from "@/utils/globalHelper";
 
 export default function News() {
-  const minTablet = useMediaQuery({ minWidth: 768 });
   const AccordionRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const minTablet = useMediaQuery({ minWidth: 768 });
+  const { language } = useLanguageStore();
 
   const setRef = useCallback((el: HTMLDivElement | null, index: number) => {
     AccordionRefs.current[index] = el;
@@ -70,7 +72,7 @@ export default function News() {
                   />
                   <div className="flex w-full items-center justify-between !px-2">
                     <span className="text-right font-semibold">
-                      {formatLocalTimetoDate(+news.date)}
+                      {formatTimestamp(+news.date, language)}
                     </span>
                     <AccordionTrigger className="flex items-center justify-center *:w-5 *:h-5 cursor-pointer" />
                   </div>

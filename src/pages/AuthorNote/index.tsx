@@ -29,6 +29,7 @@ import DOMPurify from "dompurify";
 /************/
 import { noteMockData } from "@/utils/noteMockData";
 import { filterHTMLTags } from "@/utils/globalHelper";
+import useLanguageStore from "@/store/useLanguageStore";
 
 export default function AuthorNote() {
   const [page, setPage] = useState<number>(() => {
@@ -36,6 +37,7 @@ export default function AuthorNote() {
     return restored > 0 ? restored : 1;
   });
   const navigate = useNavigate();
+  const { language } = useLanguageStore();
 
   // 페이지 수에 따른 목록 렌더링
   const rowsPerPage = 6;
@@ -68,7 +70,7 @@ export default function AuthorNote() {
                 No.
               </TableHead>
               <TableHead className="max-md:!pr-2 md:!pl-1.5 max-md:text-xs order-3 md:!order-2 h-full">
-                카테고리
+                {language === "ko" ? "카테고리" : "Category"}
               </TableHead>
               <TableHead className="order-2 md:!order-3 w-full h-full" />
             </TableRow>

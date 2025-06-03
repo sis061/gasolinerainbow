@@ -5,7 +5,8 @@ import HomeAlbumOverview from "./components/HomeAlbumOverview";
 import HomeCountDown from "./components/HomeCountDown";
 
 export default function Home() {
-  const releaseDate = new Date("2025-07-03T12:00:00");
+  const releaseDate = new Date("2025-06-25T12:00:00");
+  // const releaseDate = new Date(Date.now() + 10000);
   const HMVideoId: string = "q0RXd1Tj7tk";
   const BIPVideoId: string = "q0RXd1Tj7tk";
 

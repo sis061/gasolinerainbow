@@ -1,6 +1,6 @@
 import profileImg from "@/assets/images/profileImg.jpg";
 
-export default function Profile() {
+export default function About() {
   return (
     <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center">
       <div className="inner flex-grow-0 w-full flex items-center justify-center !mb-10 md:!pt-10 max-md:!px-4">

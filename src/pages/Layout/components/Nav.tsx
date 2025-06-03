@@ -4,13 +4,14 @@ import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
 /************/
 import { useScrollState } from "@/hooks/useScrollState";
+import useLanguageStore from "@/store/useLanguageStore";
 
 const navLinks = [
   // { to: "/", label: "홈" },
-  { to: "/profile", label: "소개" },
-  { to: "/discography", label: "디스코그라피" },
-  { to: "/news", label: "소식" },
-  { to: "/authornote", label: "작가의 말" },
+  { to: "/about", labelKr: "소개", labelEn: "About" },
+  { to: "/discography", labelKr: "디스코그라피", labelEn: "Discography" },
+  { to: "/news", labelKr: "소식", labelEn: "News" },
+  { to: "/authornote", labelKr: "작가의 말", labelEn: "Notes" },
 ];
 
 const Nav = ({
@@ -22,10 +23,10 @@ const Nav = ({
 }) => {
   const minTablet = useMediaQuery({ minWidth: 768 });
   const isScrolled = useScrollState();
-
+  const { language } = useLanguageStore();
   return (
     <ul className="max-md:w-full max-md:justify-between flex items-center justify-start gap-4 xl:gap-6 [&_>li]:flex [&_>li]:justify-center [&_>li]:items-center">
-      {_.map(navLinks, ({ to, label }) => (
+      {_.map(navLinks, ({ to, labelKr, labelEn }) => (
         <li key={to}>
           <Link
             to={to}
@@ -37,7 +38,7 @@ const Nav = ({
               location?.pathname.startsWith(to) && "opacity-100"
             )}
           >
-            {label}
+            {language === "ko" ? labelKr : labelEn.toUpperCase()}
           </Link>
         </li>
       ))}

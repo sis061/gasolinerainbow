@@ -9,6 +9,7 @@ import {
 import { X } from "lucide-react";
 /************/
 import type { Disk, Track } from "@/types/discography";
+import useLanguageStore from "@/store/useLanguageStore";
 
 const MobileDrawer = ({
   selectedTrack,
@@ -17,14 +18,19 @@ const MobileDrawer = ({
   selectedTrack: Track | null;
   albumMeta: Disk;
 }) => {
+  const { language } = useLanguageStore();
+  const isKorean = language === "ko";
+  const title = albumMeta.title ? `[ ${albumMeta.title} ]` : "the Album";
+  const description = isKorean ? "소개와 크레딧" : `About ${title}`;
+
   return (
     <DrawerContent
       aria-describedby={selectedTrack ? "drawer-description" : undefined}
-      className="flex flex-col items-center !py-6 !bg-black/90 w-full h-[90dvh]"
+      className="flex flex-col items-center !py-6 !bg-black/90 w-full !max-h-[75dvh]"
     >
-      <DrawerHeader className="w-full h-[90%] text-center !py-6">
+      <DrawerHeader className="w-full h-[90%] text-center !py-6 overflow-y-scroll">
         <DrawerTitle className="!text-white !pb-6">
-          {selectedTrack ? selectedTrack.title : "소개와 크레딧"}
+          {selectedTrack ? selectedTrack.title : description}
         </DrawerTitle>
         <div className="w-full h-full !overflow-y-scroll !px-6">
           {selectedTrack ? (

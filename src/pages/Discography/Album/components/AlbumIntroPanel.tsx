@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import StreamingModal from "../../modals/StreamingModal";
 import type { Disk } from "@/types/discography";
+import useLanguageStore from "@/store/useLanguageStore";
 
 const AlbumIntroPanel = ({ albumMeta }: { albumMeta: Disk }) => {
   const { image, title, year, isCD, cdUrl } = albumMeta;
+  const { language } = useLanguageStore();
   return (
     <ul className="w-full flex items-center gap-10 max-lg:flex-col">
       <li className="bg-gray-600 overflow-hidden w-full md:w-2/3 lg:w-auto">
@@ -26,7 +28,7 @@ const AlbumIntroPanel = ({ albumMeta }: { albumMeta: Disk }) => {
             {isCD && cdUrl && (
               <li className="transition-all duration-200 hover:opacity-50">
                 <Link to={cdUrl} target="_blank" rel="noopener noreferrer">
-                  CD 구매
+                  {language === "ko" ? "CD 구매" : "Order"}
                 </Link>
               </li>
             )}

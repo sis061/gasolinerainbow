@@ -31,7 +31,7 @@ const Header = () => {
 
   useEffect(() => {
     setIsCurrentLang(true);
-    const timer = setTimeout(() => setIsCurrentLang(false), 1000);
+    const timer = setTimeout(() => setIsCurrentLang(false), 500);
     return () => clearTimeout(timer);
   }, [language]);
 
@@ -96,6 +96,8 @@ const Header = () => {
             onClick={() =>
               handleChangeLanguage(language === "ko" ? "en" : "ko")
             }
+            onMouseEnter={() => setIsCurrentLang(true)}
+            onMouseLeave={() => setIsCurrentLang(false)}
           >
             <Languages
               size={28}
@@ -110,9 +112,9 @@ const Header = () => {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.1 }}
-                  className="absolute flex items-center justify-center bg-white w-full h-full rounded-full"
+                  className="absolute flex items-center justify-center bg-black w-full h-full rounded-full"
                 >
-                  <span className="font-bold text-center">
+                  <span className="font-bold text-center !text-white">
                     {language === "ko" ? "한" : "A"}
                   </span>
                 </motion.div>

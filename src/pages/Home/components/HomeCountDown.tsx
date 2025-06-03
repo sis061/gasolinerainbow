@@ -9,7 +9,7 @@ import type { Disk } from "@/types/discography";
 
 interface CountdownTimerProps {
   releaseDate: Date;
-  albumMeta: Disk; // 혹은 실제 HMData 타입
+  albumMeta: Disk;
   videoId: string;
 }
 

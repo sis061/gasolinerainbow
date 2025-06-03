@@ -8,7 +8,7 @@ import AuthorNote from "./pages/AuthorNote";
 import Note from "./pages/AuthorNote/Note";
 import Discography from "./pages/Discography";
 import News from "./pages/News";
-import Profile from "./pages/Profile";
+import About from "./pages/About";
 import Home from "./pages/Home";
 
 const Routers: React.FC<any> = (): JSX.Element => {
@@ -18,7 +18,7 @@ const Routers: React.FC<any> = (): JSX.Element => {
     <Routes location={location}>
       <Route path="/" element={<Home />} />
       <Route path="*" element={<Home />} />
-      <Route path="/profile" element={<Profile />} />
+      <Route path="/about" element={<About />} />
       <Route path="/discography" element={<Discography />} />
       <Route path="/authornote">
         <Route path="" element={<AuthorNote />} />

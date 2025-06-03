@@ -35,7 +35,7 @@ const HomeAlbumOverview = ({
       <div className="w-auto shadow-2xl row-start-2 col-start-1 col-span-4 bg-white/75 flex flex-col justify-between gap-10 !-mt-4 lg:!-mt-12 lg:!mr-12 !p-6 ">
         <div className="!py-2 font-bold flex lg:flex-col w-full items-end lg:items-start">
           <span className="text-lg lg:!pl-1.5">
-            {language === "ko" ? type.kr : type.en}
+            {language === "ko" ? type.kr : type.en.toUpperCase()}
           </span>
           <h1 className="text-3xl !pl-1">[ {albumMeta.title} ]</h1>
         </div>
@@ -47,7 +47,9 @@ const HomeAlbumOverview = ({
             className="flex items-center gap-1 max-md:hover:underline underline-offset-4 max-md:hover:cursor-pointer select-none"
             onClick={() => setIsOpen(!isOpen)}
           >
-            <h2 className="font-bold !pl-1">아래에서 듣기</h2>
+            <h2 className="font-bold !pl-1">
+              {language === "ko" ? "아래에서 듣기" : "Stream"}
+            </h2>
             {!minTablet && (
               <ChevronDown
                 size={20}

@@ -19,11 +19,13 @@ import CarouselNavigation from "../components/CarouselNavigation";
 import MobileDrawer from "../modals/MobileDrawer";
 /************/
 import type { CarouselProps, Track } from "@/types/discography";
+import useLanguageStore from "@/store/useLanguageStore";
 
 const AlbumCarousel = ({ albumMeta, onChange }: CarouselProps) => {
   const carouselRef = useRef<CarouselApi | null>(null);
   const lyricsRef = useRef<HTMLLIElement | null>(null);
-  const minLaptop = useMediaQuery({ minWidth: 768 });
+  const minTablet = useMediaQuery({ minWidth: 768 });
+  const { language } = useLanguageStore();
   const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
 
   const { ref, inView } = useInView({
@@ -69,15 +71,15 @@ const AlbumCarousel = ({ albumMeta, onChange }: CarouselProps) => {
                       onClick={() => setSelectedTrack(null)}
                       className={cx(
                         "cursor-pointer !px-2 relative transition-all duration-200 hover:opacity-50",
-                        minLaptop &&
+                        minTablet &&
                           !selectedTrack &&
                           "!bg-white/75 [&_>span]:!text-black "
                       )}
                     >
-                      <span>앨범 소개</span>
+                      <span>{language === "ko" ? "앨범 소개" : "About"}</span>
                       {/* <div
                           className={cx(
-                            minLaptop &&
+                            minTablet &&
                               !selectedTrack &&
                               "absolute w-10 h-full bg-white/75 top-0 -right-10 z-[50] transition-all duration-200"
                           )}
@@ -91,7 +93,7 @@ const AlbumCarousel = ({ albumMeta, onChange }: CarouselProps) => {
                     onSelect={setSelectedTrack}
                   />
                 </li>
-                {minLaptop ? (
+                {minTablet ? (
                   <LyricsPanel
                     lyricsRef={lyricsRef}
                     selectedTrack={selectedTrack}

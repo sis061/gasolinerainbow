@@ -20,8 +20,16 @@ const MobileDrawer = ({
 }) => {
   const { language } = useLanguageStore();
   const isKorean = language === "ko";
-  const title = albumMeta.title ? `[ ${albumMeta.title} ]` : "the Album";
+
+  const albumTitleTranslated =
+    language === "ko" ? albumMeta.titleKr : albumMeta.titleEn;
+  const title = albumTitleTranslated
+    ? `[ ${albumTitleTranslated} ]`
+    : "the Album";
   const description = isKorean ? "소개와 크레딧" : `About ${title}`;
+
+  const trackTitleTranslated =
+    language === "ko" ? selectedTrack?.titleKr : selectedTrack?.titleEn;
 
   return (
     <DrawerContent
@@ -30,7 +38,7 @@ const MobileDrawer = ({
     >
       <DrawerHeader className="w-full h-[90%] text-center !py-6 overflow-y-scroll">
         <DrawerTitle className="!text-white !pb-6">
-          {selectedTrack ? selectedTrack.title : description}
+          {selectedTrack ? trackTitleTranslated : description}
         </DrawerTitle>
         <div className="w-full h-full !overflow-y-scroll !px-6">
           {selectedTrack ? (

@@ -65,7 +65,7 @@ const TrackList = ({
                         "!bg-white/75 !px-2"
                     )}
                   >
-                    {tr.trackNo}. {tr.title}
+                    {tr.trackNo}. {language === "ko" ? tr.titleKr : tr.titleEn}
                   </span>
                 ) : (
                   <DrawerTrigger>
@@ -74,7 +74,8 @@ const TrackList = ({
                         triggerRefs.current[i] = el;
                       }}
                     >
-                      {tr.trackNo}. {tr.title}
+                      {tr.trackNo}.{" "}
+                      {language === "ko" ? tr.titleKr : tr.titleEn}
                     </span>
                   </DrawerTrigger>
                 )}
@@ -94,7 +95,7 @@ const TrackList = ({
             </>
           ) : (
             <span>
-              {tr.trackNo}. {tr.title}
+              {tr.trackNo}. {language === "ko" ? tr.titleKr : tr.titleEn}
             </span>
           )}
         </li>

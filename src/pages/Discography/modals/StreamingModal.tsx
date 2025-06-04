@@ -49,7 +49,7 @@ const StreamingModal = ({ albumMeta }: { albumMeta: Disk }) => {
           <DialogHeader>
             <DialogTitle className="!text-white !pb-6">
               {language === "ko" ? "아래에서 듣기" : "Stream"} -{" "}
-              {albumMeta.title}
+              {language === "ko" ? albumMeta.titleKr : albumMeta.titleEn}
             </DialogTitle>
           </DialogHeader>
           <DialogDescription className="sr-only hidden">
@@ -78,7 +78,7 @@ const StreamingModal = ({ albumMeta }: { albumMeta: Disk }) => {
       >
         <DrawerHeader className="w-full h-[90%] text-center !py-6 overflow-y-scroll">
           <DrawerTitle className="!text-white !pb-6 sr-only">
-            Listen {albumMeta.title}
+            Listen {language === "ko" ? albumMeta.titleKr : albumMeta.titleEn}
           </DrawerTitle>
 
           <div className="w-full h-full !overflow-y-scroll !px-6">

@@ -70,7 +70,7 @@ const SingleInfoPanel = ({
                   <span>{language === "ko" ? type.kr : type.en}</span>
                 </div>
                 <span className="text-3xl text-end !pb-4 max-md:text-2xl max-md:font-bold">
-                  {albumMeta.title}
+                  {language === "ko" ? albumMeta.titleKr : albumMeta.titleEn}
                 </span>
                 <StreamingModal albumMeta={albumMeta} />
                 {albumMeta.isCD && albumMeta.cdUrl && (

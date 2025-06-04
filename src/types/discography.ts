@@ -43,7 +43,9 @@ export type SetTrackState = React.Dispatch<React.SetStateAction<TrackOrNull>>;
 
 // ──────────────────────컴포넌트 Props───────────────────────
 
-export type MultipleIntroPanelProps = Pick<Disk, "year" | "title" | "image">;
+export type MultipleIntroPanelProps = Pick<Disk, "year" | "image"> & {
+  title: string;
+};
 export interface CarouselProps {
   albumMeta: Disk;
   isHoverToolip?: boolean;

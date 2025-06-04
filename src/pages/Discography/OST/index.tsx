@@ -14,12 +14,14 @@ import StreamingModal from "../modals/StreamingModal";
 import CarouselNavigation from "../components/CarouselNavigation";
 /************/
 import type { SingleCarouselsProps } from "@/types/discography";
+import useLanguageStore from "@/store/useLanguageStore";
 
 const OSTCarousel = ({
   albumMetas,
   // , onChange
 }: SingleCarouselsProps) => {
   const carouselRef = useRef<CarouselApi | null>(null);
+  const { language } = useLanguageStore();
 
   // useEffect(() => {
   //   onChange && onChange(false);
@@ -57,7 +59,9 @@ const OSTCarousel = ({
                   <div className="flex flex-col w-full justify-center items-center max-md:items-start gap-2 [&_*]:!text-white">
                     <span className="text-sm">{albumMeta.year}</span>
                     <span className="text-3xl !pb-4 max-md:text-xl max-md:font-bold">
-                      {albumMeta.title}
+                      {language === "ko"
+                        ? albumMeta.titleKr
+                        : albumMeta.titleEn}
                     </span>
                     <StreamingModal albumMeta={albumMeta} />
                   </div>
@@ -67,7 +71,8 @@ const OSTCarousel = ({
                     {_.map(albumMeta.tracks, (tr) => (
                       <li key={tr.trackNo}>
                         <span className="!text-white">
-                          {tr.trackNo}. {tr.title}
+                          {tr.trackNo}.{" "}
+                          {language === "ko" ? tr.titleKr : tr.titleEn}
                         </span>
                       </li>
                     ))}

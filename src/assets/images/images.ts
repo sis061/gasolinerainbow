@@ -47,4 +47,3 @@ export const commonImages = {
   bg01Img,
   profileImg,
 };
-export { profileImg };

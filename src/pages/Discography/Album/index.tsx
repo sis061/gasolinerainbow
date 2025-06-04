@@ -105,8 +105,10 @@ const AlbumCarousel = ({
                       className="flex flex-col  gap-6 items-end max-md:items-center justify-center"
                     >
                       <span className="text-sm">{albumMeta.year}</span>
-                      <span className="text-4xl text-center">
-                        {albumMeta.title}
+                      <span className="text-4xl text-center md:text-end">
+                        {language === "ko"
+                          ? albumMeta.titleKr
+                          : albumMeta.titleEn}
                       </span>
                       <div
                         id="trigger-observer"

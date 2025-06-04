@@ -44,7 +44,9 @@ const HomeAlbumOverview = ({
           <span className="text-lg lg:!pl-1.5">
             {language === "ko" ? type.kr : type.en.toUpperCase()}
           </span>
-          <h1 className="text-3xl !pl-1">[ {albumMeta.title} ]</h1>
+          <h1 className="text-3xl !pl-1">
+            [ {language === "ko" ? albumMeta.titleKr : albumMeta.titleEn} ]
+          </h1>
         </div>
         <p className="w-full whitespace-break-spaces">
           {albumMeta.description}

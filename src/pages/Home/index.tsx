@@ -1,6 +1,6 @@
 import _ from "lodash";
 /************/
-import { mockDiskData } from "@/utils/mockDiskData";
+import { DiskMetaDatas } from "@/utils/diskMetaDatas";
 import HomeAlbumOverview from "./components/HomeAlbumOverview";
 import HomeCountDown from "./components/HomeCountDown";
 
@@ -11,8 +11,8 @@ export default function Home() {
   const BIPVideoId: string = "q0RXd1Tj7tk";
 
   const [HMData] = _.filter(
-    mockDiskData,
-    (data) => data.title.toLowerCase() === "Hm".toLowerCase()
+    DiskMetaDatas.albumMetaDatas,
+    (data) => data.titleKr.toLowerCase() === "Hm".toLowerCase()
   );
 
   return (

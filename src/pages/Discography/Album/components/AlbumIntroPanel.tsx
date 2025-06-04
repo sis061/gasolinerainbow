@@ -4,7 +4,8 @@ import type { Disk } from "@/types/discography";
 import useLanguageStore from "@/store/useLanguageStore";
 
 const AlbumIntroPanel = ({ albumMeta }: { albumMeta: Disk }) => {
-  const { image, title, year, isCD, cdUrl } = albumMeta;
+  const { image, titleKr, titleEn, year, isCD, cdUrl } = albumMeta;
+
   const { language } = useLanguageStore();
   return (
     <ul className="w-full flex items-center gap-10 max-lg:flex-col">
@@ -17,23 +18,23 @@ const AlbumIntroPanel = ({ albumMeta }: { albumMeta: Disk }) => {
         }
       >
         {year && <span className="text-sm">{year}</span>}
-        <span className="text-3xl md:text-5xl text-center">{title}</span>
+        <span className="text-3xl md:text-5xl !text-center">
+          {language === "ko" ? titleKr : titleEn}
+        </span>
 
-        {isCD && (
-          <ol className="flex gap-6">
-            <li>
-              <StreamingModal albumMeta={albumMeta} />
+        <ol className="flex gap-6">
+          <li>
+            <StreamingModal albumMeta={albumMeta} />
+          </li>
+
+          {isCD && cdUrl && (
+            <li className="transition-all duration-200 hover:opacity-50">
+              <Link to={cdUrl} target="_blank" rel="noopener noreferrer">
+                {language === "ko" ? "CD 구매" : "Order"}
+              </Link>
             </li>
-
-            {isCD && cdUrl && (
-              <li className="transition-all duration-200 hover:opacity-50">
-                <Link to={cdUrl} target="_blank" rel="noopener noreferrer">
-                  {language === "ko" ? "CD 구매" : "Order"}
-                </Link>
-              </li>
-            )}
-          </ol>
-        )}
+          )}
+        </ol>
       </li>
     </ul>
   );

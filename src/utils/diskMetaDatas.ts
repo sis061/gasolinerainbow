@@ -20,7 +20,7 @@ const diskAlbumData: Disk[] = [
     },
     isCD: true,
     cdUrl: "https://smartstore.naver.com/6v6recordings/products/9436037351",
-    description: `저에게 제 노래는 일종의 방어입니다. 자신을 바라보고 제 속의 갈등—주로 고독 및 자기 비난—을 다시 곱게 빚어내는 자기 방어. \n\n 그러니 제가 저를 직접 내보이기는 아직도 부끄럽기에, 이번에는 마치 셀프 타이틀 같지 않은 셀프 타이틀 앨범 [HM]에 열한 곡의 노래들을 엮었습니다. \n\n 언제는 외로움에 어찌할 바를 모르다가도 또 가끔은 초연해지는, 저 그리고 모두가 가진 본연의 모습을 담고 싶었습니다.
+    descriptionKr: `저에게 제 노래는 일종의 방어입니다. 자신을 바라보고 제 속의 갈등—주로 고독 및 자기 비난—을 다시 곱게 빚어내는 자기 방어. \n\n 그러니 제가 저를 직접 내보이기는 아직도 부끄럽기에, 이번에는 마치 셀프 타이틀 같지 않은 셀프 타이틀 앨범 [HM]에 열한 곡의 노래들을 엮었습니다. \n\n 언제는 외로움에 어찌할 바를 모르다가도 또 가끔은 초연해지는, 저 그리고 모두가 가진 본연의 모습을 담고 싶었습니다.
 \n
   하나 : 새벽에, 혼자, 어둡게 그리고 정말 크게 들어주세요.
 
@@ -43,6 +43,65 @@ const diskAlbumData: Disk[] = [
   열 : 괜찮아, 상관없어, 걱정하지 마. 거기에선 말이야. 다 거짓말이야.
 
   열하나 : 소름 끼치게 대단한 어떤 것들을 상상하세요. 그리고 그것들이 사그라지는 모습을 이어 그리세요. 끝.`,
+    descriptionEn: `To me, my songs are a kind of armour.
+They let me face myself—reshape the conflict inside me, mostly loneliness and self-reproach—into something more revealing.
+
+I’m still not quite brave enough to show myself fully. So instead, I put together eleven songs into a self-titled album that doesn’t really feel self-titled: [HM].
+
+It holds a version of myself I wanted to share—moments of loneliness, but also strange calm. Something I believe we all carry.
+
+One.
+Play this in the dead of night.
+Alone. In the dark. And turn it up—loud.
+
+Two.
+Regret. Mourn.
+Somehow, a flicker of hope always remains somewhere.
+Though I have no idea why.
+
+Three.
+You have to leave. You have to vanish.
+But please—hold on. Cry.
+I didn’t want to say it out loud.
+
+Four.
+A fake love song.
+When the cold arrives too soon, and everyone hides—leaving me alone.
+
+Five.
+You try, but it’s pointless.
+Each breath catches in your throat.
+Kindness breeds enemies.
+If only a rain would come—to wash it all away.
+
+Six.
+A strange dream breaks.
+And the sudden return to reality feels unbearably tender.
+
+Seven.
+Being truly alone in space and time—
+it becomes your friend, your teacher, your mirror.
+Generously, in Silence but definitely.
+
+Eight.
+Like an allergy cure.
+You’ll meet the coldest me on the hottest day.
+
+Nine.
+A chases money.
+B chases power.
+C chases a home.
+And I chase them all.
+
+Ten.
+It’s fine. It doesn’t matter. Don’t worry.
+There, there, therein.
+But it’s all a lie.
+
+Eleven.
+Picture something stunning, something that chills you to the bone.
+Now imagine it fading.
+The End.`,
     credits: `Produced by HIMINN, Shinhwan
 Recorded by Shinhwan @ Phoné Studio
 Mixed & Mastered by Shinhwan @ Phoné Studio
@@ -662,7 +721,7 @@ The melody only remains`,
     },
     isCD: false,
     cdUrl: null,
-    description: `지하철, 침대, 라디오,
+    descriptionKr: `지하철, 침대, 라디오,
 치사랑, 성애, 섭식장애,
 09시, 18시, 22시, 03시,
 원숭이, 고양이, 정어리,
@@ -670,6 +729,14 @@ The melody only remains`,
 모두의 무가치함,
 모두의 모두에 대한 이별,
 그럼에도 우리는.`,
+    descriptionEn: `The subway, the bed, the radio.
+parental love, desire, disordered eating.
+9 a.m., 6 p.m., 10 p.m., 3 a.m.
+Monkeys, cats, sardines.
+Everyone’s lethargy.
+Everyone’s worthlessness.
+Everyone’s goodbye to everyone.
+And still—we are.`,
     credits: `Produced by HIMINN
 Recorded by Shinhwan @ Phoné Studio
 Mixed & Mastered by Shinhwan @ Phoné Studio
@@ -941,7 +1008,7 @@ I have done, if nothing mattered
       bandcamp: "https://himinnn.bandcamp.com/album/hm-remixes",
       spotify: "https://open.spotify.com/album/6sZOYYAqwlNCGFk3KW3eer",
       youtubeMusic:
-        "https://music.youtube.com/playlist?list=OLAK5uy_mqSbyG7WqaMdeYnQmj7k1jfoqIOho5FUg&si=D_QEKJKzZXiNFTKh",
+        "https://music.youtube.com/playlist?list=OLAK5uy_n15Y0EmjAPYC_ItooG5FUzupx3iLrnR9w&si=apLSAEUun9LnEEeF",
       appleMusic: "https://music.apple.com/us/album/hm-remixes/1692310589",
       melon: "https://www.melon.com/album/detail.htm?albumId=11266123",
       bugs: "https://music.bugs.co.kr/album/20571787",
@@ -949,7 +1016,7 @@ I have done, if nothing mattered
     },
     isCD: false,
     cdUrl: null,
-    description: `HIMINN 의 정규 앨범 [HM] 의 수록곡을 다른 뮤지션들의 손으로 재조립한 리믹스 앨범
+    descriptionKr: `HIMINN 의 정규 앨범 [HM] 의 수록곡을 다른 뮤지션들의 손으로 재조립한 리믹스 앨범
 
 “내밀한 이야기는 자랑하듯이 내놓았으면서
 부탁하는 소리는 당당하게 못 내지르는 놈이
@@ -962,6 +1029,20 @@ I have done, if nothing mattered
 이제 우린 슬픈 노래였던 것에 발을 구르고 손뼉을 치고 춤을 춰
 알지도 못할 것에 속으로만 야성을 지르고
 즐겁게 즐거웁게 춤을.”`,
+    descriptionEn: `A remix album where songs from HIMINN’s full-length album [HM]
+are taken apart and reassembled by the hands of other musicians.
+
+“I laid my most intimate stories out like trophies,
+yet couldn’t bring myself to ask for help with any pride.
+Somehow, things held together, thanks to a hand someone else offered first.
+
+That shallow kind of reflection became a quiet conversation.
+Songs broke apart, stuck back together, twisted and changed.
+And I, fumbling along, released another song leaning on someone else’s name.
+
+Now we stomp our feet and clap our hands to what once was a sad song.
+We howl wildness inside for things we don’t even understand.
+And dance—joyfully, joyfullier—into it all.”`,
     credits: `Produced by HIMINN
 Composed by HIMINN
 Lyrics by HIMINN (Track 2-9), 개옹 (Track 9)
@@ -1050,7 +1131,8 @@ const diskOthersData: Disk[] = [
     urls: {
       bandcamp: "https://himinnn.bandcamp.com/track/fools-box",
       spotify: "https://open.spotify.com/album/0zgMzssJeHA3mWyFNwocUv",
-      youtubeMusic: "https://123.com",
+      youtubeMusic:
+        "https://music.youtube.com/playlist?list=OLAK5uy_kVN0sP1ZwefTWgbRFdQ5WBqm8uWfhdS24&si=PRvqNGveBTI1m6nO",
       appleMusic:
         "https://music.apple.com/kr/album/fools-box-single/1637595736",
       melon: "https://www.melon.com/album/detail.htm?albumId=11021023",
@@ -1059,13 +1141,21 @@ const diskOthersData: Disk[] = [
     },
     isCD: false,
     cdUrl: null,
-    description: `진부하고 진부한 판도라의 상자 이야기를 빗대어 말하고 싶었습니다.
+    descriptionKr: `진부하고 진부한 판도라의 상자 이야기를 빗대어 말하고 싶었습니다.
 후회하세요, 그리고 슬퍼하세요.
 
 그래도 희망은 남아있습니다, 도대체 왜인지 모르겠지만.
 
 아무쪼록 저는 말이죠,
 여전히 같이 울기로 마음먹었습니다.`,
+    descriptionEn: `I wanted to allude to that tired, old tale of Pandora’s box.
+Do regret, and Do grieve.
+
+Still—hope remains.
+For reasons I’ll never quite understand.
+
+Anyway, as for me,
+I’ve decided I’ll keep crying with.`,
     credits: `Produced by Shinhwan @ Phoné Studio, HIMINN
 Recorded by Shinhwan @ Phoné Studio
 Mixed & Mastered by Shinhwan @ Phoné Studio
@@ -1139,7 +1229,8 @@ Vocal by HIMINN`,
     urls: {
       spotify:
         "https://open.spotify.com/album/7H2JpgtWZ0wYBfaJf75VOF?si=lB8D3YRESCGc186322_1Dw",
-      youtubeMusic: "https://123.com",
+      youtubeMusic:
+        "https://music.youtube.com/playlist?list=OLAK5uy_lVmPPnoad9olmyrexgevdzSsSyeJ0d5mM&si=Qbcxm0NXYzlcDwgt",
       appleMusic:
         "https://music.apple.com/us/album/in-the-need-of-a-good-cry-ep/1569826606",
       melon: "https://www.melon.com/album/detail.htm?albumId=10607746",
@@ -1148,7 +1239,7 @@ Vocal by HIMINN`,
     },
     isCD: false,
     cdUrl: null,
-    description: `눈물을 흘리는 것은 나약한 일일까? 그렇다 듣고, 또 그렇게 알며 살아왔다. 그러나 이제는 좋은 울음에 대해 이야기해보고 싶다. 달아오르는 눈시울을 자랑스럽게 여기지는 못해도 숨기지는 않겠다. 거창한 무언가를 해내겠다는 것은 아니다. 그저 담담하게 나의 이야기를, 동시에 어딘가 있을 또 다른 누군가들의 이야기를 적고 멜로디를 이었다. 그렇게 고독과 우울함, 반성과 부끄러움을 담은 다섯 곡을 엮어 ‘좋은 울음'에 대한 나름의 고민을 정리했다.
+    descriptionKr: `눈물을 흘리는 것은 나약한 일일까? 그렇다 듣고, 또 그렇게 알며 살아왔다. 그러나 이제는 좋은 울음에 대해 이야기해보고 싶다. 달아오르는 눈시울을 자랑스럽게 여기지는 못해도 숨기지는 않겠다. 거창한 무언가를 해내겠다는 것은 아니다. 그저 담담하게 나의 이야기를, 동시에 어딘가 있을 또 다른 누군가들의 이야기를 적고 멜로디를 이었다. 그렇게 고독과 우울함, 반성과 부끄러움을 담은 다섯 곡을 엮어 ‘좋은 울음'에 대한 나름의 고민을 정리했다.
 
 1. Intro ; Extra
 
@@ -1172,10 +1263,113 @@ Vocal by HIMINN`,
 그래서 난 그들을 빌어 ‘엔터테이너’에 대해 노래하고 싶었다. 마지막 남은 서커스단은 위험한 묘기를 매일 이어가면서도 내일을 생각해야한다. 단원들은 아슬아슬한 그네에 그들의 안전과 생계를 걸고 있다. 한 치 앞도 안 보이지만 당장 오늘은 무대에 올라야하는 삶. 세상 모든 엔터테이너들이 이와 비슷하게 살아가고 있지 않을까? 고된 삶이다. 하지만 나의 발걸음은 이미 그쪽을 향해있다.
 ’엔터테이나'는 기타 위주의 역동적인 익스페리먼탈 락을 표방하고 있으며 후렴구의 반복되는 가사를 통해 키치함을 살렸다. 정확히 다시 말하자면, 이 노래를 통해 나는 수 어 번 부르짖는다. ‘엔터테이나'가 되기로.
 
-5. 다시  다시
+5. 다시𝄇다시
 
 대부분의 사람들은 세상 앞에서 ‘무저항력’의 상태에 놓여본 적이 있다. 이유 없이 혼자가 된 것 같아 불 꺼진 천장만 바라볼 때, 무기력함에 스스로를 돌보지 않을 때, 일상을 벗어나려다 결국 똑같은 침대에서 다시 눈을 뜰 때, 타인과의 연락이 오늘따라 묘하게 기분 나쁠 때. 잊고 있던 어느 날에 눈을 떴을 때는 어설프게 해가 지고 있었다. 아무도 없는 어둑한 방에서 일어났더니 왠지 모를 우울한 기분이 나를 덮쳤다. 주문에 걸린 것처럼 잠이 덜 깬 채로 가사와 멜로디를 흥얼거렸다. ‘혼자 잠을 청하는 게 편할 때, 그래도 쉽게 잠들지 못할 때...’ 담담하게 나머지 가사를 마음에서 글로 옮겼다.
 보통 우울에 대해 말하는 노래들은 해결법을 주려 한다. 하지만 이 노래에서는, 위로하기 위해 안간힘을 쓰는 대신 그냥 나는 같이 울기로 마음먹었다. 소리를 크게 지르고 벗어나려 해보아도, 그다지 신경 쓰이지 않는다고 남들에게 거짓말을 해보아도, 설명할 수 없는 그 감정은 언젠가는 다시 우리를 감싼다. 그냥 그날 하루 정도 버리는 셈 치고 많은 것을 쉬이 받아들이기를. 맑은 날에도 커튼을 치고 침대 안으로 숨는 게 뭐가 그리 비겁하고 부끄러운 일인가.`,
+    descriptionEn: `Is crying a sign of weakness?
+That’s what I’ve heard, and what I’ve lived by.
+But now, I want to talk about good crying.
+
+Though I can’t proudly show my burning eyes,
+I won’t hide them either.
+
+I’m not trying to achieve anything grand.
+Just calmly telling my story—
+And the stories of others out there somewhere—
+Weaving melodies from solitude, sadness, reflection, and shame.
+
+Five songs that gather these feelings,
+A personal meditation on what it means to cry well.
+
+1. Intro ; Extra
+
+I've always wished for an ordinary life, only to learn that being ordinary is the hardest thing. If I can’t be just another face in the crowd, the world offers two roles: the lead, or the extra. The Absolute—represented by my father—once told me, don’t chase the extraordinary.
+
+So I made my choice: I would be an extra.
+But I would live extraordinarily.
+
+2. Only Space
+
+For a long time, I’ve wanted to speak about solitude.
+Watching people fear being alone, seeing loneliness treated as a wound, I’ve come to believe this: solitude is not the enemy.
+
+When you’re truly alone, you can finally reach into the deepest parts of your own heart.
+The answers we search for lie buried in that quiet sediment.
+So solitude becomes a friend, a teacher, a mirror.
+
+At first, being alone in time and space feels suffocating.
+But soon, it gives your deepest self the freedom to roam.
+
+3. ≒ (가을같은겨울)
+
+I wanted to write a love song.
+But this isn’t one.
+
+Because of a series of events, love became something tangled with pain.
+Now I don’t know what love even is.
+Or if what I once thought was love ever really was.
+
+I’ve become too ashamed to share stories of romance.
+But I couldn’t stop writing either.
+
+I’ve turned that shame and pain—the leftover scraps of something like love—into fuel for this song.
+
+4. 엔터테이나
+
+I once went to a circus.
+The lights came on. Then, a while later, they went out.
+That night, I went straight home and wrote lyrics like I was possessed.
+
+What those performers gave was real.
+What I’d been doing… felt fake.
+I’d only learned how to pretend to sing, to pretend to create.
+
+Had I ever done anything until my hands bled?
+
+They had. I hadn’t.
+And I was ashamed.
+
+To make up for even a sliver of that shame, I decided:
+I would sing like they do.
+
+This song is a borrowed tribute to real entertainers.
+
+Even as the last remaining circus troupe continues their dangerous stunts, they have to think about tomorrow.
+They risk their safety and survival with every swing.
+They can't see what's ahead—but today, they still have to take the stage.
+
+Isn’t that the life of every entertainer?
+A hard life.
+But my steps are already heading that way.
+
+5. 다시𝄇 다시
+
+When you feel alone for no clear reason, staring at the ceiling in the dark—
+When you’ve stopped caring for yourself—
+When you try to escape your routine, only to wake up again in the same old bed—
+When even a simple message from someone else just rubs you the wrong way.
+
+One day, I woke up in a moment I’d forgotten.
+The light was clumsy and soft, the sun just about to disappear.
+As I sat in that dim, empty room, a wave of nameless sadness washed over me.
+
+Most songs about sadness try to offer answers.
+But this one doesn’t.
+
+Instead of straining to comfort you, I decided to simply cry with you.
+
+Even if we scream our heads off.
+Even if we lie to others that we’re fine.
+
+Eventually, that feeling will find its way back to us.
+
+So for today, let’s give up just a little.
+Let’s let things pass more easily.
+
+Drawing the curtains on a sunny day and hiding in bed—
+that’s not weakness.
+That’s not shame.`,
     credits: `Produced by HIMINN
 Recorded by HIMINN
 Mixed by HIMINN
@@ -1367,7 +1561,8 @@ const diskOSTData: Disk[] = [
     },
     isCD: false,
     cdUrl: null,
-    description: ``,
+    descriptionKr: ``,
+    descriptionEn: ``,
     credits: ``,
     tracks: [
       {
@@ -1449,7 +1644,8 @@ const diskOSTData: Disk[] = [
     },
     isCD: false,
     cdUrl: null,
-    description: ``,
+    descriptionKr: ``,
+    descriptionEn: ``,
     credits: ``,
     tracks: [
       {

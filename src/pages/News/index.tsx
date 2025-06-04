@@ -12,8 +12,8 @@ import DOMPurify from "dompurify";
 import { useMediaQuery } from "react-responsive";
 /************/
 import useLanguageStore from "@/store/useLanguageStore";
-import { newsMockData } from "@/utils/newsMockData";
-import { formatTimestamp } from "@/utils/globalHelper";
+import { newsMockData } from "@/utils/newsData";
+import { formatDateByLang } from "@/utils/globalHelper";
 
 export default function News() {
   const AccordionRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -43,7 +43,7 @@ export default function News() {
     <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-scroll !mx-auto flex justify-center">
       <div className="inner flex-grow-0 w-full flex flex-col md:!pt-10 items-start justify-between max-md:!px-4">
         <Accordion type="single" collapsible className="max-w-full w-full">
-          {_.map(newsMockData, (news, i) => {
+          {_.map(_.reverse([...newsMockData]), (news, i) => {
             const sanitizeContent = DOMPurify.sanitize(news?.content ?? "");
             return (
               <AccordionItem
@@ -72,7 +72,8 @@ export default function News() {
                   />
                   <div className="flex w-full items-center justify-between !px-2">
                     <span className="text-right font-semibold">
-                      {formatTimestamp(+news.date, language)}
+                      {/* {formatTimestamp(+news.date, language)} */}
+                      {formatDateByLang(news.date, language)}
                     </span>
                     <AccordionTrigger className="flex items-center justify-center *:w-5 *:h-5 cursor-pointer" />
                   </div>

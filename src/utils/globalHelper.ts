@@ -75,6 +75,28 @@ export const formatTimestamp = (millis: number, lang: string): string => {
   return render;
 };
 
+/**
+ * @description 한영 전환에 따른 일자 표시 변환기
+ * @param {dateStr lang},
+ * @returns {string} YYYY-MM-DD => Month, D, YYYY
+ */
+
+export const formatDateByLang = (dateStr: string, lang = "en") => {
+  const [year, month, day] = dateStr.split("-").map(Number);
+
+  if (lang === "ko") {
+    return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+  } else {
+    const date = new Date(Date.UTC(year, month - 1, day)); // UTC 기준
+    const formatter = new Intl.DateTimeFormat(lang, {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+    return formatter.format(date); // 예: June 5, 2025
+  }
+};
+
 import Bowser from "bowser";
 
 type UserPlatformType = "desktop" | "mobile" | "tablet" | "tv" | "embedded";

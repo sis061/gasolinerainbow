@@ -1,3 +1,4 @@
+import useLanguageStore from "@/store/useLanguageStore";
 import { type LyricsPanelProps } from "@/types/discography";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -6,6 +7,9 @@ const LyricsPanel = ({
   selectedTrack,
   albumMeta,
 }: LyricsPanelProps) => {
+  const { language } = useLanguageStore();
+  const descTranslated =
+    language === "ko" ? albumMeta.descriptionKr : albumMeta.descriptionEn;
   return (
     <li
       ref={lyricsRef}
@@ -31,7 +35,7 @@ const LyricsPanel = ({
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.25, ease: "easeInOut" }}
             >
-              <p className="!mb-6 ">{albumMeta.description}</p>
+              <p className="!mb-6 ">{descTranslated}</p>
               <hr className="!my-4 border-black/20" />
               <p className="text-xs opacity-80 ">{albumMeta.credits}</p>
             </motion.div>

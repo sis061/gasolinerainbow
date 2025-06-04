@@ -28,6 +28,9 @@ const HomeAlbumOverview = ({
 
   const platforms = getStreamingPlatformInfo(albumMeta.urls);
   const type = renderDiskType(albumMeta.type);
+
+  const descTranslated =
+    language === "ko" ? albumMeta.descriptionKr : albumMeta.descriptionEn;
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -48,9 +51,7 @@ const HomeAlbumOverview = ({
             [ {language === "ko" ? albumMeta.titleKr : albumMeta.titleEn} ]
           </h1>
         </div>
-        <p className="w-full whitespace-break-spaces">
-          {albumMeta.description}
-        </p>
+        <p className="w-full whitespace-break-spaces">{descTranslated}</p>
         <div className="flex flex-col gap-6 w-full">
           <div
             className="flex items-center gap-1 max-md:hover:underline underline-offset-4 max-md:hover:cursor-pointer select-none"

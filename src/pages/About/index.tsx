@@ -1,6 +1,34 @@
 import { commonImages } from "@/assets/images/images";
+import useLanguageStore from "@/store/useLanguageStore";
 
 export default function About() {
+  const { language } = useLanguageStore();
+
+  const AboutDesc =
+    language === "ko" ? (
+      <>
+        안녕하세요, 감히 당신의 우울함을, 외로움을 건드려 보려합니다.
+        <br />
+        <br />
+        주로 아래와 같이 저를 표현합니다 :
+        <br />
+        <br />ㅌ 정형화되지 못한 사운드. 장르 설명하는 것 힘들어하는 편. 보통
+        여러분의 부모,친구,연인이 질색함. 차가운 노래 위주(간혹 서정적임).
+        라디오- 비 친화적.
+      </>
+    ) : (
+      <>
+        Hello, I dare to evoke your sadness and loneliness.
+        <br />
+        <br />
+        I usually describe myself like this:
+        <br />
+        <br />
+        Unconventional sounds. I find it hard to label my genre. Usually, your
+        parents, friends, and lovers would hate it. Mostly cold songs (sometimes
+        tender). Radio-unfriendly.
+      </>
+    );
   return (
     <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center">
       <div className="inner flex-grow-0 w-full flex items-center justify-center !mb-10 md:!pt-10 max-md:!px-4">
@@ -31,16 +59,7 @@ export default function About() {
                 </a>
               </h1>
             </div>
-            <p className="max-lg:!p-6">
-              안녕하세요, 감히 당신의 우울함을, 외로움을 건드려 보려합니다.
-              <br />
-              <br /> 주로 아래와 같이 저를 표현합니다 :
-              <br />
-              <br />
-              정형화되지 못한 사운드. 장르 설명하는 것 힘들어하는 편. 보통
-              여러분의 부모,친구,연인이 질색함. 차가운 노래 위주(간혹 서정적임).
-              라디오- 비 친화적.
-            </p>
+            <p className="max-lg:!p-6">{AboutDesc}</p>
           </li>
         </ul>
       </div>

@@ -29,7 +29,8 @@ export interface Disk {
   urls: DiskUrls;
   isCD: boolean;
   cdUrl?: string | null;
-  description: string;
+  descriptionKr: string;
+  descriptionEn: string;
   credits: string;
   tracks: Track[];
 }

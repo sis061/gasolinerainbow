@@ -30,6 +30,8 @@ const MobileDrawer = ({
 
   const trackTitleTranslated =
     language === "ko" ? selectedTrack?.titleKr : selectedTrack?.titleEn;
+  const descTranslated =
+    language === "ko" ? albumMeta.descriptionKr : albumMeta.descriptionEn;
 
   return (
     <DrawerContent
@@ -48,7 +50,7 @@ const MobileDrawer = ({
           ) : (
             <div id="drawer-description">
               <p className="!mb-6 !text-white whitespace-break-spaces text-sm">
-                {albumMeta.description}
+                {descTranslated}
               </p>
               <hr className="!my-4 border-white/20" />
               <p className="text-xs opacity-80 !text-white whitespace-break-spaces">

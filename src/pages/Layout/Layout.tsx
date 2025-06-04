@@ -1,70 +1,41 @@
 import type { ReactNode } from "react";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 /************/
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import cx from "classnames";
-import Bowser from "bowser";
-/************/
-import ScrollTopBtn from "@/pages/Layout/components/ScrollTopBtn";
-import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
-import Footer from "./Footer";
-import Header from "./Header";
 import { useMediaQuery } from "react-responsive";
+/************/
+import Header from "./Header";
+import Footer from "./Footer";
+import ScrollTopBtn from "@/pages/Layout/components/ScrollTopBtn";
 import GuideBtn from "@/pages/Layout/components/GuideBtn";
+import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
+import { getUserPlatformType } from "@/utils/globalHelper";
+import { useFooterVisibility } from "@/hooks/useFooterVisibility";
 
 export default function Layout({ children }: { children: ReactNode }) {
-  const [isFooterVisible, setIsFooterVisible] = useState<boolean>(false);
-  const [isUserAgentPC, setIsUserAgentPC] = useState<boolean>(true);
   const footerRef = useRef<HTMLDivElement | null>(null);
+  const isFooterVisible = useFooterVisibility(footerRef, 0.1);
+  const platformType = getUserPlatformType();
+  const isUserAgentPC = platformType === "desktop";
+
+  const minTablet = useMediaQuery({ minWidth: 768 });
+
+  const { pathname } = useLocation();
+  const isDiscography = pathname === "/discography";
 
   const { hasInteractiveTrackList } = useDiscographyGuideStore();
-  const minTablet = useMediaQuery({ minWidth: 768 });
-  const browser = Bowser.getParser(window.navigator.userAgent);
-  const platformType = browser.getPlatformType();
 
-  const location = useLocation();
-  const isDiscography: boolean = location?.pathname === "/discography";
   const backgroundColor = isDiscography
     ? "rgba(0, 0, 0, 0.5)"
     : "rgba(255, 255, 255, 0.25)";
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]: IntersectionObserverEntry[]) => {
-        setIsFooterVisible(entry.isIntersecting);
-      },
-      {
-        root: null,
-        threshold: 0.1,
-      }
-    );
-
-    const currentRef = footerRef.current;
-    if (currentRef) observer.observe(currentRef);
-
-    return () => {
-      if (currentRef) observer.unobserve(currentRef);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!location.pathname.startsWith("/authornote")) {
+    if (!pathname.startsWith("/authornote")) {
       sessionStorage.removeItem("authornotePage");
     }
-  }, [location.pathname]);
-
-  useLayoutEffect(() => {
-    switch (platformType) {
-      case "desktop":
-        setIsUserAgentPC(true);
-        break;
-      case "mobile":
-      case "tablet":
-        setIsUserAgentPC(false);
-        break;
-    }
-  }, [platformType]);
+  }, [pathname]);
 
   return (
     <motion.main
@@ -78,6 +49,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <Header />
       {children}
       <div ref={footerRef} className="relative">
+        {/* Discography 페이지, 트랙리스트 상호작용 활성 상태, 모바일/태블릿일 때만 GuideBtn 보여주기 */}
         {isDiscography && hasInteractiveTrackList && !isUserAgentPC && (
           <GuideBtn isFooterVisible={isFooterVisible} />
         )}

@@ -15,12 +15,15 @@ import CarouselNavigation from "../components/CarouselNavigation";
 /************/
 import type { SingleCarouselsProps } from "@/types/discography";
 
-const OSTCarousel = ({ albumMetas, onChange }: SingleCarouselsProps) => {
+const OSTCarousel = ({
+  albumMetas,
+  // , onChange
+}: SingleCarouselsProps) => {
   const carouselRef = useRef<CarouselApi | null>(null);
 
-  useEffect(() => {
-    onChange(false);
-  }, []);
+  // useEffect(() => {
+  //   onChange && onChange(false);
+  // }, []);
 
   return (
     <>

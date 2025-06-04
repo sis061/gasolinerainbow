@@ -1,6 +1,6 @@
 // ──────────────────────기본 타입 정의───────────────────────
 
-export type DiskType = "album" | "single" | "EP" | "ost";
+export type DiskType = "album" | "single" | "EP" | "ost" | "remix";
 
 export interface DiskUrls {
   bandcamp?: string;
@@ -44,12 +44,12 @@ export type SetTrackState = React.Dispatch<React.SetStateAction<TrackOrNull>>;
 export type MultipleIntroPanelProps = Pick<Disk, "year" | "title" | "image">;
 export interface CarouselProps {
   albumMeta: Disk;
-  onChange: OnChangeHandler;
+  onChange?: OnChangeHandler;
 }
 
 export interface SingleCarouselsProps {
   albumMetas: Disk[];
-  onChange: OnChangeHandler;
+  onChange?: OnChangeHandler;
 }
 
 export interface CarouselNavigationProps {
@@ -72,7 +72,7 @@ export interface TrackListProps {
 
 export interface SingleInfoPanelProps {
   albumMeta: Disk;
-  onChange: OnChangeHandler;
+  onChange?: OnChangeHandler;
   selectedTrack: TrackOrNull;
   setSelectedTrack: SetTrackState;
 }

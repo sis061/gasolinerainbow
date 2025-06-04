@@ -74,3 +74,58 @@ export const formatTimestamp = (millis: number, lang: string): string => {
 
   return render;
 };
+
+import Bowser from "bowser";
+
+type UserPlatformType = "desktop" | "mobile" | "tablet" | "tv" | "embedded";
+
+/**
+ * @description 사용자 기기 판별
+ * @returns {PlatformType}
+ */
+
+export function getUserPlatformType(): UserPlatformType {
+  const browser = Bowser.getParser(window.navigator.userAgent);
+  let platformType = browser.getPlatformType() as UserPlatformType;
+  // Bowser 기본 판별 (desktop / mobile / tablet / etc.)
+
+  // --- 1) User-Agent Client Hints (최신 브라우저) ---
+  const uaData = (navigator as any).userAgentData;
+  if (uaData?.platform) {
+    // 예: "iPad", "iPhone", "Android", "Windows", "macOS" 등
+    const plat = uaData.platform.toLowerCase();
+    if (plat.includes("ipad")) {
+      return "tablet";
+    }
+    if (
+      plat.includes("iphone") ||
+      (plat.includes("android") && uaData.mobile)
+    ) {
+      return "mobile";
+    }
+    if (plat.includes("android") && !uaData.mobile) {
+      // 안드로이드 기기 중 태블릿이라면 userAgentData.mobile === false일 수 있음
+      return "tablet";
+    }
+    // 그 외 예: "macOs", "windows", "linux" 등은 desktop
+    // 그러나, iPadOS가 platform으로 macOS를 내보낼 수도 있으니 아래 터치 체크가 필요
+  }
+
+  // --- 2) UA 문자열 안에 "iPad"가 남아 있는지 확인 (구형 iPad / 일부 브라우저) ---
+  if (/iPad/.test(window.navigator.userAgent)) {
+    return "tablet";
+  }
+
+  // --- 3) iPadOS 13+ Safari 대응: UA에 "Macintosh"로 보내면서도 터치스크린을 가지는 경우 ---
+  // userAgentData 없거나 macOS로 나왔더라도, 실제 터치 포인트가 1보다 크면 iPad
+  if (
+    typeof navigator.maxTouchPoints === "number" &&
+    navigator.maxTouchPoints > 1 &&
+    browser.getPlatformType() === "desktop"
+  ) {
+    return "tablet";
+  }
+
+  // 그 외 Bowser가 리턴한 결과를 그대로 사용
+  return platformType;
+}

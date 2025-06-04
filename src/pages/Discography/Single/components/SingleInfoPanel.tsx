@@ -4,7 +4,7 @@ import { CarouselItem } from "@/components/ui/carousel";
 import { Drawer, DrawerTrigger } from "@/components/ui/drawer";
 /************/
 import { cx } from "class-variance-authority";
-import { useInView } from "react-intersection-observer";
+// import { useInView } from "react-intersection-observer";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
 /************/
@@ -22,24 +22,26 @@ const SingleInfoPanel = ({
   albumMeta,
   selectedTrack,
   setSelectedTrack,
-  onChange,
+  // onChange,
 }: SingleInfoPanelProps) => {
   const lyricsRef = useRef<HTMLLIElement | null>(null);
   const minTablet = useMediaQuery({ minWidth: 768 });
   const { language } = useLanguageStore();
   const type = renderDiskType(albumMeta.type);
-  const { ref, inView } = useInView({
-    threshold: 0.5,
-    triggerOnce: false,
-  });
+  // const { ref, inView } = useInView({
+  //   threshold: 0.5,
+  //   triggerOnce: false,
+  // });
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      onChange(inView);
-    }, 50);
+  // useEffect(() => {
+  //   const timeout = setTimeout(() => {
+  //     if (onChange) {
+  //       onChange(inView);
+  //     }
+  //   }, 50);
 
-    return () => clearTimeout(timeout);
-  }, [inView]);
+  //   return () => clearTimeout(timeout);
+  // }, [inView]);
 
   useEffect(() => {
     if (lyricsRef.current) {
@@ -83,7 +85,7 @@ const SingleInfoPanel = ({
               </li>
               <li
                 id="trigger-observer"
-                ref={ref}
+                // ref={ref}
                 className="w-1/2 flex flex-col justify-start items-start gap-2 "
               >
                 <DrawerTrigger

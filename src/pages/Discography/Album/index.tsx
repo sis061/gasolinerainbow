@@ -31,8 +31,23 @@ const AlbumCarousel = ({ albumMeta, onChange }: CarouselProps) => {
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const minTablet = useMediaQuery({ minWidth: 768 });
   const { language } = useLanguageStore();
-  const { showOverlayText } = useDiscographyGuideStore();
+  const { showOverlayText, setShowOverlayText } = useDiscographyGuideStore();
   const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
+
+  const resetSelectionAndHideOverlay = () => {
+    setTimeout(() => setSelectedTrack(null), 200);
+    setShowOverlayText(false);
+  };
+
+  const handlePrev = () => {
+    carouselRef.current?.scrollPrev();
+    resetSelectionAndHideOverlay();
+  };
+
+  const handleNext = () => {
+    carouselRef.current?.scrollNext();
+    resetSelectionAndHideOverlay();
+  };
 
   const { ref, inView } = useInView({
     threshold: 0.01,
@@ -41,7 +56,9 @@ const AlbumCarousel = ({ albumMeta, onChange }: CarouselProps) => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      onChange(inView);
+      if (onChange) {
+        onChange(inView);
+      }
     }, 50);
 
     return () => clearTimeout(timeout);
@@ -67,12 +84,12 @@ const AlbumCarousel = ({ albumMeta, onChange }: CarouselProps) => {
           <CarouselItem className="w-full h-full flex items-center justify-center relative">
             <Drawer>
               <ul className="w-full h-full flex items-center max-md:justify-center lg:!px-10 ">
-                <li className="md:!pr-10 w-[45%] max-md:w-full h-full flex flex-col gap-6 items-end max-md:items-center justify-center [&_*]:!text-white overflow-y-scroll">
+                <li className="md:!pr-10 w-1/2 max-md:w-full h-full flex flex-col gap-6 items-end max-md:items-center justify-center [&_*]:!text-white overflow-y-scroll">
                   <Hoverable
-                    area={{ top: 150, bottom: 20, left: 150, right: 150 }}
+                    area={{ top: 150, bottom: 20, left: 150, right: 300 }}
                     tooltipText={
                       language === "ko"
-                        ? "앨범 소개를 눌러 상세 보기"
+                        ? "'앨범 소개'를 눌러 상세 보기"
                         : "Click 'About' to view details"
                     }
                   >
@@ -123,10 +140,10 @@ const AlbumCarousel = ({ albumMeta, onChange }: CarouselProps) => {
                     </div>
                   </Hoverable>
                   <Hoverable
-                    area={{ top: 10, bottom: 150, left: 80, right: 150 }}
+                    area={{ top: 10, bottom: 150, left: 80, right: 300 }}
                     tooltipText={
                       language === "ko"
-                        ? "노래 제목을 눌러 가사 읽기"
+                        ? "'노래 제목'을 눌러 가사 읽기"
                         : "Click the 'Track Title' to view lyrics"
                     }
                   >
@@ -155,16 +172,7 @@ const AlbumCarousel = ({ albumMeta, onChange }: CarouselProps) => {
           </CarouselItem>
         </CarouselContent>
 
-        <CarouselNavigation
-          onPrev={() => {
-            carouselRef.current?.scrollPrev();
-            setTimeout(() => setSelectedTrack(null), 200);
-          }}
-          onNext={() => {
-            carouselRef.current?.scrollNext();
-            setTimeout(() => setSelectedTrack(null), 200);
-          }}
-        />
+        <CarouselNavigation onPrev={handlePrev} onNext={handleNext} />
       </Carousel>
     </>
   );

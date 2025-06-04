@@ -1,4 +1,4 @@
-import profileImg from "@/assets/images/profileImg.jpg";
+import { commonImages } from "@/assets/images/images";
 
 export default function About() {
   return (
@@ -8,7 +8,7 @@ export default function About() {
           <li className="max-w-1/2 z-10">
             <div className="bg-white/75 !p-1 flex items-center justify-center w-full h-full">
               <img
-                src={profileImg}
+                src={commonImages.profileImg}
                 alt="프로필 이미지"
                 className="w-full h-full"
               />

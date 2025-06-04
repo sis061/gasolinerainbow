@@ -11,19 +11,24 @@ import _ from "lodash";
 import { Link, useLocation } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 /************/
+import { commonImages } from "@/assets/images/images";
 import { useScrollState } from "@/hooks/useScrollState";
 import useLanguageStore from "@/store/useLanguageStore";
 import Nav from "./components/Nav";
 import SocialButtons from "./components/SocialButtons";
 
 const Header = () => {
-  const isScrolled = useScrollState();
-  const location = useLocation();
-  const { language, setLanguage } = useLanguageStore();
-  const isDiscography: boolean = location?.pathname === "/discography";
+  const [isCurrentLang, setIsCurrentLang] = useState<boolean>(false);
+
   const minLaptop = useMediaQuery({ minWidth: 1024 });
   const minTablet = useMediaQuery({ minWidth: 768 });
-  const [isCurrentLang, setIsCurrentLang] = useState<boolean>(false);
+  const location = useLocation();
+  const isDiscography: boolean = location?.pathname === "/discography";
+
+  const isScrolled = useScrollState();
+  const { language, setLanguage } = useLanguageStore();
+
+  const LogoBg = commonImages.bg01Img;
 
   const handleChangeLanguage = (newLanguage: string): void => {
     setLanguage(newLanguage);
@@ -48,21 +53,29 @@ const Header = () => {
         <Link to="/">
           <div className="w-auto min-h-16 flex flex-col items-center justify-center *:transition-all *:duration-300 hover:animate-pulse">
             <p
+              style={{
+                backgroundImage:
+                  isScrolled || isDiscography ? "" : `url(${LogoBg})`,
+              }}
               className={cx(
                 "text-lg font-extrabold !-mb-2 !mr-11 ",
                 isScrolled || isDiscography
                   ? "!text-white"
-                  : "!bg-clip-text !text-transparent bg-[url('@/assets/images/bg01Img.PNG')] bg-center bg-cover"
+                  : `!bg-clip-text !text-transparent bg-center bg-cover`
               )}
             >
               GasolineRainbow
             </p>
             <p
+              style={{
+                backgroundImage:
+                  isScrolled || isDiscography ? "" : `url(${LogoBg})`,
+              }}
               className={cx(
                 "text-md font-extrabold  [&_>span]:text-xl [&_>span]:font-normal *:transition-all *:duration-300",
                 isScrolled || isDiscography
                   ? "!text-white [&_>span]:!text-white"
-                  : "!bg-clip-text !text-transparent bg-[url('@/assets/images/bg01Img.PNG')] bg-center bg-cover [&_>span]:!bg-clip-text [&_>span]:!text-transparent"
+                  : `!bg-clip-text !text-transparent bg-center bg-cover [&_>span]:!bg-clip-text [&_>span]:!text-transparent`
               )}
             >
               SpilledByH<span>í</span>M<span>í</span>NN

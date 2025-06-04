@@ -14,7 +14,8 @@ export interface DiskUrls {
 
 export interface Track {
   trackNo: number;
-  title: string;
+  titleKr: string;
+  titleEn: string;
   lyrics: string | null;
   tags?: string[];
 }
@@ -22,7 +23,8 @@ export interface Track {
 export interface Disk {
   type: DiskType;
   year: number;
-  title: string;
+  titleKr: string;
+  titleEn: string;
   image: string;
   urls: DiskUrls;
   isCD: boolean;

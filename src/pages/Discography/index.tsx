@@ -18,7 +18,7 @@ export default function Discography() {
   );
   const othersData: Disk[] = _.filter(
     mockDiskData,
-    (data) => data.type !== "album" && data.type !== "ost"
+    (data) => data.type === "single" || data.type === "EP"
   );
   const ostData = _.filter(mockDiskData, (data) => data.type === "ost");
 

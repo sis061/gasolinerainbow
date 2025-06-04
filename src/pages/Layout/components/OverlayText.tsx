@@ -14,7 +14,7 @@ const OverlayText = ({
   targetRef: React.RefObject<HTMLElement | null>;
   text: string;
 }) => {
-  const node = document.getElementById("portal-root");
+  const node = document.getElementById("root");
   if (!node) return null;
   const [pos, setPos] = useState<{ top: number; left: number } | null>(null);
   const { hasInteractiveTrackList } = useDiscographyGuideStore();

@@ -18,7 +18,7 @@ const TrackList = ({
   selectedTrack,
 }: TrackListProps) => {
   const isRight = align === "right";
-  const triggerRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const triggerRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const { showOverlayText } = useDiscographyGuideStore();
   const { language } = useLanguageStore();
   const minTablet = useMediaQuery({ minWidth: 768 });
@@ -45,9 +45,6 @@ const TrackList = ({
             <>
               <div
                 tabIndex={-1}
-                ref={(el) => {
-                  triggerRefs.current[i] = el;
-                }}
                 onClick={() => onSelect(tr)}
                 className={cx(
                   "touch-pan-y cursor-pointer w-auto relative transition-all duration-200 hover:opacity-50",
@@ -59,6 +56,9 @@ const TrackList = ({
               >
                 {minTablet ? (
                   <span
+                    ref={(el) => {
+                      triggerRefs.current[i] = el;
+                    }}
                     className={cx(
                       minTablet &&
                         selectedTrack?.trackNo === i + 1 &&
@@ -69,13 +69,16 @@ const TrackList = ({
                   </span>
                 ) : (
                   <DrawerTrigger>
-                    <span>
+                    <span
+                      ref={(el) => {
+                        triggerRefs.current[i] = el;
+                      }}
+                    >
                       {tr.trackNo}. {tr.title}
                     </span>
                   </DrawerTrigger>
                 )}
               </div>
-
               <AnimatePresence mode="wait">
                 {showOverlayText && (
                   <OverlayText
@@ -83,7 +86,7 @@ const TrackList = ({
                     text={
                       language === "ko"
                         ? "노래 제목을 눌러 가사 읽기"
-                        : "Click the 'Track Title' to view lyrics"
+                        : "Tab the 'Track Title' to view lyrics"
                     }
                   />
                 )}

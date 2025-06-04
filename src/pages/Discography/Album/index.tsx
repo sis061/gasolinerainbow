@@ -32,7 +32,7 @@ const AlbumCarousel = ({
 }: CarouselProps) => {
   const carouselRef = useRef<CarouselApi | null>(null);
   const lyricsRef = useRef<HTMLLIElement | null>(null);
-  const triggerRef = useRef<HTMLButtonElement | null>(null);
+  const triggerRef = useRef<HTMLDivElement | null>(null);
   const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
 
   const minTablet = useMediaQuery({ minWidth: 768 });
@@ -100,14 +100,17 @@ const AlbumCarousel = ({
                         : "Click 'About' to view details"
                     }
                   >
-                    <div className="flex flex-col  gap-6 items-end max-md:items-center justify-center">
+                    <div
+                      ref={ref}
+                      className="flex flex-col  gap-6 items-end max-md:items-center justify-center"
+                    >
                       <span className="text-sm">{albumMeta.year}</span>
                       <span className="text-4xl text-center">
                         {albumMeta.title}
                       </span>
                       <div
                         id="trigger-observer"
-                        ref={ref}
+                        ref={triggerRef}
                         onClick={() => setSelectedTrack(null)}
                         className={cx(
                           "relative inline-block touch-pan-y cursor-pointer transition-all duration-200 hover:opacity-50",
@@ -121,10 +124,7 @@ const AlbumCarousel = ({
                             {language === "ko" ? "앨범 소개" : "About"}
                           </span>
                         ) : (
-                          <DrawerTrigger
-                            ref={triggerRef}
-                            className="touch-pan-y"
-                          >
+                          <DrawerTrigger className="touch-pan-y">
                             <span>
                               {language === "ko" ? "앨범 소개" : "About"}
                             </span>
@@ -137,7 +137,7 @@ const AlbumCarousel = ({
                               text={
                                 language === "ko"
                                   ? "앨범 소개를 눌러 상세 보기"
-                                  : "Click 'About' to view details"
+                                  : "Tab 'About' to view details"
                               }
                             />
                           )}

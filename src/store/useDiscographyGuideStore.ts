@@ -1,12 +1,17 @@
 import { create } from "zustand";
 
 interface DiscographyGuideState {
-  guideButton: boolean;
-  setGuideButton: (value: boolean) => void;
+  hasInteractiveTrackList: boolean;
+  showOverlayText: boolean;
+  setHasInteractiveTrackList: (value: boolean) => void;
+  setShowOverlayText: (value: boolean) => void;
 }
 
 const useDiscographyGuideStore = create<DiscographyGuideState>((set) => ({
-  guideButton: false,
-  setGuideButton: (v) => set({ guideButton: v }),
+  hasInteractiveTrackList: false,
+  showOverlayText: false,
+  setHasInteractiveTrackList: (v) => set({ hasInteractiveTrackList: v }),
+  setShowOverlayText: (v) => set({ showOverlayText: v }),
 }));
+
 export default useDiscographyGuideStore;

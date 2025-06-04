@@ -4,7 +4,7 @@ import { CarouselItem } from "@/components/ui/carousel";
 import { Drawer, DrawerTrigger } from "@/components/ui/drawer";
 /************/
 import { cx } from "class-variance-authority";
-import { useInView } from "react-intersection-observer";
+// import { useInView } from "react-intersection-observer";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
 /************/
@@ -17,29 +17,33 @@ import StreamingModal from "../../modals/StreamingModal";
 import MobileDrawer from "../../modals/MobileDrawer";
 /************/
 import type { SingleInfoPanelProps } from "@/types/discography";
+import Hoverable from "@/pages/Layout/components/Hoverable";
 
 const SingleInfoPanel = ({
   albumMeta,
   selectedTrack,
   setSelectedTrack,
-  onChange,
+  isHoverToolip = false,
+  // onChange,
 }: SingleInfoPanelProps) => {
   const lyricsRef = useRef<HTMLLIElement | null>(null);
-  const minLaptop = useMediaQuery({ minWidth: 768 });
+  const minTablet = useMediaQuery({ minWidth: 768 });
   const { language } = useLanguageStore();
   const type = renderDiskType(albumMeta.type);
-  const { ref, inView } = useInView({
-    threshold: 0.5,
-    triggerOnce: false, // true: 최초 한 번만 감지
-  });
+  // const { ref, inView } = useInView({
+  //   threshold: 0.5,
+  //   triggerOnce: false,
+  // });
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      onChange(inView);
-    }, 50);
+  // useEffect(() => {
+  //   const timeout = setTimeout(() => {
+  //     if (onChange) {
+  //       onChange(inView);
+  //     }
+  //   }, 50);
 
-    return () => clearTimeout(timeout);
-  }, [inView]);
+  //   return () => clearTimeout(timeout);
+  // }, [inView]);
 
   useEffect(() => {
     if (lyricsRef.current) {
@@ -66,7 +70,7 @@ const SingleInfoPanel = ({
                   <span>{language === "ko" ? type.kr : type.en}</span>
                 </div>
                 <span className="text-3xl text-end !pb-4 max-md:text-2xl max-md:font-bold">
-                  {albumMeta.title}
+                  {language === "ko" ? albumMeta.titleKr : albumMeta.titleEn}
                 </span>
                 <StreamingModal albumMeta={albumMeta} />
                 {albumMeta.isCD && albumMeta.cdUrl && (
@@ -76,37 +80,57 @@ const SingleInfoPanel = ({
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      CD 구매
+                      {language === "ko" ? "CD 구매" : "Order"}
                     </Link>
                   </div>
                 )}
               </li>
               <li
                 id="trigger-observer"
-                ref={ref}
-                className="w-1/2 flex flex-col justify-start items-start gap-2 "
+                // ref={ref}
+                className="w-1/2 flex flex-col justify-start items-start gap-2"
               >
-                <DrawerTrigger
+                <div
                   onClick={() => setSelectedTrack(null)}
                   className={cx(
                     "cursor-pointer !px-2 relative w-auto text-left transition-all duration-200 hover:opacity-50",
-                    minLaptop &&
+                    minTablet &&
                       !selectedTrack &&
                       "!bg-white/75 [&_>span]:!text-black"
                   )}
                 >
-                  <span>소개</span>
-                </DrawerTrigger>
-                <TrackList
-                  tracks={albumMeta.tracks}
-                  align="left"
-                  selectedTrack={selectedTrack}
-                  onSelect={setSelectedTrack}
-                />
+                  {minTablet ? (
+                    <span>
+                      {language === "ko" ? `${type.kr} 소개` : `About`}
+                    </span>
+                  ) : (
+                    <DrawerTrigger>
+                      <span>
+                        {language === "ko" ? `${type.kr} 소개` : `About`}
+                      </span>
+                    </DrawerTrigger>
+                  )}
+                </div>
+                <Hoverable
+                  isActive={isHoverToolip}
+                  area={{ top: 300, bottom: 100, left: 200, right: 300 }}
+                  tooltipText={
+                    language === "ko"
+                      ? "'노래 제목'을 눌러 가사 읽기"
+                      : "Click the 'Track Title' to view lyrics"
+                  }
+                >
+                  <TrackList
+                    tracks={albumMeta.tracks}
+                    align="left"
+                    selectedTrack={selectedTrack}
+                    onSelect={setSelectedTrack}
+                  />
+                </Hoverable>
               </li>
             </ul>
           </li>
-          {minLaptop ? (
+          {minTablet ? (
             <LyricsPanel
               lyricsRef={lyricsRef}
               selectedTrack={selectedTrack}

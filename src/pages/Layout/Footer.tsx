@@ -6,8 +6,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Mail, Send } from "lucide-react";
+/************/
+import useLanguageStore from "@/store/useLanguageStore";
 
 const Footer = () => {
+  const { language } = useLanguageStore();
   return (
     <footer className="z-[10] w-screen !px-3 md:!px-[2.25rem] max-md:!pb-32 max-lg:!pb-16 min-h-32 md:min-h-24 !mx-auto flex justify-center bg-[#000] !shadow-2xl">
       <div className="wrapper w-full relative !p-3 !pt-4">
@@ -36,7 +39,9 @@ const Footer = () => {
                     className="flex items-center justify-start gap-2 w-full"
                   >
                     <Mail color="white" />
-                    <span className="!text-white">이메일</span>
+                    <span className="!text-white">
+                      {language === "ko" ? "이메일" : "Mail"}
+                    </span>
                   </a>
                 </DropdownMenuItem>
                 <DropdownMenuItem className="!p-2 hover:!bg-[#272727]">
@@ -47,7 +52,9 @@ const Footer = () => {
                     className="flex items-center justify-start gap-2 w-full"
                   >
                     <Send color="white" />
-                    <span className="!text-white">인스타그램 DM</span>
+                    <span className="!text-white">
+                      {language === "ko" ? "인스타그램" : "Instagram"} DM
+                    </span>
                   </a>
                 </DropdownMenuItem>
               </DropdownMenuContent>

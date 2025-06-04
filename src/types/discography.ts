@@ -1,6 +1,6 @@
 // ──────────────────────기본 타입 정의───────────────────────
 
-export type DiskType = "album" | "single" | "EP" | "ost";
+export type DiskType = "album" | "single" | "EP" | "ost" | "remix";
 
 export interface DiskUrls {
   bandcamp?: string;
@@ -14,7 +14,8 @@ export interface DiskUrls {
 
 export interface Track {
   trackNo: number;
-  title: string;
+  titleKr: string;
+  titleEn: string;
   lyrics: string | null;
   tags?: string[];
 }
@@ -22,12 +23,14 @@ export interface Track {
 export interface Disk {
   type: DiskType;
   year: number;
-  title: string;
+  titleKr: string;
+  titleEn: string;
   image: string;
   urls: DiskUrls;
   isCD: boolean;
   cdUrl?: string | null;
-  description: string;
+  descriptionKr: string;
+  descriptionEn: string;
   credits: string;
   tracks: Track[];
 }
@@ -41,15 +44,18 @@ export type SetTrackState = React.Dispatch<React.SetStateAction<TrackOrNull>>;
 
 // ──────────────────────컴포넌트 Props───────────────────────
 
-export type MultipleIntroPanelProps = Pick<Disk, "year" | "title" | "image">;
+export type MultipleIntroPanelProps = Pick<Disk, "year" | "image"> & {
+  title: string;
+};
 export interface CarouselProps {
   albumMeta: Disk;
-  onChange: OnChangeHandler;
+  isHoverToolip?: boolean;
+  onChange?: OnChangeHandler;
 }
 
 export interface SingleCarouselsProps {
   albumMetas: Disk[];
-  onChange: OnChangeHandler;
+  onChange?: OnChangeHandler;
 }
 
 export interface CarouselNavigationProps {
@@ -72,7 +78,8 @@ export interface TrackListProps {
 
 export interface SingleInfoPanelProps {
   albumMeta: Disk;
-  onChange: OnChangeHandler;
+  onChange?: OnChangeHandler;
   selectedTrack: TrackOrNull;
   setSelectedTrack: SetTrackState;
+  isHoverToolip?: boolean;
 }

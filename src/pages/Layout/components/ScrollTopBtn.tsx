@@ -11,7 +11,7 @@ export default function ScrollTopBtn({
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const isScrolled = useScrollState();
+  const isScrolled = useScrollState(300);
 
   return (
     <button
@@ -25,7 +25,7 @@ export default function ScrollTopBtn({
       aria-label="Scroll to top"
       onClick={scrollToTop}
     >
-      <CircleArrowUp size={32} />
+      <CircleArrowUp size={40} />
     </button>
   );
 }

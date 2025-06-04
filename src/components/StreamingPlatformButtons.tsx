@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import _ from "lodash";
 import cx from "classnames";
 /************/
+import useLanguageStore from "@/store/useLanguageStore";
+
 import BandcampLogo from "@/assets/logos/bandcamp.svg?react";
 import ApplemusicLogo from "@/assets/logos/applemusic.svg?react";
 import SpotifyLogo from "@/assets/logos/spotify.svg?react";
@@ -102,25 +104,38 @@ const StreamingPlatformButtons = ({
 }: {
   platforms: StreamingPlatformInfoProps[];
   customClassName?: string;
-}) => (
-  <ul
-    className={cx("flex flex-wrap gap-3", !!customClassName && customClassName)}
-  >
-    {_.map(platforms, ({ labelKr, labelEn, color, Component, url }) => (
-      <li key={labelKr}>
-        <Link to={url} target="_blank" rel="noopener noreferrer">
-          <Button
-            variant="default"
-            style={{ backgroundColor: color }}
-            className={`w-full min-w-fit !px-3 !py-2 hover:opacity-75 cursor-pointer`}
-          >
-            <Component fill="#fff" />
-            <span className="!text-white text-sm">{labelKr}</span>
-          </Button>
-        </Link>
-      </li>
-    ))}
-  </ul>
-);
+}) => {
+  const { language } = useLanguageStore();
+  return (
+    <ul
+      className={cx(
+        "flex flex-wrap gap-3",
+        !!customClassName && customClassName
+      )}
+    >
+      {_.map(platforms, ({ labelKr, labelEn, color, Component, url }) => (
+        <li key={labelKr}>
+          <Link to={url} target="_blank" rel="noopener noreferrer">
+            <Button
+              variant="default"
+              style={{ backgroundColor: color }}
+              className={`w-full min-w-fit !px-3 !py-2 hover:opacity-75 cursor-pointer`}
+            >
+              <Component fill="#fff" />
+              <span
+                className={cx(
+                  "!text-white text-sm",
+                  language === "en" && "text-xs"
+                )}
+              >
+                {language === "ko" ? labelKr : labelEn.toLowerCase()}
+              </span>
+            </Button>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+};
 
 export default StreamingPlatformButtons;

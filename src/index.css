@@ -21,7 +21,7 @@
 html,
 body {
   max-width: 100vw;
-  background-color: #fff;
+  background-color: #000;
   /* background-size: cover;
   background-repeat: no-repeat;
   background-position: left bottom; */
@@ -75,6 +75,14 @@ a {
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
+}
+
+.album-track-container {
+  overscroll-behavior: contain; /* 내부 스크롤이 끝나면 부모에게도 스크롤을 양도 */
+}
+
+.touch-pan-y {
+  touch-action: pan-y !important;
 }
 
 /*********************************** lib customize class ***********************************/

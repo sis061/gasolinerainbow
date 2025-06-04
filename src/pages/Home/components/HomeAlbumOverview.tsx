@@ -13,6 +13,7 @@ import StreamingPlatformButtons, {
 import HomeYoutubeEmbed from "./HomeYoutubeEmbed";
 /************/
 import type { Disk } from "@/types/discography";
+import { motion } from "framer-motion";
 
 const HomeAlbumOverview = ({
   albumMeta,
@@ -27,27 +28,38 @@ const HomeAlbumOverview = ({
 
   const platforms = getStreamingPlatformInfo(albumMeta.urls);
   const type = renderDiskType(albumMeta.type);
+
+  const descTranslated =
+    language === "ko" ? albumMeta.descriptionKr : albumMeta.descriptionEn;
   return (
-    <div className="grid grid-rows-[auto_auto] grid-cols-4 w-full gap-2">
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false, amount: 0.1 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+      className="grid grid-rows-[auto_auto] grid-cols-4 w-full gap-2"
+    >
       <div className="!aspect-video z-10 lg:!ml-3 row-start-1 overflow-hidden lg:col-start-2 col-span-4 lg:col-span-3 bg-black w-full h-auto [&_>div]:h-full shadow-xl">
         <HomeYoutubeEmbed id={videoId} img={albumMeta.image} />
       </div>
       <div className="w-auto shadow-2xl row-start-2 col-start-1 col-span-4 bg-white/75 flex flex-col justify-between gap-10 !-mt-4 lg:!-mt-12 lg:!mr-12 !p-6 ">
         <div className="!py-2 font-bold flex lg:flex-col w-full items-end lg:items-start">
           <span className="text-lg lg:!pl-1.5">
-            {language === "ko" ? type.kr : type.en}
+            {language === "ko" ? type.kr : type.en.toUpperCase()}
           </span>
-          <h1 className="text-3xl !pl-1">[ {albumMeta.title} ]</h1>
+          <h1 className="text-3xl !pl-1">
+            [ {language === "ko" ? albumMeta.titleKr : albumMeta.titleEn} ]
+          </h1>
         </div>
-        <p className="w-full whitespace-break-spaces">
-          {albumMeta.description}
-        </p>
+        <p className="w-full whitespace-break-spaces">{descTranslated}</p>
         <div className="flex flex-col gap-6 w-full">
           <div
             className="flex items-center gap-1 max-md:hover:underline underline-offset-4 max-md:hover:cursor-pointer select-none"
             onClick={() => setIsOpen(!isOpen)}
           >
-            <h2 className="font-bold !pl-1">아래에서 듣기</h2>
+            <h2 className="font-bold !pl-1">
+              {language === "ko" ? "아래에서 듣기" : "Stream"}
+            </h2>
             {!minTablet && (
               <ChevronDown
                 size={20}
@@ -71,7 +83,7 @@ const HomeAlbumOverview = ({
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

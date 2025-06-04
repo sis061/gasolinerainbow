@@ -25,20 +25,22 @@ import { useMediaQuery } from "react-responsive";
 import StreamingPlatformButtons, {
   getStreamingPlatformInfo,
 } from "@/components/StreamingPlatformButtons";
+import useLanguageStore from "@/store/useLanguageStore";
 /************/
 import type { Disk } from "@/types/discography";
 
 const StreamingModal = ({ albumMeta }: { albumMeta: Disk }) => {
   const [open, setOpen] = useState<boolean>(false);
-  const minLaptop = useMediaQuery({ minWidth: 768 });
+  const minTablet = useMediaQuery({ minWidth: 768 });
+  const { language } = useLanguageStore();
   const platforms = getStreamingPlatformInfo(albumMeta.urls);
   const renderType: string = albumMeta.type === "album" ? "앨범" : "노래";
 
-  if (minLaptop) {
+  if (minTablet) {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger className="transition-all duration-200 hover:opacity-50 cursor-pointer">
-          {renderType} 듣기
+          {language === "ko" ? `${renderType} 듣기` : "Stream"}
         </DialogTrigger>
         <DialogContent
           className="flex flex-col items-center !p-10 !bg-black/90 [&_>button>svg]:!stroke-white [&_>button]:cursor-pointer"
@@ -46,7 +48,8 @@ const StreamingModal = ({ albumMeta }: { albumMeta: Disk }) => {
         >
           <DialogHeader>
             <DialogTitle className="!text-white !pb-6">
-              아래에서 듣기 - {albumMeta.title}
+              {language === "ko" ? "아래에서 듣기" : "Stream"} -{" "}
+              {language === "ko" ? albumMeta.titleKr : albumMeta.titleEn}
             </DialogTitle>
           </DialogHeader>
           <DialogDescription className="sr-only hidden">
@@ -67,15 +70,15 @@ const StreamingModal = ({ albumMeta }: { albumMeta: Disk }) => {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger className="transition-all duration-200 hover:opacity-50 cursor-pointer">
-        {renderType} 듣기
+        {language === "ko" ? `${renderType} 듣기` : "Stream"}
       </DrawerTrigger>
       <DrawerContent
-        className="flex flex-col items-center !py-6 !bg-black/90 w-full"
+        className="flex flex-col items-center !py-6 !bg-black/90 w-full !max-h-[75dvh]"
         aria-describedby="drawer-description"
       >
-        <DrawerHeader className="w-full h-[90%] text-center !py-6">
+        <DrawerHeader className="w-full h-[90%] text-center !py-6 overflow-y-scroll">
           <DrawerTitle className="!text-white !pb-6 sr-only">
-            Listen {albumMeta.title}
+            Listen {language === "ko" ? albumMeta.titleKr : albumMeta.titleEn}
           </DrawerTitle>
 
           <div className="w-full h-full !overflow-y-scroll !px-6">

@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/carousel";
 import { Drawer, DrawerTrigger } from "@/components/ui/drawer";
 /************/
-import { cx } from "class-variance-authority";
+import cx from "classnames";
 import { useInView } from "react-intersection-observer";
 import { useMediaQuery } from "react-responsive";
 /************/
@@ -19,12 +19,41 @@ import CarouselNavigation from "../components/CarouselNavigation";
 import MobileDrawer from "../modals/MobileDrawer";
 /************/
 import type { CarouselProps, Track } from "@/types/discography";
+import useLanguageStore from "@/store/useLanguageStore";
+import Hoverable from "@/pages/Layout/components/Hoverable";
+import OverlayText from "@/pages/Layout/components/OverlayText";
+import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
+import { AnimatePresence } from "framer-motion";
 
-const AlbumCarousel = ({ albumMeta, onChange }: CarouselProps) => {
+const AlbumCarousel = ({
+  albumMeta,
+  isHoverToolip,
+  onChange,
+}: CarouselProps) => {
   const carouselRef = useRef<CarouselApi | null>(null);
   const lyricsRef = useRef<HTMLLIElement | null>(null);
-  const minLaptop = useMediaQuery({ minWidth: 768 });
+  const triggerRef = useRef<HTMLDivElement | null>(null);
   const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
+
+  const minTablet = useMediaQuery({ minWidth: 768 });
+
+  const { language } = useLanguageStore();
+  const { showOverlayText, setShowOverlayText } = useDiscographyGuideStore();
+
+  const resetSelectionAndHideOverlay = () => {
+    setTimeout(() => setSelectedTrack(null), 200);
+    setShowOverlayText(false);
+  };
+
+  const handlePrev = () => {
+    carouselRef.current?.scrollPrev();
+    resetSelectionAndHideOverlay();
+  };
+
+  const handleNext = () => {
+    carouselRef.current?.scrollNext();
+    resetSelectionAndHideOverlay();
+  };
 
   const { ref, inView } = useInView({
     threshold: 0.01,
@@ -33,7 +62,9 @@ const AlbumCarousel = ({ albumMeta, onChange }: CarouselProps) => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      onChange(inView);
+      if (onChange) {
+        onChange(inView);
+      }
     }, 50);
 
     return () => clearTimeout(timeout);
@@ -50,48 +81,90 @@ const AlbumCarousel = ({ albumMeta, onChange }: CarouselProps) => {
       <Carousel
         setApi={(api) => (carouselRef.current = api)}
         opts={{ loop: true, watchDrag: true }}
-        className="w-full h-full relative !px-10 lg:!px-20"
+        className="w-full h-full relative !px-10 lg:!px-20 touch-pan-y"
       >
         <CarouselContent className="w-full h-[calc(100dvh-8rem)]">
           <CarouselItem className="w-full h-full flex items-center justify-center">
             <AlbumIntroPanel albumMeta={albumMeta} />
           </CarouselItem>
-          <CarouselItem className="w-full h-full flex items-center justify-center">
+          <CarouselItem className="w-full h-full flex items-center justify-center relative">
             <Drawer>
               <ul className="w-full h-full flex items-center max-md:justify-center lg:!px-10 ">
-                <li className="md:!pr-10 w-[45%] max-md:w-full h-full flex flex-col gap-6 items-end max-md:items-center justify-center [&_*]:!text-white overflow-y-scroll">
-                  <span className="text-sm">{albumMeta.year}</span>
-                  <span className="text-4xl text-center">
-                    {albumMeta.title}
-                  </span>
-                  <div id="trigger-observer" ref={ref}>
-                    <DrawerTrigger
-                      onClick={() => setSelectedTrack(null)}
-                      className={cx(
-                        "cursor-pointer !px-2 relative transition-all duration-200 hover:opacity-50",
-                        minLaptop &&
-                          !selectedTrack &&
-                          "!bg-white/75 [&_>span]:!text-black "
-                      )}
+                <li className="md:!pr-10 w-1/2 max-md:w-full flex flex-col gap-6 items-end max-md:items-center justify-center [&_*]:!text-white !album-track-container">
+                  <Hoverable
+                    isActive={isHoverToolip}
+                    area={{ top: 150, bottom: 20, left: 150, right: 300 }}
+                    tooltipText={
+                      language === "ko"
+                        ? "'앨범 소개'를 눌러 상세 보기"
+                        : "Click 'About' to view details"
+                    }
+                  >
+                    <div
+                      ref={ref}
+                      className="flex flex-col  gap-6 items-end max-md:items-center justify-center"
                     >
-                      <span>앨범 소개</span>
-                      {/* <div
-                          className={cx(
-                            minLaptop &&
-                              !selectedTrack &&
-                              "absolute w-10 h-full bg-white/75 top-0 -right-10 z-[50] transition-all duration-200"
+                      <span className="text-sm">{albumMeta.year}</span>
+                      <span className="text-4xl text-center md:text-end">
+                        {language === "ko"
+                          ? albumMeta.titleKr
+                          : albumMeta.titleEn}
+                      </span>
+                      <div
+                        id="trigger-observer"
+                        ref={triggerRef}
+                        onClick={() => setSelectedTrack(null)}
+                        className={cx(
+                          "relative inline-block touch-pan-y cursor-pointer transition-all duration-200 hover:opacity-50",
+                          minTablet &&
+                            !selectedTrack &&
+                            "!bg-white/75 [&_>span]:!text-black"
+                        )}
+                      >
+                        {minTablet ? (
+                          <span className="!px-2">
+                            {language === "ko" ? "앨범 소개" : "About"}
+                          </span>
+                        ) : (
+                          <DrawerTrigger className="touch-pan-y">
+                            <span>
+                              {language === "ko" ? "앨범 소개" : "About"}
+                            </span>
+                          </DrawerTrigger>
+                        )}
+                        <AnimatePresence mode="wait">
+                          {showOverlayText && (
+                            <OverlayText
+                              targetRef={triggerRef}
+                              text={
+                                language === "ko"
+                                  ? "앨범 소개를 눌러 상세 보기"
+                                  : "Tab 'About' to view details"
+                              }
+                            />
                           )}
-                        /> */}
-                    </DrawerTrigger>
-                  </div>
-                  <TrackList
-                    tracks={albumMeta.tracks}
-                    align="right"
-                    selectedTrack={selectedTrack}
-                    onSelect={setSelectedTrack}
-                  />
+                        </AnimatePresence>
+                      </div>
+                    </div>
+                  </Hoverable>
+                  <Hoverable
+                    isActive={isHoverToolip}
+                    area={{ top: 10, bottom: 150, left: 80, right: 300 }}
+                    tooltipText={
+                      language === "ko"
+                        ? "'노래 제목'을 눌러 가사 읽기"
+                        : "Click the 'Track Title' to view lyrics"
+                    }
+                  >
+                    <TrackList
+                      tracks={albumMeta.tracks}
+                      align="right"
+                      selectedTrack={selectedTrack}
+                      onSelect={setSelectedTrack}
+                    />
+                  </Hoverable>
                 </li>
-                {minLaptop ? (
+                {minTablet ? (
                   <LyricsPanel
                     lyricsRef={lyricsRef}
                     selectedTrack={selectedTrack}
@@ -108,16 +181,7 @@ const AlbumCarousel = ({ albumMeta, onChange }: CarouselProps) => {
           </CarouselItem>
         </CarouselContent>
 
-        <CarouselNavigation
-          onPrev={() => {
-            carouselRef.current?.scrollPrev();
-            setTimeout(() => setSelectedTrack(null), 200);
-          }}
-          onNext={() => {
-            carouselRef.current?.scrollNext();
-            setTimeout(() => setSelectedTrack(null), 200);
-          }}
-        />
+        <CarouselNavigation onPrev={handlePrev} onNext={handleNext} />
       </Carousel>
     </>
   );

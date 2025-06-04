@@ -14,7 +14,10 @@ import CarouselNavigation from "../components/CarouselNavigation";
 /************/
 import type { SingleCarouselsProps, Track } from "@/types/discography";
 
-const SingleCarousel = ({ albumMetas, onChange }: SingleCarouselsProps) => {
+const SingleCarousel = ({
+  albumMetas,
+  // , onChange
+}: SingleCarouselsProps) => {
   const carouselRef = useRef<CarouselApi | null>(null);
   const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
 
@@ -39,7 +42,8 @@ const SingleCarousel = ({ albumMetas, onChange }: SingleCarouselsProps) => {
               albumMeta={albumMeta}
               selectedTrack={selectedTrack}
               setSelectedTrack={setSelectedTrack}
-              onChange={onChange}
+              isHoverToolip={false}
+              // onChange={onChange}
             />
           ))}
         </CarouselContent>

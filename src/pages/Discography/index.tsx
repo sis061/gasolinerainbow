@@ -31,6 +31,7 @@ export default function Discography() {
           <AlbumCarousel
             key={i}
             albumMeta={album}
+            isHoverToolip={i === 0 && true}
             onChange={i === 0 ? setHasInteractiveTrackList : undefined}
           />
         ))}

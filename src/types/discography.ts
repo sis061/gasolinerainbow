@@ -44,6 +44,7 @@ export type SetTrackState = React.Dispatch<React.SetStateAction<TrackOrNull>>;
 export type MultipleIntroPanelProps = Pick<Disk, "year" | "title" | "image">;
 export interface CarouselProps {
   albumMeta: Disk;
+  isHoverToolip?: boolean;
   onChange?: OnChangeHandler;
 }
 
@@ -75,4 +76,5 @@ export interface SingleInfoPanelProps {
   onChange?: OnChangeHandler;
   selectedTrack: TrackOrNull;
   setSelectedTrack: SetTrackState;
+  isHoverToolip?: boolean;
 }

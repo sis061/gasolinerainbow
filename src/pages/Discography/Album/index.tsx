@@ -25,7 +25,11 @@ import OverlayText from "@/pages/Layout/components/OverlayText";
 import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
 import { AnimatePresence } from "framer-motion";
 
-const AlbumCarousel = ({ albumMeta, onChange }: CarouselProps) => {
+const AlbumCarousel = ({
+  albumMeta,
+  isHoverToolip,
+  onChange,
+}: CarouselProps) => {
   const carouselRef = useRef<CarouselApi | null>(null);
   const lyricsRef = useRef<HTMLLIElement | null>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
@@ -88,6 +92,7 @@ const AlbumCarousel = ({ albumMeta, onChange }: CarouselProps) => {
               <ul className="w-full h-full flex items-center max-md:justify-center lg:!px-10 ">
                 <li className="md:!pr-10 w-1/2 max-md:w-full flex flex-col gap-6 items-end max-md:items-center justify-center [&_*]:!text-white !album-track-container">
                   <Hoverable
+                    isActive={isHoverToolip}
                     area={{ top: 150, bottom: 20, left: 150, right: 300 }}
                     tooltipText={
                       language === "ko"
@@ -112,7 +117,7 @@ const AlbumCarousel = ({ albumMeta, onChange }: CarouselProps) => {
                         )}
                       >
                         {minTablet ? (
-                          <span className="!pl-1 !pr-0 !py-0.5">
+                          <span className="!px-2">
                             {language === "ko" ? "앨범 소개" : "About"}
                           </span>
                         ) : (
@@ -125,7 +130,6 @@ const AlbumCarousel = ({ albumMeta, onChange }: CarouselProps) => {
                             </span>
                           </DrawerTrigger>
                         )}
-
                         <AnimatePresence mode="wait">
                           {showOverlayText && (
                             <OverlayText
@@ -142,6 +146,7 @@ const AlbumCarousel = ({ albumMeta, onChange }: CarouselProps) => {
                     </div>
                   </Hoverable>
                   <Hoverable
+                    isActive={isHoverToolip}
                     area={{ top: 10, bottom: 150, left: 80, right: 300 }}
                     tooltipText={
                       language === "ko"

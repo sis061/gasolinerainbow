@@ -42,6 +42,7 @@ const SingleCarousel = ({
               albumMeta={albumMeta}
               selectedTrack={selectedTrack}
               setSelectedTrack={setSelectedTrack}
+              isHoverToolip={false}
               // onChange={onChange}
             />
           ))}

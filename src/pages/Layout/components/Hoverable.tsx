@@ -9,6 +9,7 @@ import { getUserPlatformType } from "@/utils/globalHelper";
 interface HoverableProps {
   children: React.ReactNode;
   tooltipText: string;
+  isActive?: boolean;
   area?: {
     top?: number;
     bottom?: number;
@@ -20,6 +21,7 @@ interface HoverableProps {
 const Hoverable = ({
   children,
   tooltipText,
+  isActive = true,
   area = { top: 80, bottom: 80, left: 80, right: 80 },
 }: HoverableProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -56,7 +58,7 @@ const Hoverable = ({
     };
   }, [area]);
 
-  if (!isUserAgentPC) return <>{children}</>;
+  if (!isUserAgentPC || !isActive) return <>{children}</>;
 
   return (
     <>

@@ -17,11 +17,13 @@ import StreamingModal from "../../modals/StreamingModal";
 import MobileDrawer from "../../modals/MobileDrawer";
 /************/
 import type { SingleInfoPanelProps } from "@/types/discography";
+import Hoverable from "@/pages/Layout/components/Hoverable";
 
 const SingleInfoPanel = ({
   albumMeta,
   selectedTrack,
   setSelectedTrack,
+  isHoverToolip = false,
   // onChange,
 }: SingleInfoPanelProps) => {
   const lyricsRef = useRef<HTMLLIElement | null>(null);
@@ -86,7 +88,7 @@ const SingleInfoPanel = ({
               <li
                 id="trigger-observer"
                 // ref={ref}
-                className="w-1/2 flex flex-col justify-start items-start gap-2 "
+                className="w-1/2 flex flex-col justify-start items-start gap-2"
               >
                 <div
                   onClick={() => setSelectedTrack(null)}
@@ -109,13 +111,22 @@ const SingleInfoPanel = ({
                     </DrawerTrigger>
                   )}
                 </div>
-
-                <TrackList
-                  tracks={albumMeta.tracks}
-                  align="left"
-                  selectedTrack={selectedTrack}
-                  onSelect={setSelectedTrack}
-                />
+                <Hoverable
+                  isActive={isHoverToolip}
+                  area={{ top: 300, bottom: 100, left: 200, right: 300 }}
+                  tooltipText={
+                    language === "ko"
+                      ? "'노래 제목'을 눌러 가사 읽기"
+                      : "Click the 'Track Title' to view lyrics"
+                  }
+                >
+                  <TrackList
+                    tracks={albumMeta.tracks}
+                    align="left"
+                    selectedTrack={selectedTrack}
+                    onSelect={setSelectedTrack}
+                  />
+                </Hoverable>
               </li>
             </ul>
           </li>

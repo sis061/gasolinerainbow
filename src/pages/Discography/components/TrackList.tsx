@@ -62,7 +62,7 @@ const TrackList = ({
                     className={cx(
                       minTablet &&
                         selectedTrack?.trackNo === i + 1 &&
-                        "!bg-white/75 !pl-1 !pr-0 !py-0.5"
+                        "!bg-white/75 !px-2"
                     )}
                   >
                     {tr.trackNo}. {tr.title}

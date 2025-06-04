@@ -13,6 +13,7 @@ import StreamingPlatformButtons, {
 import HomeYoutubeEmbed from "./HomeYoutubeEmbed";
 /************/
 import type { Disk } from "@/types/discography";
+import { motion } from "framer-motion";
 
 const HomeAlbumOverview = ({
   albumMeta,
@@ -28,7 +29,13 @@ const HomeAlbumOverview = ({
   const platforms = getStreamingPlatformInfo(albumMeta.urls);
   const type = renderDiskType(albumMeta.type);
   return (
-    <div className="grid grid-rows-[auto_auto] grid-cols-4 w-full gap-2">
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false, amount: 0.1 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+      className="grid grid-rows-[auto_auto] grid-cols-4 w-full gap-2"
+    >
       <div className="!aspect-video z-10 lg:!ml-3 row-start-1 overflow-hidden lg:col-start-2 col-span-4 lg:col-span-3 bg-black w-full h-auto [&_>div]:h-full shadow-xl">
         <HomeYoutubeEmbed id={videoId} img={albumMeta.image} />
       </div>
@@ -73,7 +80,7 @@ const HomeAlbumOverview = ({
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

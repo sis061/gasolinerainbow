@@ -1,4 +1,5 @@
-import type { LyricsPanelProps } from "@/types/discography";
+import { type LyricsPanelProps } from "@/types/discography";
+import { motion, AnimatePresence } from "framer-motion";
 
 const LyricsPanel = ({
   lyricsRef,
@@ -6,26 +7,46 @@ const LyricsPanel = ({
   albumMeta,
 }: LyricsPanelProps) => {
   return (
-    <li
+    <motion.li
       ref={lyricsRef}
       className="w-1/2 max-h-[85%] bg-white/75 overflow-scroll !p-10 shadow-xl flex-grow"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
     >
       <div className="whitespace-break-spaces">
-        {selectedTrack ? (
-          selectedTrack.lyrics
-        ) : (
-          <>
-            <p className="!mb-6 whitespace-break-spaces">
-              {albumMeta.description}
-            </p>
-            <hr className="!my-4 border-black/20" />
-            <p className="text-xs opacity-80 whitespace-break-spaces">
-              {albumMeta.credits}
-            </p>
-          </>
-        )}
+        <AnimatePresence mode="wait">
+          {selectedTrack ? (
+            <motion.div
+              key={selectedTrack.trackNo}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
+            >
+              {selectedTrack.lyrics}
+            </motion.div>
+          ) : (
+            <motion.div
+              key="defaultInfo"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
+            >
+              <p className="!mb-6 whitespace-break-spaces">
+                {albumMeta.description}
+              </p>
+              <hr className="!my-4 border-black/20" />
+              <p className="text-xs opacity-80 whitespace-break-spaces">
+                {albumMeta.credits}
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-    </li>
+    </motion.li>
   );
 };
 

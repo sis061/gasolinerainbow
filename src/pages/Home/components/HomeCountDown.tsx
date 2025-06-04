@@ -1,6 +1,7 @@
 import _ from "lodash";
 import Countdown from "react-countdown";
 import cx from "classnames";
+import { motion, AnimatePresence } from "framer-motion";
 /************/
 import useLanguageStore from "@/store/useLanguageStore";
 import HomeAlbumOverview from "./HomeAlbumOverview";
@@ -62,8 +63,6 @@ const HomeCountDown = ({
 
 export default HomeCountDown;
 
-/******카운트다운 렌더******/
-
 const CountdownRenderer = ({
   days,
   hours,
@@ -79,27 +78,56 @@ const CountdownRenderer = ({
   ];
 
   return (
-    <div className="min-h-[calc(100dvh-8rem)] md:!-mt-16 max-md:!-px-4 w-full flex items-center justify-center">
+    <div className="min-h-[calc(100dvh-8rem)] md:!-mt-16 max-md:!-px-4 w-full flex items-center justify-center gap-4">
       {_.map(renderDate, (d) => {
-        if (d.en === "Days" && d.count <= 0) return;
+        // 'Days'가 0 이하인 경우 렌더링 제외
+        if (d.en === "Days" && d.count <= 0) return null;
+
+        // 두 자리 문자열로 변환 (예: 5 → "05", 35 → "35")
+        const twoDigit = pad(d.count);
+        const [tensChar, onesChar] = [twoDigit[0], twoDigit[1]];
+
         return (
           <div
             key={d.en}
-            className={cx(
-              "flex w-full items-center justify-center",
-              language === "ko"
-                ? "flex-row items-end max-md:flex-col max-md:items-center"
-                : "flex-col "
-            )}
+            className="flex w-full flex-col items-center justify-center gap-1"
           >
-            <span className="text-5xl md:text-6xl lg:text-7xl !text-center font-bold tabular-nums">
-              {pad(d.count)}
-            </span>
+            <div className="flex">
+              {/* 십의 자리 */}
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={`${d.en}-tens-${tensChar}`}
+                  initial={{ y: -12, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 12, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="text-5xl md:text-6xl lg:text-7xl font-bold tabular-nums"
+                >
+                  {tensChar}
+                </motion.span>
+              </AnimatePresence>
+
+              {/* 일의 자리 */}
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={`${d.en}-ones-${onesChar}`}
+                  initial={{ y: -12, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 12, opacity: 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="text-5xl md:text-6xl lg:text-7xl font-bold tabular-nums"
+                >
+                  {onesChar}
+                </motion.span>
+              </AnimatePresence>
+            </div>
+
+            {/* 단위 라벨 */}
             <span
               className={cx(
                 "text-center opacity-75",
                 language === "ko"
-                  ? "text-md md:text-lg lg:text-xl !pl-1.5"
+                  ? "text-md md:text-lg lg:text-xl"
                   : "text-sm md:text-md lg:text-lg"
               )}
             >

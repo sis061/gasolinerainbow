@@ -78,8 +78,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <Header />
       {children}
       <div ref={footerRef} className="relative">
-        {isDiscography && hasInteractiveTrackList && (
-          // && isUserAgentPC
+        {isDiscography && hasInteractiveTrackList && !isUserAgentPC && (
           <GuideBtn isFooterVisible={isFooterVisible} />
         )}
         {minTablet && <ScrollTopBtn isFooterVisible={isFooterVisible} />}

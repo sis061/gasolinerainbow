@@ -7,15 +7,11 @@ const LyricsPanel = ({
   albumMeta,
 }: LyricsPanelProps) => {
   return (
-    <motion.li
+    <li
       ref={lyricsRef}
-      className="w-1/2 max-h-[85%] bg-white/75 overflow-scroll !p-10 shadow-xl flex-grow"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
+      className="w-1/3 max-h-[85%] bg-white/75 overflow-scroll !p-10 shadow-xl flex-grow"
     >
-      <div className="whitespace-break-spaces">
+      <div className="*:whitespace-break-spaces">
         <AnimatePresence mode="wait">
           {selectedTrack ? (
             <motion.div
@@ -46,7 +42,7 @@ const LyricsPanel = ({
           )}
         </AnimatePresence>
       </div>
-    </motion.li>
+    </li>
   );
 };
 

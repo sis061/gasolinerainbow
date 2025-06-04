@@ -29,10 +29,12 @@ const AlbumCarousel = ({ albumMeta, onChange }: CarouselProps) => {
   const carouselRef = useRef<CarouselApi | null>(null);
   const lyricsRef = useRef<HTMLLIElement | null>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
+  const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
+
   const minTablet = useMediaQuery({ minWidth: 768 });
+
   const { language } = useLanguageStore();
   const { showOverlayText, setShowOverlayText } = useDiscographyGuideStore();
-  const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
 
   const resetSelectionAndHideOverlay = () => {
     setTimeout(() => setSelectedTrack(null), 200);
@@ -75,7 +77,7 @@ const AlbumCarousel = ({ albumMeta, onChange }: CarouselProps) => {
       <Carousel
         setApi={(api) => (carouselRef.current = api)}
         opts={{ loop: true, watchDrag: true }}
-        className="w-full h-full relative !px-10 lg:!px-20"
+        className="w-full h-full relative !px-10 lg:!px-20 touch-pan-y"
       >
         <CarouselContent className="w-full h-[calc(100dvh-8rem)]">
           <CarouselItem className="w-full h-full flex items-center justify-center">
@@ -84,7 +86,7 @@ const AlbumCarousel = ({ albumMeta, onChange }: CarouselProps) => {
           <CarouselItem className="w-full h-full flex items-center justify-center relative">
             <Drawer>
               <ul className="w-full h-full flex items-center max-md:justify-center lg:!px-10 ">
-                <li className="md:!pr-10 w-1/2 max-md:w-full h-full flex flex-col gap-6 items-end max-md:items-center justify-center [&_*]:!text-white overflow-y-scroll">
+                <li className="md:!pr-10 w-1/2 max-md:w-full flex flex-col gap-6 items-end max-md:items-center justify-center [&_*]:!text-white !album-track-container">
                   <Hoverable
                     area={{ top: 150, bottom: 20, left: 150, right: 300 }}
                     tooltipText={
@@ -101,29 +103,29 @@ const AlbumCarousel = ({ albumMeta, onChange }: CarouselProps) => {
                       <div
                         id="trigger-observer"
                         ref={ref}
-                        className="relative inline-block"
+                        onClick={() => setSelectedTrack(null)}
+                        className={cx(
+                          "relative inline-block touch-pan-y cursor-pointer transition-all duration-200 hover:opacity-50",
+                          minTablet &&
+                            !selectedTrack &&
+                            "!bg-white/75 [&_>span]:!text-black"
+                        )}
                       >
-                        <DrawerTrigger
-                          ref={triggerRef}
-                          onClick={() => setSelectedTrack(null)}
-                          className={cx(
-                            "cursor-pointer !px-2 transition-all duration-200 hover:opacity-50",
-                            minTablet &&
-                              !selectedTrack &&
-                              "!bg-white/75 [&_>span]:!text-black "
-                          )}
-                        >
-                          <span>
+                        {minTablet ? (
+                          <span className="!pl-1 !pr-0 !py-0.5">
                             {language === "ko" ? "앨범 소개" : "About"}
                           </span>
-                          {/* <div
-                          className={cx(
-                            minTablet &&
-                              !selectedTrack &&
-                              "absolute w-10 h-full bg-white/75 top-0 -right-10 z-[50] transition-all duration-200"
-                          )}
-                        /> */}
-                        </DrawerTrigger>
+                        ) : (
+                          <DrawerTrigger
+                            ref={triggerRef}
+                            className="touch-pan-y"
+                          >
+                            <span>
+                              {language === "ko" ? "앨범 소개" : "About"}
+                            </span>
+                          </DrawerTrigger>
+                        )}
+
                         <AnimatePresence mode="wait">
                           {showOverlayText && (
                             <OverlayText

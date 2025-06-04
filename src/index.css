@@ -77,6 +77,14 @@ a {
   -webkit-box-orient: vertical;
 }
 
+.album-track-container {
+  overscroll-behavior: contain; /* 내부 스크롤이 끝나면 부모에게도 스크롤을 양도 */
+}
+
+.touch-pan-y {
+  touch-action: pan-y !important;
+}
+
 /*********************************** lib customize class ***********************************/
 
 /*---break---*/

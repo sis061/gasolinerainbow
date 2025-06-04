@@ -88,7 +88,7 @@ const SingleInfoPanel = ({
                 // ref={ref}
                 className="w-1/2 flex flex-col justify-start items-start gap-2 "
               >
-                <DrawerTrigger
+                <div
                   onClick={() => setSelectedTrack(null)}
                   className={cx(
                     "cursor-pointer !px-2 relative w-auto text-left transition-all duration-200 hover:opacity-50",
@@ -97,8 +97,19 @@ const SingleInfoPanel = ({
                       "!bg-white/75 [&_>span]:!text-black"
                   )}
                 >
-                  <span>{language === "ko" ? `${type.kr} 소개` : `About`}</span>
-                </DrawerTrigger>
+                  {minTablet ? (
+                    <span>
+                      {language === "ko" ? `${type.kr} 소개` : `About`}
+                    </span>
+                  ) : (
+                    <DrawerTrigger>
+                      <span>
+                        {language === "ko" ? `${type.kr} 소개` : `About`}
+                      </span>
+                    </DrawerTrigger>
+                  )}
+                </div>
+
                 <TrackList
                   tracks={albumMeta.tracks}
                   align="left"

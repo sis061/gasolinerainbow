@@ -6,6 +6,9 @@ export default {
   },
   theme: {
     extend: {
+      overscrollBehavior: {
+        contain: "contain",
+      },
       screens: {
         "max-xxs": { max: "359px" },
         "max-xs": { max: "419px" },
@@ -23,6 +26,9 @@ export default {
         "top-lg": "0 -6px 10px -1px rgba(0, 0, 0, 0.15)",
       },
     },
+  },
+  variants: {
+    overscrollBehavior: ["responsive"],
   },
   plugins: [require("@tailwindcss/aspect-ratio")],
 };

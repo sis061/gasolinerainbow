@@ -16,7 +16,7 @@ const News = lazy(() => import("./pages/News"));
 
 const Fallback = () => (
   <div className="min-h-screen w-screen flex items-center justify-center">
-    <BarLoader color="#fafafa" />
+    <BarLoader color="#BFBFBF" height={10} speedMultiplier={1} width={200} />
   </div>
 );
 

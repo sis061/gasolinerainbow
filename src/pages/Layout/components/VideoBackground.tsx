@@ -1,3 +1,5 @@
+import videoBg from "@/assets/vid/bg01.mp4";
+
 export default function VideoBackground() {
   return (
     <video
@@ -6,7 +8,7 @@ export default function VideoBackground() {
       muted
       loop
       playsInline
-      src="@/assets/vid/bg01.mp4"
+      src={videoBg}
     />
   );
 }

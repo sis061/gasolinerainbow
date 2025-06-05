@@ -16,23 +16,36 @@ export default function Note() {
   const navigate = useNavigate();
   const location = useLocation();
   const { language } = useLanguageStore();
-  const { category, title }: NoteProps = location.state.note;
-  const content: string = location?.state.content ?? "";
 
+  // location.state 없으면 /authornote로 강제 이동 (직접 접근 방지)
   useEffect(() => {
-    const imgs = imgRef.current?.querySelectorAll("img");
+    if (!location.state || !location.state.note) {
+      navigate("/authornote", { replace: true });
+      return;
+    }
 
+    const imgs = imgRef.current?.querySelectorAll("img");
     map(imgs, (img) => {
       img?.classList.add(
         "!mx-auto",
         "!my-6",
         "shadow-md",
-        "max-w-2/3",
-        "min-w-1/2",
-        "min-h-1/2"
+        "md:max-w-2/3",
+        "md:min-w-1/2",
+        "md:min-h-1/2",
+        "max-w-full",
+        "min-w-[95]",
+        "min-h-auto"
       );
     });
-  }, []);
+  }, [location.state, navigate]);
+
+  // location.state가 확실할 때만 읽기
+  if (!location.state || !location.state.note) {
+    return null; // 강제 이동 중이므로 UI 렌더링 안함
+  }
+  const { category, title }: NoteProps = location?.state.note;
+  const content: string = location?.state.content ?? "";
 
   return (
     <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center max-md:!px-4 !mb-10 md:!mt-10">

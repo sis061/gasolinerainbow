@@ -28,9 +28,13 @@ import map from "lodash/map";
 import range from "lodash/range";
 import DOMPurify from "dompurify";
 /************/
-import { noteMockData } from "@/utils/noteData";
+import { noteData } from "@/utils/noteData";
 import { filterHTMLTags } from "@/utils/globalHelper";
 import useLanguageStore from "@/store/useLanguageStore";
+import { useMediaQuery } from "react-responsive";
+
+const PAGE_GROUP_SIZE = 5;
+const reversedNotes = [...noteData].slice().reverse();
 
 export default function AuthorNote() {
   const [page, setPage] = useState<number>(() => {
@@ -38,33 +42,54 @@ export default function AuthorNote() {
     return restored > 0 ? restored : 1;
   });
   const navigate = useNavigate();
+  const minMobile = useMediaQuery({ minWidth: 640 });
   const { language } = useLanguageStore();
 
+  const goDetail = (note: any) => {
+    navigate(`/authornote/${note?.idx ?? 0}`, {
+      state: { note, content: DOMPurify.sanitize(note?.content ?? "") },
+    });
+  };
+
   // 페이지 수에 따른 목록 렌더링
-  const rowsPerPage = 6;
-  const totalPages = Math.ceil(noteMockData.length / rowsPerPage);
-  const pageGroupSize = 5;
-  const currentGroup = Math.floor((page - 1) / pageGroupSize);
-  const startPage = currentGroup * pageGroupSize + 1;
-  const endPage = Math.min(startPage + pageGroupSize - 1, totalPages);
+  const ROWS_PER_PAGE = minMobile ? 6 : 3;
+  const totalPages = Math.ceil(reversedNotes.length / ROWS_PER_PAGE);
+  const currentGroup = Math.floor((page - 1) / PAGE_GROUP_SIZE);
+  const startPage = currentGroup * PAGE_GROUP_SIZE + 1;
+  const endPage = Math.min(startPage + PAGE_GROUP_SIZE - 1, totalPages);
 
   // 페이지에 따른 리스트 슬라이스
   const tableLists = React.useMemo(() => {
-    const start = (page - 1) * rowsPerPage;
-    const end = start + rowsPerPage;
+    const start = (page - 1) * ROWS_PER_PAGE;
+    const end = start + ROWS_PER_PAGE;
 
-    return noteMockData.slice(start, end);
-  }, [page, noteMockData, rowsPerPage]);
+    return reversedNotes.slice(start, end);
+  }, [page, reversedNotes, ROWS_PER_PAGE]);
 
   // 디테일 페이지에서 뒤로가기 시 목록 restore 위해 세션스토리지 저장
   useEffect(() => {
     sessionStorage.setItem("authornotePage", String(page));
   }, [page]);
 
+  useEffect(() => {
+    const savedScroll = Number(sessionStorage.getItem("authornoteScroll"));
+    if (savedScroll > 0) {
+      setTimeout(() => {
+        window.scrollTo(0, savedScroll);
+      }, 50); // delay로 layout 완료 후 위치 이동
+    }
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      sessionStorage.setItem("authornoteScroll", String(window.scrollY));
+    };
+  }, []);
+
   return (
-    <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center max-md:!px-4 !mb-10 md:!mt-10">
+    <section className="wrapper w-full min-h-[calc(100dvh-17rem)] overflow-x-hidden !mx-auto flex justify-center max-md:!px-4 !mb-10 !mt-4 md:!mt-10">
       <div className="inner flex-grow-0 h-full w-full flex flex-col items-start justify-between bg-white/75 !p-6 shadow-2xl">
-        <Table className="w-full">
+        <Table className="w-full ">
           <TableHeader>
             <TableRow className="hover:bg-transparent flex md:table-row w-full items-center min-h-6">
               <TableHead className="md:!pl-1 max-md:text-xs order-1 h-full !pb-2">
@@ -78,14 +103,11 @@ export default function AuthorNote() {
           </TableHeader>
           <TableBody>
             {map(tableLists, (note) => {
-              const sanitizeContent = DOMPurify.sanitize(note?.content ?? "");
               return (
                 <TableRow
                   key={note.idx}
                   onClick={() => {
-                    navigate(`/authornote/${note?.idx ?? 0}`, {
-                      state: { note, content: sanitizeContent },
-                    });
+                    goDetail(note);
                   }}
                   className="flex md:table-row w-full items-center relative"
                 >
@@ -99,7 +121,7 @@ export default function AuthorNote() {
                     <span className="text-xl lg:text-2xl font-semibold whitespace-normal line-clamp-1">
                       {note.title}
                     </span>
-                    <p className="whitespace-normal line-clamp-1 sm:line-clamp-2">
+                    <p className="whitespace-normal line-clamp-1">
                       {filterHTMLTags(note?.content)}
                     </p>
                   </TableCell>

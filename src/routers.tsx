@@ -92,6 +92,16 @@ const Routers: React.FC<any> = (): JSX.Element => {
               </Suspense>
             }
           />
+          <Route
+            path=":/*"
+            element={
+              <Suspense fallback={<Fallback />}>
+                <PageWrapper>
+                  <Home />
+                </PageWrapper>
+              </Suspense>
+            }
+          />
         </Route>
         <Route
           path="/news"
@@ -118,7 +128,7 @@ function PageWrapper({ children }: { children: React.ReactNode }) {
       animate="animate"
       exit="exit"
       transition={{ duration: 0.15, ease: "easeInOut" }}
-      className="min-h-screen"
+      // className="min-h-screen"
     >
       {children}
     </motion.div>

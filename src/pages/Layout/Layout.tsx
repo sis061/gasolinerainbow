@@ -36,6 +36,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!pathname.startsWith("/authornote")) {
       sessionStorage.removeItem("authornotePage");
+      sessionStorage.removeItem("authornoteScroll");
     }
   }, [pathname]);
 

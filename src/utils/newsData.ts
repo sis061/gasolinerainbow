@@ -1,8 +1,10 @@
 import { newsImages, diskImages } from "@/assets/images/images";
+import type { News } from "@/types/news";
 
-export const newsMockData = [
+export const newsData: News[] = [
   {
     idx: 0,
+    type: "release",
     date: "2021-05-14",
     img: diskImages.firstEP,
     title: "EP [In The Need Of A Good Cry]",
@@ -19,21 +21,22 @@ HIMINN Debut EP [In the need of a good cry]
 거창한 무언가를 해내겠다는 것은 아니다. 그저 담담하게 나의 이야기를, 동시에 어딘가 있을 또 다른 누군가들의 이야기를 적고 멜로디를 이었다.
 그렇게 고독과 우울함, 반성과 부끄러움을 담은 다섯 곡을 엮어 ‘좋은 울음'에 대한 나름의 고민을 정리했다.`,
   },
-  {
-    idx: 1,
-    date: "2022-05-19",
-    img: newsImages.onstage,
-    title: "브로큰티스 온스테이지 세션",
-    content: `슈게이징 라이징스타. -K-evin Shields
-@brokenteeth99 님의 온스테이지 무대에
+  //   {
+  //     idx: 1,
+  //     date: "2022-05-19",
+  //     img: newsImages.onstage,
+  //     title: "브로큰티스 온스테이지 세션",
+  //     content: `슈게이징 라이징스타. -K-evin Shields
+  // @brokenteeth99 님의 온스테이지 무대에
 
-굽은 등, 누런 재즈마스터, 머리 흔들리는 피규어 그리고 기타2와 코러스 세션으로 참여하였습니다.
-많이 들어주세요!!
+  // 굽은 등, 누런 재즈마스터, 머리 흔들리는 피규어 그리고 기타2와 코러스 세션으로 참여하였습니다.
+  // 많이 들어주세요!!
 
-정진하겠습니다..`,
-  },
+  // 정진하겠습니다..`,
+  //   },
   {
     idx: 2,
+    type: "release",
     date: "2022-08-04",
     img: diskImages.foolsbox,
     title: "싱글 [Fool’s Box]",
@@ -65,6 +68,7 @@ All Instruments by HIMINN`,
   },
   {
     idx: 3,
+    type: "release",
     date: "2022-12-14",
     img: diskImages.hm,
     title: "앨범 [HM]",
@@ -88,6 +92,7 @@ Artwork by namu 나무`,
   },
   {
     idx: 4,
+    type: "performance",
     date: "2023-02-23",
     img: newsImages.btShowcase,
     title: "추락은 천천히, 인생도 천천히",
@@ -121,6 +126,7 @@ Brokenteeth 님의 2집 쇼케이스 공연에 오프닝 무대를 꾸밉니다.
   },
   {
     idx: 5,
+    type: "release",
     date: "2023-06-15",
     img: diskImages.hmRemixes,
     title: "HM REMIXES",
@@ -167,6 +173,7 @@ Artwork by HIMINN`,
   },
   {
     idx: 6,
+    type: "release",
     date: "2023-10-26",
     img: newsImages.hmcd,
     title: "앨범 [HM] CD 발매",
@@ -190,6 +197,7 @@ Artwork by HIMINN`,
   },
   {
     idx: 7,
+    type: "performance",
     date: "2023-11-06",
     img: newsImages.daerimYeoinsook,
     title: "대전여인숙",
@@ -211,6 +219,7 @@ himinn, BrokenTeeth, nokjo의 합동 공연을 소리들에서 만나보세요.
   },
   {
     idx: 8,
+    type: "collaboration",
     date: "2023-12-30",
     img: newsImages.devilfish,
     title: "다큐멘터리 [악마의 생선] 참여",
@@ -226,6 +235,7 @@ MBC경남 지상파 방송과 유튜브 채널 ’엠키타카‘를 통해 시�
   },
   {
     idx: 9,
+    type: "performance",
     date: "2024-07-13",
     img: newsImages.gmsFest,
     title: "그먼씹 하꼬음악 페스티벌",
@@ -242,6 +252,7 @@ MBC경남 지상파 방송과 유튜브 채널 ’엠키타카‘를 통해 시�
   },
   {
     idx: 10,
+    type: "performance",
     date: "2024-10-25",
     img: newsImages.thedreamer,
     title: "The Dreamer 언플러그드 홍대",
@@ -276,6 +287,7 @@ HIMINN @himinn___
   },
   {
     idx: 11,
+    type: "collaboration",
     date: "2024-11-27",
     img: newsImages.gimbapNews,
     title: "다큐멘터리 [김밥의 천국] 참여",
@@ -295,6 +307,7 @@ HIMINN @himinn___
   },
   {
     idx: 12,
+    type: "performance",
     date: "2025-03-21",
     img: newsImages.rainlight,
     title: "Rainlight 언플러그드 라운지",

@@ -1,4 +1,4 @@
-import _ from "lodash";
+import map from "lodash/map";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
 /************/
@@ -52,13 +52,13 @@ const logos = [
   },
 ];
 
-const SocialButtons = ({ isDiscography }: { isDiscography: boolean }) => {
+const SocialButtons = ({ bgBlackRoute }: { bgBlackRoute: boolean }) => {
   const minLaptop = useMediaQuery({ minWidth: 1024 });
   const isScrolled = useScrollState();
 
   return (
     <ul className="flex items-center justify-between gap-4">
-      {_.map(logos, ({ Component, name, url }) => (
+      {map(logos, ({ Component, name, url }) => (
         <li
           key={name}
           className="flex items-center justify-center w-6 h-6 xl:w-8 xl:h-8"
@@ -68,7 +68,7 @@ const SocialButtons = ({ isDiscography }: { isDiscography: boolean }) => {
               className="w-full h-full duration-150"
               fill={
                 minLaptop
-                  ? isScrolled || isDiscography
+                  ? isScrolled || bgBlackRoute
                     ? "#fff"
                     : "#000"
                   : "#fff"

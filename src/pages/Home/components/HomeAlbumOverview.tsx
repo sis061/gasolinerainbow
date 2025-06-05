@@ -53,9 +53,11 @@ const HomeAlbumOverview = ({
         </div>
         <p className="w-full whitespace-break-spaces">{descTranslated}</p>
         <div className="flex flex-col gap-6 w-full">
-          <div
+          <button
             className="flex items-center gap-1 max-md:hover:underline underline-offset-4 max-md:hover:cursor-pointer select-none"
             onClick={() => setIsOpen(!isOpen)}
+            aria-expanded={isOpen}
+            aria-controls="streaming-platforms"
           >
             <h2 className="font-bold !pl-1">
               {language === "ko" ? "아래에서 듣기" : "Stream"}
@@ -68,7 +70,7 @@ const HomeAlbumOverview = ({
                 }`}
               />
             )}
-          </div>
+          </button>
           <div
             className={`transition-all duration-300 overflow-hidden ${minTablet || isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}
           >

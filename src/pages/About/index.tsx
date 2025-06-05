@@ -1,22 +1,32 @@
 import { commonImages } from "@/assets/images/images";
 import useLanguageStore from "@/store/useLanguageStore";
+import cx from "classnames";
+import { useEffect, useState } from "react";
 
 export default function About() {
   const { language } = useLanguageStore();
+  const [pluse, setPulse] = useState<string>("");
 
-  const AboutDesc =
-    language === "ko" ? (
+  useEffect(() => {
+    const timer = setTimeout(() => setPulse("animate-pulse"), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const aboutDescription = {
+    ko: (
       <>
         안녕하세요, 감히 당신의 우울함을, 외로움을 건드려 보려합니다.
         <br />
         <br />
         주로 아래와 같이 저를 표현합니다 :
         <br />
-        <br />ㅌ 정형화되지 못한 사운드. 장르 설명하는 것 힘들어하는 편. 보통
-        여러분의 부모,친구,연인이 질색함. 차가운 노래 위주(간혹 서정적임).
-        라디오- 비 친화적.
+        <br />
+        정형화되지 못한 사운드. 장르 설명하는 것 힘들어하는 편. 보통 여러분의
+        부모, 친구, 연인이 질색함. 차가운 노래 위주 (간혹 서정적임). 라디오-비
+        친화적.
       </>
-    ) : (
+    ),
+    en: (
       <>
         Hello, I dare to evoke your sadness and loneliness.
         <br />
@@ -28,9 +38,10 @@ export default function About() {
         parents, friends, and lovers would hate it. Mostly cold songs (sometimes
         tender). Radio-unfriendly.
       </>
-    );
+    ),
+  };
   return (
-    <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center">
+    <section className="wrapper w-full min-h-[calc(100dvh-12rem)] overflow-x-hidden !mx-auto flex justify-center">
       <div className="inner flex-grow-0 w-full flex items-center justify-center !mb-10 md:!pt-10 max-md:!px-4">
         <ul className="w-full h-auto flex flex-col lg:flex-row items-center gap-6 justify-between max-lg:!pt-6 lg:!pr-6 bg-white/75 shadow-2xl">
           <li className="max-w-1/2 z-10">
@@ -53,13 +64,16 @@ export default function About() {
                   href="https://youtu.be/YVEo4jbA9QA?si=UvXN6osKgW3nHsyR"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:!text-white transition-all duration-150"
+                  className={cx(
+                    "hover:!text-white transition-all duration-150",
+                    pluse
+                  )}
                 >
                   /ˈhɪː.mɪn/
                 </a>
               </h1>
             </div>
-            <p className="max-lg:!p-6">{AboutDesc}</p>
+            <p className="max-lg:!p-6">{aboutDescription[language]}</p>
           </li>
         </ul>
       </div>

@@ -1,7 +1,7 @@
 import { DrawerTrigger } from "@/components/ui/drawer";
 /************/
 import cx from "classnames";
-import _ from "lodash";
+import map from "lodash/map";
 /************/
 import type { TrackListProps } from "@/types/discography";
 import { AnimatePresence } from "framer-motion";
@@ -39,7 +39,7 @@ const TrackList = ({
         }
       }}
     >
-      {_.map(tracks, (tr, i) => (
+      {map(tracks, (tr, i) => (
         <li key={tr.trackNo} className="touch-pan-y">
           {tr.lyrics ? (
             <>

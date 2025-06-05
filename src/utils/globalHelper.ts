@@ -97,6 +97,7 @@ export const formatDateByLang = (dateStr: string, lang = "en") => {
   }
 };
 
+import type { NewsType } from "@/types/news";
 import Bowser from "bowser";
 
 type UserPlatformType = "desktop" | "mobile" | "tablet" | "tv" | "embedded";
@@ -150,4 +151,102 @@ export function getUserPlatformType(): UserPlatformType {
 
   // 그 외 Bowser가 리턴한 결과를 그대로 사용
   return platformType;
+}
+
+/**
+ * @description 소식 주제에 따라서 다른 색깔을 보여줍니다.
+ * @param t NewsType
+ * @returns {string} #ffffff
+ */
+
+export const renderNewsTypeColor = (t: NewsType) => {
+  let colour: string;
+
+  switch (t) {
+    case "collaboration":
+      colour = "#FF5722";
+      break;
+    case "release":
+      colour = "#2962FF";
+      break;
+    case "performance":
+      colour = "#D500F9";
+      break;
+    case "others":
+      colour = "#00C853";
+      break;
+    default:
+      colour = "#607D8B";
+      break;
+  }
+
+  return colour;
+};
+
+/**
+ * @description 텍스트 내에서 url, email, 인스타그램 멘션 을 분리한 후 a 태그로 변경합니다.
+ * @param text string
+ * @returns {string}
+ */
+
+export function linkify(text: string): string {
+  const urlRegex = /((https?:\/\/|www\.)[^\s<>"'()]+(\([^\s<>"']*\))?)/gi;
+  const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b/g;
+  const instagramRegex = /@([a-zA-Z0-9._]+)/g;
+
+  // 1. 이메일 먼저 링크화 & 보호
+  const emailPlaceholders: string[] = [];
+  let result = text.replace(emailRegex, (email) => {
+    const placeholder = `__EMAIL_PLACEHOLDER_${emailPlaceholders.length}__`;
+    emailPlaceholders.push(
+      `<a href="mailto:${email}" class="email-link">${email}</a>`
+    );
+    return placeholder;
+  });
+
+  // 2. URL 링크화 (괄호 처리 포함)
+  function processUrl(url: string): { link: string; tail: string } {
+    const bracketPairs: [string, string][] = [
+      ["(", ")"],
+      ["[", "]"],
+      ["{", "}"],
+      ['"', '"'],
+      ["'", "'"],
+    ];
+
+    let matchedUrl = url;
+
+    for (const [open, close] of bracketPairs) {
+      let openCount = (matchedUrl.match(new RegExp(`\\${open}`, "g")) || [])
+        .length;
+      let closeCount = (matchedUrl.match(new RegExp(`\\${close}`, "g")) || [])
+        .length;
+
+      while (closeCount > openCount && matchedUrl.endsWith(close)) {
+        matchedUrl = matchedUrl.slice(0, -1);
+        closeCount--;
+      }
+    }
+
+    const tail = url.slice(matchedUrl.length);
+    return { link: matchedUrl, tail };
+  }
+
+  result = result.replace(urlRegex, (url) => {
+    const { link, tail } = processUrl(url);
+    const href = link.startsWith("http") ? link : `https://${link}`;
+    return `<a href="${href}" target="_blank" rel="noopener noreferrer" class="url-link">${link}</a>${tail}`;
+  });
+
+  // 3. 인스타그램 @링크화 (이메일 부분 제외됨)
+  result = result.replace(instagramRegex, (username) => {
+    return `<a href="https://instagram.com/${username}" target="_blank" rel="noopener noreferrer" class="mention-link">@${username}</a>`;
+  });
+
+  // 4. 이메일 placeholder 복원
+  emailPlaceholders.forEach((tag, i) => {
+    result = result.replace(`__EMAIL_PLACEHOLDER_${i}__`, tag);
+  });
+
+  return result;
 }

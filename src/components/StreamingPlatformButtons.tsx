@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 /************/
-import _ from "lodash";
+import mapKeys from "lodash/mapKeys";
+import reduce from "lodash/reduce";
+import map from "lodash/map";
 import cx from "classnames";
 /************/
 import useLanguageStore from "@/store/useLanguageStore";
@@ -77,9 +79,9 @@ export const getStreamingPlatformInfo = (
     },
   ];
 
-  const urlsLowerCase = _.mapKeys(urls, (_, key) => key.toLowerCase());
+  const urlsLowerCase = mapKeys(urls, (_, key) => key.toLowerCase());
 
-  const result = _.reduce(
+  const result = reduce(
     urlsLowerCase,
     (acc: StreamingPlatformInfoProps[], url, key) => {
       const matchedPlatform = rawPlatformsData.find(
@@ -113,7 +115,7 @@ const StreamingPlatformButtons = ({
         !!customClassName && customClassName
       )}
     >
-      {_.map(platforms, ({ labelKr, labelEn, color, Component, url }) => (
+      {map(platforms, ({ labelKr, labelEn, color, Component, url }) => (
         <li key={labelKr}>
           <Link to={url} target="_blank" rel="noopener noreferrer">
             <Button

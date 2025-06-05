@@ -1,4 +1,4 @@
-import _ from "lodash";
+import filter from "lodash/filter";
 /************/
 import { DiskMetaDatas } from "@/utils/diskMetaDatas";
 import HomeAlbumOverview from "./components/HomeAlbumOverview";
@@ -10,7 +10,7 @@ export default function Home() {
   const HMVideoId: string = "q0RXd1Tj7tk";
   const BIPVideoId: string = "q0RXd1Tj7tk";
 
-  const [HMData] = _.filter(
+  const [HMData] = filter(
     DiskMetaDatas.albumMetaDatas,
     (data) => data.titleKr.toLowerCase() === "Hm".toLowerCase()
   );

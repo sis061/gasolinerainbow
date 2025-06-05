@@ -1,8 +1,15 @@
 import { commonImages } from "@/assets/images/images";
 import useLanguageStore from "@/store/useLanguageStore";
+import cx from "classnames";
+import { useEffect, useState } from "react";
 
 export default function About() {
   const { language } = useLanguageStore();
+  const [pluse, setPulse] = useState<string>("");
+
+  useEffect(() => {
+    setTimeout(() => setPulse("animate-pulse"), 2000);
+  }, []);
 
   const AboutDesc =
     language === "ko" ? (
@@ -12,9 +19,10 @@ export default function About() {
         <br />
         주로 아래와 같이 저를 표현합니다 :
         <br />
-        <br />ㅌ 정형화되지 못한 사운드. 장르 설명하는 것 힘들어하는 편. 보통
-        여러분의 부모,친구,연인이 질색함. 차가운 노래 위주(간혹 서정적임).
-        라디오- 비 친화적.
+        <br />
+        정형화되지 못한 사운드. 장르 설명하는 것 힘들어하는 편. 보통 여러분의
+        부모,친구,연인이 질색함. 차가운 노래 위주(간혹 서정적임). 라디오- 비
+        친화적.
       </>
     ) : (
       <>
@@ -53,7 +61,10 @@ export default function About() {
                   href="https://youtu.be/YVEo4jbA9QA?si=UvXN6osKgW3nHsyR"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:!text-white transition-all duration-150"
+                  className={cx(
+                    "hover:!text-white transition-all duration-150",
+                    pluse
+                  )}
                 >
                   /ˈhɪː.mɪn/
                 </a>

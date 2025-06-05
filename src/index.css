@@ -85,6 +85,30 @@ a {
   touch-action: pan-y !important;
 }
 
+.mention-link {
+  color: #385185;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+/* .mention-link:hover {
+  color: #00376b;
+  text-decoration: underline;
+} */
+
+.url-link {
+  color: #1a0dab; /* 구글 블루 */
+  text-decoration: underline;
+  word-break: break-word;
+}
+
+.email-link {
+  color: #d93025; /* Gmail 느낌의 빨강 */
+  text-decoration: underline;
+  word-break: break-word;
+}
+
 /*********************************** lib customize class ***********************************/
 
 /*---break---*/

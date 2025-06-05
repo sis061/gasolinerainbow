@@ -24,12 +24,14 @@ export default function Layout({ children }: { children: ReactNode }) {
 
   const { pathname } = useLocation();
   const isDiscography = pathname === "/discography";
+  const isNotes = pathname.startsWith("/authornote");
 
   const { hasInteractiveTrackList } = useDiscographyGuideStore();
 
-  const backgroundColor = isDiscography
-    ? "rgba(0, 0, 0, 0.5)"
-    : "rgba(255, 255, 255, 0.25)";
+  const backgroundColor =
+    isDiscography || isNotes
+      ? "rgba(0, 0, 0, 0.5)"
+      : "rgba(255, 255, 255, 0.25)";
 
   useEffect(() => {
     if (!pathname.startsWith("/authornote")) {

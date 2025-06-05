@@ -15,11 +15,11 @@ const navLinks = [
 ];
 
 const Nav = ({
-  isDiscography,
-  location,
+  bgBlackRoute,
+  pathname,
 }: {
-  isDiscography: boolean;
-  location: any;
+  bgBlackRoute: boolean;
+  pathname: string;
 }) => {
   const minTablet = useMediaQuery({ minWidth: 768 });
   const isScrolled = useScrollState();
@@ -33,9 +33,9 @@ const Nav = ({
             className={cx(
               "font-extrabold text-lg max-sm:text-sm hover:border-b-1 hover:opacity-100 transition-all border-[#1b2838] opacity-70",
               minTablet
-                ? (isScrolled || isDiscography) && "!text-white !border-white"
+                ? (isScrolled || bgBlackRoute) && "!text-white !border-white"
                 : "!text-white !border-white",
-              location?.pathname.startsWith(to) && "opacity-100"
+              pathname.startsWith(to) && "opacity-100"
             )}
           >
             {language === "ko" ? labelKr : labelEn.toUpperCase()}

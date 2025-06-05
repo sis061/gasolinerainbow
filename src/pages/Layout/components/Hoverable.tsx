@@ -31,30 +31,40 @@ const Hoverable = ({
   const isUserAgentPC = platformType === "desktop";
 
   useEffect(() => {
-    const throttledMouseMove = throttle((e: MouseEvent) => {
-      const wrapper = wrapperRef.current;
-      if (!wrapper) return;
+    let animationFrameId: number | null = null;
 
-      const rect = wrapper.getBoundingClientRect();
-      const minX = rect.left - (area.left ?? 0);
-      const maxX = rect.right + (area.right ?? 0);
-      const minY = rect.top - (area.top ?? 0);
-      const maxY = rect.bottom + (area.bottom ?? 0);
+    const handleMouseMove = (e: MouseEvent) => {
+      if (animationFrameId !== null) return;
 
-      const x = e.clientX;
-      const y = e.clientY;
+      animationFrameId = requestAnimationFrame(() => {
+        animationFrameId = null;
 
-      if (x >= minX && x <= maxX && y >= minY && y <= maxY) {
-        setCoords({ x, y });
-      } else {
-        setCoords(null);
-      }
-    }, 16); // 약 60fps 기준
+        const wrapper = wrapperRef.current;
+        if (!wrapper) return;
 
-    document.addEventListener("mousemove", throttledMouseMove);
+        const rect = wrapper.getBoundingClientRect();
+        const minX = rect.left - (area.left ?? 0);
+        const maxX = rect.right + (area.right ?? 0);
+        const minY = rect.top - (area.top ?? 0);
+        const maxY = rect.bottom + (area.bottom ?? 0);
+
+        const x = e.clientX;
+        const y = e.clientY;
+
+        if (x >= minX && x <= maxX && y >= minY && y <= maxY) {
+          setCoords({ x, y });
+        } else {
+          setCoords(null);
+        }
+      });
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
     return () => {
-      document.removeEventListener("mousemove", throttledMouseMove);
-      throttledMouseMove.cancel();
+      document.removeEventListener("mousemove", handleMouseMove);
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId);
+      }
     };
   }, [area]);
 

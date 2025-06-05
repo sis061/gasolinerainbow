@@ -12,8 +12,12 @@ import DOMPurify from "dompurify";
 import { useMediaQuery } from "react-responsive";
 /************/
 import useLanguageStore from "@/store/useLanguageStore";
-import { newsMockData } from "@/utils/newsData";
-import { formatDateByLang } from "@/utils/globalHelper";
+import { newsData } from "@/utils/newsData";
+import {
+  formatDateByLang,
+  linkify,
+  renderNewsTypeColor,
+} from "@/utils/globalHelper";
 
 export default function News() {
   const AccordionRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -43,8 +47,11 @@ export default function News() {
     <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-scroll !mx-auto flex justify-center">
       <div className="inner flex-grow-0 w-full flex flex-col md:!pt-10 items-start justify-between max-md:!px-4">
         <Accordion type="single" collapsible className="max-w-full w-full">
-          {_.map(_.reverse([...newsMockData]), (news, i) => {
-            const sanitizeContent = DOMPurify.sanitize(news?.content ?? "");
+          {_.map(_.reverse([...newsData]), (news, i) => {
+            const sanitizeContent = DOMPurify.sanitize(
+              linkify(news?.content ?? "")
+            );
+
             return (
               <AccordionItem
                 ref={(el) => setRef(el, i)}
@@ -60,7 +67,10 @@ export default function News() {
                       backgroundImage: `url(${news.img})`,
                     }}
                   >
-                    <span className=" !text-white max-sm:text-lg text-xl bg-[#000] opacity-80 border-l-2 border-[#666] !p-3 !m-3 duration-200">
+                    <span
+                      style={{ borderColor: renderNewsTypeColor(news.type) }}
+                      className=" !text-white !text-md md:text-lg lg:text-xl bg-[#000] opacity-80 border-l-5 !p-3 !m-3 duration-200"
+                    >
                       {news.title}
                     </span>
                   </div>

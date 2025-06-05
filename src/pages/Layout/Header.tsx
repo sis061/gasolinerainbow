@@ -22,8 +22,9 @@ const Header = () => {
 
   const minLaptop = useMediaQuery({ minWidth: 1024 });
   const minTablet = useMediaQuery({ minWidth: 768 });
-  const location = useLocation();
-  const isDiscography: boolean = location?.pathname === "/discography";
+  const { pathname } = useLocation();
+  const bgBlackRoute: boolean =
+    pathname === "/discography" || pathname.startsWith("/authornote");
 
   const isScrolled = useScrollState();
   const { language, setLanguage } = useLanguageStore();
@@ -45,7 +46,7 @@ const Header = () => {
       <header
         className={cx(
           "z-50 w-screen h-16 md:h-24 !px-8 sm:!px-16 md:!px-[3rem] lg:!px-[6rem] xl:!px-[10rem] sticky top-0 overflow-hidden flex justify-between items-center gap-2 duration-150",
-          (isScrolled || isDiscography) &&
+          (isScrolled || bgBlackRoute) &&
             "bg-[#000]/50 backdrop-blur-sm shadow-2xl"
         )}
       >
@@ -55,11 +56,11 @@ const Header = () => {
             <p
               style={{
                 backgroundImage:
-                  isScrolled || isDiscography ? "" : `url(${LogoBg})`,
+                  isScrolled || bgBlackRoute ? "" : `url(${LogoBg})`,
               }}
               className={cx(
                 "text-lg font-extrabold !-mb-2 !mr-11 ",
-                isScrolled || isDiscography
+                isScrolled || bgBlackRoute
                   ? "!text-white"
                   : `!bg-clip-text !text-transparent bg-center bg-cover`
               )}
@@ -69,11 +70,11 @@ const Header = () => {
             <p
               style={{
                 backgroundImage:
-                  isScrolled || isDiscography ? "" : `url(${LogoBg})`,
+                  isScrolled || bgBlackRoute ? "" : `url(${LogoBg})`,
               }}
               className={cx(
                 "text-md font-extrabold  [&_>span]:text-xl [&_>span]:font-normal *:transition-all *:duration-300",
-                isScrolled || isDiscography
+                isScrolled || bgBlackRoute
                   ? "!text-white [&_>span]:!text-white"
                   : `!bg-clip-text !text-transparent bg-center bg-cover [&_>span]:!bg-clip-text [&_>span]:!text-transparent`
               )}
@@ -86,9 +87,9 @@ const Header = () => {
           <>
             <div className="flex gap-2.5 items-center justify-between max-lg:justify-center flex-1 w-full">
               {/* NAV */}
-              <Nav isDiscography={isDiscography} location={location} />
+              <Nav bgBlackRoute={bgBlackRoute} pathname={pathname} />
               {/* Social */}
-              {minLaptop && <SocialButtons isDiscography={isDiscography} />}
+              {minLaptop && <SocialButtons bgBlackRoute={bgBlackRoute} />}
             </div>
             {minLaptop && (
               <Separator
@@ -104,7 +105,7 @@ const Header = () => {
             variant={"ghost"}
             className={cx(
               "w-8 h-8 lg:w-6 lg:h-6 xl:w-8 xl:h-8 rounded-full bg-white cursor-pointer relative"
-              // (isScrolled || isDiscography) && "bg-black"
+              // (isScrolled || bgBlackRoute) && "bg-black"
             )}
             onClick={() =>
               handleChangeLanguage(language === "ko" ? "en" : "ko")
@@ -114,7 +115,7 @@ const Header = () => {
           >
             <Languages
               size={28}
-              // color={isScrolled || isDiscography ? "#fff" : "#000"}
+              // color={isScrolled || bgBlackRoute ? "#fff" : "#000"}
               color={"#000"}
               className="duration-150 w-full h-full"
             />
@@ -140,10 +141,10 @@ const Header = () => {
         <nav className="h-28 md:h-16 !px-8 sm:!px-16 md:!px-[3rem] lg:!px-[6rem] fixed bottom-0 left-0 flex flex-col md:flex-row items-center justify-around w-screen !p-3 bg-[#000]/75 backdrop-blur-sm *:transition-opacity z-[50] shadow-[0_-6px_12px_2px_rgba(0,0,0,0.4)]">
           {/* NAV */}
           {!minTablet && (
-            <Nav isDiscography={isDiscography} location={location} />
+            <Nav bgBlackRoute={bgBlackRoute} pathname={pathname} />
           )}
           {/* Social */}
-          <SocialButtons isDiscography={isDiscography} />
+          <SocialButtons bgBlackRoute={bgBlackRoute} />
         </nav>
       )}
     </>

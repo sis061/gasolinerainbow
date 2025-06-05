@@ -52,7 +52,7 @@ const logos = [
   },
 ];
 
-const SocialButtons = ({ isDiscography }: { isDiscography: boolean }) => {
+const SocialButtons = ({ bgBlackRoute }: { bgBlackRoute: boolean }) => {
   const minLaptop = useMediaQuery({ minWidth: 1024 });
   const isScrolled = useScrollState();
 
@@ -68,7 +68,7 @@ const SocialButtons = ({ isDiscography }: { isDiscography: boolean }) => {
               className="w-full h-full duration-150"
               fill={
                 minLaptop
-                  ? isScrolled || isDiscography
+                  ? isScrolled || bgBlackRoute
                     ? "#fff"
                     : "#000"
                   : "#fff"

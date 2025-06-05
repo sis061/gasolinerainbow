@@ -6,7 +6,7 @@ export default function VideoBackground() {
       muted
       loop
       playsInline
-      src="/src/assets/vid/bg01.mp4"
+      src="@/assets/vid/bg01.mp4"
     />
   );
 }

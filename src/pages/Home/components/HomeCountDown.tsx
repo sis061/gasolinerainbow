@@ -1,4 +1,4 @@
-import _ from "lodash";
+import map from "lodash/map";
 import Countdown from "react-countdown";
 import cx from "classnames";
 import { motion, AnimatePresence } from "framer-motion";
@@ -79,7 +79,7 @@ const CountdownRenderer = ({
 
   return (
     <div className="min-h-[calc(100dvh-8rem)] md:!-mt-16 max-md:!-px-4 w-full flex items-center justify-center gap-4">
-      {_.map(renderDate, (d) => {
+      {map(renderDate, (d) => {
         // 'Days'가 0 이하인 경우 렌더링 제외
         if (d.en === "Days" && d.count <= 0) return null;
 

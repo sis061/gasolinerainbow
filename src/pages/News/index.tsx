@@ -7,7 +7,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 /************/
-import _ from "lodash";
+import map from "lodash/map";
+import reverse from "lodash/reverse";
 import DOMPurify from "dompurify";
 import { useMediaQuery } from "react-responsive";
 /************/
@@ -47,7 +48,7 @@ export default function News() {
     <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-scroll !mx-auto flex justify-center">
       <div className="inner flex-grow-0 w-full flex flex-col md:!pt-10 items-start justify-between max-md:!px-4">
         <Accordion type="single" collapsible className="max-w-full w-full">
-          {_.map(_.reverse([...newsData]), (news, i) => {
+          {map(reverse([...newsData]), (news, i) => {
             const sanitizeContent = DOMPurify.sanitize(
               linkify(news?.content ?? "")
             );

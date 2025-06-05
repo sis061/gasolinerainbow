@@ -7,7 +7,6 @@ import { Languages } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 /************/
 import cx from "classnames";
-import _ from "lodash";
 import { Link, useLocation } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 /************/

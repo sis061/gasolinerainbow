@@ -24,10 +24,11 @@ import {
 /************/
 import { useNavigate } from "react-router-dom";
 import cx from "classnames";
-import _ from "lodash";
+import map from "lodash/map";
+import range from "lodash/range";
 import DOMPurify from "dompurify";
 /************/
-import { noteMockData } from "@/utils/noteMockData";
+import { noteMockData } from "@/utils/noteData";
 import { filterHTMLTags } from "@/utils/globalHelper";
 import useLanguageStore from "@/store/useLanguageStore";
 
@@ -66,17 +67,17 @@ export default function AuthorNote() {
         <Table className="w-full">
           <TableHeader>
             <TableRow className="hover:bg-transparent flex md:table-row w-full items-center min-h-6">
-              <TableHead className="md:!pl-1 max-md:text-xs order-1 h-full">
+              <TableHead className="md:!pl-1 max-md:text-xs order-1 h-full !pb-2">
                 No.
               </TableHead>
-              <TableHead className="max-md:!pr-2 md:!pl-1.5 max-md:text-xs order-3 md:!order-2 h-full">
+              <TableHead className="max-md:!pr-2 md:!pl-1.5 max-md:text-xs order-3 md:!order-2 h-full !pb-2">
                 {language === "ko" ? "카테고리" : "Category"}
               </TableHead>
               <TableHead className="order-2 md:!order-3 w-full h-full" />
             </TableRow>
           </TableHeader>
           <TableBody>
-            {_.map(tableLists, (note) => {
+            {map(tableLists, (note) => {
               const sanitizeContent = DOMPurify.sanitize(note?.content ?? "");
               return (
                 <TableRow
@@ -135,7 +136,7 @@ export default function AuthorNote() {
               <ChevronLeft className="h-4 w-4" />
             </PaginationLink>
             {/* 현재 그룹 페이지들 */}
-            {_.range(startPage, endPage + 1).map((p) => (
+            {range(startPage, endPage + 1).map((p) => (
               <PaginationItem key={p}>
                 <PaginationLink
                   isActive={page === p}

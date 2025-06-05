@@ -7,7 +7,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 /************/
-import _ from "lodash";
+import map from "lodash/map";
 /************/
 import MultipleIntroPanel from "../Single/components/MultipleIntroPanel";
 import StreamingModal from "../modals/StreamingModal";
@@ -42,7 +42,7 @@ const OSTCarousel = ({
               year={2024}
             />
           </CarouselItem>
-          {_.map(albumMetas, (albumMeta, i) => (
+          {map(albumMetas, (albumMeta, i) => (
             <CarouselItem
               key={i}
               className="w-full h-full flex items-center justify-center"
@@ -68,7 +68,7 @@ const OSTCarousel = ({
                 </li>
                 <li className="w-1/3 max-md:w-full max-md:text-center flex flex-col max-h-[85%] overflow-scroll justify-start items-start gap-2">
                   <ol className="w-full flex flex-col [&_>li]:w-full [&_>li]:break-all gap-2 ">
-                    {_.map(albumMeta.tracks, (tr) => (
+                    {map(albumMeta.tracks, (tr) => (
                       <li key={tr.trackNo}>
                         <span className="!text-white">
                           {tr.trackNo}.{" "}

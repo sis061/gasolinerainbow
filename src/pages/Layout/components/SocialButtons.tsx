@@ -1,4 +1,4 @@
-import _ from "lodash";
+import map from "lodash/map";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
 /************/
@@ -58,7 +58,7 @@ const SocialButtons = ({ bgBlackRoute }: { bgBlackRoute: boolean }) => {
 
   return (
     <ul className="flex items-center justify-between gap-4">
-      {_.map(logos, ({ Component, name, url }) => (
+      {map(logos, ({ Component, name, url }) => (
         <li
           key={name}
           className="flex items-center justify-center w-6 h-6 xl:w-8 xl:h-8"

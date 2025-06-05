@@ -2,8 +2,6 @@ import { useRef, useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 
 import Tooltip from "./HoverTooltip";
-
-import { throttle } from "lodash";
 import { getUserPlatformType } from "@/utils/globalHelper";
 
 interface HoverableProps {

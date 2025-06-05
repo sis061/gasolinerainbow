@@ -6,7 +6,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import _ from "lodash";
+import map from "lodash/map";
 /************/
 import MultipleIntroPanel from "./components/MultipleIntroPanel";
 import SingleInfoPanel from "./components/SingleInfoPanel";
@@ -36,7 +36,7 @@ const SingleCarousel = ({
               year={2021}
             />
           </CarouselItem>
-          {_.map(albumMetas, (albumMeta, i) => (
+          {map(albumMetas, (albumMeta, i) => (
             <SingleInfoPanel
               key={i}
               albumMeta={albumMeta}

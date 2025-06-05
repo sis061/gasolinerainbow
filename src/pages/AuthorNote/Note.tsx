@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft } from "lucide-react";
 /************/
 import { useLocation, useNavigate } from "react-router-dom";
-import _ from "lodash";
+import map from "lodash/map";
 /************/
 import type { NoteProps } from "@/types/authornote";
 import useLanguageStore from "@/store/useLanguageStore";
@@ -22,7 +22,7 @@ export default function Note() {
   useEffect(() => {
     const imgs = imgRef.current?.querySelectorAll("img");
 
-    _.map(imgs, (img) => {
+    map(imgs, (img) => {
       img?.classList.add(
         "!mx-auto",
         "!my-6",

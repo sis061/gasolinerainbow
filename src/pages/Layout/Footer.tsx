@@ -21,7 +21,7 @@ const Footer = () => {
                 GasolineRainbow
               </p>
               <p className="text-md font-extrabold  [&_>span]:text-xl [&_>span]:font-normal !text-white [&_>span]:!text-white">
-                SpilledByH<span>í</span>M<span>í</span>NN
+                SpilledbyH<span>í</span>M<span>í</span>NN
               </p>
             </div>
           </li>

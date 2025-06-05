@@ -75,7 +75,7 @@ const Header = () => {
                   : `!bg-clip-text !text-transparent bg-center bg-cover [&_>span]:!bg-clip-text [&_>span]:!text-transparent`
               )}
             >
-              SpilledByH<span>í</span>M<span>í</span>NN
+              SpilledbyH<span>í</span>M<span>í</span>NN
             </p>
           </div>
         </Link>

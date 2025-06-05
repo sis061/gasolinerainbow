@@ -1,5 +1,5 @@
 /************/
-import { useEffect, useState } from "react";
+import { useState } from "react";
 /************/
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -17,7 +17,7 @@ import Nav from "./components/Nav";
 import SocialButtons from "./components/SocialButtons";
 
 const Header = () => {
-  const [isCurrentLang, setIsCurrentLang] = useState<boolean>(false);
+  const [justChanged, setJustChanged] = useState(false);
 
   const minLaptop = useMediaQuery({ minWidth: 1024 });
   const minTablet = useMediaQuery({ minWidth: 768 });
@@ -28,17 +28,16 @@ const Header = () => {
   const isScrolled = useScrollState();
   const { language, setLanguage } = useLanguageStore();
 
+  const useWhiteText = isScrolled || bgBlackRoute;
+
   const LogoBg = commonImages.bg01Img;
 
-  const handleChangeLanguage = (newLanguage: string): void => {
-    setLanguage(newLanguage);
+  const handleChangeLanguage = () => {
+    const newLang = language === "ko" ? "en" : "ko";
+    setLanguage(newLang);
+    setJustChanged(true);
+    setTimeout(() => setJustChanged(false), 500);
   };
-
-  useEffect(() => {
-    setIsCurrentLang(true);
-    const timer = setTimeout(() => setIsCurrentLang(false), 500);
-    return () => clearTimeout(timer);
-  }, [language]);
 
   return (
     <>
@@ -54,12 +53,11 @@ const Header = () => {
           <div className="w-auto min-h-16 flex flex-col items-center justify-center *:transition-all *:duration-300 hover:animate-pulse">
             <p
               style={{
-                backgroundImage:
-                  isScrolled || bgBlackRoute ? "" : `url(${LogoBg})`,
+                backgroundImage: useWhiteText ? "" : `url(${LogoBg})`,
               }}
               className={cx(
                 "text-lg font-extrabold !-mb-2 !mr-11 ",
-                isScrolled || bgBlackRoute
+                useWhiteText
                   ? "!text-white"
                   : `!bg-clip-text !text-transparent bg-center bg-cover`
               )}
@@ -68,12 +66,11 @@ const Header = () => {
             </p>
             <p
               style={{
-                backgroundImage:
-                  isScrolled || bgBlackRoute ? "" : `url(${LogoBg})`,
+                backgroundImage: useWhiteText ? "" : `url(${LogoBg})`,
               }}
               className={cx(
                 "text-md font-extrabold  [&_>span]:text-xl [&_>span]:font-normal *:transition-all *:duration-300",
-                isScrolled || bgBlackRoute
+                useWhiteText
                   ? "!text-white [&_>span]:!text-white"
                   : `!bg-clip-text !text-transparent bg-center bg-cover [&_>span]:!bg-clip-text [&_>span]:!text-transparent`
               )}
@@ -103,14 +100,10 @@ const Header = () => {
           <Button
             variant={"ghost"}
             className={cx(
-              "w-8 h-8 lg:w-6 lg:h-6 xl:w-8 xl:h-8 rounded-full bg-white cursor-pointer relative"
+              "w-8 h-8 lg:w-6 lg:h-6 xl:w-8 xl:h-8 rounded-full !bg-white cursor-pointer relative"
               // (isScrolled || bgBlackRoute) && "bg-black"
             )}
-            onClick={() =>
-              handleChangeLanguage(language === "ko" ? "en" : "ko")
-            }
-            onMouseEnter={() => setIsCurrentLang(true)}
-            onMouseLeave={() => setIsCurrentLang(false)}
+            onClick={handleChangeLanguage}
           >
             <Languages
               size={28}
@@ -118,16 +111,27 @@ const Header = () => {
               color={"#000"}
               className="duration-150 w-full h-full"
             />
+            <motion.div
+              initial={false}
+              whileHover={{ opacity: 1 }}
+              style={{ opacity: justChanged ? 0 : 0 }}
+              className="absolute flex items-center justify-center bg-black w-full h-full rounded-full"
+            >
+              <span className="font-bold !text-white">
+                {language === "ko" ? "한" : "A"}
+              </span>
+            </motion.div>
             <AnimatePresence>
-              {isCurrentLang && (
+              {justChanged && (
                 <motion.div
+                  key="clicked"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.1 }}
+                  transition={{ duration: 0.2 }}
                   className="absolute flex items-center justify-center bg-black w-full h-full rounded-full"
                 >
-                  <span className="font-bold text-center !text-white">
+                  <span className="font-bold !text-white">
                     {language === "ko" ? "한" : "A"}
                   </span>
                 </motion.div>

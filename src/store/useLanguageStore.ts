@@ -1,19 +1,32 @@
 import { create } from "zustand";
 
 interface LanguageState {
-  language: "ko" | "en" | string;
-  setLanguage: (language: string) => void;
+  language: "ko" | "en";
+  setLanguage: (language: "ko" | "en") => void;
 }
 
-const supportedLanguages = ["ko", "en"];
+type SupportedLanguage = (typeof supportedLanguages)[number];
+
+const supportedLanguages = ["ko", "en"] as const;
+
+const detectInitialLanguage = (): SupportedLanguage => {
+  const storedLang = localStorage.getItem("language");
+  if (storedLang && supportedLanguages.includes(storedLang as any)) {
+    return storedLang as SupportedLanguage;
+  }
+
+  const browserLang = navigator.language.split("-")[0];
+  const finalLang = supportedLanguages.includes(browserLang as any)
+    ? (browserLang as SupportedLanguage)
+    : "en";
+
+  localStorage.setItem("language", finalLang);
+  return finalLang;
+};
 
 const useLanguageStore = create<LanguageState>((set) => ({
-  language:
-    localStorage.getItem("language") ||
-    (supportedLanguages.includes(navigator.language.split("-")[0])
-      ? navigator.language.split("-")[0]
-      : "en"),
-  setLanguage: (language: string) => {
+  language: detectInitialLanguage(),
+  setLanguage: (language) => {
     if (supportedLanguages.includes(language)) {
       localStorage.setItem("language", language);
       set({ language });

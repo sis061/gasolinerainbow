@@ -1,21 +1,29 @@
 import type { JSX } from "react";
-
+import { lazy, Suspense } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
 /*----------------------------------*/
 
-import AuthorNote from "./pages/AuthorNote";
-import Note from "./pages/AuthorNote/Note";
-import Discography from "./pages/Discography";
-import News from "./pages/News";
-import About from "./pages/About";
 import Home from "./pages/Home";
+import { BarLoader } from "react-spinners";
+// const Home = lazy(() => import("./pages/Home"));
+const About = lazy(() => import("./pages/About"));
+const Discography = lazy(() => import("./pages/Discography"));
+const AuthorNote = lazy(() => import("./pages/AuthorNote"));
+const Note = lazy(() => import("./pages/AuthorNote/Note"));
+const News = lazy(() => import("./pages/News"));
+
+const Fallback = () => (
+  <div className="min-h-screen w-screen flex items-center justify-center">
+    <BarLoader color="#fafafa" />
+  </div>
+);
 
 const pageVariants = {
-  initial: { opacity: 0, y: 16 },
+  initial: { opacity: 0, y: 12 },
   animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -16 },
+  exit: { opacity: 0, y: -12 },
 };
 
 const Routers: React.FC<any> = (): JSX.Element => {
@@ -27,33 +35,41 @@ const Routers: React.FC<any> = (): JSX.Element => {
         <Route
           path="/"
           element={
+            // <Suspense fallback={<Fallback />}>
             <PageWrapper>
               <Home />
             </PageWrapper>
+            // </Suspense>
           }
         />
         <Route
           path="*"
           element={
-            <PageWrapper>
-              <Home />
-            </PageWrapper>
+            <Suspense fallback={<Fallback />}>
+              <PageWrapper>
+                <Home />
+              </PageWrapper>
+            </Suspense>
           }
         />
         <Route
           path="/about"
           element={
-            <PageWrapper>
-              <About />
-            </PageWrapper>
+            <Suspense fallback={<Fallback />}>
+              <PageWrapper>
+                <About />
+              </PageWrapper>
+            </Suspense>
           }
         />
         <Route
           path="/discography"
           element={
-            <PageWrapper>
-              <Discography />
-            </PageWrapper>
+            <Suspense fallback={<Fallback />}>
+              <PageWrapper>
+                <Discography />
+              </PageWrapper>
+            </Suspense>
           }
         />
 
@@ -61,20 +77,30 @@ const Routers: React.FC<any> = (): JSX.Element => {
           <Route
             index
             element={
-              <PageWrapper>
-                <AuthorNote />
-              </PageWrapper>
+              <Suspense fallback={<Fallback />}>
+                <PageWrapper>
+                  <AuthorNote />
+                </PageWrapper>
+              </Suspense>
             }
           />
-          <Route path=":idx" element={<Note />} />
+          <Route
+            path=":idx"
+            element={
+              <Suspense fallback={<Fallback />}>
+                <Note />
+              </Suspense>
+            }
+          />
         </Route>
-
         <Route
           path="/news"
           element={
-            <PageWrapper>
-              <News />
-            </PageWrapper>
+            <Suspense fallback={<Fallback />}>
+              <PageWrapper>
+                <News />
+              </PageWrapper>
+            </Suspense>
           }
         />
       </Routes>
@@ -91,7 +117,7 @@ function PageWrapper({ children }: { children: React.ReactNode }) {
       initial="initial"
       animate="animate"
       exit="exit"
-      transition={{ duration: 0.3, ease: "easeInOut" }}
+      transition={{ duration: 0.15, ease: "easeInOut" }}
       className="min-h-screen"
     >
       {children}

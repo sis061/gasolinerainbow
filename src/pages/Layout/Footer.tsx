@@ -28,7 +28,10 @@ const Footer = () => {
           <li className="flex items-center justify-center gap-3 h-4 !pt-1 [@media(max-width:365px)]:text-sm">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <span className="!text-white cursor-pointer hover:border-b-1 border-white">
+                <span
+                  role="button"
+                  className="!text-white cursor-pointer hover:border-b-1 border-white"
+                >
                   Contact
                 </span>
               </DropdownMenuTrigger>

@@ -8,6 +8,7 @@ import { visualizer } from "rollup-plugin-visualizer";
 
 export default defineConfig({
   assetsInclude: ["**/*.png", "**/*.svg", "**/*.jpg", "**/*.jpeg"],
+  base: "/",
   plugins: [
     react(),
     tailwindcss(),
@@ -29,6 +30,7 @@ export default defineConfig({
     host: true,
   },
   build: {
+    outDir: "dist",
     rollupOptions: {
       output: {
         manualChunks: {

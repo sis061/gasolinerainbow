@@ -1,9 +1,13 @@
+import { withImagePreload } from "@/utils/withImagePreload";
 import { commonImages } from "@/assets/images/images";
 import useLanguageStore from "@/store/useLanguageStore";
 import cx from "classnames";
 import { useEffect, useState } from "react";
 
-export default function About() {
+// 초기 이미지 URL만 추출
+const preloadUrls = commonImages.profileImg;
+
+const About = () => {
   const { language } = useLanguageStore();
   const [pluse, setPulse] = useState<string>("");
 
@@ -79,4 +83,6 @@ export default function About() {
       </div>
     </section>
   );
-}
+};
+
+export default withImagePreload(About, [preloadUrls]);

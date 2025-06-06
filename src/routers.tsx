@@ -2,12 +2,12 @@ import type { JSX } from "react";
 import { lazy, Suspense } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import { BarLoader } from "react-spinners";
 
 /*----------------------------------*/
 
-import Home from "./pages/Home";
-import { BarLoader } from "react-spinners";
-// const Home = lazy(() => import("./pages/Home"));
+// import Home from "./pages/Home";
+const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const Discography = lazy(() => import("./pages/Discography"));
 const AuthorNote = lazy(() => import("./pages/AuthorNote"));
@@ -35,11 +35,11 @@ const Routers: React.FC<any> = (): JSX.Element => {
         <Route
           path="/"
           element={
-            // <Suspense fallback={<Fallback />}>
-            <PageWrapper>
-              <Home />
-            </PageWrapper>
-            // </Suspense>
+            <Suspense fallback={<Fallback />}>
+              <PageWrapper>
+                <Home />
+              </PageWrapper>
+            </Suspense>
           }
         />
         <Route

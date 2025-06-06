@@ -2,12 +2,12 @@ import type { JSX } from "react";
 import { lazy, Suspense } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import { BarLoader } from "react-spinners";
 
 /*----------------------------------*/
 
-import Home from "./pages/Home";
-import { BarLoader } from "react-spinners";
-// const Home = lazy(() => import("./pages/Home"));
+// import Home from "./pages/Home";
+const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const Discography = lazy(() => import("./pages/Discography"));
 const AuthorNote = lazy(() => import("./pages/AuthorNote"));
@@ -15,7 +15,7 @@ const Note = lazy(() => import("./pages/AuthorNote/Note"));
 const News = lazy(() => import("./pages/News"));
 
 const Fallback = () => (
-  <div className="min-h-screen w-screen flex items-center justify-center">
+  <div className="min-h-[calc(100dvh-12rem)] w-screen flex items-center justify-center">
     <BarLoader color="#BFBFBF" height={10} speedMultiplier={1} width={200} />
   </div>
 );
@@ -26,92 +26,89 @@ const pageVariants = {
   exit: { opacity: 0, y: -12 },
 };
 
-const Routers: React.FC<any> = (): JSX.Element => {
+const Routers: React.FC<any> = ({
+  isInitialLoad,
+}: {
+  isInitialLoad: boolean;
+}): JSX.Element => {
   const location = useLocation();
+
+  const suspenseWrapper = (component: JSX.Element) =>
+    isInitialLoad ? (
+      component
+    ) : (
+      <Suspense fallback={<Fallback />}>{component}</Suspense>
+    );
 
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route
           path="/"
-          element={
-            // <Suspense fallback={<Fallback />}>
+          element={suspenseWrapper(
             <PageWrapper>
               <Home />
             </PageWrapper>
-            // </Suspense>
-          }
+          )}
         />
         <Route
           path="*"
-          element={
-            <Suspense fallback={<Fallback />}>
-              <PageWrapper>
-                <Home />
-              </PageWrapper>
-            </Suspense>
-          }
+          element={suspenseWrapper(
+            <PageWrapper>
+              <Home />
+            </PageWrapper>
+          )}
         />
         <Route
           path="/about"
-          element={
-            <Suspense fallback={<Fallback />}>
-              <PageWrapper>
-                <About />
-              </PageWrapper>
-            </Suspense>
-          }
+          element={suspenseWrapper(
+            <PageWrapper>
+              <About />
+            </PageWrapper>
+          )}
         />
         <Route
           path="/discography"
-          element={
-            <Suspense fallback={<Fallback />}>
-              <PageWrapper>
-                <Discography />
-              </PageWrapper>
-            </Suspense>
-          }
+          element={suspenseWrapper(
+            <PageWrapper>
+              <Discography />
+            </PageWrapper>
+          )}
         />
 
         <Route path="/authornote">
           <Route
             index
-            element={
-              <Suspense fallback={<Fallback />}>
-                <PageWrapper>
-                  <AuthorNote />
-                </PageWrapper>
-              </Suspense>
-            }
+            element={suspenseWrapper(
+              <PageWrapper>
+                <AuthorNote />
+              </PageWrapper>
+            )}
           />
           <Route
             path=":idx"
-            element={
-              <Suspense fallback={<Fallback />}>
+            element={suspenseWrapper(
+              <PageWrapper>
                 <Note />
-              </Suspense>
-            }
+              </PageWrapper>
+            )}
           />
           <Route
             path=":/*"
-            element={
-              <Suspense fallback={<Fallback />}>
-                <PageWrapper>
-                  <Home />
-                </PageWrapper>
-              </Suspense>
-            }
+            element={suspenseWrapper(
+              <PageWrapper>
+                <Home />
+              </PageWrapper>
+            )}
           />
         </Route>
         <Route
           path="/news"
-          element={
-            <Suspense fallback={<Fallback />}>
-              <PageWrapper>
-                <News />
-              </PageWrapper>
-            </Suspense>
-          }
+          element={suspenseWrapper(
+            <PageWrapper>
+              <News />
+            </PageWrapper>
+          )}
         />
       </Routes>
     </AnimatePresence>

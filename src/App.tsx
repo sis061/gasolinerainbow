@@ -2,12 +2,12 @@ import { AnimatePresence } from "framer-motion";
 import Layout from "./pages/Layout/Layout";
 import Routers from "./routers";
 
-function App() {
+function App({ isInitialLoad }: { isInitialLoad: boolean }) {
   return (
     <>
       <Layout>
         <AnimatePresence mode="wait">
-          <Routers />
+          <Routers isInitialLoad={isInitialLoad} />
         </AnimatePresence>
       </Layout>
     </>

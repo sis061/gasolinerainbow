@@ -239,7 +239,7 @@ export function linkify(text: string): string {
   });
 
   // 3. 인스타그램 @링크화 (이메일 부분 제외됨)
-  result = result.replace(instagramRegex, (username) => {
+  result = result.replace(instagramRegex, (_match, username) => {
     return `<a href="https://instagram.com/${username}" target="_blank" rel="noopener noreferrer" class="mention-link">@${username}</a>`;
   });
 

@@ -13,7 +13,7 @@ const LyricsPanel = ({
   return (
     <li
       ref={lyricsRef}
-      className="w-1/2 max-h-[85%] bg-white/75 overflow-scroll !p-10 shadow-xl flex-grow"
+      className="w-1/2 max-h-[30rem] bg-white/75 overflow-scroll !p-10 shadow-xl flex-grow"
     >
       <div className="*:whitespace-break-spaces !space-y-3">
         <AnimatePresence mode="wait">

@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 import { CarouselItem } from "@/components/ui/carousel";
 import { Drawer, DrawerTrigger } from "@/components/ui/drawer";
@@ -18,6 +18,7 @@ import MobileDrawer from "../../modals/MobileDrawer";
 
 import type { SingleInfoPanelProps } from "@/types/discography";
 import Hoverable from "@/pages/Layout/components/Hoverable";
+import { useScrollLock } from "@/hooks/useScrollLock";
 
 const SingleInfoPanel = ({
   albumMeta,
@@ -27,6 +28,10 @@ const SingleInfoPanel = ({
   // onChange,
 }: SingleInfoPanelProps) => {
   const lyricsRef = useRef<HTMLLIElement | null>(null);
+  const [open, setOpen] = useState<boolean>(false);
+
+  useScrollLock(open);
+
   const minTablet = useMediaQuery({ minWidth: 768 });
   const { language } = useLanguageStore();
   const type = renderDiskType(albumMeta.type);
@@ -52,8 +57,8 @@ const SingleInfoPanel = ({
   }, [selectedTrack?.lyrics]);
 
   return (
-    <CarouselItem className="w-full h-full flex items-center justify-center !px-2.5 md:!px-5">
-      <Drawer>
+    <CarouselItem className="w-full h-auto flex items-center justify-center !px-2.5 md:!px-5">
+      <Drawer open={open} onOpenChange={setOpen}>
         <ul className="w-full h-full flex items-center max-md:justify-center max-xl:gap-16">
           <li className="w-1/2 max-md:w-full h-full flex flex-col gap-6 items-center justify-center [&_*]:!text-white overflow-y-scroll">
             <div className="w-full xl:w-3/4 bg-gray-600 overflow-hidden ">

@@ -30,10 +30,14 @@ const StreamingPlatformButtons = lazy(
 import useLanguageStore from "@/store/useLanguageStore";
 
 import type { Disk } from "@/types/discography";
+import { useScrollLock } from "@/hooks/useScrollLock";
 
 const StreamingModal = ({ albumMeta }: { albumMeta: Disk }) => {
   const [open, setOpen] = useState<boolean>(false);
   const minTablet = useMediaQuery({ minWidth: 768 });
+
+  useScrollLock(open);
+
   const { language } = useLanguageStore();
   const platforms = getStreamingPlatformInfo(albumMeta.urls);
   const renderType: string = albumMeta.type === "album" ? "앨범" : "노래";
@@ -57,7 +61,7 @@ const StreamingModal = ({ albumMeta }: { albumMeta: Disk }) => {
           <DialogDescription className="sr-only hidden">
             스트리밍 목록
           </DialogDescription>
-          <div className="!overflow-y-scroll w-full h-full">
+          <div className="!overflow-y-scroll w-full h-full flex items-center justify-center">
             <Suspense
               fallback={
                 <ScaleLoader
@@ -66,7 +70,7 @@ const StreamingModal = ({ albumMeta }: { albumMeta: Disk }) => {
                   height={20}
                   margin={3}
                   radius={0}
-                  width={5}
+                  width={3}
                 />
               }
             >
@@ -96,7 +100,7 @@ const StreamingModal = ({ albumMeta }: { albumMeta: Disk }) => {
             Listen {language === "ko" ? albumMeta.titleKr : albumMeta.titleEn}
           </DrawerTitle>
 
-          <div className="w-full h-full !overflow-y-scroll !px-6">
+          <div className="!w-full !h-full !overflow-y-scroll !px-6 flex items-center justify-center">
             <Suspense
               fallback={
                 <ScaleLoader
@@ -105,7 +109,7 @@ const StreamingModal = ({ albumMeta }: { albumMeta: Disk }) => {
                   height={20}
                   margin={3}
                   radius={0}
-                  width={5}
+                  width={3}
                 />
               }
             >

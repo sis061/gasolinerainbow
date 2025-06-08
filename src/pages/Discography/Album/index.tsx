@@ -24,6 +24,7 @@ import useLanguageStore from "@/store/useLanguageStore";
 import Hoverable from "@/pages/Layout/components/Hoverable";
 import OverlayText from "@/pages/Layout/components/OverlayText";
 import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
+import { useScrollLock } from "@/hooks/useScrollLock";
 
 const AlbumCarousel = ({
   albumMeta,
@@ -33,12 +34,14 @@ const AlbumCarousel = ({
   const carouselRef = useRef<CarouselApi | null>(null);
   const lyricsRef = useRef<HTMLLIElement | null>(null);
   const triggerRef = useRef<HTMLDivElement | null>(null);
+  const [open, setOpen] = useState<boolean>(false);
   const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
 
   const minTablet = useMediaQuery({ minWidth: 768 });
 
   const { language } = useLanguageStore();
   const { showOverlayText, setShowOverlayText } = useDiscographyGuideStore();
+  useScrollLock(open);
 
   const resetSelectionAndHideOverlay = () => {
     setTimeout(() => setSelectedTrack(null), 200);
@@ -81,14 +84,14 @@ const AlbumCarousel = ({
       <Carousel
         setApi={(api) => (carouselRef.current = api)}
         opts={{ loop: true, watchDrag: true }}
-        className="w-full h-full relative !px-10 lg:!px-20 touch-pan-y"
+        className="w-full h-full relative !p-10 lg:!p-20 touch-pan-y "
       >
-        <CarouselContent className="w-full h-[calc(100dvh-8rem)]">
-          <CarouselItem className="w-full h-full flex items-center justify-center">
+        <CarouselContent className="w-full h-full flex items-center ">
+          <CarouselItem className="w-full h-full flex items-center justify-center ">
             <AlbumIntroPanel albumMeta={albumMeta} />
           </CarouselItem>
-          <CarouselItem className="w-full h-full flex items-center justify-center relative">
-            <Drawer>
+          <CarouselItem className="w-full h-auto flex items-center justify-center relative ">
+            <Drawer open={open} onOpenChange={setOpen}>
               <ul className="w-full h-full flex items-center max-md:justify-center lg:!px-10 ">
                 <li className="md:!pr-10 w-1/2 max-md:w-full flex flex-col gap-6 items-end max-md:items-center justify-center [&_*]:!text-white !album-track-container">
                   <Hoverable

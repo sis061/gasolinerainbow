@@ -1433,7 +1433,7 @@ Crawl into your space generously in silence but definitely.`,
       },
       {
         trackNo: 3,
-        titleKr: "≒(가을같은겨울)",
+        titleKr: "≒ (가을같은겨울)",
         titleEn: "≒",
         lyrics: `겨울 같이 가을이 오면
 잡았던 두 손을 놓게 하고

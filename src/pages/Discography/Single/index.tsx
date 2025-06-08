@@ -26,9 +26,9 @@ const SingleCarousel = ({
       <Carousel
         setApi={(api) => (carouselRef.current = api)}
         opts={{ loop: true, watchDrag: true }}
-        className="w-full h-full relative !px-10 lg:!px-20"
+        className="w-full h-full relative !p-10 lg:!p-20"
       >
-        <CarouselContent className="w-full h-[calc(100dvh-8rem)]">
+        <CarouselContent className="w-full h-full flex items-center ">
           <CarouselItem className="w-full h-full flex items-center justify-center">
             <MultipleIntroPanel
               image={albumMetas[0].image}

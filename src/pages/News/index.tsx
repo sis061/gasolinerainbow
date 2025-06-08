@@ -141,7 +141,7 @@ const News = () => {
                           alt={news.title}
                           className="hidden"
                           onLoad={() => handleImageLoad(i)}
-                          // loading="lazy"
+                          loading="eager"
                         />
                         <div
                           className="absolute inset-0 bg-center bg-no-repeat bg-cover transition-opacity duration-500"

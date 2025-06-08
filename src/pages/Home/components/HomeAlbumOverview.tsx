@@ -90,7 +90,9 @@ const HomeAlbumOverview = ({
                 }
               >
                 <StreamingPlatformButtons
-                  customClassName={"!flex-col !w-full"}
+                  customClassName={
+                    "max-md:flex-col [@media(max-width:1239px)]:w-[73%] max-md:!w-full"
+                  }
                   platforms={platforms}
                   aria-describedby="drawer-description"
                 />

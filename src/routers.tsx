@@ -9,7 +9,6 @@ import { commonImages } from "./assets/images/images";
 
 /*----------------------------------*/
 
-// import Home from "./pages/Home";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() =>
   preloadImages([commonImages.profileImg]).then(() => import("./pages/About"))
@@ -17,7 +16,12 @@ const About = lazy(() =>
 const Discography = lazy(() => import("./pages/Discography"));
 const AuthorNote = lazy(() => import("./pages/AuthorNote"));
 const Note = lazy(() => import("./pages/AuthorNote/Note"));
-const News = lazy(() => import("./pages/News"));
+// const News = lazy(() => import("./pages/News"));
+const News = lazy(() =>
+  import("@/utils/newsPreload").then(({ preloadNewsResources }) =>
+    preloadNewsResources().then(() => import("./pages/News"))
+  )
+);
 
 const Fallback = () => (
   <div className="min-h-[calc(100dvh-12rem)] w-screen flex items-center justify-center">

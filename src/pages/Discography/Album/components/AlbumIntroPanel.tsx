@@ -10,12 +10,7 @@ const AlbumIntroPanel = ({ albumMeta }: { albumMeta: Disk }) => {
   return (
     <ul className="w-full flex items-center gap-10 max-lg:flex-col">
       <li className="bg-gray-600 overflow-hidden w-full md:w-2/3 lg:w-auto">
-        <img
-          src={image}
-          alt="앨범 아트워크"
-          className="w-full h-full"
-          loading="lazy"
-        />
+        <img src={image} alt="앨범 아트워크" className="w-full h-full" />
       </li>
       <li
         className={

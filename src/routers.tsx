@@ -4,11 +4,16 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { BarLoader } from "react-spinners";
 
+import { preloadImages } from "./utils/withImagePreload";
+import { commonImages } from "./assets/images/images";
+
 /*----------------------------------*/
 
 // import Home from "./pages/Home";
 const Home = lazy(() => import("./pages/Home"));
-const About = lazy(() => import("./pages/About"));
+const About = lazy(() =>
+  preloadImages([commonImages.profileImg]).then(() => import("./pages/About"))
+);
 const Discography = lazy(() => import("./pages/Discography"));
 const AuthorNote = lazy(() => import("./pages/AuthorNote"));
 const Note = lazy(() => import("./pages/AuthorNote/Note"));
@@ -119,6 +124,7 @@ export default Routers;
 
 function PageWrapper({ children }: { children: React.ReactNode }) {
   return (
+    // <div>{children}</div>
     <motion.div
       variants={pageVariants}
       initial="initial"

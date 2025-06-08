@@ -54,6 +54,7 @@ const OSTCarousel = ({
                       src={albumMeta.image}
                       alt="앨범 아트워크"
                       className="w-full h-full"
+                      loading="lazy"
                     />
                   </div>
                   <div className="flex flex-col w-full justify-center items-center max-md:items-start gap-2 [&_*]:!text-white">

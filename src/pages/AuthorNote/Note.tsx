@@ -10,7 +10,7 @@ import map from "lodash/map";
 import type { NoteProps } from "@/types/authornote";
 import useLanguageStore from "@/store/useLanguageStore";
 
-function Note() {
+export default function Note() {
   const imgRef = useRef<HTMLDivElement | null>(null);
   /************/
   const navigate = useNavigate();
@@ -24,13 +24,8 @@ function Note() {
       return;
     }
 
-    const container = imgRef.current;
-    if (!container) return;
-
-    const imgs = container.querySelectorAll("img");
-
+    const imgs = imgRef.current?.querySelectorAll("img");
     map(imgs, (img) => {
-      // 기존 Tailwind 스타일 추가
       img?.classList.add(
         "!mx-auto",
         "!my-6",
@@ -40,32 +35,8 @@ function Note() {
         "md:min-h-1/2",
         "max-w-full",
         "min-w-[95]",
-        "min-h-auto",
-        "!bg-[#333]",
-        "opacity-0", // 처음에는 투명
-        "transition-opacity",
-        "duration-500"
+        "min-h-auto"
       );
-
-      const wrapper = document.createElement("div");
-      wrapper.className =
-        "relative flex justify-center items-center my-6 w-full bg-transparent";
-
-      const skeleton = document.createElement("div");
-      skeleton.className =
-        "absolute inset-0 rounded-md bg-muted animate-pulse min-h-[200px] w-full max-w-full";
-
-      const onLoad = () => {
-        skeleton.remove();
-        img.classList.remove("opacity-0");
-        img.removeEventListener("load", onLoad);
-      };
-
-      img.addEventListener("load", onLoad);
-
-      img.parentNode?.insertBefore(wrapper, img);
-      wrapper.appendChild(skeleton);
-      wrapper.appendChild(img);
     });
   }, [location.state, navigate]);
 
@@ -115,5 +86,3 @@ function Note() {
     </section>
   );
 }
-
-export default Note;

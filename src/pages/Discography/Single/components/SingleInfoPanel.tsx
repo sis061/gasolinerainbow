@@ -61,6 +61,7 @@ const SingleInfoPanel = ({
                 src={albumMeta.image}
                 alt="앨범 아트워크"
                 className="w-full h-full"
+                loading="lazy"
               />
             </div>
             <ul className="flex max-md:gap-3 max-lg:gap-5 max-xl:gap-7 gap-10 w-full justify-between items-start [&_*]:!text-white ">

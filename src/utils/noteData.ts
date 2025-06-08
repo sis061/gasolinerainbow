@@ -23,26 +23,26 @@ export const noteData = [
     category: "모디파이는 질병입니다.",
     title: "모디파이는 질병입니다. Volume 1",
     content: `- 맨 처음 소개하는 친구는 저의 풀할로우기타입니다. 어쿠스틱 기타처럼 보이겠지만 제가 풀할로우가 되어라 라고 했기 때문에 이젠 풀할로우기타입니다.
-<img src=${notesImages.modify_1_0} alt="note image" />
+<img src=${notesImages.modify_1_0} alt="note image" loading="lazy" />
 - 처음 만나게 된 때는 2013~2014년 그 사이 언제즈음. 순정 그 자체의 이 아이는 학교 선배의 아버지가 치시던 세종 기타였습니다.
 아버지께서 다른 기타를 사신다고 저에게 반값에 준다고 한 형, 그리고 냉큼 20만원을 주고 생에 첫 통키타를 덜컥 가진 나.
 아아. 십 년이 지난 지금, 민섭이형이 지금의 기타를 마주한다면 어떠한 생각을 할까요..? 불쌍함에 눈물을 흘릴까요?
 
 참고로 저 날 집에 가자마자 픽가드가 거추장스럽다고 긁어떼어버렸습니다. 몇 달 지나지 않아 픽가드 뗀 자리가 쩍쩍 달라붙는다고 스티커로 도배도 했습니다 (…)
 
-<img src=${notesImages.modify_1_1} alt="note image" />
+<img src=${notesImages.modify_1_1} alt="note image" loading="lazy" />
 
 - 그리고 몇 년 채 지나지 않아, 데미안 라이스가 간지나게 깨진 어쿠스틱에 험버커를 달아 연주하는 걸 직접 보게 된 나.
 
 수 일 간의 뮬질을 통해 구현해주겠다는 악기사를 만나게 됩니다. 따라한다고 다 데미안 라이스가 되는게 아닌데, 밥은 잘 축내는 놈으로 자라긴 했습니다.
 
-<img src=${notesImages.modify_1_2} alt="note image" />
+<img src=${notesImages.modify_1_2} alt="note image" loading="lazy" />
 
 ’픽업을 달아주세요‘ 픽업을 달기 위해 아크릴판을 짜서 만들었습니다.
 ‘저 기존에 달린 피에조도 쓰고싶어요.’ 그래서 넥-험버커, 브릿지-피에조 가 달린 미친 기타를 만들었습니다.
 ‘킬스위치도 가능할까요..?’ - 오락실 버튼이 달린 기타가 되었습니다.
 
-<img src=${notesImages.modify_1_3} alt="note image" />
+<img src=${notesImages.modify_1_3} alt="note image" loading="lazy" />
 
 - ’테일피스는 존나 멋있다!‘
 2015-2016년 사이 제가 한 생각입니다. 생각에서 끝났으면 좋았을텐데. 테일피스를 샀습니다. 샤인기타 사장님이 플랫한 탑에선 못쓴다고 하네요.
@@ -50,21 +50,21 @@ export const noteData = [
 
 - 2023년. 저는 던컨 픽업에 질려가고 있었습니다. 그 때 너바나 라이브를 보지 말았어야했는데. TV존스 픽업이 갖고 싶어졌습니다. 그레치에 달린 고-급 픽업이..
 
-<img src=${notesImages.modify_1_5} alt="note image" />
+<img src=${notesImages.modify_1_5} alt="note image" loading="lazy" />
 
 3개월을 넘게 존버했습니다. 복이 있는 자는 기다린다고 하죠. 당장 손에 쥐고 기타샵으로 갔습니다. 저의 수많은 변태가학적 기타들은 봐온 분당악기 사장님. 이젠 그도 조금 즐기시는게 아닐까 싶었어요.(아닙니다.)
 
 아아.. 이 자본에서 나오는 따뜻한 티비존스 클래식의 소리…
 
-<img src=${notesImages.modify_1_6} alt="note image" />
+<img src=${notesImages.modify_1_6} alt="note image" loading="lazy" />
 
 - 그러고 사흘 전. 저는 문득, 스티커가 보기 싫어졌습니다. 딱히 이유는 없고, 꿈에서 기타가 숨이 갑갑하다고 했거든요. 진실인지 아닌지 판단은 여러분의 몫입니다.
 
-<img src=${notesImages.modify_1_7} alt="note image" />
+<img src=${notesImages.modify_1_7} alt="note image" loading="lazy" />
 
 이 기타는 10년을 저랑 함께했습니다. 보시다 싶이 군데군데 까지고, 어떤 부분은 실수 한 번하면 회생이 불가능할 정도의 상태이기도 하네요. 그러니까 딱 이십 년만 나랑 더 함께하자…
 
-<img src=${notesImages.modify_1_4} alt="note image" />
+<img src=${notesImages.modify_1_4} alt="note image" loading="lazy" />
 
 `,
   },
@@ -74,7 +74,7 @@ export const noteData = [
     title: "모디파이는 질병입니다. Volume 2",
     content: `- 돌아온 <모디파이는 질병입니다> 두 번째 시간입니다. 오늘의 친구는 함부로 사면 안된다는 바로 그 기타입니다.
 
-    <img src=${notesImages.modify_2_1} alt="note image" />
+    <img src=${notesImages.modify_2_1} alt="note image" loading="lazy" />
 
 - 2017년 막 상등병을 달았던 저는 ‘아! 이제 앨범을 준비하자!’ 하는 마음에 일렉의 필요성을 느끼기 시작했습니다. 물론 앨범은 그로부터 5년이 지나야 나오게됐죠.
 
@@ -82,13 +82,13 @@ export const noteData = [
 
 당시 힙스터병 말기에 걸려있던 저는 슈게이징은 무조건 오프셋기타!를 외치고 다녔는데, 그와중에 눈에 들어온 J Mascis 시그니처는 보통의 재즈마스터와 달랐습니다. 휴가를 나온 저는 곧장 서울로 달려가 새 식구를 마주했죠.
 
-<img src=${notesImages.modify_2_2} alt="note image" />
+<img src=${notesImages.modify_2_2} alt="note image" loading="lazy" />
 
 - [기타 소리의 5할은 픽업에서 나온다.] 라는 말을 아시나요? 모르실겁니다. 저만 주구장창 떠들고 다니는 말이거든요. 픽업 갈이 중독이던 저는 곧장 픽업을 갈아치웠습니다. 이제 기타는 스콰이어지만 픽업은 펜더입니다.
 
 - 어느날 순백의 재즈마스터에게 큰 덴트가 생겨버렸습니다. 그것이 시작이었습니다.
 
-<img src=${notesImages.modify_2_4} alt="note image" />
+<img src=${notesImages.modify_2_4} alt="note image" loading="lazy" />
 
 세팅을 받으러 간 분당의 모 악기샾. 별 생각 없이 덴트를 보며 “레릭”이란 단어를 꺼낸 저. 그걸 지켜보는 사장님의 빛나는 눈빛. 물론 저의 눈빛은 대강 열다섯 배정도 더 빛나고 있었습니다.
 
@@ -98,11 +98,11 @@ export const noteData = [
 
 우레탄 피니쉬에 클로젯을 먹이는 미친 짓은 지금 돌아보니 대성공이었습니다. 당시 사장님은 라카 피니쉬에 비해 이쁘게 안갈라졌다고 아쉬워하셨지만, 먼지와 때를 먹은 지금의 틈은 더할나위없이 아름답습니다.
 
-<img src=${notesImages.modify_2_5} alt="note image" />
+<img src=${notesImages.modify_2_5} alt="note image" loading="lazy" />
 
 - 거기서 멈춰야했습니다. 레릭이 모자라.. 를 외치던 저는, 홀린듯 사포를 사고 모퉁이를 긁어내고 있었습니다.. 정신을 차려보니 이미 되돌리긴 힘들더라구요.
 
-<img src=${notesImages.modify_2_3} alt="note image" />
+<img src=${notesImages.modify_2_3} alt="note image" loading="lazy" />
 
 - 사실 저의 메인 기타는 텔레캐스터입니다.(…) 하지만 최근에 좋은 기회들이 있어서 무한 슈게이징 머신으로 재즈마스터가 많이 활약하고 있는걸 보실 수 있는데요. 어이, 재마. 너는 슈게이징 특전 승진이다. 앞으로 계속 현역으로 뛸 수 있도록!`,
   },
@@ -129,13 +129,13 @@ export const noteData = [
     title: "모디파이는 질병입니다. Volume 3",
     content: `- 오랜만에 돌아온 모디파이는 질병입니다 시리즈, 그 세 번째 시간입니다. 오늘은 특별히 두 친구를 동시에 소개합니다.
 
-    <img src=${notesImages.modify_3_1} alt="note image" />
+    <img src=${notesImages.modify_3_1} alt="note image" loading="lazy" />
 
 - 저를 어느정도 알고 지낸 사람들이라면 제가 “그 밴드”에 심취하다 못해 아주 미쳐지내는 걸 잘 알고 계실겁니다. 말해 뭐합니까. 바로 라디오헤드죠. 듣는데에서 멈췄어야 했는데… 이 정신나간 놈은 또 실천에 옮깁니다.
 
 - 긴 머리를 찰랑거리며 기타를 폭행하는 광인..조니 그린우드.. 그의 기타가 갖고 싶었습니다.
 
-<img src=${notesImages.modify_3_2} alt="note image" />
+<img src=${notesImages.modify_3_2} alt="note image" loading="lazy" />
 
 “텔레캐스터 플러스”.
 
@@ -143,7 +143,7 @@ export const noteData = [
 
 - 여기서 포기했다면 올해의 비정상 자리에 오르지도 못했겠죠. 없으면 내가 만든다. 아아.. 그때라도 누가 말렸어야 했습니다. 하루에도 수십 번 뮬을 드나들던 저는 우연히 한 친구를 발견합니다. 어..? 텔레캐스터인데 픽업이 세 개..? 저의 계획은 단 1초 안에 모두 머리에 그려졌고, 곧바로 대전으로 오르는 버스를 탑니다.
 
-<img src=${notesImages.modify_3_3} alt="note image" />
+<img src=${notesImages.modify_3_3} alt="note image" loading="lazy" />
 
 - 투박한 텔레캐스터 플러스 모던 플레이어 어쩌구. 중펜을 처음 마주한 날의 충격을 잊지 못합니다. 이 어처구니 없는 마감과 쓰레기같은 픽업의 소리. 하지만 저에겐 상관없었죠. 다 모.디.파.이.할 거니까.
 
@@ -151,18 +151,18 @@ export const noteData = [
 하늘은 저에게 미펜 텔레 플러스는 못주셨지만, 기적같은 타이밍은 주셨습니다. 구멍 세 개 난 텔레를 사자마자 제가 찾던 레이스센서가 매물로 떡하니 올라왔거든요.
 참고로 가운데는 비워두기 뭐해서 픽업 하나 더 샀습니다. 똑같이 따라하면 재미 없거든요.
 
-<img src=${notesImages.modify_3_5} alt="note image" />
+<img src=${notesImages.modify_3_5} alt="note image" loading="lazy" />
 
 - 낙원으로 향했습니다. 주인장! 픽업 갈고 픽가드도 하나만 파주십쇼, 마치 그의 기타처럼 하얀 픽가드로.
 가장 중요한게 남았습니다. 킬스위치라고 아십니까? 그것도 해주십쇼. 모르면 배워서라도 달아주십쇼.
 
-<img src=${notesImages.modify_3_4} alt="note image" />
+<img src=${notesImages.modify_3_4} alt="note image" loading="lazy" />
 
 - 그렇게 탄생했습니다. 소나무바디, 메이플넥, 레이스센서로만 이뤄진 험싱싱 픽업, 5단 셀렉터와 킬스위치가 달린.. 나만의 텔레캐스터 플러스. 처음 완성된 모습을 봤을 때는 마치 신부입장을 보는 새신랑같이 감격을 주체할 수 없었습니다.
 
 - 사실 한두달 쓰다가 넥 픽업이 고장나서 결국 눈물을 머금고 미국 본사에서 직구를 해 다시 달았던 아픈 과거가 있습니다. 하지만 후회하진 않죠. 제가 찾던 사이즈의 스티커를 같이 보내주더라구요. 혼다 스티커를 붙이기엔 전 시티백을 조금 더 좋아하기 때문에.
 
-<img src=${notesImages.modify_3_6} alt="note image" />
+<img src=${notesImages.modify_3_6} alt="note image" loading="lazy" />
 
 - 레코딩과 같은 상황에서는 무조건 먼저 쓰고 보는 저의 메인 기타입니다. 요 몇 달은 밥값 벌어오는 친구(이전 화 참고)가 따로 있어 골방 노인네 취급을 받고 있지만, 제 앨범에서 기상천외한 소리는 다 이 친구가 만든거니 저에겐 아주 귀한 자식이 아닐 수 없지요.
 
@@ -174,17 +174,17 @@ export const noteData = [
     title: "모디파이는 질병입니다. Volume 4",
     content: `- 정말 오랜만에 돌아온 ‘모디파이는 질병입니다’ 네 번째 시간입니다. 조니 그린우드는 아주 나쁜 사람이에요.
 
-<img src=${notesImages.modify_4_1} alt="note image" />
+<img src=${notesImages.modify_4_1} alt="note image" loading="lazy" />
 
 - 긴 머리를 찰랑거리며 기타를 폭행하는 광인..조니 그린우드.. 그의 기타가 “또” 갖고 싶었습니다. 세상에 오프셋인데 세미할로우인데 픽업은 또 와이드레인지 험버커..? 근데 저기에다 첼로활을 비벼..?
 
-<img src=${notesImages.modify_4_2} alt="note image" />
+<img src=${notesImages.modify_4_2} alt="note image" loading="lazy" />
 
 - 그래서 이 요상하게 생긴 기타는 바로 스타캐스터 라는 친구입니다. 저는 분명히 단종되어서 이베이에 3000파운드 정도로 돌아다니는 줄 알았는데 말이죠. 세상에 가난한 딴따라의 구세주, 메시아 스콰이어는 스타캐스터를 버리지 않았습니다. 스콰이어 픽업? 일렉트로닉스가 아쉽다구요? 그런건 걱정할 필요가 없습니다. 갈아치우면 되니ㄲ…
 
 - 한 가지 흠이 있다면 이 기타는 한국에 수입을 안한다는 거였죠. 제가 프리비, 버즈버드 였어도 수입 안했을겁니다. 스트랫이나 잔뜩 팔아서 이윤을 남기는 것이 기업의 당연한 도리죠. 아무튼 그 당시 종일 군침을 흘려서 아주 집을 족욕탕으로 만들던 저에게 희소식이 들려옵니다. 바로 @studio_pho.ne 를 운영하는 김 모 사장이 일본에 간다는겁니다. 그래, 기회의 땅 지팡구. 거기에는 있다… 있을 것이다..
 
-<img src=${notesImages.modify_4_3} alt="note image" />
+<img src=${notesImages.modify_4_3} alt="note image" loading="lazy" />
 
 - 그렇게 비행기에 겨우(많은 일이 있었지만) 몸을 싣고 조선땅에 도착한 스타캐스터. 무서워하지마렴. 아저씨는 나쁜 사람이 아니란다. 몇 가지만 약간 고치자.
 
@@ -204,11 +204,11 @@ VS
 
 ”세팅, 픽업 갈고, 포텐셔미터 1meg로 두 짝, 픽가드는 탈거.“
 
-<img src=${notesImages.modify_4_4} alt="note image" />
+<img src=${notesImages.modify_4_4} alt="note image" loading="lazy" />
 
 - 픽업이 아니 기타가 웁니다 울어. 이런 세미할로우는 어디서도 만나지 못 할 겁니다.
 
-<img src=${notesImages.modify_4_5} alt="note image" />
+<img src=${notesImages.modify_4_5} alt="note image" loading="lazy" />
 
 - 최근까지 라이브에서도 많은 활약을 했고, 다음 앨범에서도 큰 역할을 해줄거라 믿습니다. 아니 다 필요 없고 일단 이쁘잖아요. 다들 조명 아래 빛나는 나의 썬버스트 스타캐스터를 봐. 보라고.
 

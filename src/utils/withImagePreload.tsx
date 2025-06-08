@@ -31,5 +31,7 @@ export function withImagePreload<P extends JSX.IntrinsicAttributes>(
 
   ComponentWithPreload.displayName = `WithImagePreload(${WrappedComponent.displayName || WrappedComponent.name || "Component"})`;
 
+  console.log(ComponentWithPreload);
+
   return ComponentWithPreload;
 }

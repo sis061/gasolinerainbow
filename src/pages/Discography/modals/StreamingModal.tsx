@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 /************/
 import {
   DialogHeader,
@@ -22,12 +22,14 @@ import { X } from "lucide-react";
 /************/
 import { useMediaQuery } from "react-responsive";
 /************/
-import StreamingPlatformButtons, {
-  getStreamingPlatformInfo,
-} from "@/components/StreamingPlatformButtons";
+import { getStreamingPlatformInfo } from "@/components/StreamingPlatformButtons";
+const StreamingPlatformButtons = lazy(
+  () => import("@/components/StreamingPlatformButtons")
+);
 import useLanguageStore from "@/store/useLanguageStore";
 /************/
 import type { Disk } from "@/types/discography";
+import { ScaleLoader } from "react-spinners";
 
 const StreamingModal = ({ albumMeta }: { albumMeta: Disk }) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -56,11 +58,24 @@ const StreamingModal = ({ albumMeta }: { albumMeta: Disk }) => {
             스트리밍 목록
           </DialogDescription>
           <div className="!overflow-y-scroll w-full h-full">
-            <StreamingPlatformButtons
-              customClassName={"!flex-col !w-full"}
-              platforms={platforms}
-              aria-describedby="drawer-description"
-            />
+            <Suspense
+              fallback={
+                <ScaleLoader
+                  color="#BFBFBF"
+                  barCount={7}
+                  height={20}
+                  margin={3}
+                  radius={0}
+                  width={5}
+                />
+              }
+            >
+              <StreamingPlatformButtons
+                customClassName={"!flex-col !w-full"}
+                platforms={platforms}
+                aria-describedby="drawer-description"
+              />
+            </Suspense>
           </div>
         </DialogContent>
       </Dialog>
@@ -82,11 +97,24 @@ const StreamingModal = ({ albumMeta }: { albumMeta: Disk }) => {
           </DrawerTitle>
 
           <div className="w-full h-full !overflow-y-scroll !px-6">
-            <StreamingPlatformButtons
-              customClassName={"max-md:flex-col max-md:!w-full"}
-              platforms={platforms}
-              aria-describedby="drawer-description"
-            />
+            <Suspense
+              fallback={
+                <ScaleLoader
+                  color="#BFBFBF"
+                  barCount={7}
+                  height={20}
+                  margin={3}
+                  radius={0}
+                  width={5}
+                />
+              }
+            >
+              <StreamingPlatformButtons
+                customClassName={"!flex-col !w-full"}
+                platforms={platforms}
+                aria-describedby="drawer-description"
+              />
+            </Suspense>
           </div>
         </DrawerHeader>
         <DrawerDescription className="sr-only">스트리밍 목록</DrawerDescription>

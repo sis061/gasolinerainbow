@@ -50,6 +50,7 @@ import modify_4_5 from "@/assets/images/notes/modify_4_5_24_11zon.webp";
 // 공통 이미지
 import bg01Img from "@/assets/images/bg01Img.webp";
 import profileImg from "@/assets/images/profileImg.webp";
+import PageNotFoundImg from "@/assets/images/PageNotFound.webp";
 
 // export 객체
 export const diskImages = {
@@ -104,4 +105,5 @@ export const notesImages = {
 export const commonImages = {
   bg01Img,
   profileImg,
+  PageNotFoundImg,
 };

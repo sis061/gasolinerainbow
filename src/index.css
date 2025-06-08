@@ -109,6 +109,12 @@ a {
   word-break: break-word;
 }
 
+.skeleton {
+  @apply bg-[#333] animate-pulse;
+  border-radius: 0.5rem;
+  min-height: 16rem; /* 필요 시 이미지 placeholder 크기 조정 */
+}
+
 /*********************************** lib customize class ***********************************/
 
 /*---break---*/

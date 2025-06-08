@@ -33,9 +33,13 @@ export default function Note() {
 
   const styledContent = useMemo(() => {
     if (!note?.content) return "";
+
     return note.content.replace(
       /<img /g,
-      `<img class="!mx-auto !my-6 md:w-2/3 w-full h-auto" `
+      `<img
+      class="skeleton !mx-auto !my-6 md:w-2/3 w-full h-auto"
+      onload="this.classList.remove('skeleton')"
+    `
     );
   }, [note?.content]);
 

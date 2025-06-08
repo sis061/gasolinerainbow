@@ -44,7 +44,7 @@ const StreamingModal = ({ albumMeta }: { albumMeta: Disk }) => {
 
   if (minTablet) {
     return (
-      <Dialog open={open} onOpenChange={setOpen}>
+      <Dialog>
         <DialogTrigger className="transition-all duration-200 hover:opacity-50 cursor-pointer">
           {language === "ko" ? `${renderType} 듣기` : "Stream"}
         </DialogTrigger>

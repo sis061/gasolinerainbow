@@ -1,7 +1,12 @@
+import useLanguageStore from "@/store/useLanguageStore";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const PageNotFound = () => {
   const [img, setImg] = useState<string>("");
+  const [timer, setTimer] = useState<number>(5);
+  const navigate = useNavigate();
+  const { language } = useLanguageStore();
 
   useEffect(() => {
     import("../assets/images/PageNotFound.webp")
@@ -9,6 +14,25 @@ const PageNotFound = () => {
         setImg(module.default);
       })
       .catch((e) => console.log("img load error:", e));
+
+    const timeoutId = setTimeout(() => navigate("/"), 5000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setTimer((prev) => {
+        if (prev <= 1) {
+          clearInterval(intervalId); // 타이머가 0 되면 정지
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
@@ -22,7 +46,14 @@ const PageNotFound = () => {
               className="opacity-50 max-w-72 "
             />
           )}
-          <span className="font-bold text-5xl z-50">404 PAGE NOT FOUND</span>
+          <div className="flex flex-col items-center gap-4">
+            <span className="font-bold text-5xl z-50">404 PAGE NOT FOUND</span>
+            <span className="!text-black opacity-75">
+              {language === "ko"
+                ? `${timer}초 뒤 메인으로 돌아갑니다.`
+                : `Go back to Main in ${timer} seconds`}
+            </span>
+          </div>
         </div>
       </div>
     </section>

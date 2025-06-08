@@ -1,20 +1,19 @@
-/************/
 import { useState } from "react";
-/************/
+
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Languages } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-/************/
+
 import cx from "classnames";
 import { Link, useLocation } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
-/************/
+
+import Nav from "./components/Nav";
+import SocialButtons from "./components/SocialButtons";
 import { commonImages } from "@/assets/images/images";
 import { useScrollState } from "@/hooks/useScrollState";
 import useLanguageStore from "@/store/useLanguageStore";
-import Nav from "./components/Nav";
-import SocialButtons from "./components/SocialButtons";
 
 const Header = () => {
   const [justChanged, setJustChanged] = useState(false);

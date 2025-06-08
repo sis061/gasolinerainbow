@@ -1,7 +1,7 @@
+import { useEffect, useState } from "react";
+import cx from "classnames";
 import { commonImages } from "@/assets/images/images";
 import useLanguageStore from "@/store/useLanguageStore";
-import cx from "classnames";
-import { useEffect, useState } from "react";
 
 const About = () => {
   const { language } = useLanguageStore();

@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-/************/
+
 import {
   type CarouselApi,
   Carousel,
@@ -7,23 +7,23 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { Drawer, DrawerTrigger } from "@/components/ui/drawer";
-/************/
+import { AnimatePresence } from "framer-motion";
+
 import cx from "classnames";
 import { useInView } from "react-intersection-observer";
 import { useMediaQuery } from "react-responsive";
-/************/
+
 import AlbumIntroPanel from "./components/AlbumIntroPanel";
 import TrackList from "../components/TrackList";
 import LyricsPanel from "../components/LyricsPanel";
 import CarouselNavigation from "../components/CarouselNavigation";
 import MobileDrawer from "../modals/MobileDrawer";
-/************/
+
 import type { CarouselProps, Track } from "@/types/discography";
 import useLanguageStore from "@/store/useLanguageStore";
 import Hoverable from "@/pages/Layout/components/Hoverable";
 import OverlayText from "@/pages/Layout/components/OverlayText";
 import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
-import { AnimatePresence } from "framer-motion";
 
 const AlbumCarousel = ({
   albumMeta,

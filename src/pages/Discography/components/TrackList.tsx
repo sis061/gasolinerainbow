@@ -1,15 +1,16 @@
+import { useRef } from "react";
+
 import { DrawerTrigger } from "@/components/ui/drawer";
-/************/
+import { AnimatePresence } from "framer-motion";
+
 import cx from "classnames";
 import map from "lodash/map";
-/************/
+import { useMediaQuery } from "react-responsive";
+
 import type { TrackListProps } from "@/types/discography";
-import { AnimatePresence } from "framer-motion";
 import OverlayText from "@/pages/Layout/components/OverlayText";
-import { useRef } from "react";
 import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
 import useLanguageStore from "@/store/useLanguageStore";
-import { useMediaQuery } from "react-responsive";
 
 const TrackList = ({
   tracks,

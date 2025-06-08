@@ -6,7 +6,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Mail, Send } from "lucide-react";
-/************/
+
 import useLanguageStore from "@/store/useLanguageStore";
 
 const Footer = () => {

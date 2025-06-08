@@ -1,21 +1,21 @@
 import { lazy, Suspense, useState } from "react";
-/************/
+
+import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-/************/
+
+import { ScaleLoader } from "react-spinners";
 import { useMediaQuery } from "react-responsive";
-/************/
+
 import useLanguageStore from "@/store/useLanguageStore";
 import { renderDiskType } from "@/utils/globalHelper";
 import { getStreamingPlatformInfo } from "@/components/StreamingPlatformButtons";
 const StreamingPlatformButtons = lazy(
   () => import("@/components/StreamingPlatformButtons")
 );
-/************/
+
 import HomeYoutubeEmbed from "./HomeYoutubeEmbed";
-/************/
+
 import type { Disk } from "@/types/discography";
-import { motion } from "framer-motion";
-import { ScaleLoader } from "react-spinners";
 
 const HomeAlbumOverview = ({
   albumMeta,

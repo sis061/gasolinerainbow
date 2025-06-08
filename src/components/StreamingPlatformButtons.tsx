@@ -1,12 +1,12 @@
 import { lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-/************/
+
 import mapKeys from "lodash/mapKeys";
 import reduce from "lodash/reduce";
 import map from "lodash/map";
 import cx from "classnames";
-/************/
+
 import useLanguageStore from "@/store/useLanguageStore";
 import { PuffLoader } from "react-spinners";
 

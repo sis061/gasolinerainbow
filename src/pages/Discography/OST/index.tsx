@@ -1,18 +1,18 @@
 import { useRef } from "react";
-/************/
+
 import {
   type CarouselApi,
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-/************/
+
 import map from "lodash/map";
-/************/
+
 import MultipleIntroPanel from "../Single/components/MultipleIntroPanel";
 import StreamingModal from "../modals/StreamingModal";
 import CarouselNavigation from "../components/CarouselNavigation";
-/************/
+
 import type { SingleCarouselsProps } from "@/types/discography";
 import useLanguageStore from "@/store/useLanguageStore";
 

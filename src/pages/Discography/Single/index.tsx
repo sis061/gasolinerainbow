@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-/************/
+
 import {
   type CarouselApi,
   Carousel,
@@ -7,11 +7,11 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import map from "lodash/map";
-/************/
+
 import MultipleIntroPanel from "./components/MultipleIntroPanel";
 import SingleInfoPanel from "./components/SingleInfoPanel";
 import CarouselNavigation from "../components/CarouselNavigation";
-/************/
+
 import type { SingleCarouselsProps, Track } from "@/types/discography";
 
 const SingleCarousel = ({

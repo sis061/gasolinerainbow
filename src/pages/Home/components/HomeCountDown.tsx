@@ -4,10 +4,9 @@ import map from "lodash/map";
 import Countdown from "react-countdown";
 import cx from "classnames";
 import { motion, AnimatePresence } from "framer-motion";
-/************/
+
 import useLanguageStore from "@/store/useLanguageStore";
 import HomeAlbumOverview from "./HomeAlbumOverview";
-/************/
 import type { CountdownRendererProps, CountdownTimerProps } from "@/types/home";
 
 const pad = (n: number) => String(n).padStart(2, "0");

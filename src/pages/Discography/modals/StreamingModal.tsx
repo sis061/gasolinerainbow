@@ -1,5 +1,5 @@
 import { useState, lazy, Suspense } from "react";
-/************/
+
 import {
   DialogHeader,
   Dialog,
@@ -19,17 +19,17 @@ import {
   DrawerClose,
 } from "@/components/ui/drawer";
 import { X } from "lucide-react";
-/************/
+
+import { ScaleLoader } from "react-spinners";
 import { useMediaQuery } from "react-responsive";
-/************/
+
 import { getStreamingPlatformInfo } from "@/components/StreamingPlatformButtons";
 const StreamingPlatformButtons = lazy(
   () => import("@/components/StreamingPlatformButtons")
 );
 import useLanguageStore from "@/store/useLanguageStore";
-/************/
+
 import type { Disk } from "@/types/discography";
-import { ScaleLoader } from "react-spinners";
 
 const StreamingModal = ({ albumMeta }: { albumMeta: Disk }) => {
   const [open, setOpen] = useState<boolean>(false);

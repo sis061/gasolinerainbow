@@ -1,11 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-/************/
+
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft } from "lucide-react";
-/************/
+
 import { useNavigate, useParams } from "react-router-dom";
-/************/
 
 import useLanguageStore from "@/store/useLanguageStore";
 import type { Note } from "@/types/note";

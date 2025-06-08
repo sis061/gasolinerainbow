@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-/************/
+
 import {
   Table,
   TableBody,
@@ -21,16 +21,16 @@ import {
   ChevronsLeft,
   ChevronsRight,
 } from "lucide-react";
-/************/
+
 import { useNavigate } from "react-router-dom";
 import cx from "classnames";
 import map from "lodash/map";
 import range from "lodash/range";
-/************/
+import { useMediaQuery } from "react-responsive";
+
 import { noteData } from "@/utils/noteData";
 import { filterHTMLTags } from "@/utils/globalHelper";
 import useLanguageStore from "@/store/useLanguageStore";
-import { useMediaQuery } from "react-responsive";
 
 const PAGE_GROUP_SIZE = 5;
 const reversedNotes = [...noteData].slice().reverse();

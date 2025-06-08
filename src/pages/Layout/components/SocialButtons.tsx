@@ -1,10 +1,9 @@
 import map from "lodash/map";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
-/************/
+
 import { useScrollState } from "@/hooks/useScrollState";
 
-/************/
 import BandcampLogo from "@/assets/logos/bandcamp.svg?react";
 import ApplemusicLogo from "@/assets/logos/applemusic.svg?react";
 import InstagramLogo from "@/assets/logos/instagram.svg?react";
@@ -13,7 +12,6 @@ import SpotifyLogo from "@/assets/logos/spotify.svg?react";
 import YoutubeLogo from "@/assets/logos/youtube.svg?react";
 import YoutubeMusicLogo from "@/assets/logos/youtubemusic.svg?react";
 
-/************/
 const logos = [
   {
     Component: SpotifyLogo,

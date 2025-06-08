@@ -2,7 +2,7 @@ import cx from "classnames";
 import map from "lodash/map";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
-/************/
+
 import { useScrollState } from "@/hooks/useScrollState";
 import useLanguageStore from "@/store/useLanguageStore";
 

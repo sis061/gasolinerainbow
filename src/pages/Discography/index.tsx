@@ -1,8 +1,8 @@
 import map from "lodash/map";
-/************/
+
 import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
 import { DiskMetaDatas } from "@/utils/diskMetaDatas";
-/************/
+
 import AlbumCarousel from "./Album";
 import SingleCarousel from "./Single";
 import OSTCarousel from "./OST";

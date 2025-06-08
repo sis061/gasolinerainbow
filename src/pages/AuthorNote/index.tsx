@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-/************/
+
 import {
   Table,
   TableBody,
@@ -21,17 +21,16 @@ import {
   ChevronsLeft,
   ChevronsRight,
 } from "lucide-react";
-/************/
+
 import { useNavigate } from "react-router-dom";
 import cx from "classnames";
 import map from "lodash/map";
 import range from "lodash/range";
-import DOMPurify from "dompurify";
-/************/
+import { useMediaQuery } from "react-responsive";
+
 import { noteData } from "@/utils/noteData";
 import { filterHTMLTags } from "@/utils/globalHelper";
 import useLanguageStore from "@/store/useLanguageStore";
-import { useMediaQuery } from "react-responsive";
 
 const PAGE_GROUP_SIZE = 5;
 const reversedNotes = [...noteData].slice().reverse();
@@ -46,9 +45,7 @@ export default function AuthorNote() {
   const { language } = useLanguageStore();
 
   const goDetail = (note: any) => {
-    navigate(`/authornote/${note?.idx ?? 0}`, {
-      state: { note, content: DOMPurify.sanitize(note?.content ?? "") },
-    });
+    navigate(`/authornote/${note.idx}`);
   };
 
   // 페이지 수에 따른 목록 렌더링

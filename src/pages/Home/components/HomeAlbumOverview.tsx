@@ -1,19 +1,21 @@
-import { useState } from "react";
-/************/
+import { lazy, Suspense, useState } from "react";
+
+import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-/************/
+
+import { ScaleLoader } from "react-spinners";
 import { useMediaQuery } from "react-responsive";
-/************/
+
 import useLanguageStore from "@/store/useLanguageStore";
 import { renderDiskType } from "@/utils/globalHelper";
-import StreamingPlatformButtons, {
-  getStreamingPlatformInfo,
-} from "@/components/StreamingPlatformButtons";
-/************/
+import { getStreamingPlatformInfo } from "@/components/StreamingPlatformButtons";
+const StreamingPlatformButtons = lazy(
+  () => import("@/components/StreamingPlatformButtons")
+);
+
 import HomeYoutubeEmbed from "./HomeYoutubeEmbed";
-/************/
+
 import type { Disk } from "@/types/discography";
-import { motion } from "framer-motion";
 
 const HomeAlbumOverview = ({
   albumMeta,
@@ -75,12 +77,26 @@ const HomeAlbumOverview = ({
             className={`transition-all duration-300 overflow-hidden ${minTablet || isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}
           >
             <div className="pt-2">
-              <StreamingPlatformButtons
-                platforms={platforms}
-                customClassName={
-                  "max-md:flex-col [@media(max-width:1239px)]:w-[73%] max-md:!w-full"
+              <Suspense
+                fallback={
+                  <ScaleLoader
+                    color="#BFBFBF"
+                    barCount={7}
+                    height={20}
+                    margin={3}
+                    radius={0}
+                    width={5}
+                  />
                 }
-              />
+              >
+                <StreamingPlatformButtons
+                  customClassName={
+                    "max-md:flex-col [@media(max-width:1239px)]:w-[73%] max-md:!w-full"
+                  }
+                  platforms={platforms}
+                  aria-describedby="drawer-description"
+                />
+              </Suspense>
             </div>
           </div>
         </div>

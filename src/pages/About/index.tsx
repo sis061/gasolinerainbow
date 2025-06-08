@@ -1,11 +1,7 @@
-import { withImagePreload } from "@/utils/withImagePreload";
+import { useEffect, useState } from "react";
+import cx from "classnames";
 import { commonImages } from "@/assets/images/images";
 import useLanguageStore from "@/store/useLanguageStore";
-import cx from "classnames";
-import { useEffect, useState } from "react";
-
-// 초기 이미지 URL만 추출
-const preloadUrls = commonImages.profileImg;
 
 const About = () => {
   const { language } = useLanguageStore();
@@ -54,6 +50,7 @@ const About = () => {
                 src={commonImages.profileImg}
                 alt="프로필 이미지"
                 className="w-full h-full"
+                loading="eager"
               />
             </div>
           </li>
@@ -85,4 +82,4 @@ const About = () => {
   );
 };
 
-export default withImagePreload(About, [preloadUrls]);
+export default About;

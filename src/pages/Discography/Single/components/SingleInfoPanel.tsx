@@ -1,21 +1,21 @@
 import { useRef, useEffect } from "react";
-/************/
+
 import { CarouselItem } from "@/components/ui/carousel";
 import { Drawer, DrawerTrigger } from "@/components/ui/drawer";
-/************/
+
 import { cx } from "class-variance-authority";
 // import { useInView } from "react-intersection-observer";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
-/************/
+
 import { renderDiskType } from "@/utils/globalHelper";
 import useLanguageStore from "@/store/useLanguageStore";
-/************/
+
 import TrackList from "../../components/TrackList";
 import LyricsPanel from "../../components/LyricsPanel";
 import StreamingModal from "../../modals/StreamingModal";
 import MobileDrawer from "../../modals/MobileDrawer";
-/************/
+
 import type { SingleInfoPanelProps } from "@/types/discography";
 import Hoverable from "@/pages/Layout/components/Hoverable";
 
@@ -61,6 +61,7 @@ const SingleInfoPanel = ({
                 src={albumMeta.image}
                 alt="앨범 아트워크"
                 className="w-full h-full"
+                loading="lazy"
               />
             </div>
             <ul className="flex max-md:gap-3 max-lg:gap-5 max-xl:gap-7 gap-10 w-full justify-between items-start [&_*]:!text-white ">

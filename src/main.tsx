@@ -1,17 +1,18 @@
 import { lazy, StrictMode, Suspense, useEffect, useState } from "react";
-import { createRoot } from "react-dom/client";
+
 import "./index.css";
 import App from "./App.tsx";
-import { BrowserRouter } from "react-router-dom";
+import { createRoot } from "react-dom/client";
 
+import BarLoader from "react-spinners/BarLoader";
+import { motion } from "framer-motion";
+
+import { BrowserRouter } from "react-router-dom";
 import AutoScrollToTop from "./utils/AutoScrollToTop.tsx";
 const VideoBackground = lazy(
   () => import("./pages/Layout/components/VideoBackground")
 );
 // import VideoBackground from "./pages/Layout/components/VideoBackground.tsx";
-
-import BarLoader from "react-spinners/BarLoader";
-import { motion } from "framer-motion";
 
 const GlobalFallback = ({ visible }: { visible: boolean }) => (
   <motion.div

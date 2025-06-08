@@ -1,7 +1,7 @@
 import { CircleHelp } from "lucide-react";
-/************/
+
 import cx from "classnames";
-/************/
+
 import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
 import { useCallback, useRef } from "react";
 

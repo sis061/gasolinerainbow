@@ -1,20 +1,30 @@
+import { lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-/************/
+
 import mapKeys from "lodash/mapKeys";
 import reduce from "lodash/reduce";
 import map from "lodash/map";
 import cx from "classnames";
-/************/
-import useLanguageStore from "@/store/useLanguageStore";
 
-import BandcampLogo from "@/assets/logos/bandcamp.svg?react";
-import ApplemusicLogo from "@/assets/logos/applemusic.svg?react";
-import SpotifyLogo from "@/assets/logos/spotify.svg?react";
-import YoutubeMusicLogo from "@/assets/logos/youtubemusic.svg?react";
-import BugsLogo from "@/assets/logos/Bugs_BI_wordmark_white.svg?react";
-import MelonLogo from "@/assets/logos/melonLogo.svg?react";
-import GeniemusicLogo from "@/assets/logos/genie_BI_logotype_white.svg?react";
+import useLanguageStore from "@/store/useLanguageStore";
+import { PuffLoader } from "react-spinners";
+
+const BandcampLogo = lazy(() => import("@/assets/logos/bandcamp.svg?react"));
+const ApplemusicLogo = lazy(
+  () => import("@/assets/logos/applemusic.svg?react")
+);
+const SpotifyLogo = lazy(() => import("@/assets/logos/spotify.svg?react"));
+const YoutubeMusicLogo = lazy(
+  () => import("@/assets/logos/youtubemusic.svg?react")
+);
+const BugsLogo = lazy(
+  () => import("@/assets/logos/Bugs_BI_wordmark_white.svg?react")
+);
+const MelonLogo = lazy(() => import("@/assets/logos/melonLogo.svg?react"));
+const GeniemusicLogo = lazy(
+  () => import("@/assets/logos/genie_BI_logotype_white.svg?react")
+);
 
 export interface StreamingPlatformInfoProps {
   labelKr: string;
@@ -123,7 +133,10 @@ const StreamingPlatformButtons = ({
               style={{ backgroundColor: color }}
               className={`w-full min-w-fit !px-3 !py-2 hover:opacity-75 cursor-pointer`}
             >
-              <Component fill="#fff" />
+              <Suspense fallback={<PuffLoader color="#fff" size={16} />}>
+                <Component fill="#fff" />
+              </Suspense>
+
               <span
                 className={cx(
                   "!text-white text-sm",

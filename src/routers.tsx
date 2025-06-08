@@ -1,30 +1,28 @@
 import type { JSX } from "react";
 import { lazy, Suspense } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+
 import { AnimatePresence, motion } from "framer-motion";
 import { BarLoader } from "react-spinners";
+import { Route, Routes, useLocation } from "react-router-dom";
+
+import { preloadImages } from "./utils/withImagePreload";
+import { commonImages } from "./assets/images/images";
 
 /*----------------------------------*/
 
-// import Home from "./pages/Home";
 const Home = lazy(() => import("./pages/Home"));
-const About = lazy(() => import("./pages/About"));
+const About = lazy(() =>
+  preloadImages([commonImages.profileImg]).then(() => import("./pages/About"))
+);
 const Discography = lazy(() => import("./pages/Discography"));
 const AuthorNote = lazy(() => import("./pages/AuthorNote"));
 const Note = lazy(() => import("./pages/AuthorNote/Note"));
-const News = lazy(() => import("./pages/News"));
-
-const Fallback = () => (
-  <div className="min-h-[calc(100dvh-12rem)] w-screen flex items-center justify-center">
-    <BarLoader color="#BFBFBF" height={10} speedMultiplier={1} width={200} />
-  </div>
+// const News = lazy(() => import("./pages/News"));
+const News = lazy(() =>
+  import("@/utils/newsPreload").then(({ preloadNewsResources }) =>
+    preloadNewsResources().then(() => import("./pages/News"))
+  )
 );
-
-const pageVariants = {
-  initial: { opacity: 0, y: 12 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -12 },
-};
 
 const Routers: React.FC<any> = ({
   isInitialLoad,
@@ -117,8 +115,21 @@ const Routers: React.FC<any> = ({
 
 export default Routers;
 
+const pageVariants = {
+  initial: { opacity: 0, y: 12 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -12 },
+};
+
+const Fallback = () => (
+  <div className="min-h-[calc(100dvh-12rem)] w-screen flex items-center justify-center">
+    <BarLoader color="#BFBFBF" height={10} speedMultiplier={1} width={200} />
+  </div>
+);
+
 function PageWrapper({ children }: { children: React.ReactNode }) {
   return (
+    // <div>{children}</div>
     <motion.div
       variants={pageVariants}
       initial="initial"

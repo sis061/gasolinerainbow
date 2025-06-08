@@ -1,14 +1,19 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import map from "lodash/map";
-import DOMPurify from "dompurify";
+import { Skeleton } from "@/components/ui/skeleton";
+
+import { ScaleLoader } from "react-spinners";
 import { useMediaQuery } from "react-responsive";
 import { useInView } from "react-intersection-observer";
+import map from "lodash/map";
+import DOMPurify from "dompurify";
+
 import useLanguageStore from "@/store/useLanguageStore";
 import { withImagePreload } from "@/utils/withImagePreload";
 import { newsData } from "@/utils/newsData";
@@ -18,8 +23,6 @@ import {
   renderNewsTypeColor,
 } from "@/utils/globalHelper";
 import type { News } from "@/types/news";
-import { ScaleLoader } from "react-spinners";
-import { Skeleton } from "@/components/ui/skeleton";
 
 const ITEMS_PER_PAGE = 4;
 const REVERSED_NEWS = [...newsData].slice().reverse();
@@ -138,6 +141,7 @@ const News = () => {
                           alt={news.title}
                           className="hidden"
                           onLoad={() => handleImageLoad(i)}
+                          // loading="lazy"
                         />
                         <div
                           className="absolute inset-0 bg-center bg-no-repeat bg-cover transition-opacity duration-500"

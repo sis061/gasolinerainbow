@@ -1,11 +1,11 @@
 import type { ReactNode } from "react";
 import { useEffect, useRef } from "react";
-/************/
+
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import cx from "classnames";
 import { useMediaQuery } from "react-responsive";
-/************/
+
 import Header from "./Header";
 import Footer from "./Footer";
 import ScrollTopBtn from "@/pages/Layout/components/ScrollTopBtn";

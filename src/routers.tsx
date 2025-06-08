@@ -23,6 +23,7 @@ const News = lazy(() =>
     preloadNewsResources().then(() => import("./pages/News"))
   )
 );
+const PageNotFound = lazy(() => import("./pages/PageNotFound"));
 
 const Routers: React.FC<any> = ({
   isInitialLoad,
@@ -53,7 +54,7 @@ const Routers: React.FC<any> = ({
           path="*"
           element={suspenseWrapper(
             <PageWrapper>
-              <Home />
+              <PageNotFound />
             </PageWrapper>
           )}
         />
@@ -95,7 +96,7 @@ const Routers: React.FC<any> = ({
             path=":/*"
             element={suspenseWrapper(
               <PageWrapper>
-                <Home />
+                <PageNotFound />
               </PageWrapper>
             )}
           />

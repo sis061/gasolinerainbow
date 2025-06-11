@@ -114,7 +114,10 @@ const News = () => {
           {map(visibleNews, (news, i) => {
             const { ref: imgRef, inView: imgInView } = inViewHooks[i];
             const sanitizeContent = DOMPurify.sanitize(
-              linkify(news?.content ?? "")
+              linkify(news?.content ?? ""),
+              {
+                ADD_ATTR: ["target"],
+              }
             );
 
             return (

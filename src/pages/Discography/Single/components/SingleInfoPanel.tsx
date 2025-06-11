@@ -60,9 +60,9 @@ const SingleInfoPanel = ({
   return (
     <CarouselItem className="w-full h-auto flex items-center justify-center !px-1 md:!px-5">
       <Drawer open={open} onOpenChange={setOpen}>
-        <ul className="w-full h-full flex items-center max-md:justify-center max-xl:gap-10 gap-10 ">
-          <li className="w-[70%] max-md:w-full h-full flex flex-col gap-6 !-px-12 items-center justify-center [&_*]:!text-white overflow-y-scroll ">
-            <div className="w-full xl:w-3/4 bg-gray-600 overflow-hidden ">
+        <ul className="w-full h-full flex items-center justify-between gap-10">
+          <li className="max-md:w-full w-1/2 h-full flex flex-col gap-6 items-start justify-center [&_*]:!text-white overflow-y-scroll border-1">
+            <div className="w-full bg-gray-600 overflow-hidden ">
               <img
                 src={albumMeta.image}
                 alt="앨범 아트워크"
@@ -70,8 +70,8 @@ const SingleInfoPanel = ({
                 loading="lazy"
               />
             </div>
-            <ul className="flex gap-6 w-full justify-between items-start [&_*]:!text-white ">
-              <li className="w-[40%] h-full flex flex-col items-end justify-center gap-2">
+            <ul className="flex gap-6 w-full justify-between items-start [&_*]:!text-white">
+              <li className="w-[45%] h-full flex flex-col items-end justify-center gap-2">
                 <div className="flex justify-end items-center gap-2 [&_>span]:text-sm">
                   <span>{albumMeta.year}</span>
                   <span>{language === "ko" ? type.kr : type.en}</span>
@@ -97,7 +97,7 @@ const SingleInfoPanel = ({
               <li
                 id="trigger-observer"
                 // ref={ref}
-                className="w-[60%] flex flex-col justify-start items-start gap-2"
+                className="w-[55%] flex flex-col justify-start items-start gap-2"
               >
                 <div
                   onClick={() => setSelectedTrack(null)}

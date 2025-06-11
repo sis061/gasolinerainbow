@@ -50,7 +50,7 @@ const TrackList = ({
                 tabIndex={-1}
                 onClick={() => onSelect(tr)}
                 className={cx(
-                  "touch-pan-y cursor-pointer w-auto relative transition-all duration-200 hover:opacity-50 flex items-center justify-center gap-2 ",
+                  "touch-pan-y cursor-pointer w-auto relative transition-all duration-200 hover:opacity-50 flex items-center justify-center gap-0.5",
                   isRight ? "md:justify-end" : "!justify-start *:!text-left",
                   minTablet &&
                     selectedTrack?.trackNo === i + 1 &&

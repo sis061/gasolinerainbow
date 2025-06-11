@@ -47,7 +47,9 @@ const PageNotFound = () => {
             />
           )}
           <div className="flex flex-col items-center gap-4">
-            <span className="font-bold text-5xl z-50">404 PAGE NOT FOUND</span>
+            <span className="font-bold text-xl md:text-2xl lg:text-5xl z-50">
+              404 PAGE NOT FOUND
+            </span>
             <span className="!text-black opacity-75">
               {language === "ko"
                 ? `${timer}초 뒤 메인으로 돌아갑니다.`

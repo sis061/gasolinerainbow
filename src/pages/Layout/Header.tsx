@@ -55,7 +55,7 @@ const Header = () => {
                 backgroundImage: useWhiteText ? "" : `url(${LogoBg})`,
               }}
               className={cx(
-                "text-lg font-extrabold !-mb-2 !mr-11 ",
+                "text-lg font-extrabold !-mb-2 !-ml-6",
                 useWhiteText
                   ? "!text-white"
                   : `!bg-clip-text !text-transparent bg-center bg-cover`
@@ -68,7 +68,7 @@ const Header = () => {
                 backgroundImage: useWhiteText ? "" : `url(${LogoBg})`,
               }}
               className={cx(
-                "text-md font-extrabold  [&_>span]:text-xl [&_>span]:font-normal *:transition-all *:duration-300",
+                "text-md font-extrabold !ml-5 [&_>span]:text-xl [&_>span]:font-normal *:transition-all *:duration-300",
                 useWhiteText
                   ? "!text-white [&_>span]:!text-white"
                   : `!bg-clip-text !text-transparent bg-center bg-cover [&_>span]:!bg-clip-text [&_>span]:!text-transparent`
@@ -80,7 +80,7 @@ const Header = () => {
         </Link>
         {minTablet && (
           <>
-            <div className="flex gap-2.5 items-center justify-between max-lg:justify-center flex-1 w-full">
+            <div className="flex gap-2.5 items-center justify-between max-lg:justify-center flex-1 w-full !ml-10">
               {/* NAV */}
               <Nav bgBlackRoute={bgBlackRoute} pathname={pathname} />
               {/* Social */}

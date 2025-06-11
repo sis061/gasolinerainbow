@@ -61,7 +61,7 @@ const SingleInfoPanel = ({
     <CarouselItem className="w-full h-auto flex items-center justify-center !px-1 md:!px-5">
       <Drawer open={open} onOpenChange={setOpen}>
         <ul className="w-full h-full flex items-center justify-between gap-10">
-          <li className="max-md:w-full w-1/2 h-full flex flex-col gap-6 items-start justify-center [&_*]:!text-white overflow-y-scroll border-1">
+          <li className="max-md:w-full w-1/2 h-full flex flex-col gap-6 items-start justify-center [&_*]:!text-white overflow-y-scroll">
             <div className="w-full bg-gray-600 overflow-hidden ">
               <img
                 src={albumMeta.image}

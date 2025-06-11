@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import StreamingModal from "../../modals/StreamingModal";
 import type { Disk } from "@/types/discography";
 import useLanguageStore from "@/store/useLanguageStore";
+import { Disc3 } from "lucide-react";
 
 const AlbumIntroPanel = ({ albumMeta }: { albumMeta: Disk }) => {
   const { image, titleKr, titleEn, year, isCD, cdUrl } = albumMeta;
@@ -28,8 +29,14 @@ const AlbumIntroPanel = ({ albumMeta }: { albumMeta: Disk }) => {
           </li>
 
           {isCD && cdUrl && (
-            <li className="transition-all duration-200 hover:opacity-50">
-              <Link to={cdUrl} target="_blank" rel="noopener noreferrer">
+            <li className="transition-all duration-200 hover:opacity-50 group">
+              <Link
+                to={cdUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 transition-all duration-200"
+              >
+                <Disc3 size={16} className="group-hover:animate-spin" />
                 {language === "ko" ? "CD 구매" : "Order"}
               </Link>
             </li>

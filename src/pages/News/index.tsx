@@ -128,8 +128,8 @@ const News = () => {
                 className="!pb-10 w-full !border-0"
                 onClick={() => scrollToItem(i)}
               >
-                <AccordionTrigger className="w-full !-mt-0.5 [&>svg]:hidden group hover:shadow-md">
-                  <div className="relative w-full min-h-48 lg:min-h-64 flex items-end justify-start group cursor-pointer transition-all duration-200 hover:opacity-90">
+                <AccordionTrigger className="w-full !-mt-0.5 [&>svg]:hidden group hover:shadow-md ">
+                  <div className="relative w-full min-h-48 lg:min-h-64 flex items-end justify-start group cursor-pointer overflow-hidden transition-all duration-200 hover:opacity-90">
                     {!imageLoaded[i] && (
                       <Skeleton className="absolute inset-0 w-full h-full rounded-none bg-[#333]" />
                     )}
@@ -144,7 +144,7 @@ const News = () => {
                           loading="eager"
                         />
                         <div
-                          className="absolute inset-0 bg-center bg-no-repeat bg-cover transition-opacity duration-500"
+                          className="absolute inset-0 bg-center bg-no-repeat bg-cover transform scale-105 group-hover:scale-100 transition-transform duration-300 ease-out"
                           style={{
                             backgroundImage: `url(${news.img})`,
                             opacity: imageLoaded[i] ? 1 : 0,

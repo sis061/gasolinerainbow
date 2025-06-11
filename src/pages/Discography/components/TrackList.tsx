@@ -2,6 +2,7 @@ import { useRef } from "react";
 
 import { DrawerTrigger } from "@/components/ui/drawer";
 import { AnimatePresence } from "framer-motion";
+import { ListCheck } from "lucide-react";
 
 import cx from "classnames";
 import map from "lodash/map";
@@ -13,6 +14,7 @@ import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
 import useLanguageStore from "@/store/useLanguageStore";
 
 const TrackList = ({
+  type,
   tracks,
   align = "left",
   onSelect,
@@ -41,18 +43,19 @@ const TrackList = ({
       }}
     >
       {map(tracks, (tr, i) => (
-        <li key={tr.trackNo} className="touch-pan-y">
+        <li key={tr.trackNo}>
           {tr.lyrics ? (
             <>
               <div
                 tabIndex={-1}
                 onClick={() => onSelect(tr)}
                 className={cx(
-                  "touch-pan-y cursor-pointer w-auto relative transition-all duration-200 hover:opacity-50 ",
-                  isRight ? "*:text-right max-md:*:text-center" : "*:text-left",
+                  "touch-pan-y cursor-pointer w-auto relative transition-all duration-200 hover:opacity-50 flex items-center justify-center gap-2 ",
+                  isRight ? "md:justify-end" : "!justify-start *:!text-left",
                   minTablet &&
                     selectedTrack?.trackNo === i + 1 &&
-                    " [&_>span]:!text-black"
+                    " [&_>span]:!text-black",
+                  type === "album" && "md:!-mr-6"
                 )}
               >
                 {minTablet ? (
@@ -61,9 +64,10 @@ const TrackList = ({
                       triggerRefs.current[i] = el;
                     }}
                     className={cx(
+                      "whitespace-break-spaces ",
                       minTablet &&
                         selectedTrack?.trackNo === i + 1 &&
-                        "!bg-white/75 !px-2"
+                        "!bg-white/75 !px-1"
                     )}
                   >
                     {tr.trackNo}. {language === "ko" ? tr.titleKr : tr.titleEn}
@@ -80,6 +84,10 @@ const TrackList = ({
                     </span>
                   </DrawerTrigger>
                 )}
+                <ListCheck
+                  color="#999"
+                  className="min-w-3 max-w-4 min-h-3 max-h-4"
+                />
               </div>
               <AnimatePresence mode="wait">
                 {showOverlayText && (
@@ -95,7 +103,7 @@ const TrackList = ({
               </AnimatePresence>
             </>
           ) : (
-            <span>
+            <span className="cursor-not-allowed ">
               {tr.trackNo}. {language === "ko" ? tr.titleKr : tr.titleEn}
             </span>
           )}

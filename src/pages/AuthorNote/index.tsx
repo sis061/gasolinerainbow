@@ -29,7 +29,7 @@ import range from "lodash/range";
 import { useMediaQuery } from "react-responsive";
 
 import { noteData } from "@/utils/noteData";
-import { filterHTMLTags } from "@/utils/globalHelper";
+import { filterHTMLTags, renderNoteTypeColor } from "@/utils/globalHelper";
 import useLanguageStore from "@/store/useLanguageStore";
 
 const PAGE_GROUP_SIZE = 5;
@@ -111,8 +111,15 @@ export default function AuthorNote() {
                   <TableCell className="order-1 !pr-2 md:!px-2 text-center">
                     {note.idx + 1}
                   </TableCell>
-                  <TableCell className="whitespace-normal md:min-w-[9.25rem] max-md:absolute max-md:w-1/2 max-md:text-right top-1.5 right-0 order-3 md:order-2 max-md:text-xs !px-2">
-                    {note.category}
+                  <TableCell className="h-full whitespace-normal md:min-w-[10rem] max-md:absolute max-md:w-2/3 max-md:text-right top-1.5 right-0 order-3 md:order-2 max-md:text-xs !px-2">
+                    <div
+                      style={{
+                        borderColor: renderNoteTypeColor(note.category),
+                      }}
+                      className="border-r-2 md:border-r-0 md:border-l-2 md:!min-h-12 flex items-center justify-end md:justify-start "
+                    >
+                      <span className="!px-1">{note.category}</span>
+                    </div>
                   </TableCell>
                   <TableCell className="order-2 md:order-3 !py-4 max-md:!py-6 flex flex-col gap-3 justify-center cursor-pointer !px-2">
                     <span className="text-xl lg:text-2xl font-semibold whitespace-normal line-clamp-1">

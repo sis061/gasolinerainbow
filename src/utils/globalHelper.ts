@@ -184,6 +184,36 @@ export const renderNewsTypeColor = (t: NewsType) => {
 };
 
 /**
+ * @description 소식 주제에 따라서 다른 색깔을 보여줍니다.
+ * @param t NewsType
+ * @returns {string} #ffffff
+ */
+
+export const renderNoteTypeColor = (t: string) => {
+  let colour: string;
+
+  switch (t) {
+    case "모디파이는 질병입니다.":
+      colour = "#F44336";
+      break;
+    case "커피하우스 토크":
+      colour = "#795548";
+      break;
+    case "프롤로그":
+      colour = "#03A9F4";
+      break;
+    case "에필로그":
+      colour = "#9C27B0";
+      break;
+    default:
+      colour = "#00000000";
+      break;
+  }
+
+  return colour;
+};
+
+/**
  * @description 텍스트 내에서 url, email, 인스타그램 멘션 을 분리한 후 a 태그로 변경합니다.
  * @param text string
  * @returns {string}

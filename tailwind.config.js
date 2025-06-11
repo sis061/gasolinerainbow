@@ -1,11 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  fontFamily: {
-    sans: ["Pretendard", "sans-serif"],
-  },
+
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Pretendard", "sans-serif"],
+      },
       overscrollBehavior: {
         contain: "contain",
       },
@@ -15,10 +16,6 @@ export default {
         "max-sm": { max: "639px" },
         "max-md": { max: "767px" },
         "max-lg": { max: "1023px" },
-        // 필요시 추가
-      },
-      colors: {
-        "ping-brown": "#DEA154",
       },
       boxShadow: {
         "inner-bottom": "inset 0 -3px 3px -3px rgba(0, 0, 0, 0.3)",

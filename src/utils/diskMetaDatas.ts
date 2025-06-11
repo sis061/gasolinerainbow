@@ -252,7 +252,7 @@ Artwork by namu 나무`,
 태우던 담배만 재가 남는걸
 
 
-겨울같이 가을이 오면 
+겨울같이 가을이 오면
 
 낡은 내 신발 속엔
 
@@ -270,7 +270,7 @@ Artwork by namu 나무`,
 싸늘한 언덕만 내다보았지
 
 
-겨울같이 가을이 오면 
+겨울같이 가을이 오면
 
 낡은 내 신발 속엔
 
@@ -703,301 +703,444 @@ The melody only remains`,
       },
     ],
   },
-  {
-    type: "album",
-    year: 2025,
-    titleKr: "평화로운 뇌와…",
-    titleEn: "A Brain In Peace &…",
-    image: diskImages.hm,
-    urls: {
-      bandcamp: "https://himinnn.bandcamp.com/album/hm",
-      spotify: "https://open.spotify.com/album/2kwKctIlNJCNK5mU9a0FEF",
-      youtubeMusic:
-        "https://music.youtube.com/playlist?list=OLAK5uy_mqSbyG7WqaMdeYnQmj7k1jfoqIOho5FUg&si=D_QEKJKzZXiNFTKh",
-      appleMusic: "https://music.apple.com/us/album/hm/1659621243",
-      melon: "https://www.melon.com/album/detail.htm?albumId=11121710",
-      bugs: "https://music.bugs.co.kr/album/20533309",
-      genie: "https://www.genie.co.kr/detail/albumInfo?axnm=83280159",
-    },
-    isCD: false,
-    cdUrl: null,
-    descriptionKr: `지하철, 침대, 라디오,
-치사랑, 성애, 섭식장애,
-09시, 18시, 22시, 03시,
-원숭이, 고양이, 정어리,
-모두의 무기력,
-모두의 무가치함,
-모두의 모두에 대한 이별,
-그럼에도 우리는.`,
-    descriptionEn: `The subway, the bed, the radio.
-parental love, desire, disordered eating.
-9 a.m., 6 p.m., 10 p.m., 3 a.m.
-Monkeys, cats, sardines.
-Everyone’s lethargy.
-Everyone’s worthlessness.
-Everyone’s goodbye to everyone.
-And still—we are.`,
-    credits: `Produced by HIMINN
-Recorded by Shinhwan @ Phoné Studio
-Mixed & Mastered by Shinhwan @ Phoné Studio
-Artwork by namu 나무`,
-    tracks: [
-      {
-        trackNo: 1,
-        titleKr: "가솔린 무지개",
-        titleEn: "Gasoline Rainbows",
-        lyrics: `어느 새벽, 작은 악마 하나가 찾아와 속삭였습니다.
+  //   {
+  //     type: "album",
+  //     year: 2025,
+  //     titleKr: "평화로운 뇌와…",
+  //     titleEn: "A Brain In Peace &…",
+  //     image: diskImages.hm,
+  //     urls: {
+  //       bandcamp: "https://himinnn.bandcamp.com/album/hm",
+  //       spotify: "https://open.spotify.com/album/2kwKctIlNJCNK5mU9a0FEF",
+  //       youtubeMusic:
+  //         "https://music.youtube.com/playlist?list=OLAK5uy_mqSbyG7WqaMdeYnQmj7k1jfoqIOho5FUg&si=D_QEKJKzZXiNFTKh",
+  //       appleMusic: "https://music.apple.com/us/album/hm/1659621243",
+  //       melon: "https://www.melon.com/album/detail.htm?albumId=11121710",
+  //       bugs: "https://music.bugs.co.kr/album/20533309",
+  //       genie: "https://www.genie.co.kr/detail/albumInfo?axnm=83280159",
+  //     },
+  //     isCD: false,
+  //     cdUrl: null,
+  //     descriptionKr: `지하철, 침대, 라디오,
+  // 치사랑, 성애, 섭식장애,
+  // 09시, 18시, 22시, 03시,
+  // 원숭이, 고양이, 정어리,
+  // 모두의 무기력,
+  // 모두의 무가치함,
+  // 모두의 모두에 대한 이별,
+  // 그럼에도 우리는.`,
+  //     descriptionEn: `The subway, the bed, the radio.
+  // parental love, desire, disordered eating.
+  // 9 a.m., 6 p.m., 10 p.m., 3 a.m.
+  // Monkeys, cats, sardines.
+  // Everyone’s lethargy.
+  // Everyone’s worthlessness.
+  // Everyone’s goodbye to everyone.
+  // And still—we are.`,
+  //     credits: `Produced by HIMINN
+  // Recorded by Shinhwan @ Phoné Studio
+  // Mixed & Mastered by Shinhwan @ Phoné Studio
+  // Artwork by namu 나무`,
+  //     tracks: [
+  //       {
+  //         trackNo: 1,
+  //         titleKr: "가솔린 무지개",
+  //         titleEn: "Gasoline Rainbows",
+  //         lyrics: `어느 새벽, 작은 악마 하나가 찾아와 속삭였습니다.
 
-'너에게 내 모든 권능을 주고, 그 영광은 네가 가질 수 있게 해주겠다. 대신 나머지 모든 것들은 언제든 잃어버리게 될 것이다.'
+  // '너에게 내 모든 권능을 주고, 그 영광은 네가 가질 수 있게 해주겠다.
 
-당신은 별 대수롭지 않게 여기며 그의 제안을 승낙합니다. 놀랍게도 몇 년을 고민하던 이야기를 쉬이 풀어내게 되었습니다. 당신은 기뻐 금치 못합니다.
+  // 대신 나머지 모든 것들은 언제든 잃어버리게 될 것이다.'
 
-하지만 당신은 곧 알게 됩니다. 악마가 취해 간 것들을.
+  // 당신은 별 대수롭지 않게 여기며 그의 제안을 승낙합니다.
 
-길을 걷다 마주친 고양이들은 두 번 다시 눈길을 주지 않습니다. 해가 졌음에도 당신은 달콤한 잠에 들지 못합니다. 한때 같이 걷고, 같이 잠었지만 이들이 이제는 당신을 피해 달아나는 무수한 사람들을 보게 됩니다.
+  // 놀랍게도 몇 년을 고민하던 이야기를 쉬이 풀어내게 되었습니다. 당신은 기뻐 금치 못합니다.
 
-악마는 참 잔인하게도 기억은 잃지 못하게 하는 장치를 심어 두었습니다. 그 모든 이별에도 당신은 살아가고, 살아버립니다. 참 불쌍하네요, 우린.`,
-        tags: [],
-      },
-      {
-        trackNo: 2,
-        titleKr: "Corns N Beans",
-        titleEn: "Corns N Beans",
-        lyrics: `
-나는 너에게 영광을 주겠다
-대신 너에게서 밤에 자는 잠을 뺏겠다
-나는 너에게 모든 걸 주겠다
-대신 너는 그 모든 이별을 준비하  라
+  // 하지만 당신은 곧 알게 됩니다. 악마가 취해 간 것들을.
 
-이름없는 고양이의 겨울에
-달아나는 당신의 뒷모습에
-부서지고 깨지고 무너지게
-그럼에도 우리는…
+  // 길을 걷다 마주친 고양이들은 두 번 다시 눈길을 주지 않습니다.
 
-(그 모든 이별에)
-살아야 하는게
-살아만 가는게
-살아는 지는게
+  // 해가 졌음에도 당신은 달콤한 잠에 들지 못합니다.
 
-나는 괜히 잠을 잤네
-나는 괜히 밤을 걷네
-나는 괜히 멀리 갔네
-나는 괜히 너랑
+  // 한때 같이 걷고, 같이 잠었지만 이들이 이제는 당신을 피해 달아나는 무수한 사람들을 보게 됩니다.
 
-꺼져가는 불씨가 아쉬울 때
-마지막엔 차마 눈감음에
-부서지고 베이고 스러지게
-그럼에도 우리는…
+  // 악마는 참 잔인하게도 기억은 잃지 못하게 하는 장치를 심어 두었습니다.
 
-(그 모든 이별에)
-살아야 하는게
-살아만 가는게
-살아는 지는게
+  // 그 모든 이별에도 당신은 살아가고, 살아버립니다.
 
-(그 모든 이별에)`,
-        tags: [],
-      },
-      {
-        trackNo: 3,
-        titleKr: "9호선",
-        titleEn: "Line 9",
-        lyrics: `Fish in suits.
-We’re all fish in suits
-in the tin box train,
-Roaming this city in gray.
+  // 참 불쌍하네요, 우린.`,
+  //         tags: [],
+  //       },
+  //       {
+  //         trackNo: 2,
+  //         titleKr: "Corns N Beans",
+  //         titleEn: "Corns N Beans",
+  //         lyrics: `
+  // 나는 너에게 영광을 주겠다
 
-Packt in rows. stray, stray, stray.
-Yet we roam around around around...
-We gaze,
-But words never come. Words never come
+  // 대신 너에게서 밤에 자는 잠을 뺏겠다
 
-There’s a shimmer, shine, at the end of this track.
-But we never know, (they’ll never know)
-Only go backwards. Underground.
+  // 나는 너에게 모든 걸 주겠다
 
+  // 대신 너는 그 모든 이별을 준비하 라
 
-awake, commute, work, Eat, Work, Commute, Sleep, repeat
+  // 이름없는 고양이의 겨울에
 
-awake, commute, work, consume, Work, Commute, produce, repeat
+  // 달아나는 당신의 뒷모습에
 
-Repeat, work, commute, consume, work, commute, produce, wrap it up!
+  // 부서지고 깨지고 무너지게
 
-Bodies packed, chopped, sealed, wrapped, boxed, and then we’re on
+  // 그럼에도 우리는
 
-Escalators, turn
-Escalators, push
-Escalators, burn
-Honey, Your dish is ready
-and boom!
+  // (그 모든 이별에)
 
+  // 살아야 하는게
 
-in plastic dreams
-Floating in ocean tides,
-So bright and warm.
-Scattered light, Underwater
-We could go anywhere,
-We could do everything,
+  // 살아만 가는게
 
-Nobody tells
-Now what should we do?
-Too bright to see
-Sink into the sweetest terror
-We can’t take it anymore
-Wake me at the next station.
+  // 살아는 지는게
 
+  // 나는 괜히 잠을 잤네
 
-Chained, Still, Still, Still.
-Drained, Still, Still, Still.`,
-        tags: [],
-      },
-      {
-        trackNo: 4,
-        titleKr: "열한번째 고양이의 밤",
-        titleEn: "Ninth Life, Eleventh Night",
-        lyrics: `우린 다시 만나자, 열한 번째 고양이의 밤에서
-비를 맞을 일도 없이, 따뜻한, 따뜻한.
+  // 나는 괜히 밤을 걷네
 
-우린 뒤를 보진 말자
-담요 속에 얼굴을 파묻고 그냥 숨자.
-전화가 울려도 끝없이 위로, 위로만 가자.
-누가 소리를 질러도 끝없이 안으로, 안으로.
+  // 나는 괜히 멀리 갔네
 
-있잖아, 기다리지 말아, 나를,
-있잖아, 기다리지 말아, 나를,
-있잖아, 기다리지 말아, 나를,
-있잖아, 기다리지..., 뜨문 뜨문 뜨문.`,
-        tags: [],
-      },
-      {
-        trackNo: 5,
-        titleKr: "The Monkey/Mother-ship",
-        titleEn: "The Monkey/Mother-ship",
-        lyrics: `Have I been thrown away? In a six-sides mirrored room.
-Stand in an aisle, 2 mothers in my view.
+  // 나는 괜히 너랑
 
-My twin, you’ve grown up quite a lot, Then Haven’t I ?
-Stand in an aisle, 2 mothers in my view.
+  // 꺼져가는 불씨가 아쉬울 때
 
-Floating inside the mothership
-Cold, artificial mother’s milk
-Warm you is the other thing
-Can’t tell fake from real.
+  // 마지막엔 차마 눈감음에
 
-Floating inside the mothership
-Cold, artificial love
-Warm you is the other thing
-Compassion exceeds comfort.
+  // 부서지고 베이고 스러지게
 
-Oh, I was thrown away, but you are here now.
-Stand in an aisle, we few happy family.`,
-        tags: [],
-      },
-      {
-        trackNo: 6,
-        titleKr: "Dinner, the pill & the feast",
-        titleEn: "Dinner, the pill & the feast",
-        lyrics: `Devouring
-Anodyne
-I woke up
-an emptiness
+  // 그럼에도 우리는
 
-Rue
-swell
-exploded
-in silence
-Beef beef beef I want more beef.
+  // (그 모든 이별에)
 
-I throw up,
-rail against,
-charge,
-ah, keep it.
-Chagrin,
-epicure
-promiscuous
+  // 살아야 하는게
 
-light Red light light
-For you pigs
+  // 살아만 가는게
 
-Words for words
-Divulge
-Food food food
+  // 살아는 지는게
 
-Ah, shut up and just chew it.`,
-        tags: [],
-      },
-      {
-        trackNo: 7,
-        titleKr: "Nudity",
-        titleEn: "Nudity",
-        lyrics: `I’ve never loved my luv.
+  // (그 모든 이별에)`,
+  //         tags: [],
+  //       },
+  //       {
+  //         trackNo: 3,
+  //         titleKr: "9호선",
+  //         titleEn: "Line 9",
+  //         lyrics: `Fish in suits.
 
-The Nudity, Just let me go to sleep
-Far too easily, Low comedy.
+  // We’re all fish in suits
 
-Salivary, I don’t bloom again.
-Far too easily, No [Such] remedy.
+  // in the tin box train,
 
-I’ve never lived my life.
+  // Roaming this city in gray.
 
-My property. No more of that Lunatic.
-Far too easily`,
-        tags: [],
-      },
-      {
-        trackNo: 8,
-        titleKr: "V.",
-        titleEn: "V.",
-        lyrics: `I have done nothing better
-널 이룰거란 기대 버려
-I have done, if nothing mattered
-가치 없는 꿈에 기대어
+  // Packt in rows. stray, stray, stray.
 
-I have done nothing better
-널 이룰거란 기대 버려
-I have done, if nothing mattered
-가치 없는 꿈에 날 깨워`,
-        tags: [],
-      },
-      {
-        trackNo: 9,
-        titleKr: "2025년 즈음에는 좋은 아이가 되어볼게요",
-        titleEn: "Yr 2025 Problem",
-        lyrics: `2025년즈음에는 좋은 아이가 될게요
-큰 사람이 되지는 못할게요
-지하철에 수많은 신발들이 날 노려봐요
-그 안에 더 많은 열 개의 눈이 날 봐요
+  // Yet we roam around around around...
 
-거꾸로 달리는 기차안에서
-사람들은 소리를 지르고
-나는 가만히 잠을 잤어요
-자다가 못 내리면 좋을텐데
+  // We gaze,
 
-같잖은 소음으로 노래하지 않을게요
-이것도 음악인지 잘 모르겠다구요
-일다운 일을 해보려 할게요
-원하던 시험도 언제 한 번 쳐볼게요
+  // But words never come. Words never come.
 
-거꾸로 달리는 기차안에서
-사람들은 소리를 지르고
-나는 가만히 잠을 잤어요
-자다가 못 내리면 좋을텐데
+  // There’s a shimmer, shine, at the end of this track.
 
-라디오-친화적인 노래 위주로
-라디오 그 근처도 못 가겠지만
-그래서 티비에는 언제 나오니?
-그래서 무대에 서지 말아볼게요
+  // But we never know, (they’ll never know)
 
-거꾸로 달리는 기차안에서
-사람들은 소리를 지르고
-나는 가만히 잠을 잤어요
+  // Only go backwards. Underground.
 
-거꾸로 달리는 전철 안에서
-사람들은 앞으로 내지르고
-나는 가만히`,
-        tags: ["Title"],
-      },
-    ],
-  },
+  // awake, commute, work, Eat, Work, Commute, Sleep, repeat
+
+  // awake, commute, work, consume, Work, Commute, produce, repeat
+
+  // Repeat, work, commute, consume, work, commute, produce, wrap it up!
+
+  // Bodies packed, chopped, sealed, wrapped, boxed, and then we’re on
+
+  // Escalators, Escalators, Escalators, Escalators,
+
+  // turn
+
+  // Escalators, Escalators, Escalators, Escalators,
+
+  // Escalators, Escalators, Escalators, Escalators,
+
+  // push
+
+  // Escalators, Escalators, Escalators, Escalators,
+
+  // Escalators, Escalators, Escalators, Escalators,
+
+  // burn
+
+  // Escalators, Escalators, Escalators, Escalators,
+
+  // Honey, Your dish is ready
+
+  // and boom!
+
+  // in plastic dreams
+
+  // Floating in ocean tides,
+
+  // So bright and warm.
+
+  // Scattered light, Underwater
+
+  // We could go anywhere,
+
+  // We could do everything,
+  //
+
+  // Nobody tells
+
+  // Now what should we do?
+
+  // Too bright to see
+
+  // Sink into the sweetest terror
+
+  // We can’t take it anymore
+
+  // Wake me at the next station.
+  //
+  // Chained, Still, Still, Still.
+
+  // Drained, Still, Still, Still.
+
+  // We're Still, Still, Still.
+
+  // Chained, Still, Still, Still.
+
+  // Prained, Still, Still, Still.`,
+  //         tags: [],
+  //       },
+  //       {
+  //         trackNo: 4,
+  //         titleKr: "열한번째 고양이의 밤",
+  //         titleEn: "Ninth Life, Eleventh Night",
+  //         lyrics: `우린 다시 만나자, 열한 번째 고양이의 밤에서
+
+  // 비를 맞을 일도 없이, 따뜻한, 따뜻한.
+
+  // 우린 뒤를 보진 말자
+
+  // 담요 속에 얼굴을 파묻고 그냥 숨자.
+
+  // 전화가 울려도 끝없이 위로, 위로만 가자.
+
+  // 누가 소리를 질러도 끝없이 안으로, 안으로.
+
+  // 있잖아, 기다리지 말아, 나를,
+
+  // 있잖아, 기다리지 말아, 나를,
+
+  // 있잖아, 기다리지 말아, 나를,
+
+  // 있잖아, 기다리지...,
+  //
+  // 뜨문 뜨문 뜨문.`,
+  //         tags: [],
+  //       },
+  //       {
+  //         trackNo: 5,
+  //         titleKr: "The Monkey/Mother-ship",
+  //         titleEn: "The Monkey/Mother-ship",
+  //         lyrics: `Have I been thrown away?
+
+  // In a six-sides mirrored room.
+
+  // Stand in an aisle, 2 mothers in my view.
+
+  // My twin, you’ve grown up quite a lot,
+
+  // Then Haven’t I ?
+
+  // Stand in an aisle, 2 mothers in my view.
+
+  // Floating inside the mothership
+
+  // Cold, artificial mother’s milk
+
+  // Warm you is the other thing
+
+  // Can’t tell fake from real.
+
+  // Floating inside the mothership
+
+  // Cold, artificial love
+
+  // Warm you is the other thing
+
+  // Compassion exceeds comfort.
+
+  // Oh, I was thrown away,
+
+  // but you are here now.
+
+  // Stand in an aisle, we few happy family.`,
+  //         tags: [],
+  //       },
+  //       {
+  //         trackNo: 6,
+  //         titleKr: "Dinner, the pill & the feast",
+  //         titleEn: "Dinner, the pill & the feast",
+  //         lyrics: `Devouring
+
+  // Anodyne
+
+  // I woke up
+
+  // an emptiness
+
+  // Rue
+
+  // swell
+
+  // exploded
+
+  // in silence
+
+  // Beef beef beef
+
+  // I want more beef.
+
+  // I throw up,
+
+  // rail against,
+
+  // charge,
+
+  // ah, keep it.
+
+  // Chagrin,
+
+  // epicure
+
+  // promiscuous
+
+  // light
+
+  // Red light
+
+  // light
+
+  // For you pigs
+
+  // Words for words
+
+  // Divulge
+
+  // Food food food
+
+  // Ah, shut up and just chew it.`,
+  //         tags: [],
+  //       },
+  //       {
+  //         trackNo: 7,
+  //         titleKr: "Nudity",
+  //         titleEn: "Nudity",
+  //         lyrics: `I’ve never loved my luv.
+
+  // The Nudity, Just let me go to sleep
+
+  // Far too easily, Low comedy.
+
+  // Salivary, I don’t bloom again.
+
+  // Far too easily, No [Such] remedy.
+
+  // I’ve never lived my life.
+
+  // My property. No more of that Lunatic.
+
+  // Far too easily`,
+  //         tags: [],
+  //       },
+  //       {
+  //         trackNo: 8,
+  //         titleKr: "V.",
+  //         titleEn: "V.",
+  //         lyrics: `I have done nothing better
+
+  // 널 이룰거란 기대 버려
+
+  // I have done, if nothing mattered
+
+  // 가치 없는 꿈에 기대어
+
+  // I have done nothing better
+
+  // 널 이룰거란 기대 버려
+
+  // I have done, if nothing mattered
+
+  // 가치 없는 꿈에 날 깨워`,
+  //         tags: [],
+  //       },
+  //       {
+  //         trackNo: 9,
+  //         titleKr: "2025년 즈음에는 좋은 아이가 되어볼게요",
+  //         titleEn: "Yr 2025 Problem",
+  //         lyrics: `2025년즈음에는 좋은 아이가 될게요
+
+  // 큰 사람이 되지는 못할게요
+
+  // 지하철에 수많은 신발들이 날 노려봐요
+
+  // 그 안에 더 많은 열 개의 눈이 날 봐요
+
+  // 거꾸로 달리는 기차안에서
+
+  // 사람들은 소리를 지르고
+
+  // 나는 가만히 잠을 잤어요
+
+  // 자다가 못 내리면 좋을텐데
+
+  // 같잖은 소음으로 노래하지 않을게요
+
+  // 이것도 음악인지 잘 모르겠다구요
+
+  // 일다운 일을 해보려 할게요
+
+  // 원하던 시험도 언제 한 번 쳐볼게요
+
+  // 거꾸로 달리는 기차안에서
+
+  // 사람들은 소리를 지르고
+
+  // 나는 가만히 잠을 잤어요
+
+  // 자다가 못 내리면 좋을텐데
+
+  // 라디오-친화적인 노래 위주로
+
+  // 라디오 그 근처도 못 가겠지만
+
+  // 그래서 티비에는 언제 나오니?
+
+  // 그래서 무대에 서지 말아볼게요
+
+  // 거꾸로 달리는 기차안에서
+
+  // 사람들은 소리를 지르고
+
+  // 나는 가만히 잠을 잤어요
+
+  // 거꾸로 달리는 전철 안에서
+
+  // 사람들은 앞으로 내지르고
+
+  // 나는 가만히`,
+  //         tags: ["Title"],
+  //       },
+  //     ],
+  //   },
   {
     type: "remix",
     year: 2023,
@@ -1387,15 +1530,24 @@ All Instruments by HIMINN`,
         titleKr: "Intro ; Extra",
         titleEn: "Intro ; Extra",
         lyrics: `Father once told me
+
 Don’t try to be extraordinary
+
 For you are colourblind
+
 Don’t try to be extraordinary
+
 I know the life, life.
 
+
 Daughter
+
 Don’t try to be extraordinary
+
 For you are colourblind
+
 Don’t try to be extraordinary
+
 I know the life, life.`,
         tags: [],
       },
@@ -1404,30 +1556,49 @@ I know the life, life.`,
         titleKr: "Only Space",
         titleEn: "Only Space",
         lyrics: `넌 그저 외로운 삶을 사는 걸
+
 Be quarantined under your mind
+
 Nobody nobody stands along
+
 But don't try to prove your presence.
 
+
 Staying in the middle of a large hall alone,
+
 now enjoy the mood
+
 It's your home, keep relying on
+
 Find your path back here sooner.
 
+
 In a fake＋mere relationship,
+
 if you're willing to spare your place
+
 That's the moment when it grows
+
 And go deep in yourself.
+
 
 Now crawl into your space,
 generously in silence but definitely.
 
+
 넌 그저 외로움 속에 사는 걸
+
 Be quarantined under your mind
+
 Nobody nobody rings your doorbell
+
 But don't try to prove your presence.
 
+
 Crawl into your space generously in silence but definitely
+
 Crawl into your space generously in silence but definitely
+
 Crawl into your space generously in silence but definitely.`,
         tags: ["Title"],
       },
@@ -1436,29 +1607,49 @@ Crawl into your space generously in silence but definitely.`,
         titleKr: "≒ (가을같은겨울)",
         titleEn: "≒",
         lyrics: `겨울 같이 가을이 오면
+
 잡았던 두 손을 놓게 하고
+
 모두가 사라진 아침
+
 태우던 담배만 재가 남는걸.
 
-겨울 같이 가을이 오면
-낡은 내 신발 속엔
-소복이 쌓인 눈 속엔
-얼어 붙은 낙엽이 부서지진 않겠지.
 
 겨울 같이 가을이 오면
+
+낡은 내 신발 속엔
+
+소복이 쌓인 눈 속엔
+
+얼어 붙은 낙엽이 부서지진 않겠지.
+
+
+
+겨울 같이 가을이 오면
+
 코가 시려도 잡아줄 이 없고
+
 이른 잠에 빠진 그들의
+
 싸늘한 언덕만 내다보았지.
 
+
 겨울 같이 가을이 오면
+
 낡은 내 신발 속엔
+
 소복이 쌓인 눈 속엔
+
 얼어 붙은 낙엽이 부서지진 않겠지.
+
 
 미안해 괜찮아 고마워 알겠어.
 
+
 언젠가, 언젠가.
+
 가을 같이 겨울이 오면
+
 소풍처럼 그렇게 와.`,
         tags: [],
       },
@@ -1467,38 +1658,63 @@ Crawl into your space generously in silence but definitely.`,
         titleKr: "엔터테이나",
         titleEn: "엔터테이나",
         lyrics: `불은 곧 꺼지고 난 걸어서 등장하진 못해
+
 조명이 너무 밝아 내 옷은 더욱 밝아야해
+
 손을 꼭 비집고 날아, 날 놓지 말아야해
+
 박수를 받는 지금도 내일을 생각해야해.
 
+
 난 날고 싶다 그랬죠
+
 이런 걸 말한 건 아니었는데.
 
+
 나는 엔터테이나
+
 난 만원 짜리 곡예사
+
 
 나 하고 싶은 거 다 할거야
+
 난 하고 싶은 거 더 할거야
 
+
 내가 설 무대는 내가 옮길 거야
+
 내가 설 무대는 내가 지을 거야
+
 내가 선 무대는 내가 허물 거야
+
 개미 하나 없는 빈 무대를 허물 거야.
 
+
 난 날고 싶다 그랬죠
+
 이런 걸 말한 건 아니었는데.
 
+
 나는 엔터테이나
+
 난 만원 짜리 곡예사
 
+
 내가 발을 헛디뎌 떨어져도
+
 내가 발을 헛디뎌 떨어져도
+
 내가 발을 헛디뎌 떨어져도
+
 거꾸로 날아가는 거라 해줘
 
+
 나는 엔터테이나
+
 난 만원 짜리 곡예사
+
 나는 엔터테이나
+
 난 만원 짜리 곡예사`,
         tags: ["Title"],
       },
@@ -1507,41 +1723,70 @@ Crawl into your space generously in silence but definitely.`,
         titleKr: "다시 𝄇 다시",
         titleEn: "다시 𝄇 다시",
         lyrics: `혼자 잠을 청하는 게 편할 때
+
 그래도 쉽게 잠들지 못할 때
+
 곁에 아무도 없는 게 당연할 때
+
 너무 쉽게 다른 사람을 안을 때.
 
+
 거울을 바라본 지 오래됐을 때
+
 그다지 신경 쓰지도 않는데
+
 다친만큼 아파하지 않아도 될 때
+
 여전히 습관을 쉽게 저버리는 게.
 
+
 나서려던 문을 닫고
+
 다시 웅크릴 때
+
 다시 웅크리게
+
 다시.
+
 
 당장이라도 떠나버리고 싶을 때
+
 약속을 잡는 건 즐겁지 않을 때
+
 내일이 매일 같기를 바랄 때
+
 그다지 신경 쓰지도 않는데.
 
+
 구름이 망가진 걸 보았을 때
+
 대화는 점점 가벼워질 때
+
 연락이 오는 게 기쁘지 않을 때
+
 책임을 지는 일에 버거워 지는 게.
 
+
 나서려던 문을 닫고
+
 다시 웅크릴 때
+
 다시 웅크리게
+
 다시.
 
+
 태우던 담배가 너무나 쓰라릴 때
+
 그다지 신경 쓰지도 않는데
 
+
 나서려던 문을 닫고
+
 다시 웅크릴 때
+
 다시 웅크리게
+
 다시.`,
         tags: ["Title"],
       },

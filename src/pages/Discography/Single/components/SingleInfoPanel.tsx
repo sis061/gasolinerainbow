@@ -19,6 +19,7 @@ import MobileDrawer from "../../modals/MobileDrawer";
 import type { SingleInfoPanelProps } from "@/types/discography";
 import Hoverable from "@/pages/Layout/components/Hoverable";
 import { useScrollLock } from "@/hooks/useScrollLock";
+import { Disc3, ListCheck } from "lucide-react";
 
 const SingleInfoPanel = ({
   albumMeta,
@@ -57,10 +58,10 @@ const SingleInfoPanel = ({
   }, [selectedTrack?.lyrics]);
 
   return (
-    <CarouselItem className="w-full h-auto flex items-center justify-center !px-2.5 md:!px-5">
+    <CarouselItem className="w-full h-auto flex items-center justify-center !px-1 md:!px-5">
       <Drawer open={open} onOpenChange={setOpen}>
-        <ul className="w-full h-full flex items-center max-md:justify-center max-xl:gap-16">
-          <li className="w-1/2 max-md:w-full h-full flex flex-col gap-6 items-center justify-center [&_*]:!text-white overflow-y-scroll">
+        <ul className="w-full h-full flex items-center max-md:justify-center max-xl:gap-10 gap-10 ">
+          <li className="w-[70%] max-md:w-full h-full flex flex-col gap-6 !-px-12 items-center justify-center [&_*]:!text-white overflow-y-scroll ">
             <div className="w-full xl:w-3/4 bg-gray-600 overflow-hidden ">
               <img
                 src={albumMeta.image}
@@ -69,8 +70,8 @@ const SingleInfoPanel = ({
                 loading="lazy"
               />
             </div>
-            <ul className="flex max-md:gap-3 max-lg:gap-5 max-xl:gap-7 gap-10 w-full justify-between items-start [&_*]:!text-white ">
-              <li className="w-1/2 h-full flex flex-col items-end justify-center gap-2">
+            <ul className="flex gap-6 w-full justify-between items-start [&_*]:!text-white ">
+              <li className="w-[40%] h-full flex flex-col items-end justify-center gap-2">
                 <div className="flex justify-end items-center gap-2 [&_>span]:text-sm">
                   <span>{albumMeta.year}</span>
                   <span>{language === "ko" ? type.kr : type.en}</span>
@@ -80,12 +81,14 @@ const SingleInfoPanel = ({
                 </span>
                 <StreamingModal albumMeta={albumMeta} />
                 {albumMeta.isCD && albumMeta.cdUrl && (
-                  <div className="transition-all duration-200 hover:opacity-50">
+                  <div className="transition-all duration-200 hover:opacity-50 group">
                     <Link
                       to={albumMeta.cdUrl}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="flex items-center gap-2 transition-all duration-200"
                     >
+                      <Disc3 size={16} className="group-hover:animate-spin" />
                       {language === "ko" ? "CD 구매" : "Order"}
                     </Link>
                   </div>
@@ -94,12 +97,12 @@ const SingleInfoPanel = ({
               <li
                 id="trigger-observer"
                 // ref={ref}
-                className="w-1/2 flex flex-col justify-start items-start gap-2"
+                className="w-[60%] flex flex-col justify-start items-start gap-2"
               >
                 <div
                   onClick={() => setSelectedTrack(null)}
                   className={cx(
-                    "cursor-pointer !px-2 relative w-auto text-left transition-all duration-200 hover:opacity-50",
+                    "cursor-pointer !px-2 relative w-auto text-left transition-all duration-200 hover:opacity-50 ",
                     minTablet &&
                       !selectedTrack &&
                       "!bg-white/75 [&_>span]:!text-black"
@@ -110,10 +113,14 @@ const SingleInfoPanel = ({
                       {language === "ko" ? `${type.kr} 소개` : `About`}
                     </span>
                   ) : (
-                    <DrawerTrigger>
+                    <DrawerTrigger className="touch-pan-y flex items-center gap-2">
                       <span>
                         {language === "ko" ? `${type.kr} 소개` : `About`}
                       </span>
+                      <ListCheck
+                        color="#999"
+                        className="min-w-3 max-w-4 min-h-3 max-h-4"
+                      />
                     </DrawerTrigger>
                   )}
                 </div>
@@ -127,6 +134,7 @@ const SingleInfoPanel = ({
                   }
                 >
                   <TrackList
+                    type={albumMeta.type}
                     tracks={albumMeta.tracks}
                     align="left"
                     selectedTrack={selectedTrack}

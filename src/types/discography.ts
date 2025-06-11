@@ -70,6 +70,7 @@ export interface LyricsPanelProps {
 }
 
 export interface TrackListProps {
+  type: DiskType;
   tracks: Track[];
   align: "left" | "right";
   selectedTrack: TrackOrNull;

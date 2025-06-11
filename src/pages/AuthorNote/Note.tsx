@@ -8,6 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import useLanguageStore from "@/store/useLanguageStore";
 import type { Note } from "@/types/note";
+import { renderNoteTypeColor } from "@/utils/globalHelper";
 
 export default function Note() {
   const [note, setNote] = useState<Note | null>(null);
@@ -58,8 +59,11 @@ export default function Note() {
               onClick={() => navigate("/authornote")}
             />
             <Badge
+              style={{
+                backgroundColor: renderNoteTypeColor(note.category),
+              }}
               variant="outline"
-              className="border-black !py-1 !px-2 rounded-tr-none"
+              className="!text-white !py-1 !px-2 rounded-tr-none"
             >
               {note.category}
             </Badge>

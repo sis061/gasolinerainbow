@@ -25,6 +25,7 @@ import Hoverable from "@/pages/Layout/components/Hoverable";
 import OverlayText from "@/pages/Layout/components/OverlayText";
 import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
 import { useScrollLock } from "@/hooks/useScrollLock";
+import { ListCheck } from "lucide-react";
 
 const AlbumCarousel = ({
   albumMeta,
@@ -92,8 +93,8 @@ const AlbumCarousel = ({
           </CarouselItem>
           <CarouselItem className="w-full h-auto flex items-center justify-center relative ">
             <Drawer open={open} onOpenChange={setOpen}>
-              <ul className="w-full h-full flex items-center max-md:justify-center lg:!px-10 ">
-                <li className="md:!pr-10 w-1/2 max-md:w-full flex flex-col gap-6 items-end max-md:items-center justify-center [&_*]:!text-white !album-track-container">
+              <ul className="w-full h-full flex items-center max-md:justify-center lg:!px-10 gap-6 ">
+                <li className="md:!pr-10 w-[47.5%] max-md:w-full flex flex-col gap-6 items-end max-md:items-center justify-center [&_*]:!text-white !album-track-container">
                   <Hoverable
                     isActive={isHoverToolip}
                     area={{ top: 150, bottom: 20, left: 150, right: 300 }}
@@ -129,10 +130,14 @@ const AlbumCarousel = ({
                             {language === "ko" ? "앨범 소개" : "About"}
                           </span>
                         ) : (
-                          <DrawerTrigger className="touch-pan-y">
+                          <DrawerTrigger className="touch-pan-y flex items-center gap-2">
                             <span>
                               {language === "ko" ? "앨범 소개" : "About"}
                             </span>
+                            <ListCheck
+                              color="#999"
+                              className="min-w-3 max-w-4 min-h-3 max-h-4"
+                            />
                           </DrawerTrigger>
                         )}
                         <AnimatePresence mode="wait">
@@ -160,6 +165,7 @@ const AlbumCarousel = ({
                     }
                   >
                     <TrackList
+                      type={albumMeta.type}
                       tracks={albumMeta.tracks}
                       align="right"
                       selectedTrack={selectedTrack}

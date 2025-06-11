@@ -18,7 +18,7 @@ import {
   DrawerFooter,
   DrawerClose,
 } from "@/components/ui/drawer";
-import { X } from "lucide-react";
+import { AudioLines, X } from "lucide-react";
 
 import { ScaleLoader } from "react-spinners";
 import { useMediaQuery } from "react-responsive";
@@ -40,13 +40,18 @@ const StreamingModal = ({ albumMeta }: { albumMeta: Disk }) => {
 
   const { language } = useLanguageStore();
   const platforms = getStreamingPlatformInfo(albumMeta.urls);
-  const renderType: string = albumMeta.type === "album" ? "앨범" : "노래";
 
   if (minTablet) {
     return (
       <Dialog>
-        <DialogTrigger className="transition-all duration-200 hover:opacity-50 cursor-pointer">
-          {language === "ko" ? `${renderType} 듣기` : "Stream"}
+        <DialogTrigger className="transition-all duration-200 hover:opacity-50 cursor-pointer group">
+          <div className="w-full h-full flex items-center gap-2">
+            <AudioLines
+              size={16}
+              className="group-hover:animate-pulse origin-center "
+            />
+            {language === "ko" ? `듣기` : "Stream"}
+          </div>
         </DialogTrigger>
         <DialogContent
           className="flex flex-col items-center !p-10 !bg-black/90 [&_>button>svg]:!stroke-white [&_>button]:cursor-pointer"
@@ -89,7 +94,10 @@ const StreamingModal = ({ albumMeta }: { albumMeta: Disk }) => {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger className="transition-all duration-200 hover:opacity-50 cursor-pointer">
-        {language === "ko" ? `${renderType} 듣기` : "Stream"}
+        <div className="w-full h-full flex items-center gap-2">
+          <AudioLines size={16} />
+          {language === "ko" ? `듣기` : "Stream"}
+        </div>
       </DrawerTrigger>
       <DrawerContent
         className="flex flex-col items-center !py-6 !bg-black/90 w-full !max-h-[75dvh]"

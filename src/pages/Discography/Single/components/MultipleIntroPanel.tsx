@@ -6,7 +6,7 @@ const MultipleIntroPanel = ({
   year,
 }: MultipleIntroPanelProps) => {
   return (
-    <ul className="w-full flex items-center gap-10 max-lg:flex-col">
+    <ul className="w-full flex items-center gap-10 max-lg:flex-col !px-2">
       <li className="bg-gray-600 overflow-hidden w-full md:w-2/3 lg:w-auto">
         <img
           src={image}

@@ -19,29 +19,32 @@ export default function VideoBackground({ onReady }: Props) {
     const video = videoRef.current;
     if (!video) return;
 
-    const playVideo = () => {
-      video.muted = true;
-      const playPromise = video.play();
+    video.muted = true;
+    video.controls = false;
 
-      if (playPromise !== undefined) {
-        playPromise.catch((err) => {
-          console.warn("Autoplay blocked. Waiting for user interaction:", err);
-          document.body.addEventListener(
-            "click",
-            () => {
-              video
-                .play()
-                .catch((e) =>
-                  console.warn("Still failed after user gesture:", e)
-                );
-            },
-            { once: true }
-          );
+    const playVideo = () => {
+      video
+        .play()
+        .then(handleReady)
+        .catch((err) => {
+          console.warn("Autoplay failed:", err);
+
+          const userInteractionHandler = () => {
+            video.play().then(handleReady).catch(console.warn);
+            document.body.removeEventListener("click", userInteractionHandler);
+            document.body.removeEventListener(
+              "touchstart",
+              userInteractionHandler
+            );
+          };
+
+          // 모바일/데스크탑 모두 대응
+          document.body.addEventListener("click", userInteractionHandler);
+          document.body.addEventListener("touchstart", userInteractionHandler);
         });
-      }
     };
 
-    // Safari에선 load 후 재생 시도해야 안전함
+    // 모바일 Safari 등에서 이 타이밍에 play 시도
     video.addEventListener("loadedmetadata", playVideo, { once: true });
   }, []);
 
@@ -49,13 +52,14 @@ export default function VideoBackground({ onReady }: Props) {
     <video
       ref={videoRef}
       preload="auto"
-      className="absolute top-0 left-0 w-full h-full object-cover bg-no-repeat bg-center"
+      className="absolute top-0 left-0 w-full h-full object-cover bg-no-repeat bg-center pointer-events-none"
       autoPlay
       muted
       loop
       playsInline
       onPlay={handleReady}
       onCanPlayThrough={handleReady}
+      poster="/bg01.webp"
     >
       <source src="/bg01.mp4" type="video/mp4" />
     </video>

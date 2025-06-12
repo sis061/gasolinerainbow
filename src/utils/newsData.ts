@@ -200,7 +200,7 @@ Artwork by HIMINN`,
     type: "performance",
     date: "2023-11-06",
     img: newsImages.daerimYeoinsook,
-    title: "대전여인숙",
+    title: "대전여인숙 @ 소리들",
     content: `댊숙 파견근무. 대전에 어쿠스틱 뭐시깽이 셋으로 갑니다.
 
 [소리들 공연 소식]
@@ -238,7 +238,7 @@ MBC경남 지상파 방송과 유튜브 채널 ’엠키타카‘를 통해 시�
     type: "performance",
     date: "2024-07-13",
     img: newsImages.gmsFest,
-    title: "그먼씹 하꼬음악 페스티벌",
+    title: "그먼씹 하꼬음악 페스티벌 @ 고라니특공대",
     content: `밥
 벌어먹고 겨우 살면서도 1-2년에 한 번, 한 번 정도는 공연을 해야겠다는 생각이 문득 들었습니다.
 
@@ -255,7 +255,7 @@ MBC경남 지상파 방송과 유튜브 채널 ’엠키타카‘를 통해 시�
     type: "performance",
     date: "2024-10-25",
     img: newsImages.thedreamer,
-    title: "The Dreamer 언플러그드 홍대",
+    title: "The Dreamer @ 언플러그드 홍대",
     content: `꿈을 꾸러 홍대에 갑니다. 기타 한 대(와 소박한? 페달보드)를 챙겨갑니다.
 
 예매는 @unplugged_stage 프로필 링크를 통해 가능합니다.
@@ -310,7 +310,7 @@ HIMINN @himinn___
     type: "performance",
     date: "2025-03-21",
     img: newsImages.rainlight,
-    title: "Rainlight 언플러그드 라운지",
+    title: "Rainlight @ 언플러그드 라운지",
     content: `흐린 날, 조용히 번지는 빛과 소리.
   비 오는 날의 창가처럼 고요하고 차분한 시간.
   말을 아끼는 멜로디와 단순한 울림.

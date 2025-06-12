@@ -10,7 +10,8 @@ export default function Home() {
   const RELEASE_DATE = new Date("2025-07-15T12:00:00");
 
   const HMVideoId: string = "q0RXd1Tj7tk";
-  // TODO: 앨범 발매 전 유튜브 업로드 하고 아이디 string 바꾸기
+
+  // // TODO: 앨범 발매 전 유튜브 업로드 하고 아이디 string 바꾸기
   const BIPVideoId: string = "q0RXd1Tj7tk";
 
   const [HMData] = filter(
@@ -25,13 +26,17 @@ export default function Home() {
 
   return (
     <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center">
-      <div className="inner flex-grow-0 w-full h-full !mb-10 md:!pt-10 max-md:!px-4 !space-y-10">
+      <div className="inner flex-grow-0 w-full h-full !mb-10 md:!pt-10 max-md:!px-4 !space-y-20">
         <HomeCountDown
           releaseDate={RELEASE_DATE}
           albumMeta={BIPData}
           videoId={BIPVideoId}
         />
-        <HomeAlbumOverview videoId={HMVideoId} albumMeta={HMData} />
+        <HomeAlbumOverview
+          isVideoRight={false}
+          videoId={HMVideoId}
+          albumMeta={HMData}
+        />
       </div>
     </section>
   );

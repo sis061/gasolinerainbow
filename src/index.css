@@ -115,6 +115,20 @@ a {
   min-height: 16rem; /* 필요 시 이미지 placeholder 크기 조정 */
 }
 
+/* 일시정지, 재생 버튼 숨김 */
+
+video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
 /*********************************** lib customize class ***********************************/
 
 /*---break---*/

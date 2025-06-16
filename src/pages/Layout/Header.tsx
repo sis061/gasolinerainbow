@@ -42,7 +42,7 @@ const Header = () => {
     <>
       <header
         className={cx(
-          "z-50 w-screen h-16 md:h-24 !px-8 sm:!px-16 md:!px-[3rem] lg:!px-[6rem] xl:!px-[10rem] sticky top-0 overflow-hidden flex justify-between items-center gap-2 duration-150",
+          "z-50 w-screen h-16 md:h-24 !px-8 sm:!px-16 md:!px-[3rem] lg:!px-[6rem] xl:!px-[10rem] sticky top-0 flex justify-between items-center gap-2 duration-150",
           (isScrolled || bgBlackRoute) &&
             "bg-[#000]/50 backdrop-blur-sm shadow-2xl"
         )}
@@ -95,7 +95,7 @@ const Header = () => {
           </>
         )}
         {/* LANG */}
-        <div className="flex items-center justify-end max-lg:w-[169px] ">
+        <div className="flex items-center justify-end w-auto gap-2 max-lg:w-[169px]">
           <Button
             variant={"ghost"}
             className={cx(
@@ -137,16 +137,18 @@ const Header = () => {
               )}
             </AnimatePresence>
           </Button>
+          {!minTablet && <SocialButtons bgBlackRoute={bgBlackRoute} />}
         </div>
       </header>
       {!minLaptop && (
-        <nav className="h-28 md:h-16 !px-8 sm:!px-16 md:!px-[3rem] lg:!px-[6rem] fixed bottom-0 left-0 flex flex-col md:flex-row items-center justify-around w-screen !p-3 bg-[#000]/75 backdrop-blur-sm *:transition-opacity z-[50] shadow-[0_-6px_12px_2px_rgba(0,0,0,0.4)]">
-          {/* NAV */}
-          {!minTablet && (
+        <nav className="h-16 !px-8 sm:!px-16 md:!px-[3rem] lg:!px-[6rem] fixed bottom-0 left-0 flex flex-col md:flex-row items-center justify-around w-screen !p-3 bg-[#000]/75 backdrop-blur-sm *:transition-opacity z-[50] shadow-[0_-6px_12px_2px_rgba(0,0,0,0.4)]">
+          {!minTablet ? (
+            // Nav
             <Nav bgBlackRoute={bgBlackRoute} pathname={pathname} />
+          ) : (
+            // social
+            <SocialButtons bgBlackRoute={bgBlackRoute} />
           )}
-          {/* Social */}
-          <SocialButtons bgBlackRoute={bgBlackRoute} />
         </nav>
       )}
     </>

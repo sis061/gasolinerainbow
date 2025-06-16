@@ -109,7 +109,7 @@ const News = () => {
 
   return (
     <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-scroll !mx-auto flex justify-center">
-      <div className="inner flex-grow-0 w-full flex flex-col md:!pt-10 items-start justify-between max-md:!px-4">
+      <div className="inner flex-grow-0 w-full flex flex-col md:!pt-10 items-start justify-between max-md:!px-4 max-md:!mt-4">
         <Accordion type="single" collapsible className="max-w-full w-full">
           {map(visibleNews, (news, i) => {
             const { ref: imgRef, inView: imgInView } = inViewHooks[i];

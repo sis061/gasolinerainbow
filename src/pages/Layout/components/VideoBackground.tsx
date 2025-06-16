@@ -22,30 +22,33 @@ export default function VideoBackground({ onReady }: Props) {
     video.muted = true;
     video.controls = false;
 
-    const playVideo = () => {
+    const tryPlay = () => {
       video
         .play()
         .then(handleReady)
         .catch((err) => {
           console.warn("Autoplay failed:", err);
-
-          const userInteractionHandler = () => {
-            video.play().then(handleReady).catch(console.warn);
-            document.body.removeEventListener("click", userInteractionHandler);
-            document.body.removeEventListener(
-              "touchstart",
-              userInteractionHandler
-            );
-          };
-
-          // 모바일/데스크탑 모두 대응
-          document.body.addEventListener("click", userInteractionHandler);
-          document.body.addEventListener("touchstart", userInteractionHandler);
         });
     };
 
-    // 모바일 Safari 등에서 이 타이밍에 play 시도
-    video.addEventListener("loadedmetadata", playVideo, { once: true });
+    const userInteractionHandler = () => {
+      tryPlay();
+      document.body.removeEventListener("click", userInteractionHandler);
+      document.body.removeEventListener("touchstart", userInteractionHandler);
+    };
+
+    // iPad Safari 등 타이밍 이슈 대응
+    setTimeout(tryPlay, 100);
+
+    // 사용자 인터랙션 fallback
+    document.body.addEventListener("click", userInteractionHandler);
+    document.body.addEventListener("touchstart", userInteractionHandler);
+
+    // cleanup
+    return () => {
+      document.body.removeEventListener("click", userInteractionHandler);
+      document.body.removeEventListener("touchstart", userInteractionHandler);
+    };
   }, []);
 
   return (
@@ -59,9 +62,9 @@ export default function VideoBackground({ onReady }: Props) {
       playsInline
       onPlay={handleReady}
       onCanPlayThrough={handleReady}
-      poster="/bg01.webp"
+      // poster="/bg02.webp"
     >
-      <source src="/bg01.mp4" type="video/mp4" />
+      <source src="/bg02.mp4" type="video/mp4" />
     </video>
   );
 }

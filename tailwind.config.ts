@@ -1,7 +1,8 @@
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+import aspectRatio from "@tailwindcss/aspect-ratio";
+import type { Config } from "tailwindcss";
 
+const config: Config = {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       fontFamily: {
@@ -24,8 +25,7 @@ export default {
       },
     },
   },
-  variants: {
-    overscrollBehavior: ["responsive"],
-  },
-  plugins: [require("@tailwindcss/aspect-ratio")],
+  plugins: [aspectRatio],
 };
+
+export default config;

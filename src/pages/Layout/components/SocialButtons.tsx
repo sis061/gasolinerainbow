@@ -1,14 +1,12 @@
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { useEffect, useRef, useState } from "react";
+
 import { Link as LinkIcon } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import map from "lodash/map";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
+import cx from "classnames";
 
 import { useScrollState } from "@/hooks/useScrollState";
 
@@ -19,7 +17,6 @@ import SoundcloudLogo from "@/assets/logos/soundcloud.svg?react";
 import SpotifyLogo from "@/assets/logos/spotify.svg?react";
 import YoutubeLogo from "@/assets/logos/youtube.svg?react";
 import YoutubeMusicLogo from "@/assets/logos/youtubemusic.svg?react";
-import { useState } from "react";
 
 const logos = [
   {
@@ -59,55 +56,121 @@ const logos = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0, y: -16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.2, // 전체 컨테이너 속도
+      ease: "easeOut",
+      staggerChildren: 0.02,
+      delayChildren: 0.02,
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -16,
+    transition: {
+      duration: 0.15,
+      ease: "easeIn",
+      staggerChildren: 0.04,
+      staggerDirection: -1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -20 },
+};
+
 const SocialButtons = ({ bgBlackRoute }: { bgBlackRoute: boolean }) => {
   const [open, setOpen] = useState<boolean>(false);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
   const minLaptop = useMediaQuery({ minWidth: 1024 });
   const minTablet = useMediaQuery({ minWidth: 768 });
   const isScrolled = useScrollState();
 
+  useEffect(() => {
+    const wrappers = document.querySelectorAll(".wrapper, .wrapper-full");
+    wrappers.forEach((el) => {
+      (el as HTMLElement).style.transition = "opacity 0.3s ease";
+      (el as HTMLElement).style.opacity = open ? "0.3" : "1";
+    });
+
+    const handleClickOutside = (e: MouseEvent | TouchEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target as Node)
+      ) {
+        setOpen(false);
+      }
+    };
+
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("touchstart", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, [open]);
+
   if (!minTablet) {
     return (
-      <>
-        <div className="relative overflow-visible">
-          <div role="button" id="trigger" onClick={() => setOpen(!open)}>
-            <div className="w-8 h-8 lg:w-6 lg:h-6 xl:w-8 xl:h-8 rounded-full !bg-white cursor-pointer flex items-center justify-center">
-              <LinkIcon
-                color={"#000"}
-                className=" duration-150 max-w-4 max-h-4"
-              />
-            </div>
-          </div>
+      <div ref={dropdownRef} className="relative overflow-visible">
+        <div
+          role="button"
+          id="trigger"
+          onClick={() => setOpen(!open)}
+          className={cx(
+            "w-8 h-8 lg:w-6 lg:h-6 xl:w-8 xl:h-8 rounded-full flex items-center justify-center !z-[999]",
+            open ? "!bg-black" : "!bg-white"
+          )}
+        >
+          <LinkIcon
+            color={`${open ? "#fff" : "#000"}`}
+            className=" duration-150 max-w-4 max-h-4"
+          />
+        </div>
+        <AnimatePresence>
           {open && (
-            <div className="!p-1 absolute left-1/2 -translate-x-1/2 z-[9999] *:!z-[999]">
-              {map(logos, ({ Component, name, url }) => (
-                <div
-                  id="dropdownItem"
+            <motion.div
+              initial="hidden"
+              animate={open ? "visible" : "hidden"}
+              exit="exit"
+              variants={containerVariants}
+              transition={{ duration: 0.2, ease: "easeInOut" }}
+              style={{ pointerEvents: open ? "auto" : "none" }}
+              className="!p-1 absolute top-12 left-1/2 -translate-x-1/2 z-[99] "
+            >
+              {logos.map(({ Component, name, url }) => (
+                <motion.div
                   key={name}
-                  className="!p-2 hover:!bg-[#272727] flex items-center justify-center w-12 h-12"
+                  variants={itemVariants}
+                  className="!p-2 flex items-center justify-center w-12 h-12 "
                 >
-                  <Link
-                    to={url}
+                  <a
+                    href={url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full h-full"
                   >
                     <Component
-                      className="w-full h-full duration-150"
-                      fill={
-                        minLaptop
-                          ? isScrolled || bgBlackRoute
-                            ? "#fff"
-                            : "#000"
-                          : "#fff"
-                      }
+                      className="w-full h-full duration-150 "
+                      fill={bgBlackRoute ? "#fff" : "#000"}
                     />
-                  </Link>
-                </div>
+                  </a>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           )}
-        </div>
-      </>
+        </AnimatePresence>
+      </div>
     );
   } else {
     return (

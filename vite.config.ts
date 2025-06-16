@@ -1,7 +1,7 @@
 import path from "path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import tailwindcss from "@tailwindcss/vite";
+// import tailwindcss from "@tailwindcss/vite";
 import tsConfigPaths from "vite-tsconfig-paths";
 import svgr from "vite-plugin-svgr";
 import { visualizer } from "rollup-plugin-visualizer";
@@ -11,7 +11,7 @@ export default defineConfig({
   base: "/",
   plugins: [
     react(),
-    tailwindcss(),
+    // tailwindcss(),
     tsConfigPaths(),
     svgr(),
     visualizer({

@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { useEffect, useRef } from "react";
 
 import { motion } from "framer-motion";
+import { Toaster } from "@/components/ui/sonner";
 import { useLocation } from "react-router-dom";
 import cx from "classnames";
 import { useMediaQuery } from "react-responsive";
@@ -59,6 +60,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         {minTablet && <ScrollTopBtn isFooterVisible={isFooterVisible} />}
         <Footer />
       </div>
+      <Toaster position={"bottom-center"} duration={2000} />
     </motion.main>
   );
 }

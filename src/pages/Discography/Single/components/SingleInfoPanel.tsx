@@ -19,7 +19,7 @@ import MobileDrawer from "../../modals/MobileDrawer";
 import type { SingleInfoPanelProps } from "@/types/discography";
 import Hoverable from "@/pages/Layout/components/Hoverable";
 import { useScrollLock } from "@/hooks/useScrollLock";
-import { Disc3, ListCheck } from "lucide-react";
+import { Disc3 } from "lucide-react";
 
 const SingleInfoPanel = ({
   albumMeta,
@@ -102,10 +102,10 @@ const SingleInfoPanel = ({
                 <div
                   onClick={() => setSelectedTrack(null)}
                   className={cx(
-                    "cursor-pointer !px-2 relative w-auto text-left transition-all duration-200 hover:opacity-50 ",
+                    "cursor-pointer relative w-auto text-left transition-all duration-200 hover:opacity-50 ",
                     minTablet &&
                       !selectedTrack &&
-                      "!bg-white/75 [&_>span]:!text-black"
+                      "!bg-white/75 [&_>span]:!text-black !px-1"
                   )}
                 >
                   {minTablet ? (
@@ -117,10 +117,6 @@ const SingleInfoPanel = ({
                       <span>
                         {language === "ko" ? `${type.kr} 소개` : `About`}
                       </span>
-                      <ListCheck
-                        color="#999"
-                        className="min-w-3 max-w-4 min-h-3 max-h-4"
-                      />
                     </DrawerTrigger>
                   )}
                 </div>
@@ -134,7 +130,6 @@ const SingleInfoPanel = ({
                   }
                 >
                   <TrackList
-                    type={albumMeta.type}
                     tracks={albumMeta.tracks}
                     align="left"
                     selectedTrack={selectedTrack}

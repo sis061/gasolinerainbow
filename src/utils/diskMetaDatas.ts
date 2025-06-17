@@ -171,16 +171,20 @@ Artwork by namu 나무`,
         trackNo: 3,
         titleKr: "물감",
         titleEn: "PaintMe,PaintYou",
-        lyrics: `이젠 사라져야겠지
+        lyrics: `이젠 (그만) 사라져야겠지
 
 마치 아무것도 아닌
+
+(내 자린 없어)
 
 남아있지 않은
 
 
-이젠 떠나가야겠지
+이젠 (뒤돌아 보지말고) 떠나가야겠지
 
 저 호수에 비치는
+
+(발 디딜 수 없어)
 
 달을 따라가는
 
@@ -703,25 +707,25 @@ The melody only remains`,
       },
     ],
   },
-  //   {
-  //     type: "album",
-  //     year: 2025,
-  //     titleKr: "평화로운 뇌와…",
-  //     titleEn: "A Brain In Peace &…",
-  //     image: diskImages.hm,
-  //     urls: {
-  //       bandcamp: "https://himinnn.bandcamp.com/album/hm",
-  //       spotify: "https://open.spotify.com/album/2kwKctIlNJCNK5mU9a0FEF",
-  //       youtubeMusic:
-  //         "https://music.youtube.com/playlist?list=OLAK5uy_mqSbyG7WqaMdeYnQmj7k1jfoqIOho5FUg&si=D_QEKJKzZXiNFTKh",
-  //       appleMusic: "https://music.apple.com/us/album/hm/1659621243",
-  //       melon: "https://www.melon.com/album/detail.htm?albumId=11121710",
-  //       bugs: "https://music.bugs.co.kr/album/20533309",
-  //       genie: "https://www.genie.co.kr/detail/albumInfo?axnm=83280159",
-  //     },
-  //     isCD: false,
-  //     cdUrl: null,
-  //     descriptionKr: `지하철, 침대, 라디오,
+  // {
+  //   type: "album",
+  //   year: 2025,
+  //   titleKr: "평화로운 뇌와…",
+  //   titleEn: "A Brain In Peace &…",
+  //   image: diskImages.hm,
+  //   urls: {
+  //     bandcamp: "https://himinnn.bandcamp.com/album/hm",
+  //     spotify: "https://open.spotify.com/album/2kwKctIlNJCNK5mU9a0FEF",
+  //     youtubeMusic:
+  //       "https://music.youtube.com/playlist?list=OLAK5uy_mqSbyG7WqaMdeYnQmj7k1jfoqIOho5FUg&si=D_QEKJKzZXiNFTKh",
+  //     appleMusic: "https://music.apple.com/us/album/hm/1659621243",
+  //     melon: "https://www.melon.com/album/detail.htm?albumId=11121710",
+  //     bugs: "https://music.bugs.co.kr/album/20533309",
+  //     genie: "https://www.genie.co.kr/detail/albumInfo?axnm=83280159",
+  //   },
+  //   isCD: false,
+  //   cdUrl: null,
+  //   descriptionKr: `지하철, 침대, 라디오,
   // 치사랑, 성애, 섭식장애,
   // 09시, 18시, 22시, 03시,
   // 원숭이, 고양이, 정어리,
@@ -729,7 +733,7 @@ The melody only remains`,
   // 모두의 무가치함,
   // 모두의 모두에 대한 이별,
   // 그럼에도 우리는.`,
-  //     descriptionEn: `The subway, the bed, the radio.
+  //   descriptionEn: `The subway, the bed, the radio.
   // parental love, desire, disordered eating.
   // 9 a.m., 6 p.m., 10 p.m., 3 a.m.
   // Monkeys, cats, sardines.
@@ -737,16 +741,16 @@ The melody only remains`,
   // Everyone’s worthlessness.
   // Everyone’s goodbye to everyone.
   // And still—we are.`,
-  //     credits: `Produced by HIMINN
+  //   credits: `Produced by HIMINN
   // Recorded by Shinhwan @ Phoné Studio
   // Mixed & Mastered by Shinhwan @ Phoné Studio
   // Artwork by namu 나무`,
-  //     tracks: [
-  //       {
-  //         trackNo: 1,
-  //         titleKr: "가솔린 무지개",
-  //         titleEn: "Gasoline Rainbows",
-  //         lyrics: `어느 새벽, 작은 악마 하나가 찾아와 속삭였습니다.
+  //   tracks: [
+  //     {
+  //       trackNo: 1,
+  //       titleKr: "가솔린 무지개",
+  //       titleEn: "Gasoline Rainbows",
+  //       lyrics: `어느 새벽, 작은 악마 하나가 찾아와 속삭였습니다.
 
   // '너에게 내 모든 권능을 주고, 그 영광은 네가 가질 수 있게 해주겠다.
 
@@ -769,13 +773,13 @@ The melody only remains`,
   // 그 모든 이별에도 당신은 살아가고, 살아버립니다.
 
   // 참 불쌍하네요, 우린.`,
-  //         tags: [],
-  //       },
-  //       {
-  //         trackNo: 2,
-  //         titleKr: "Corns N Beans",
-  //         titleEn: "Corns N Beans",
-  //         lyrics: `
+  //       tags: [],
+  //     },
+  //     {
+  //       trackNo: 2,
+  //       titleKr: "Corns N Beans",
+  //       titleEn: "Corns N Beans",
+  //       lyrics: `
   // 나는 너에게 영광을 주겠다
 
   // 대신 너에게서 밤에 자는 잠을 뺏겠다
@@ -825,13 +829,13 @@ The melody only remains`,
   // 살아는 지는게
 
   // (그 모든 이별에)`,
-  //         tags: [],
-  //       },
-  //       {
-  //         trackNo: 3,
-  //         titleKr: "9호선",
-  //         titleEn: "Line 9",
-  //         lyrics: `Fish in suits.
+  //       tags: [],
+  //     },
+  //     {
+  //       trackNo: 3,
+  //       titleKr: "9호선",
+  //       titleEn: "Line 9",
+  //       lyrics: `Fish in suits.
 
   // We’re all fish in suits
 
@@ -894,7 +898,6 @@ The melody only remains`,
   // We could go anywhere,
 
   // We could do everything,
-  //
 
   // Nobody tells
 
@@ -907,7 +910,7 @@ The melody only remains`,
   // We can’t take it anymore
 
   // Wake me at the next station.
-  //
+
   // Chained, Still, Still, Still.
 
   // Drained, Still, Still, Still.
@@ -917,13 +920,13 @@ The melody only remains`,
   // Chained, Still, Still, Still.
 
   // Prained, Still, Still, Still.`,
-  //         tags: [],
-  //       },
-  //       {
-  //         trackNo: 4,
-  //         titleKr: "열한번째 고양이의 밤",
-  //         titleEn: "Ninth Life, Eleventh Night",
-  //         lyrics: `우린 다시 만나자, 열한 번째 고양이의 밤에서
+  //       tags: [],
+  //     },
+  //     {
+  //       trackNo: 4,
+  //       titleKr: "열한번째 고양이의 밤",
+  //       titleEn: "Ninth Life, Eleventh Night",
+  //       lyrics: `우린 다시 만나자, 열한 번째 고양이의 밤에서
 
   // 비를 맞을 일도 없이, 따뜻한, 따뜻한.
 
@@ -942,15 +945,15 @@ The melody only remains`,
   // 있잖아, 기다리지 말아, 나를,
 
   // 있잖아, 기다리지...,
-  //
+
   // 뜨문 뜨문 뜨문.`,
-  //         tags: [],
-  //       },
-  //       {
-  //         trackNo: 5,
-  //         titleKr: "The Monkey/Mother-ship",
-  //         titleEn: "The Monkey/Mother-ship",
-  //         lyrics: `Have I been thrown away?
+  //       tags: [],
+  //     },
+  //     {
+  //       trackNo: 5,
+  //       titleKr: "The Monkey/Mother-ship",
+  //       titleEn: "The Monkey/Mother-ship",
+  //       lyrics: `Have I been thrown away?
 
   // In a six-sides mirrored room.
 
@@ -983,13 +986,13 @@ The melody only remains`,
   // but you are here now.
 
   // Stand in an aisle, we few happy family.`,
-  //         tags: [],
-  //       },
-  //       {
-  //         trackNo: 6,
-  //         titleKr: "Dinner, the pill & the feast",
-  //         titleEn: "Dinner, the pill & the feast",
-  //         lyrics: `Devouring
+  //       tags: [],
+  //     },
+  //     {
+  //       trackNo: 6,
+  //       titleKr: "Dinner, the pill & the feast",
+  //       titleEn: "Dinner, the pill & the feast",
+  //       lyrics: `Devouring
 
   // Anodyne
 
@@ -1038,13 +1041,13 @@ The melody only remains`,
   // Food food food
 
   // Ah, shut up and just chew it.`,
-  //         tags: [],
-  //       },
-  //       {
-  //         trackNo: 7,
-  //         titleKr: "Nudity",
-  //         titleEn: "Nudity",
-  //         lyrics: `I’ve never loved my luv.
+  //       tags: [],
+  //     },
+  //     {
+  //       trackNo: 7,
+  //       titleKr: "Nudity",
+  //       titleEn: "Nudity",
+  //       lyrics: `I’ve never loved my luv.
 
   // The Nudity, Just let me go to sleep
 
@@ -1059,13 +1062,13 @@ The melody only remains`,
   // My property. No more of that Lunatic.
 
   // Far too easily`,
-  //         tags: [],
-  //       },
-  //       {
-  //         trackNo: 8,
-  //         titleKr: "V.",
-  //         titleEn: "V.",
-  //         lyrics: `I have done nothing better
+  //       tags: [],
+  //     },
+  //     {
+  //       trackNo: 8,
+  //       titleKr: "V.",
+  //       titleEn: "V.",
+  //       lyrics: `I have done nothing better
 
   // 널 이룰거란 기대 버려
 
@@ -1080,13 +1083,13 @@ The melody only remains`,
   // I have done, if nothing mattered
 
   // 가치 없는 꿈에 날 깨워`,
-  //         tags: [],
-  //       },
-  //       {
-  //         trackNo: 9,
-  //         titleKr: "2025년 즈음에는 좋은 아이가 되어볼게요",
-  //         titleEn: "Yr 2025 Problem",
-  //         lyrics: `2025년즈음에는 좋은 아이가 될게요
+  //       tags: [],
+  //     },
+  //     {
+  //       trackNo: 9,
+  //       titleKr: "2025년 즈음에는 좋은 아이가 되어볼게요",
+  //       titleEn: "Yr 2025 Problem",
+  //       lyrics: `2025년즈음에는 좋은 아이가 될게요
 
   // 큰 사람이 되지는 못할게요
 
@@ -1137,10 +1140,10 @@ The melody only remains`,
   // 사람들은 앞으로 내지르고
 
   // 나는 가만히`,
-  //         tags: ["Title"],
-  //       },
-  //     ],
-  //   },
+  //       tags: ["Title"],
+  //     },
+  //   ],
+  // },
   {
     type: "remix",
     year: 2023,
@@ -1208,35 +1211,293 @@ Artwork by HIMINN`,
         trackNo: 2,
         titleKr: "물감 (Irn Remix)",
         titleEn: "PaintMe,PaintYou (Irn Remix)",
-        lyrics: null,
+        lyrics: `이젠 (그만) 사라져야겠지
+
+마치 아무것도 아닌
+
+(내 자린 없어)
+
+남아있지 않은
+
+
+이젠 (뒤돌아 보지말고) 떠나가야겠지
+
+저 호수에 비치는
+
+(발 디딜 수 없어)
+
+달을 따라가는
+
+
+난 좀 더 오래 있고 싶었어
+
+난 그렇게 머물고 싶었어
+
+
+그저 흐르고 싶어
+
+그려지고 싶어
+
+네 웃음이 되고 싶어
+
+물감이 되고
+
+
+난 좀 더 오래 있고 싶었어
+
+난 그렇게 머물 줄 알았어
+
+
+그저 흐르고 싶어
+
+그려지고 싶어
+
+네 웃음이 되고 싶어
+
+물감이 되고
+
+
+가지마
+
+가지 말라고 말해줘
+
+울지마
+
+울지 말라고 말해줘
+
+돌아와
+
+붙잡아달라고 말해줘
+
+울어줘
+
+울어달라고 말해줘
+
+
+그려줘
+
+물감이 되어 그려줘
+
+그려줘
+
+그림이 되어 남아줘`,
         tags: [],
       },
       {
         trackNo: 3,
         titleKr: "물감 (Hidden Lime Remix)",
         titleEn: "PaintMe,PaintYou (Hidden Lime Remix)",
-        lyrics: null,
+        lyrics: `이젠 사라져야겠지
+
+마치 아무것도 아닌
+
+남아있지 않은
+
+
+이젠 떠나가야겠지
+
+저 호수에 비치는
+
+달을 따라가는
+
+
+난 좀 더 오래 있고 싶었어
+
+난 그렇게 머물고 싶었어
+
+
+그저 흐르고 싶어
+
+그려지고 싶어
+
+네 웃음이 되고 싶어
+
+물감이 되고
+
+
+난 좀 더 오래 있고 싶었어
+
+난 그렇게 머물 줄 알았어
+
+
+그저 흐르고 싶어
+
+그려지고 싶어
+
+네 웃음이 되고 싶어
+
+물감이 되고`,
         tags: ["Title"],
       },
       {
         trackNo: 4,
         titleKr: "가울 (Suheeson Remix)",
         titleEn: "Wintumn (Suheeson Remix)",
-        lyrics: null,
+        lyrics: `겨울같이 가을이 오면
+
+잡았던 두 손을 놓게 하고
+
+모두가 사라진 아침
+
+태우던 담배만 재가 남는걸
+
+
+겨울같이 가을이 오면
+
+낡은 내 신발 속엔
+
+소복이 쌓인 눈 속엔
+
+얼어붙은 낙엽이 부서지진 않겠지
+
+
+겨울같이 가을이 오면
+
+코가 시려도 잡아줄 이 없고
+
+이른 잠에 빠진 그들의
+
+싸늘한 언덕만 내다보았지
+
+
+겨울같이 가을이 오면
+
+낡은 내 신발 속엔
+
+소복이 쌓인 눈 속엔
+
+얼어붙은 낙엽이 부서지진 않겠지
+
+
+나는 미리 얼어붙어 더 이상 잇지 못할 것 같아
+
+차가운 눈길에 마주하거나 주저앉을 겨를도 없는데
+
+
+가을같이 겨울이 오면
+
+소풍처럼 그렇게 와`,
         tags: [],
       },
       {
         trackNo: 5,
         titleKr: "가울 (baan Remix)",
         titleEn: "Wintumn (baan Remix)",
-        lyrics: null,
+        lyrics: `겨울같이 가을이 오면
+
+잡았던 두 손을 놓게 하고
+
+모두가 사라진 아침
+
+태우던 담배만 재가 남는걸
+
+
+겨울같이 가을이 오면
+
+낡은 내 신발 속엔
+
+
+겨울같이 가을이 오면
+
+잡았던 두 손을 놓게 하고
+
+모두가 사라진 아침
+
+태우던 담배만 재가 남는걸
+
+
+겨울같이 가을이 오면
+
+낡은 내 신발 속엔
+
+내 신발 속엔
+
+
+신발 속엔
+
+겨울같이 가을이 오면
+
+낡은 내 신발 속엔
+
+겨울같이 가을이 오면
+
+낡은`,
         tags: [],
       },
       {
         trackNo: 6,
         titleKr: "Downpour (Hidden Lime Remix)",
         titleEn: "Downpour (Hidden Lime Remix)",
-        lyrics: null,
+        lyrics: `All the efforts you’ve made, won’t be made
+
+All the love you’ve tried, won’t be made out
+
+When every bad thought kicks in your heart
+
+Then it rains
+
+A downpour will wash away
+
+
+Downpour
+
+Downpour
+
+Downpour
+
+Will wash away
+
+
+Hesitation holds you back, but you try to go further
+
+Big ideas take you in, but that’s not gonna happen
+
+The more breath you take, the more it chokes
+
+When it rains
+
+A downpour will wash away
+
+
+Downpour
+
+Downpour
+
+Downpour
+
+Will wash away
+
+
+Good intention goes to nothing and only the foes remain
+
+You’ve craved everything but the gains peter out
+
+When not just the remorse but pain defines you
+
+Then it rains
+
+A downpour will wash away
+
+
+Downpour
+
+Downpour
+
+Downpour
+
+Will wash away
+
+
+Downpour
+
+Downpour
+
+Downpour
+
+Will wash away
+
+
+Will wash away`,
         tags: [],
       },
       {
@@ -1250,14 +1511,60 @@ Artwork by HIMINN`,
         trackNo: 8,
         titleKr: "Outstrip (Guinneissik Remix)",
         titleEn: "Outstrip (Guinneissik Remix)",
-        lyrics: null,
+        lyrics: `In a moment
+
+you outdo, my competitors
+
+In a moment
+
+I only follow your back
+
+
+Bought a house, without rent
+
+Oh you could, yeah you deserve
+
+I would just be born as a snail
+
+Born to have shell
+
+
+Solely, be my side be my side
+
+Now you outstrip me
+
+
+Indeed`,
         tags: [],
       },
       {
         trackNo: 9,
         titleKr: "거짓말거긴말 (Hidden Lime Remix)",
         titleEn: "ThereinLiesTheLie (Hidden Lime Remix)",
-        lyrics: null,
+        lyrics: `그 어둔 솜에 나는 파묻혀
+
+거짓말을 내뱉어
+
+
+넌 괜찮을 테니
+
+아프다고 지껄여
+
+넌 상관없을 테니
+
+괴롭다고 말해줘
+
+
+그 어둔 솜에 나는 파묻혀
+
+난 다시 중얼거리지
+
+
+끝도 없는 거짓말들
+
+끝도 없는 거짓말을
+
+난 또 중얼거리지`,
         tags: [],
       },
     ],

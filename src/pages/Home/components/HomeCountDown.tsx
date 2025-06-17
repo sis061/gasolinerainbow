@@ -32,7 +32,13 @@ const HomeCountDown = ({
     completed: boolean;
   }) => {
     if (completed) {
-      return <HomeAlbumOverview videoId={videoId} albumMeta={albumMeta} />;
+      return (
+        <HomeAlbumOverview
+          isVideoRight
+          videoId={videoId}
+          albumMeta={albumMeta}
+        />
+      );
     }
 
     return (
@@ -73,10 +79,10 @@ const CountdownRenderer = React.memo(
           return (
             <div
               key={d.en}
-              className="flex w-full flex-col items-center justify-center gap-1"
+              className="flex w-full flex-col items-center justify-center gap-1 *:!text-white/75"
               aria-label={`${d.count} ${language === "ko" ? d.kr : d.en}`}
             >
-              <div className="flex">
+              <div className="flex *:!text-white/75">
                 {/* 십의 자리 */}
                 <AnimatePresence mode="wait">
                   <motion.span

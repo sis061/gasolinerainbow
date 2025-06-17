@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { Link as LinkIcon } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, easeOut, easeIn } from "framer-motion";
 
 import map from "lodash/map";
 import { useMediaQuery } from "react-responsive";
@@ -63,7 +63,7 @@ const containerVariants = {
     y: 0,
     transition: {
       duration: 0.2, // 전체 컨테이너 속도
-      ease: "easeOut",
+      ease: easeOut,
       staggerChildren: 0.02,
       delayChildren: 0.02,
     },
@@ -73,7 +73,7 @@ const containerVariants = {
     y: -16,
     transition: {
       duration: 0.15,
-      ease: "easeIn",
+      ease: easeIn,
       staggerChildren: 0.04,
       staggerDirection: -1,
     },

@@ -6,6 +6,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import { toast } from "sonner";
 
 import map from "lodash/map";
 
@@ -15,6 +16,8 @@ import CarouselNavigation from "../components/CarouselNavigation";
 
 import type { SingleCarouselsProps } from "@/types/discography";
 import useLanguageStore from "@/store/useLanguageStore";
+import CustomToast from "@/pages/Layout/components/CustomToast";
+import { ListX } from "lucide-react";
 
 const OSTCarousel = ({
   albumMetas,
@@ -71,7 +74,22 @@ const OSTCarousel = ({
                   <ol className="w-full flex flex-col [&_>li]:w-full [&_>li]:break-all gap-2 ">
                     {map(albumMeta.tracks, (tr) => (
                       <li key={tr.trackNo}>
-                        <span className="!text-white">
+                        <span
+                          className="!text-white cursor-not-allowed"
+                          onClick={() =>
+                            toast.custom((t) => (
+                              <CustomToast
+                                t={t}
+                                icon={<ListX size={20} color="#000" />}
+                                content={
+                                  language === "ko"
+                                    ? "이 곡은 가사가 없습니다."
+                                    : "Instrumental track - no lyrics."
+                                }
+                              />
+                            ))
+                          }
+                        >
                           {tr.trackNo}.{" "}
                           {language === "ko" ? tr.titleKr : tr.titleEn}
                         </span>

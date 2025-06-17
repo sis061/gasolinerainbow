@@ -25,7 +25,6 @@ import Hoverable from "@/pages/Layout/components/Hoverable";
 import OverlayText from "@/pages/Layout/components/OverlayText";
 import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
 import { useScrollLock } from "@/hooks/useScrollLock";
-import { ListCheck } from "lucide-react";
 
 const AlbumCarousel = ({
   albumMeta,
@@ -122,11 +121,11 @@ const AlbumCarousel = ({
                           "relative inline-block touch-pan-y cursor-pointer transition-all duration-200 hover:opacity-50",
                           minTablet &&
                             !selectedTrack &&
-                            "!bg-white/75 [&_>span]:!text-black"
+                            "!bg-white/75 [&_>span]:!text-black !px-1"
                         )}
                       >
                         {minTablet ? (
-                          <span className="!px-2">
+                          <span>
                             {language === "ko" ? "앨범 소개" : "About"}
                           </span>
                         ) : (
@@ -134,10 +133,6 @@ const AlbumCarousel = ({
                             <span>
                               {language === "ko" ? "앨범 소개" : "About"}
                             </span>
-                            <ListCheck
-                              color="#999"
-                              className="min-w-3 max-w-4 min-h-3 max-h-4"
-                            />
                           </DrawerTrigger>
                         )}
                         <AnimatePresence mode="wait">
@@ -165,7 +160,6 @@ const AlbumCarousel = ({
                     }
                   >
                     <TrackList
-                      type={albumMeta.type}
                       tracks={albumMeta.tracks}
                       align="right"
                       selectedTrack={selectedTrack}

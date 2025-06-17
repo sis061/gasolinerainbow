@@ -674,16 +674,20 @@ Artwork by namu 나무`,
         trackNo: 3,
         titleKr: "물감",
         titleEn: "PaintMe,PaintYou",
-        lyrics: `이젠 사라져야겠지
+        lyrics: `이젠 (그만) 사라져야겠지
 
 마치 아무것도 아닌
+
+(내 자린 없어)
 
 남아있지 않은
 
 
-이젠 떠나가야겠지
+이젠 (뒤돌아 보지말고) 떠나가야겠지
 
 저 호수에 비치는
+
+(발 디딜 수 없어)
 
 달을 따라가는
 
@@ -1206,7 +1210,6 @@ The melody only remains`,
       },
     ],
   },
-
   {
     type: "remix",
     year: 2023,
@@ -1274,35 +1277,293 @@ Artwork by HIMINN`,
         trackNo: 2,
         titleKr: "물감 (Irn Remix)",
         titleEn: "PaintMe,PaintYou (Irn Remix)",
-        lyrics: null,
+        lyrics: `이젠 (그만) 사라져야겠지
+
+마치 아무것도 아닌
+
+(내 자린 없어)
+
+남아있지 않은
+
+
+이젠 (뒤돌아 보지말고) 떠나가야겠지
+
+저 호수에 비치는
+
+(발 디딜 수 없어)
+
+달을 따라가는
+
+
+난 좀 더 오래 있고 싶었어
+
+난 그렇게 머물고 싶었어
+
+
+그저 흐르고 싶어
+
+그려지고 싶어
+
+네 웃음이 되고 싶어
+
+물감이 되고
+
+
+난 좀 더 오래 있고 싶었어
+
+난 그렇게 머물 줄 알았어
+
+
+그저 흐르고 싶어
+
+그려지고 싶어
+
+네 웃음이 되고 싶어
+
+물감이 되고
+
+
+가지마
+
+가지 말라고 말해줘
+
+울지마
+
+울지 말라고 말해줘
+
+돌아와
+
+붙잡아달라고 말해줘
+
+울어줘
+
+울어달라고 말해줘
+
+
+그려줘
+
+물감이 되어 그려줘
+
+그려줘
+
+그림이 되어 남아줘`,
         tags: [],
       },
       {
         trackNo: 3,
         titleKr: "물감 (Hidden Lime Remix)",
         titleEn: "PaintMe,PaintYou (Hidden Lime Remix)",
-        lyrics: null,
+        lyrics: `이젠 사라져야겠지
+
+마치 아무것도 아닌
+
+남아있지 않은
+
+
+이젠 떠나가야겠지
+
+저 호수에 비치는
+
+달을 따라가는
+
+
+난 좀 더 오래 있고 싶었어
+
+난 그렇게 머물고 싶었어
+
+
+그저 흐르고 싶어
+
+그려지고 싶어
+
+네 웃음이 되고 싶어
+
+물감이 되고
+
+
+난 좀 더 오래 있고 싶었어
+
+난 그렇게 머물 줄 알았어
+
+
+그저 흐르고 싶어
+
+그려지고 싶어
+
+네 웃음이 되고 싶어
+
+물감이 되고`,
         tags: ["Title"],
       },
       {
         trackNo: 4,
         titleKr: "가울 (Suheeson Remix)",
         titleEn: "Wintumn (Suheeson Remix)",
-        lyrics: null,
+        lyrics: `겨울같이 가을이 오면
+
+잡았던 두 손을 놓게 하고
+
+모두가 사라진 아침
+
+태우던 담배만 재가 남는걸
+
+
+겨울같이 가을이 오면
+
+낡은 내 신발 속엔
+
+소복이 쌓인 눈 속엔
+
+얼어붙은 낙엽이 부서지진 않겠지
+
+
+겨울같이 가을이 오면
+
+코가 시려도 잡아줄 이 없고
+
+이른 잠에 빠진 그들의
+
+싸늘한 언덕만 내다보았지
+
+
+겨울같이 가을이 오면
+
+낡은 내 신발 속엔
+
+소복이 쌓인 눈 속엔
+
+얼어붙은 낙엽이 부서지진 않겠지
+
+
+나는 미리 얼어붙어 더 이상 잇지 못할 것 같아
+
+차가운 눈길에 마주하거나 주저앉을 겨를도 없는데
+
+
+가을같이 겨울이 오면
+
+소풍처럼 그렇게 와`,
         tags: [],
       },
       {
         trackNo: 5,
         titleKr: "가울 (baan Remix)",
         titleEn: "Wintumn (baan Remix)",
-        lyrics: null,
+        lyrics: `겨울같이 가을이 오면
+
+잡았던 두 손을 놓게 하고
+
+모두가 사라진 아침
+
+태우던 담배만 재가 남는걸
+
+
+겨울같이 가을이 오면
+
+낡은 내 신발 속엔
+
+
+겨울같이 가을이 오면
+
+잡았던 두 손을 놓게 하고
+
+모두가 사라진 아침
+
+태우던 담배만 재가 남는걸
+
+
+겨울같이 가을이 오면
+
+낡은 내 신발 속엔
+
+내 신발 속엔
+
+
+신발 속엔
+
+겨울같이 가을이 오면
+
+낡은 내 신발 속엔
+
+겨울같이 가을이 오면
+
+낡은`,
         tags: [],
       },
       {
         trackNo: 6,
         titleKr: "Downpour (Hidden Lime Remix)",
         titleEn: "Downpour (Hidden Lime Remix)",
-        lyrics: null,
+        lyrics: `All the efforts you’ve made, won’t be made
+
+All the love you’ve tried, won’t be made out
+
+When every bad thought kicks in your heart
+
+Then it rains
+
+A downpour will wash away
+
+
+Downpour
+
+Downpour
+
+Downpour
+
+Will wash away
+
+
+Hesitation holds you back, but you try to go further
+
+Big ideas take you in, but that’s not gonna happen
+
+The more breath you take, the more it chokes
+
+When it rains
+
+A downpour will wash away
+
+
+Downpour
+
+Downpour
+
+Downpour
+
+Will wash away
+
+
+Good intention goes to nothing and only the foes remain
+
+You’ve craved everything but the gains peter out
+
+When not just the remorse but pain defines you
+
+Then it rains
+
+A downpour will wash away
+
+
+Downpour
+
+Downpour
+
+Downpour
+
+Will wash away
+
+
+Downpour
+
+Downpour
+
+Downpour
+
+Will wash away
+
+
+Will wash away`,
         tags: [],
       },
       {
@@ -1316,14 +1577,60 @@ Artwork by HIMINN`,
         trackNo: 8,
         titleKr: "Outstrip (Guinneissik Remix)",
         titleEn: "Outstrip (Guinneissik Remix)",
-        lyrics: null,
+        lyrics: `In a moment
+
+you outdo, my competitors
+
+In a moment
+
+I only follow your back
+
+
+Bought a house, without rent
+
+Oh you could, yeah you deserve
+
+I would just be born as a snail
+
+Born to have shell
+
+
+Solely, be my side be my side
+
+Now you outstrip me
+
+
+Indeed`,
         tags: [],
       },
       {
         trackNo: 9,
         titleKr: "거짓말거긴말 (Hidden Lime Remix)",
         titleEn: "ThereinLiesTheLie (Hidden Lime Remix)",
-        lyrics: null,
+        lyrics: `그 어둔 솜에 나는 파묻혀
+
+거짓말을 내뱉어
+
+
+넌 괜찮을 테니
+
+아프다고 지껄여
+
+넌 상관없을 테니
+
+괴롭다고 말해줘
+
+
+그 어둔 솜에 나는 파묻혀
+
+난 다시 중얼거리지
+
+
+끝도 없는 거짓말들
+
+끝도 없는 거짓말을
+
+난 또 중얼거리지`,
         tags: [],
       },
     ],

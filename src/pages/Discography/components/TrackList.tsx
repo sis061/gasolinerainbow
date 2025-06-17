@@ -2,19 +2,21 @@ import { useRef } from "react";
 
 import { DrawerTrigger } from "@/components/ui/drawer";
 import { AnimatePresence } from "framer-motion";
-import { ListCheck } from "lucide-react";
+import { toast } from "sonner";
 
 import cx from "classnames";
 import map from "lodash/map";
 import { useMediaQuery } from "react-responsive";
 
-import type { TrackListProps } from "@/types/discography";
 import OverlayText from "@/pages/Layout/components/OverlayText";
+import CustomToast from "@/pages/Layout/components/CustomToast";
 import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
 import useLanguageStore from "@/store/useLanguageStore";
 
+import type { TrackListProps } from "@/types/discography";
+import { ListX } from "lucide-react";
+
 const TrackList = ({
-  type,
   tracks,
   align = "left",
   onSelect,
@@ -54,8 +56,7 @@ const TrackList = ({
                   isRight ? "md:justify-end" : "!justify-start *:!text-left",
                   minTablet &&
                     selectedTrack?.trackNo === i + 1 &&
-                    " [&_>span]:!text-black",
-                  type === "album" && "md:!-mr-6"
+                    " [&_>span]:!text-black"
                 )}
               >
                 {minTablet ? (
@@ -84,10 +85,6 @@ const TrackList = ({
                     </span>
                   </DrawerTrigger>
                 )}
-                <ListCheck
-                  color="#999"
-                  className="min-w-3 max-w-4 min-h-3 max-h-4"
-                />
               </div>
               <AnimatePresence mode="wait">
                 {showOverlayText && (
@@ -103,7 +100,22 @@ const TrackList = ({
               </AnimatePresence>
             </>
           ) : (
-            <span className="cursor-not-allowed ">
+            <span
+              className="cursor-not-allowed "
+              onClick={() =>
+                toast.custom((t) => (
+                  <CustomToast
+                    t={t}
+                    icon={<ListX size={20} color="#000" />}
+                    content={
+                      language === "ko"
+                        ? "이 곡은 가사가 없습니다."
+                        : "Instrumental track - no lyrics."
+                    }
+                  />
+                ))
+              }
+            >
               {tr.trackNo}. {language === "ko" ? tr.titleKr : tr.titleEn}
             </span>
           )}

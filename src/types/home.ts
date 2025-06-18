@@ -13,3 +13,8 @@ export interface CountdownRendererProps {
   seconds: number;
   language: "ko" | "en" | string;
 }
+
+export interface TargetCarouselProps {
+  carouselIndex: number;
+  slideIndex: number;
+}

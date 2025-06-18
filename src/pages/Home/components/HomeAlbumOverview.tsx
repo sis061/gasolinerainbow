@@ -5,6 +5,7 @@ import { ChevronDown } from "lucide-react";
 
 import { ScaleLoader } from "react-spinners";
 import { useMediaQuery } from "react-responsive";
+import { useNavigate } from "react-router-dom";
 
 import useLanguageStore from "@/store/useLanguageStore";
 import { renderDiskType } from "@/utils/globalHelper";
@@ -16,6 +17,7 @@ const StreamingPlatformButtons = lazy(
 import HomeYoutubeEmbed from "./HomeYoutubeEmbed";
 
 import type { Disk } from "@/types/discography";
+import type { TargetCarouselProps } from "@/types/home";
 
 const trimDescription = (description: string, lang: "ko" | "en") => {
   const endSentence: string =
@@ -31,11 +33,15 @@ const trimDescription = (description: string, lang: "ko" | "en") => {
 const HomeAlbumOverview = ({
   albumMeta,
   videoId,
+  TargetCarousel,
 }: {
   albumMeta: Disk;
   videoId: string;
+  TargetCarousel: TargetCarouselProps;
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const navigate = useNavigate();
   const minTablet = useMediaQuery({ minWidth: 768 });
   const { language } = useLanguageStore();
 
@@ -45,6 +51,15 @@ const HomeAlbumOverview = ({
   const descTranslated =
     language === "ko" ? albumMeta.descriptionKr : albumMeta.descriptionEn;
   const trimmedDescription = trimDescription(descTranslated, language);
+
+  const goToDiscography = () => {
+    navigate("/discography", {
+      state: {
+        carouselIndex: TargetCarousel.carouselIndex,
+        slideIndex: TargetCarousel.slideIndex,
+      },
+    });
+  };
 
   return (
     <motion.div
@@ -67,6 +82,9 @@ const HomeAlbumOverview = ({
           </h1>
         </div>
         <p className="w-full whitespace-break-spaces">{trimmedDescription}</p>
+        <div>
+          <button onClick={goToDiscography}>상세 정보로 이동</button>
+        </div>
         <div className="flex flex-col gap-6 w-full">
           <button
             className="flex items-center gap-1 max-md:hover:underline underline-offset-4 max-md:hover:cursor-pointer select-none"

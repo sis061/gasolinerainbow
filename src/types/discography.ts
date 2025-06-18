@@ -51,11 +51,13 @@ export interface CarouselProps {
   albumMeta: Disk;
   isHoverToolip?: boolean;
   onChange?: OnChangeHandler;
+  initialSlideIndex?: number;
 }
 
 export interface SingleCarouselsProps {
   albumMetas: Disk[];
   onChange?: OnChangeHandler;
+  initialSlideIndex?: number;
 }
 
 export interface CarouselNavigationProps {

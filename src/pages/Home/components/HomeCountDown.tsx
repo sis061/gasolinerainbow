@@ -6,15 +6,15 @@ import cx from "classnames";
 import { motion, AnimatePresence } from "framer-motion";
 
 import useLanguageStore from "@/store/useLanguageStore";
-import HomeAlbumOverview from "./HomeAlbumOverview";
+// import HomeAlbumOverview from "./HomeAlbumOverview";
 import type { CountdownRendererProps, CountdownTimerProps } from "@/types/home";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
 const HomeCountDown = ({
   releaseDate,
-  albumMeta,
-  videoId,
+  // albumMeta,
+  // videoId,
 }: CountdownTimerProps) => {
   const { language } = useLanguageStore();
 
@@ -32,7 +32,7 @@ const HomeCountDown = ({
     completed: boolean;
   }) => {
     if (completed) {
-      return <HomeAlbumOverview videoId={videoId} albumMeta={albumMeta} />;
+      return <></>;
     }
 
     return (

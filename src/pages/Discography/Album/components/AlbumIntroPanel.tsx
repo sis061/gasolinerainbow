@@ -1,17 +1,36 @@
-import { Link } from "react-router-dom";
-import StreamingModal from "../../modals/StreamingModal";
-import type { Disk } from "@/types/discography";
-import useLanguageStore from "@/store/useLanguageStore";
+import { useState } from "react";
+
+import { Skeleton } from "@/components/ui/skeleton";
 import { Disc3 } from "lucide-react";
+
+import { Link } from "react-router-dom";
+import cx from "classnames";
+
+import StreamingModal from "../../modals/StreamingModal";
+import useLanguageStore from "@/store/useLanguageStore";
+
+import type { Disk } from "@/types/discography";
 
 const AlbumIntroPanel = ({ albumMeta }: { albumMeta: Disk }) => {
   const { image, titleKr, titleEn, year, isCD, cdUrl } = albumMeta;
-
+  const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
   const { language } = useLanguageStore();
+
   return (
     <ul className="w-full flex items-center gap-10 max-lg:flex-col">
-      <li className="bg-gray-600 overflow-hidden w-full md:w-2/3 lg:w-auto">
-        <img src={image} alt="앨범 아트워크" className="w-full h-full" />
+      <li className="relative overflow-hidden w-full md:w-2/3 lg:w-auto !aspect-square">
+        {!isImageLoaded && (
+          <Skeleton className="absolute inset-0 w-full h-full rounded-none bg-[#333]" />
+        )}
+        <img
+          src={image}
+          alt="앨범 아트워크"
+          className={cx(
+            "w-full h-full object-cover transition-opacity duration-500",
+            isImageLoaded ? "opacity-100" : "opacity-0"
+          )}
+          onLoad={() => setIsImageLoaded(true)}
+        />
       </li>
       <li
         className={

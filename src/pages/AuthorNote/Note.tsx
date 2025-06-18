@@ -63,7 +63,7 @@ export default function Note() {
                 backgroundColor: renderNoteTypeColor(note.category),
               }}
               variant="outline"
-              className="!text-white !py-1 !px-2 rounded-tr-none"
+              className="!text-white border-none !py-1 !px-2 rounded-tr-none"
             >
               {note.category}
             </Badge>

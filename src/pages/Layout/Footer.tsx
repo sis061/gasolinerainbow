@@ -35,7 +35,13 @@ const Footer = () => {
                   Contact
                 </span>
               </DropdownMenuTrigger>
-              <DropdownMenuContent side="top" className="bg-black !p-1">
+              <DropdownMenuContent
+                side="top"
+                align="start"
+                alignOffset={25}
+                arrowPadding={1}
+                className="bg-black !p-1 rounded-bl-none"
+              >
                 <DropdownMenuItem className="!p-2 hover:!bg-[#272727]">
                   <a
                     href="mailto:himinnjeong@gmail.com"

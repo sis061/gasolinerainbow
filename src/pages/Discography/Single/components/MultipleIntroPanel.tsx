@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
+import cx from "classnames";
 import type { MultipleIntroPanelProps } from "@/types/discography";
 
 const MultipleIntroPanel = ({
@@ -5,13 +8,21 @@ const MultipleIntroPanel = ({
   title,
   year,
 }: MultipleIntroPanelProps) => {
+  const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
   return (
     <ul className="w-full flex items-center gap-10 max-lg:flex-col !px-2">
-      <li className="bg-gray-600 overflow-hidden w-full md:w-2/3 lg:w-auto">
+      <li className="relative !aspect-square overflow-hidden w-full md:w-2/3 lg:w-auto ">
+        {!isImageLoaded && (
+          <Skeleton className="absolute inset-0 w-full h-full rounded-none bg-[#333]" />
+        )}
         <img
           src={image}
           alt="앨범 아트워크"
-          className="w-full h-full"
+          className={cx(
+            "w-full h-full object-cover transition-opacity duration-500",
+            isImageLoaded ? "opacity-100" : "opacity-0"
+          )}
+          onLoad={() => setIsImageLoaded(true)}
           loading="lazy"
         />
       </li>

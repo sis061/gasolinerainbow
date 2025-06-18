@@ -109,8 +109,8 @@ const TrackList = ({
                     icon={<ListX size={20} color="#000" />}
                     content={
                       language === "ko"
-                        ? "이 곡은 가사가 없습니다."
-                        : "Instrumental track - no lyrics."
+                        ? "가사가 없는 곡입니다 :)"
+                        : "Instrumental track - no lyrics :}"
                     }
                   />
                 ))

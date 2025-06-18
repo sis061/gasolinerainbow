@@ -17,6 +17,17 @@ import HomeYoutubeEmbed from "./HomeYoutubeEmbed";
 
 import type { Disk } from "@/types/discography";
 
+const trimDescription = (description: string, lang: "ko" | "en") => {
+  const endSentence: string =
+    lang === "ko"
+      ? "본연의 모습을 담고 싶었습니다."
+      : "I believe we all carry.";
+  const endIndex = description.indexOf(endSentence);
+  if (endIndex === -1) return description;
+  const trimmed = description.slice(0, endIndex + endSentence.length).trim();
+  return `${trimmed}..`;
+};
+
 const HomeAlbumOverview = ({
   albumMeta,
   videoId,
@@ -33,6 +44,8 @@ const HomeAlbumOverview = ({
 
   const descTranslated =
     language === "ko" ? albumMeta.descriptionKr : albumMeta.descriptionEn;
+  const trimmedDescription = trimDescription(descTranslated, language);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -53,7 +66,7 @@ const HomeAlbumOverview = ({
             [ {language === "ko" ? albumMeta.titleKr : albumMeta.titleEn} ]
           </h1>
         </div>
-        <p className="w-full whitespace-break-spaces">{descTranslated}</p>
+        <p className="w-full whitespace-break-spaces">{trimmedDescription}</p>
         <div className="flex flex-col gap-6 w-full">
           <button
             className="flex items-center gap-1 max-md:hover:underline underline-offset-4 max-md:hover:cursor-pointer select-none"

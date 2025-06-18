@@ -10,6 +10,8 @@ import HomeAlbumOverview from "./HomeAlbumOverview";
 import type { CountdownRendererProps, CountdownTimerProps } from "@/types/home";
 
 const pad = (n: number) => String(n).padStart(2, "0");
+//상세보기 버튼 클릭 시 디스코그라피 > 해당 앨범 > 상세정보 슬라이드로 이동하기 위한 좌표
+const BIP_TARGET_CAROUSEL = { carouselIndex: 0, slideIndex: 1 };
 
 const HomeCountDown = ({
   releaseDate,
@@ -32,15 +34,14 @@ const HomeCountDown = ({
     completed: boolean;
   }) => {
     if (completed) {
-
       return (
         <HomeAlbumOverview
           isVideoRight
           videoId={videoId}
           albumMeta={albumMeta}
+          targetCarousel={BIP_TARGET_CAROUSEL}
         />
       );
-
     }
 
     return (

@@ -8,7 +8,6 @@ import { ScaleLoader } from "react-spinners";
 import { useMediaQuery } from "react-responsive";
 import { useNavigate } from "react-router-dom";
 
-
 import useLanguageStore from "@/store/useLanguageStore";
 import { renderDiskType } from "@/utils/globalHelper";
 import { getStreamingPlatformInfo } from "@/components/StreamingPlatformButtons";

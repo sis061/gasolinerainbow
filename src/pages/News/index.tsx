@@ -164,7 +164,7 @@ const News = () => {
                     </span>
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="!p-6 !z-10 flex flex-col gap-6 bg-white">
+                <AccordionContent className="!p-6 !z-10 flex flex-col gap-6 bg-white/75">
                   <p
                     className="w-full whitespace-pre-wrap"
                     dangerouslySetInnerHTML={{ __html: sanitizeContent }}

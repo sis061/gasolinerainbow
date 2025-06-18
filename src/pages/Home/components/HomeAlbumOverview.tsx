@@ -1,11 +1,13 @@
 import { lazy, Suspense, useState } from "react";
 
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import cx from "classnames";
+import { AudioLines, ChevronDown, Disc3 } from "lucide-react";
 
 import { ScaleLoader } from "react-spinners";
 import { useMediaQuery } from "react-responsive";
-import cx from "classnames";
+import { useNavigate } from "react-router-dom";
+
 
 import useLanguageStore from "@/store/useLanguageStore";
 import { renderDiskType } from "@/utils/globalHelper";
@@ -17,25 +19,75 @@ const StreamingPlatformButtons = lazy(
 import HomeYoutubeEmbed from "./HomeYoutubeEmbed";
 
 import type { Disk } from "@/types/discography";
+import type { TargetCarouselProps } from "@/types/home";
+
+const trimDescription = (
+  description: string,
+  lang: "ko" | "en",
+  dir: () => void
+) => {
+  const endSentence: string =
+    lang === "ko"
+      ? "본연의 모습을 담고 싶었습니다."
+      : "I believe we all carry.";
+  const endIndex = description.indexOf(endSentence);
+  if (endIndex === -1) return <>{description}</>;
+  const trimmed = description.slice(0, endIndex + endSentence.length).trim();
+  return (
+    <>
+      {trimmed}
+      <button
+        onClick={dir}
+        className="!ml-1 cursor-pointer hover:!text-blue-800 transition-colors"
+        aria-label={
+          lang === "ko"
+            ? "디스코그라피에서 전체 보기"
+            : "View full in discography"
+        }
+      >
+        [...]
+      </button>
+    </>
+  );
+};
 
 const HomeAlbumOverview = ({
   isVideoRight = true,
   albumMeta,
   videoId,
+  targetCarousel,
 }: {
   isVideoRight: boolean;
   albumMeta: Disk;
   videoId: string;
+  targetCarousel: TargetCarouselProps;
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const navigate = useNavigate();
   const minTablet = useMediaQuery({ minWidth: 768 });
   const { language } = useLanguageStore();
 
   const platforms = getStreamingPlatformInfo(albumMeta.urls);
   const type = renderDiskType(albumMeta.type);
 
+  const goToDiscography = () => {
+    navigate("/discography", {
+      state: {
+        carouselIndex: targetCarousel.carouselIndex,
+        slideIndex: targetCarousel.slideIndex,
+      },
+    });
+  };
+
   const descTranslated =
     language === "ko" ? albumMeta.descriptionKr : albumMeta.descriptionEn;
+  const trimmedDescription = trimDescription(
+    descTranslated,
+    language,
+    goToDiscography
+  );
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -71,15 +123,58 @@ const HomeAlbumOverview = ({
             [ {language === "ko" ? albumMeta.titleKr : albumMeta.titleEn} ]
           </h1>
         </div>
-        <p className="w-full whitespace-break-spaces">{descTranslated}</p>
+        <div className="!space-y-6 flex flex-col">
+          <p className="w-full whitespace-break-spaces">{trimmedDescription}</p>
+          <button
+            onClick={goToDiscography}
+            className={cx(
+              "*:whitespace-break-spaces self-end !px-2 !max-w-38 !py-0.5 group flex justify-end gap-1 cursor-pointer max-lg:underline underline-offset-4 *:transition-all *:duration-200",
+              language === "ko" ? "!items-start" : "!items-end"
+            )}
+          >
+            <Disc3
+              size={16}
+              className={cx(
+                "animate-spin group-hover:animate-none",
+                language === "ko" ? "!mt-1" : "!mb-1"
+              )}
+            />
+            <div className="flex flex-col">
+              <span className={"!text-right flex justify-end"}>
+                {language === "ko" && (
+                  <h3 className="!font-bold group-hover:underline">
+                    디스코그라피
+                  </h3>
+                )}
+                {language === "ko" ? "에서" : "See More in"}
+              </span>
+              <span
+                className={cx(
+                  "!text-right",
+                  language === "en" && "!font-bold group-hover:underline"
+                )}
+              >
+                {language === "ko" ? "자세히 보기" : "DISCOGRAPHY"}
+              </span>
+            </div>
+          </button>
+        </div>
+        <hr className="border-black/20 !-my-2" />
         <div className="flex flex-col gap-6 w-full">
           <button
-            className="flex items-center gap-1 max-md:hover:underline underline-offset-4 max-md:hover:cursor-pointer select-none"
+            className="group flex w-full !py-0.5 md:w-1/2 items-center justify-center md:justify-start gap-1 max-md:hover:underline underline-offset-4 max-md:hover:cursor-pointer select-none"
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
             aria-controls="streaming-platforms"
           >
-            <h2 className="font-bold !pl-1">
+            <AudioLines
+              size={16}
+              className={cx(
+                "group-hover:animate-bounce",
+                !isOpen && "max-lg:animate-bounce"
+              )}
+            />
+            <h2 className="font-bold">
               {language === "ko" ? "아래에서 듣기" : "Stream"}
             </h2>
             {!minTablet && (
@@ -91,6 +186,7 @@ const HomeAlbumOverview = ({
               />
             )}
           </button>
+
           <div
             className={`transition-all duration-300 overflow-hidden ${minTablet || isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}
           >

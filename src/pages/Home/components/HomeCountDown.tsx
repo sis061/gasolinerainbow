@@ -32,6 +32,7 @@ const HomeCountDown = ({
     completed: boolean;
   }) => {
     if (completed) {
+
       return (
         <HomeAlbumOverview
           isVideoRight
@@ -39,6 +40,7 @@ const HomeCountDown = ({
           albumMeta={albumMeta}
         />
       );
+
     }
 
     return (

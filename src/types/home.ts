@@ -2,8 +2,8 @@ import type { Disk } from "./discography";
 
 export interface CountdownTimerProps {
   releaseDate: Date;
-  albumMeta: Disk;
-  videoId: string;
+  albumMeta?: Disk;
+  videoId?: string;
 }
 
 export interface CountdownRendererProps {
@@ -12,4 +12,9 @@ export interface CountdownRendererProps {
   minutes: number;
   seconds: number;
   language: "ko" | "en" | string;
+}
+
+export interface TargetCarouselProps {
+  carouselIndex: number;
+  slideIndex: number;
 }

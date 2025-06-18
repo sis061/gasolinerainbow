@@ -1,4 +1,6 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
+import cx from "classnames";
 
 import {
   type CarouselApi,
@@ -26,6 +28,7 @@ const OSTCarousel = ({
   // , onChange
 }: SingleCarouselsProps) => {
   const carouselRef = useRef<CarouselApi | null>(null);
+  const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
   const { language } = useLanguageStore();
 
   // useEffect(() => {
@@ -55,11 +58,18 @@ const OSTCarousel = ({
           >
             <ul className="w-full h-auto md:h-full flex max-md:flex-col gap-10 items-center justify-center max-md:!px-2.5">
               <li className="w-2/3 max-md:w-full h-auto flex flex-col max-md:flex-row gap-10 max-md:gap-5 items-center justify-start">
-                <div className="max-w-1/2 md:max-w-3/4 xl:w-1/2 bg-gray-600 overflow-hidden ">
+                <div className="max-w-1/2 md:max-w-3/4 xl:w-1/2 overflow-hidden relative !aspect-square">
+                  {!isImageLoaded && (
+                    <Skeleton className="absolute inset-0 w-full h-full rounded-none bg-[#333]" />
+                  )}
                   <img
                     src={albumMeta.image}
                     alt="앨범 아트워크"
-                    className="w-full h-full"
+                    className={cx(
+                      "w-full h-full object-cover transition-opacity duration-500",
+                      isImageLoaded ? "opacity-100" : "opacity-0"
+                    )}
+                    onLoad={() => setIsImageLoaded(true)}
                     loading="lazy"
                   />
                 </div>

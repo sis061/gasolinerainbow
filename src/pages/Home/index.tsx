@@ -24,7 +24,7 @@ export default function Home() {
   );
 
   //상세보기 버튼 클릭 시 디스코그라피 > 해당 앨범 > 상세정보 슬라이드로 이동하기 위한 좌표
-  const TargetCarousel = { carouselIndex: 0, slideIndex: 1 };
+  const TARGET_CAROUSEL = { carouselIndex: 0, slideIndex: 1 };
 
   return (
     <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center">
@@ -37,7 +37,7 @@ export default function Home() {
         <HomeAlbumOverview
           videoId={HMVideoId}
           albumMeta={HMData}
-          TargetCarousel={TargetCarousel}
+          targetCarousel={TARGET_CAROUSEL}
         />
       </div>
     </section>

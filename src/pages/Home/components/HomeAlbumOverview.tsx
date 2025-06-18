@@ -53,11 +53,11 @@ const trimDescription = (
 const HomeAlbumOverview = ({
   albumMeta,
   videoId,
-  TargetCarousel,
+  targetCarousel,
 }: {
   albumMeta: Disk;
   videoId: string;
-  TargetCarousel: TargetCarouselProps;
+  targetCarousel: TargetCarouselProps;
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -71,8 +71,8 @@ const HomeAlbumOverview = ({
   const goToDiscography = () => {
     navigate("/discography", {
       state: {
-        carouselIndex: TargetCarousel.carouselIndex,
-        slideIndex: TargetCarousel.slideIndex,
+        carouselIndex: targetCarousel.carouselIndex,
+        slideIndex: targetCarousel.slideIndex,
       },
     });
   };

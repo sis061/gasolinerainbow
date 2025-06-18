@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 import { useLocation } from "react-router-dom";
 
@@ -10,7 +10,6 @@ import SingleCarousel from "./Single";
 import OSTCarousel from "./OST";
 
 import type { TargetCarouselProps } from "@/types/home";
-import React from "react";
 
 export default function Discography() {
   const { setHasInteractiveTrackList } = useDiscographyGuideStore();

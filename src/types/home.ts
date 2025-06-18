@@ -2,8 +2,8 @@ import type { Disk } from "./discography";
 
 export interface CountdownTimerProps {
   releaseDate: Date;
-  albumMeta: Disk;
-  videoId: string;
+  albumMeta?: Disk;
+  videoId?: string;
 }
 
 export interface CountdownRendererProps {

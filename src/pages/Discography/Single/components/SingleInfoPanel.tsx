@@ -1,9 +1,9 @@
 import { useRef, useEffect, useState } from "react";
 
-import { CarouselItem } from "@/components/ui/carousel";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Drawer, DrawerTrigger } from "@/components/ui/drawer";
 
-import { cx } from "class-variance-authority";
+import cx from "classnames";
 // import { useInView } from "react-intersection-observer";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
@@ -30,6 +30,7 @@ const SingleInfoPanel = ({
 }: SingleInfoPanelProps) => {
   const lyricsRef = useRef<HTMLLIElement | null>(null);
   const [open, setOpen] = useState<boolean>(false);
+  const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
 
   useScrollLock(open);
 
@@ -61,11 +62,18 @@ const SingleInfoPanel = ({
     <Drawer open={open} onOpenChange={setOpen}>
       <ul className="w-full h-full flex items-center justify-between gap-10">
         <li className="max-md:w-full w-1/2 h-full flex flex-col gap-6 items-start justify-center [&_*]:!text-white overflow-y-scroll">
-          <div className="w-full bg-gray-600 overflow-hidden ">
+          <div className="w-full overflow-hidden relative !aspect-square">
+            {!isImageLoaded && (
+              <Skeleton className="absolute inset-0 w-full h-full rounded-none bg-[#333]" />
+            )}
             <img
               src={albumMeta.image}
               alt="앨범 아트워크"
-              className="w-full h-full"
+              className={cx(
+                "w-full h-full object-cover transition-opacity duration-500",
+                isImageLoaded ? "opacity-100" : "opacity-0"
+              )}
+              onLoad={() => setIsImageLoaded(true)}
               loading="lazy"
             />
           </div>

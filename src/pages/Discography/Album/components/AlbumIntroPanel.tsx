@@ -17,8 +17,8 @@ const AlbumIntroPanel = ({ albumMeta }: { albumMeta: Disk }) => {
   const { language } = useLanguageStore();
 
   return (
-    <ul className="w-full flex items-center gap-10 max-lg:flex-col">
-      <li className="relative overflow-hidden w-full md:w-2/3 lg:w-auto !aspect-square">
+    <ul className="w-full h-full flex items-center gap-10 max-lg:flex-col justify-center lg:justify-between">
+      <li className="relative overflow-hidden w-full h-full md:w-2/3 lg:w-[52.5%] !aspect-square">
         {!isImageLoaded && (
           <Skeleton className="absolute inset-0 w-full h-full rounded-none bg-[#333]" />
         )}
@@ -34,7 +34,7 @@ const AlbumIntroPanel = ({ albumMeta }: { albumMeta: Disk }) => {
       </li>
       <li
         className={
-          "min-w-full lg:min-w-[45%] max-lg:gap-6 gap-16 flex-grow h-auto flex flex-col items-center justify-center [&_*]:!text-white"
+          "max-lg:min-w-full lg:w-[47.5%] max-lg:gap-6 gap-16 flex-grow h-full flex flex-col items-center justify-center [&_*]:!text-white"
         }
       >
         {year && <span className="text-sm">{year}</span>}

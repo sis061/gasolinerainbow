@@ -61,7 +61,7 @@ const SingleInfoPanel = ({
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <ul className="w-full h-full flex items-center justify-between gap-10">
-        <li className="max-md:w-full w-1/2 h-full flex flex-col gap-6 items-start justify-center [&_*]:!text-white overflow-y-scroll">
+        <li className="w-full md:w-1/2 xl:w-[45%] h-full flex flex-col gap-6 items-start justify-center [&_*]:!text-white overflow-y-scroll">
           <div className="w-full overflow-hidden relative !aspect-square">
             {!isImageLoaded && (
               <Skeleton className="absolute inset-0 w-full h-full rounded-none bg-[#333]" />

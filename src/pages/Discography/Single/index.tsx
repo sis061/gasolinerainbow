@@ -18,12 +18,13 @@ import type { SingleCarouselsProps, Track } from "@/types/discography";
 const SingleCarousel = ({
   albumMetas,
   initialSlideIndex = 0,
+  ready = false,
   // , onChange
 }: SingleCarouselsProps) => {
   const carouselRef = useRef<CarouselApi | null>(null);
   const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
 
-  useScrollToIndexWhenReady(carouselRef, initialSlideIndex);
+  useScrollToIndexWhenReady(carouselRef, initialSlideIndex, ready);
 
   return (
     <Carousel

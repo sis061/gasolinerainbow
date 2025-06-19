@@ -25,6 +25,7 @@ import { ListX } from "lucide-react";
 const OSTCarousel = ({
   albumMetas,
   initialSlideIndex = 0,
+  ready = false,
   // , onChange
 }: SingleCarouselsProps) => {
   const carouselRef = useRef<CarouselApi | null>(null);
@@ -37,7 +38,7 @@ const OSTCarousel = ({
   //   onChange && onChange(false);
   // }, []);
 
-  useScrollToIndexWhenReady(carouselRef, initialSlideIndex);
+  useScrollToIndexWhenReady(carouselRef, initialSlideIndex, ready);
 
   return (
     <Carousel

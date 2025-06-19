@@ -73,7 +73,7 @@ const OSTCarousel = ({
                     loading="lazy"
                   />
                 </div>
-                <div className="flex flex-col w-full justify-center items-center max-md:items-start gap-2 [&_*]:!text-white">
+                <div className="flex flex-col w-1/2 md:w-full justify-center items-center max-md:items-start gap-2 [&_*]:!text-white">
                   <span className="text-sm">{albumMeta.year}</span>
                   <span className="text-3xl !pb-4 max-md:text-xl max-md:font-bold">
                     {language === "ko" ? albumMeta.titleKr : albumMeta.titleEn}

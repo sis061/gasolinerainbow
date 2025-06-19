@@ -60,7 +60,7 @@ const SingleInfoPanel = ({
 
   return (
     <Drawer open={open} onOpenChange={setOpen}>
-      <ul className="w-full h-full flex items-center justify-between gap-10">
+      <ul className="w-full h-full flex items-center justify-between gap-10 !px-2">
         <li className="w-full md:w-1/2 xl:w-[45%] h-full flex flex-col gap-6 items-start justify-center [&_*]:!text-white overflow-y-scroll">
           <div className="w-full overflow-hidden relative !aspect-square">
             {!isImageLoaded && (

@@ -25,17 +25,20 @@ import { ListX } from "lucide-react";
 const OSTCarousel = ({
   albumMetas,
   initialSlideIndex = 0,
+  ready = false,
   // , onChange
 }: SingleCarouselsProps) => {
   const carouselRef = useRef<CarouselApi | null>(null);
-  const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
+  const [imageLoadState, setImageLoadState] = useState<boolean[]>(
+    Array(albumMetas.length).fill(false)
+  );
   const { language } = useLanguageStore();
 
   // useEffect(() => {
   //   onChange && onChange(false);
   // }, []);
 
-  useScrollToIndexWhenReady(carouselRef, initialSlideIndex);
+  useScrollToIndexWhenReady(carouselRef, initialSlideIndex, ready);
 
   return (
     <Carousel
@@ -57,9 +60,9 @@ const OSTCarousel = ({
             className="w-full h-auto flex items-center justify-center"
           >
             <ul className="w-full h-auto md:h-full flex max-md:flex-col gap-10 items-center justify-center max-md:!px-2.5">
-              <li className="w-2/3 max-md:w-full h-auto flex flex-col max-md:flex-row gap-10 max-md:gap-5 items-center justify-start">
-                <div className="max-w-1/2 md:max-w-3/4 xl:w-1/2 overflow-hidden relative !aspect-square">
-                  {!isImageLoaded && (
+              <li className="md:w-2/3 w-full h-auto flex md:flex-col md:gap-10 gap-5 items-center justify-between md:justify-start">
+                <div className="max-w-1/2 md:max-w-3/4 xl:w-1/2 overflow-hidden relative aspect-square">
+                  {!imageLoadState[i] && (
                     <Skeleton className="absolute inset-0 w-full h-full rounded-none bg-[#333]" />
                   )}
                   <img
@@ -67,9 +70,15 @@ const OSTCarousel = ({
                     alt="앨범 아트워크"
                     className={cx(
                       "w-full h-full object-cover transition-opacity duration-500",
-                      isImageLoaded ? "opacity-100" : "opacity-0"
+                      imageLoadState[i] ? "opacity-100" : "opacity-0"
                     )}
-                    onLoad={() => setIsImageLoaded(true)}
+                    onLoad={() => {
+                      setImageLoadState((prev) => {
+                        const next = [...prev];
+                        next[i] = true;
+                        return next;
+                      });
+                    }}
                     loading="lazy"
                   />
                 </div>
@@ -95,7 +104,7 @@ const OSTCarousel = ({
                               content={
                                 language === "ko"
                                   ? "가사가 없는 곡입니다 :)"
-                                  : "Instrumental track - no lyrics :}"
+                                  : "Instrumental track - no lyrics :)"
                               }
                             />
                           ))

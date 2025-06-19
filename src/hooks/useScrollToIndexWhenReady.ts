@@ -1,24 +1,33 @@
+// hooks/useScrollToIndexWhenReady.ts
 import { useEffect } from "react";
 
 export default function useScrollToIndexWhenReady<
   T extends { scrollTo: (index: number) => void },
->(ref: React.RefObject<T | null | undefined>, index: number) {
+>(
+  ref: React.RefObject<T | null | undefined>,
+  index: number,
+  ready: boolean = true
+) {
   useEffect(() => {
-    let intervalId: NodeJS.Timeout;
+    if (!ready) return;
+
+    let intervalId: NodeJS.Timeout | null = null;
+
+    const tryScroll = () => {
+      if (ref.current) {
+        ref.current.scrollTo(index);
+        if (intervalId) clearInterval(intervalId);
+      }
+    };
 
     if (!ref.current) {
-      intervalId = setInterval(() => {
-        if (ref.current) {
-          ref.current.scrollTo(index);
-          clearInterval(intervalId);
-        }
-      }, 100);
+      intervalId = setInterval(tryScroll, 100);
     } else {
-      setTimeout(() => {
-        ref.current?.scrollTo(index);
-      }, 0);
+      setTimeout(tryScroll, 0);
     }
 
-    return () => clearInterval(intervalId);
-  }, [ref, index]);
+    return () => {
+      if (intervalId) clearInterval(intervalId);
+    };
+  }, [index, ready]);
 }

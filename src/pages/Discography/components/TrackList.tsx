@@ -110,7 +110,7 @@ const TrackList = ({
                     content={
                       language === "ko"
                         ? "가사가 없는 곡입니다 :)"
-                        : "Instrumental track - no lyrics :}"
+                        : "Instrumental track - no lyrics :)"
                     }
                   />
                 ))

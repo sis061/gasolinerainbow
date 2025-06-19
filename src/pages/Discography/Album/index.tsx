@@ -34,6 +34,7 @@ const AlbumCarousel = ({
   isHoverToolip,
   onChange,
   initialSlideIndex = 0,
+  ready = false,
 }: CarouselProps) => {
   const carouselRef = useRef<CarouselApi | null>(null);
   const lyricsRef = useRef<HTMLLIElement | null>(null);
@@ -83,7 +84,7 @@ const AlbumCarousel = ({
     }
   }, [selectedTrack?.lyrics]);
 
-  useScrollToIndexWhenReady(carouselRef, initialSlideIndex);
+  useScrollToIndexWhenReady(carouselRef, initialSlideIndex, ready);
 
   return (
     <Carousel

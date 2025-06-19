@@ -52,12 +52,14 @@ export interface CarouselProps {
   isHoverToolip?: boolean;
   onChange?: OnChangeHandler;
   initialSlideIndex?: number;
+  ready?: boolean;
 }
 
 export interface SingleCarouselsProps {
   albumMetas: Disk[];
   onChange?: OnChangeHandler;
   initialSlideIndex?: number;
+  ready?: boolean;
 }
 
 export interface CarouselNavigationProps {

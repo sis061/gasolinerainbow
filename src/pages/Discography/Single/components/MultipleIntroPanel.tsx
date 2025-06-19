@@ -10,8 +10,8 @@ const MultipleIntroPanel = ({
 }: MultipleIntroPanelProps) => {
   const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
   return (
-    <ul className="w-full flex items-center gap-10 max-lg:flex-col !px-2">
-      <li className="relative !aspect-square overflow-hidden w-full md:w-2/3 lg:w-auto ">
+    <ul className="w-full h-full flex items-center gap-10 max-lg:flex-col justify-center lg:justify-between max-lg:!pb-10">
+      <li className="relative !aspect-square overflow-hidden w-full h-full md:w-2/3 lg:w-[52.5%]">
         {!isImageLoaded && (
           <Skeleton className="absolute inset-0 w-full h-full rounded-none bg-[#333]" />
         )}
@@ -26,7 +26,7 @@ const MultipleIntroPanel = ({
           loading="lazy"
         />
       </li>
-      <li className="min-w-full lg:min-w-[45%] flex-grow h-auto flex flex-col gap-6 items-center justify-center [&_*]:!text-white">
+      <li className="max-lg:min-w-full lg:w-[47.5%] flex-grow h-full flex flex-col gap-6 items-center justify-center [&_*]:!text-white">
         {year && <span className="text-sm">{String(year)} ~</span>}
         <span className="text-3xl md:text-5xl text-center">{title}</span>
       </li>

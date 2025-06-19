@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { useLocation } from "react-router-dom";
 
@@ -14,6 +14,7 @@ import type { TargetCarouselProps } from "@/types/home";
 export default function Discography() {
   const { setHasInteractiveTrackList } = useDiscographyGuideStore();
   const carouselRefs = useRef<(HTMLLIElement | null)[]>([]);
+  const [carouselReady, setCarouselReady] = useState(false);
 
   const location = useLocation();
   const state = location?.state as TargetCarouselProps | undefined;
@@ -47,6 +48,11 @@ export default function Discography() {
       if (targetEl) {
         targetEl.scrollIntoView({ behavior: "smooth", block: "center" });
       }
+
+      // scrollIntoView 이후 슬라이드 인덱스 이동 허용
+      setTimeout(() => {
+        setCarouselReady(true);
+      }, 650); // 애니메이션 시간에 따라 조정
     }, 500);
     return () => clearTimeout(timeout);
   }, []);
@@ -66,7 +72,7 @@ export default function Discography() {
             {/* 선택된 캐러셀이면 prop으로 index 전달 */}
             {React.cloneElement(carousel.component, {
               ...(i === targetCarouselIndex
-                ? { initialSlideIndex: targetSlideIndex }
+                ? { initialSlideIndex: targetSlideIndex, ready: carouselReady }
                 : {}),
             })}
           </li>

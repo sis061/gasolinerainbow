@@ -58,7 +58,7 @@ const OSTCarousel = ({
           >
             <ul className="w-full h-auto md:h-full flex max-md:flex-col gap-10 items-center justify-center max-md:!px-2.5">
               <li className="w-2/3 max-md:w-full h-auto flex flex-col max-md:flex-row gap-10 max-md:gap-5 items-center justify-start">
-                <div className="max-w-1/2 md:max-w-3/4 xl:w-1/2 overflow-hidden relative !aspect-square">
+                <div className="max-w-1/2 md:max-w-3/4 xl:w-1/2 overflow-hidden relative !aspect-square border-1">
                   {!isImageLoaded && (
                     <Skeleton className="absolute inset-0 w-full h-full rounded-none bg-[#333]" />
                   )}
@@ -73,7 +73,7 @@ const OSTCarousel = ({
                     loading="lazy"
                   />
                 </div>
-                <div className="flex flex-col w-full justify-center items-center max-md:items-start gap-2 [&_*]:!text-white">
+                <div className="flex flex-col w-1/2 md:w-full justify-center items-center max-md:items-start gap-2 [&_*]:!text-white border-1">
                   <span className="text-sm">{albumMeta.year}</span>
                   <span className="text-3xl !pb-4 max-md:text-xl max-md:font-bold">
                     {language === "ko" ? albumMeta.titleKr : albumMeta.titleEn}

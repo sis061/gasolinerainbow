@@ -9,7 +9,7 @@ import AlbumCarousel from "./Album";
 import SingleCarousel from "./Single";
 import OSTCarousel from "./OST";
 
-import type { TargetCarouselProps } from "@/types/home";
+import type { TargetCarouselProps } from "@/types/discography";
 
 export default function Discography() {
   const { setHasInteractiveTrackList } = useDiscographyGuideStore();

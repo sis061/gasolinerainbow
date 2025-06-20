@@ -25,10 +25,6 @@ export default function Home() {
     (data) => data.titleKr.toLowerCase() === "평화로운 뇌와…".toLowerCase()
   );
 
-  //상세보기 버튼 클릭 시 디스코그라피 > 해당 앨범 > 상세정보 슬라이드로 이동하기 위한 좌표
-
-  const HM_TARGET_CAROUSEL = { carouselIndex: 1, slideIndex: 1 };
-
   return (
     <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center">
       <div className="inner flex-grow-0 w-full h-full !mb-10 !pt-4 md:!pt-10 max-md:!px-4 !space-y-20">
@@ -41,7 +37,6 @@ export default function Home() {
           isVideoRight={false}
           videoId={HMVideoId}
           albumMeta={HMData}
-          targetCarousel={HM_TARGET_CAROUSEL}
         />
       </div>
     </section>

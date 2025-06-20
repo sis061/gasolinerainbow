@@ -3,6 +3,7 @@ import type { Disk } from "@/types/discography";
 
 const diskAlbumData: Disk[] = [
   {
+    targetCarousel: { carouselIndex: 0, slideIndex: 1 },
     type: "album",
     year: 2022,
     titleKr: "HM",
@@ -1145,6 +1146,7 @@ The melody only remains`,
   //   ],
   // },
   {
+    targetCarousel: { carouselIndex: 1, slideIndex: 1 },
     type: "remix",
     year: 2023,
     titleKr: "HM REMIXES",
@@ -1573,6 +1575,7 @@ Indeed`,
 
 const diskOthersData: Disk[] = [
   {
+    targetCarousel: { carouselIndex: 2, slideIndex: 1 },
     type: "single",
     year: 2022,
     titleKr: "Fool's Box",
@@ -1671,6 +1674,7 @@ Vocal by HIMINN`,
     ],
   },
   {
+    targetCarousel: { carouselIndex: 2, slideIndex: 2 },
     type: "EP",
     year: 2021,
     titleKr: "In The Need Of A Good Cry",
@@ -2103,6 +2107,7 @@ Crawl into your space generously in silence but definitely.`,
 
 const diskOSTData: Disk[] = [
   {
+    targetCarousel: { carouselIndex: 3, slideIndex: 1 },
     type: "ost",
     year: 2024,
     titleKr: "악마의 생선 OST",
@@ -2186,6 +2191,7 @@ const diskOSTData: Disk[] = [
     ],
   },
   {
+    targetCarousel: { carouselIndex: 3, slideIndex: 2 },
     type: "ost",
     year: 2025,
     titleKr: "김밥의 천국 OST",

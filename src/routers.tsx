@@ -23,9 +23,7 @@ const News = lazy(() =>
   )
 );
 const StreamingRedirect = lazy(() => import("./pages/StreamingRedirect"));
-const StreamingDetail = lazy(
-  () => import("./pages/StreamingRedirect/StreamingDetail")
-);
+
 const PageNotFound = lazy(() => import("./pages/PageNotFound"));
 
 const Routers: React.FC<any> = ({
@@ -116,7 +114,7 @@ const Routers: React.FC<any> = ({
             index
             element={suspenseWrapper(
               <PageWrapper>
-                <StreamingRedirect />
+                <PageNotFound />
               </PageWrapper>
             )}
           />
@@ -124,7 +122,7 @@ const Routers: React.FC<any> = ({
             path=":albumId"
             element={suspenseWrapper(
               <PageWrapper>
-                <StreamingDetail />
+                <StreamingRedirect />
               </PageWrapper>
             )}
           />

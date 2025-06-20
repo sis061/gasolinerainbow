@@ -20,7 +20,13 @@ export interface Track {
   tags?: string[];
 }
 
+export interface TargetCarouselProps {
+  carouselIndex: number;
+  slideIndex: number;
+}
+
 export interface Disk {
+  targetCarousel: TargetCarouselProps;
   type: DiskType;
   year: number;
   titleKr: string;

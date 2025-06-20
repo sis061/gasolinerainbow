@@ -12,6 +12,7 @@ import useLanguageStore from "@/store/useLanguageStore";
 import StreamingPlatformButtons, {
   getStreamingPlatformInfo,
 } from "@/components/StreamingPlatformButtons";
+import GoToDiscButton from "@/components/GoToDiscButton";
 
 const StreamingRedirect = () => {
   const { albumId } = useParams();
@@ -21,7 +22,7 @@ const StreamingRedirect = () => {
   const { language } = useLanguageStore();
 
   const platforms = getStreamingPlatformInfo(
-    albumMeta ? albumMeta?.urls : DiskMetaMap["hm"].urls
+    albumMeta ? albumMeta?.urls : DiskMetaMap["hm"]?.urls
   );
 
   if (!albumMeta) return <PageNotFound />;
@@ -38,9 +39,9 @@ const StreamingRedirect = () => {
           onLoad={() => setIsImageLoaded(true)}
         />
       </div>
-      <div className="inner flex-grow-0 h-full w-full flex flex-col items-start justify-between !p-6 z-10 max-lg:!py-10">
+      <div className="inner flex-grow-0 h-full w-full flex flex-col items-start justify-between !p-6 z-10 max-lg:!pt-10 max-lg:!pb-20">
         <ul className="w-full h-full flex items-center gap-10 max-lg:flex-col justify-center lg:justify-between ">
-          <li className="relative overflow-hidden w-full h-full md:w-2/3 lg:w-[52.5%] !aspect-square">
+          <li className="relative overflow-hidden w-full h-full md:w-2/3 lg:w-[52.5%] !aspect-square shadow-lg shadow-[#999]/25">
             {!isImageLoaded && (
               <Skeleton className="absolute inset-0 w-full h-full rounded-none bg-[#333]" />
             )}
@@ -59,7 +60,7 @@ const StreamingRedirect = () => {
               "max-lg:min-w-full lg:w-[47.5%] max-lg:gap-6 gap-6 flex-grow h-full flex flex-col items-center justify-center [&_*]:!text-white"
             }
           >
-            <div className="flex flex-col items-center justify-between gap-2">
+            <div className="flex flex-col items-center justify-between gap-2 w-full">
               {albumMeta?.year && (
                 <span className="text-sm">{albumMeta?.year}</span>
               )}
@@ -82,12 +83,13 @@ const StreamingRedirect = () => {
                 }
               >
                 <StreamingPlatformButtons
-                  customClassName={"!flex-col !w-full max-lg:[&_button]:!py-6"}
+                  customClassName={"!flex-col !w-full max-lg:[&_button]:!py-5"}
                   platforms={platforms}
                   aria-describedby="drawer-description"
                 />
               </Suspense>
             </div>
+            <GoToDiscButton albumMeta={albumMeta} isOneline />
           </li>
         </ul>
       </div>

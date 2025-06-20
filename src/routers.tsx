@@ -17,11 +17,14 @@ const About = lazy(() =>
 const Discography = lazy(() => import("./pages/Discography"));
 const AuthorNote = lazy(() => import("./pages/AuthorNote"));
 const Note = lazy(() => import("./pages/AuthorNote/Note"));
-// const News = lazy(() => import("./pages/News"));
 const News = lazy(() =>
   import("@/utils/newsPreload").then(({ preloadNewsResources }) =>
     preloadNewsResources().then(() => import("./pages/News"))
   )
+);
+const StreamingRedirect = lazy(() => import("./pages/StreamingRedirect"));
+const StreamingDetail = lazy(
+  () => import("./pages/StreamingRedirect/StreamingDetail")
 );
 const PageNotFound = lazy(() => import("./pages/PageNotFound"));
 
@@ -74,7 +77,6 @@ const Routers: React.FC<any> = ({
             </PageWrapper>
           )}
         />
-
         <Route path="/authornote">
           <Route
             index
@@ -109,6 +111,32 @@ const Routers: React.FC<any> = ({
             </PageWrapper>
           )}
         />
+        <Route path="/stream">
+          <Route
+            index
+            element={suspenseWrapper(
+              <PageWrapper>
+                <StreamingRedirect />
+              </PageWrapper>
+            )}
+          />
+          <Route
+            path=":albumId"
+            element={suspenseWrapper(
+              <PageWrapper>
+                <StreamingDetail />
+              </PageWrapper>
+            )}
+          />
+          <Route
+            path=":/*"
+            element={suspenseWrapper(
+              <PageWrapper>
+                <PageNotFound />
+              </PageWrapper>
+            )}
+          />
+        </Route>
       </Routes>
     </AnimatePresence>
   );

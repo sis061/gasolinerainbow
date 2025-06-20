@@ -2275,3 +2275,11 @@ export const DiskMetaDatas = {
   othersMetaDatas: diskOthersData,
   ostMetaDatas: diskOSTData,
 };
+
+const allDisks: Disk[] = [...diskAlbumData, ...diskOSTData, ...diskOthersData];
+
+const normalize = (s: string) => s.toLowerCase().replace(/\s+/g, "-");
+
+export const DiskMetaMap: Record<string, Disk> = Object.fromEntries(
+  allDisks.map((disk) => [normalize(disk.titleEn), disk])
+);

@@ -24,13 +24,14 @@ export default function Layout({ children }: { children: ReactNode }) {
   const minTablet = useMediaQuery({ minWidth: 768 });
 
   const { pathname } = useLocation();
-  const isDiscography = pathname === "/discography";
+  const isDiscography = pathname.startsWith("/discography");
   const isNotes = pathname.startsWith("/authornote");
+  const isStreamRedirect = pathname.startsWith("/stream");
 
   const { hasInteractiveTrackList } = useDiscographyGuideStore();
 
   const backgroundColor =
-    isDiscography || isNotes
+    isDiscography || isNotes || isStreamRedirect
       ? "rgba(0, 0, 0, 0.5)"
       : "rgba(255, 255, 255, 0.25)";
 
@@ -50,7 +51,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         "transition-all duration-300 ease-in-out relative min-h-screen"
       )}
     >
-      <Header />
+      {!isStreamRedirect && <Header />}
       {children}
       <div ref={footerRef} className="relative">
         {/* Discography 페이지, 트랙리스트 상호작용 활성 상태, 모바일/태블릿일 때만 GuideBtn 보여주기 */}
@@ -58,7 +59,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           <GuideBtn isFooterVisible={isFooterVisible} />
         )}
         {minTablet && <ScrollTopBtn isFooterVisible={isFooterVisible} />}
-        <Footer />
+        {!isStreamRedirect && <Footer />}
       </div>
       <Toaster position={"bottom-center"} duration={2000} />
     </motion.main>

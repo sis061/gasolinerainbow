@@ -1,8 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 
+import { PuffLoader } from "react-spinners";
+import { useMediaQuery } from "react-responsive";
 import { useLocation } from "react-router-dom";
+import cx from "classnames";
 
-import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
+import useDiscographyStore from "@/store/useDiscographyStore";
 import { DiskMetaDatas } from "@/utils/diskMetaDatas";
 
 import AlbumCarousel from "./Album";
@@ -12,7 +15,6 @@ import OSTCarousel from "./OST";
 import type { TargetCarouselProps } from "@/types/discography";
 
 export default function Discography() {
-  const { setHasInteractiveTrackList } = useDiscographyGuideStore();
   const carouselRefs = useRef<(HTMLLIElement | null)[]>([]);
   const [carouselReady, setCarouselReady] = useState(false);
 
@@ -20,6 +22,9 @@ export default function Discography() {
   const state = location?.state as TargetCarouselProps | undefined;
   const targetCarouselIndex = state?.carouselIndex ?? 0;
   const targetSlideIndex = state?.slideIndex ?? 0;
+
+  const minTablet = useMediaQuery({ minWidth: 768 });
+  const { setHasInteractiveTrackList, GoToDiscActive } = useDiscographyStore();
 
   const carousels = [
     ...DiskMetaDatas.albumMetaDatas.map((albumMeta, i) => ({
@@ -43,22 +48,49 @@ export default function Discography() {
   ];
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      const targetEl = carouselRefs.current[targetCarouselIndex];
-      if (targetEl) {
-        targetEl.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
+    const targetEl = carouselRefs.current[targetCarouselIndex];
+    if (!targetEl) {
+      setCarouselReady(true);
+      return;
+    }
 
-      // scrollIntoView 이후 슬라이드 인덱스 이동 허용
-      setTimeout(() => {
-        setCarouselReady(true);
-      }, 650); // 애니메이션 시간에 따라 조정
-    }, 500);
-    return () => clearTimeout(timeout);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setCarouselReady(true);
+          observer.disconnect();
+        }
+      },
+      {
+        root: null, // viewport
+        threshold: 0.75,
+      }
+    );
+
+    observer.observe(targetEl);
+    targetEl.scrollIntoView({ behavior: "smooth", block: "center" });
+
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section className="wrapper-full w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center ">
+    <section
+      className={cx(
+        "wrapper-full w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center",
+        GoToDiscActive && "cursor-progress"
+      )}
+    >
+      {GoToDiscActive ? (
+        <div className="inner-full fixed top-16 md:top-24 w-full h-[calc(100dvh-6rem)] z-10 !p-4">
+          <PuffLoader
+            size={minTablet ? 45 : 30}
+            color="#eab308bf"
+            speedMultiplier={2}
+          />
+        </div>
+      ) : (
+        <></>
+      )}
       <ul className="inner-full flex-grow-0 w-full h-full">
         {/* 정규 앨범 || 리믹스 앨범*/}
         {/* 현재는 가장 첫 캐러셀의 상세정보 슬라이드에서만 상세보기 버튼 제공 */}

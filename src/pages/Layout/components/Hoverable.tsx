@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 
 import Tooltip from "./HoverTooltip";
 import { getUserPlatformType } from "@/utils/globalHelper";
+import useDiscographyStore from "@/store/useDiscographyStore";
 
 interface HoverableProps {
   children: React.ReactNode;
@@ -24,6 +25,7 @@ const Hoverable = ({
 }: HoverableProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [coords, setCoords] = useState<{ x: number; y: number } | null>(null);
+  const { hasInteractiveTrackList } = useDiscographyStore();
 
   const platformType = getUserPlatformType();
   const isUserAgentPC = platformType === "desktop";
@@ -66,6 +68,7 @@ const Hoverable = ({
     };
   }, [area]);
 
+  if (!hasInteractiveTrackList) return <>{children}</>;
   if (!isUserAgentPC || !isActive) return <>{children}</>;
 
   return (

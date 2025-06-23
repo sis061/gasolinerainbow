@@ -10,7 +10,7 @@ import { useMediaQuery } from "react-responsive";
 
 import OverlayText from "@/pages/Layout/components/OverlayText";
 import CustomToast from "@/pages/Layout/components/CustomToast";
-import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
+import useDiscographyStore from "@/store/useDiscographyStore";
 import useLanguageStore from "@/store/useLanguageStore";
 
 import type { TrackListProps } from "@/types/discography";
@@ -24,7 +24,7 @@ const TrackList = ({
 }: TrackListProps) => {
   const isRight = align === "right";
   const triggerRefs = useRef<(HTMLSpanElement | null)[]>([]);
-  const { showOverlayText } = useDiscographyGuideStore();
+  const { showOverlayText } = useDiscographyStore();
   const { language } = useLanguageStore();
   const minTablet = useMediaQuery({ minWidth: 768 });
 

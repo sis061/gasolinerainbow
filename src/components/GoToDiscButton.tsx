@@ -1,8 +1,9 @@
 import cx from "classnames";
 import { Disc3 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 import useLanguageStore from "@/store/useLanguageStore";
-import { useNavigate } from "react-router-dom";
+import useDiscographyStore from "@/store/useDiscographyStore";
 
 import type { Disk } from "@/types/discography";
 
@@ -16,14 +17,18 @@ const GoToDiscButton = ({
   const navigate = useNavigate();
 
   const { language } = useLanguageStore();
+  const { setGoToDiscActive } = useDiscographyStore();
 
   const goToDiscography = () => {
-    navigate("/discography", {
-      state: {
-        carouselIndex: albumMeta?.targetCarousel.carouselIndex,
-        slideIndex: albumMeta?.targetCarousel.slideIndex,
-      },
-    });
+    setGoToDiscActive(true);
+    setTimeout(() => {
+      navigate("/discography", {
+        state: {
+          carouselIndex: albumMeta?.targetCarousel.carouselIndex,
+          slideIndex: albumMeta?.targetCarousel.slideIndex,
+        },
+      });
+    }, 0);
   };
 
   return (

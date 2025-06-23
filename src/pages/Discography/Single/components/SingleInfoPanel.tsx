@@ -6,7 +6,6 @@ import { Drawer, DrawerTrigger } from "@/components/ui/drawer";
 import cx from "classnames";
 // import { useInView } from "react-intersection-observer";
 import { useMediaQuery } from "react-responsive";
-import { Link } from "react-router-dom";
 
 import { renderDiskType } from "@/utils/globalHelper";
 import useLanguageStore from "@/store/useLanguageStore";
@@ -15,11 +14,11 @@ import TrackList from "../../components/TrackList";
 import LyricsPanel from "../../components/LyricsPanel";
 import StreamingModal from "../../modals/StreamingModal";
 import MobileDrawer from "../../modals/MobileDrawer";
+import BuyingModal from "../../modals/BuyingModal";
 
 import type { SingleInfoPanelProps } from "@/types/discography";
 import Hoverable from "@/pages/Layout/components/Hoverable";
-import { useScrollLock } from "@/hooks/useScrollLock";
-import { Disc3 } from "lucide-react";
+// import { useScrollLock } from "@/hooks/useScrollLock";
 
 const SingleInfoPanel = ({
   albumMeta,
@@ -32,11 +31,12 @@ const SingleInfoPanel = ({
   const [open, setOpen] = useState<boolean>(false);
   const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
 
-  useScrollLock(open);
+  // useScrollLock(open);
 
   const minTablet = useMediaQuery({ minWidth: 768 });
   const { language } = useLanguageStore();
   const type = renderDiskType(albumMeta.type);
+  const isBandcampAvailable = Object.keys(albumMeta.urls).includes("bandcamp");
   // const { ref, inView } = useInView({
   //   threshold: 0.5,
   //   triggerOnce: false,
@@ -86,20 +86,10 @@ const SingleInfoPanel = ({
               <span className="text-3xl text-end !pb-4 max-md:text-2xl max-md:font-bold">
                 {language === "ko" ? albumMeta.titleKr : albumMeta.titleEn}
               </span>
-              <StreamingModal albumMeta={albumMeta} />
-              {albumMeta.isCD && albumMeta.cdUrl && (
-                <div className="transition-all duration-200 hover:opacity-50 group">
-                  <Link
-                    to={albumMeta.cdUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 transition-all duration-200"
-                  >
-                    <Disc3 size={16} className="group-hover:animate-spin" />
-                    {language === "ko" ? "CD 구매" : "Order"}
-                  </Link>
-                </div>
-              )}
+              <div className="flex flex-wrap justify-end gap-x-4 gap-y-0.5">
+                <StreamingModal albumMeta={albumMeta} />
+                {isBandcampAvailable && <BuyingModal albumMeta={albumMeta} />}
+              </div>
             </li>
             <li
               id="trigger-observer"

@@ -1,5 +1,6 @@
 // hooks/useScrollToIndexWhenReady.ts
 import { useEffect } from "react";
+import useDiscographyStore from "@/store/useDiscographyStore";
 
 export default function useScrollToIndexWhenReady<
   T extends { scrollTo: (index: number) => void },
@@ -8,6 +9,7 @@ export default function useScrollToIndexWhenReady<
   index: number,
   ready: boolean = true
 ) {
+  const { setGoToDiscActive } = useDiscographyStore();
   useEffect(() => {
     if (!ready) return;
 
@@ -17,6 +19,9 @@ export default function useScrollToIndexWhenReady<
       if (ref.current) {
         ref.current.scrollTo(index);
         if (intervalId) clearInterval(intervalId);
+        setTimeout(() => {
+          setGoToDiscActive(false);
+        }, 750);
       }
     };
 

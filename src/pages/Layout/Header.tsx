@@ -195,7 +195,7 @@ const MobileBottomNav = ({
   pathname: string;
   bgBlackRoute: boolean;
 }) => (
-  <nav className="h-16 fixed bottom-0 left-0 flex flex-col md:flex-row items-center justify-around w-screen bg-[#000]/75 backdrop-blur-sm z-[50] shadow-[0_-6px_12px_2px_rgba(0,0,0,0.4)] !px-8 sm:!px-16 md:!px-[3rem] lg:!px-[6rem] *:transition-opacity !p-3">
+  <nav className="h-16 fixed bottom-0 left-0 flex flex-col md:flex-row items-center justify-around w-screen bg-[#000]/75 backdrop-blur-sm z-[40] shadow-[0_-6px_12px_2px_rgba(0,0,0,0.4)] !px-8 sm:!px-16 md:!px-[3rem] lg:!px-[6rem] *:transition-opacity !p-3">
     {!minTablet ? (
       <Nav pathname={pathname} bgBlackRoute={bgBlackRoute} />
     ) : (

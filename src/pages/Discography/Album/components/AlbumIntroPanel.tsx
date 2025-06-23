@@ -1,20 +1,19 @@
 import { useState } from "react";
 
 import { Skeleton } from "@/components/ui/skeleton";
-import { Disc3 } from "lucide-react";
-
-import { Link } from "react-router-dom";
 import cx from "classnames";
 
-import StreamingModal from "../../modals/StreamingModal";
 import useLanguageStore from "@/store/useLanguageStore";
+import StreamingModal from "../../modals/StreamingModal";
+import BuyingModal from "../../modals/BuyingModal";
 
 import type { Disk } from "@/types/discography";
 
 const AlbumIntroPanel = ({ albumMeta }: { albumMeta: Disk }) => {
-  const { image, titleKr, titleEn, year, isCD, cdUrl } = albumMeta;
+  const { image, titleKr, titleEn, year, urls } = albumMeta;
   const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
   const { language } = useLanguageStore();
+  const isBandcampAvailable = Object.keys(urls).includes("bandcamp");
 
   return (
     <ul className="w-full h-full flex items-center gap-10 max-lg:flex-col justify-center lg:justify-between">
@@ -46,18 +45,9 @@ const AlbumIntroPanel = ({ albumMeta }: { albumMeta: Disk }) => {
           <li>
             <StreamingModal albumMeta={albumMeta} />
           </li>
-
-          {isCD && cdUrl && (
-            <li className="transition-all duration-200 hover:opacity-50 group">
-              <Link
-                to={cdUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 transition-all duration-200"
-              >
-                <Disc3 size={16} className="group-hover:animate-spin" />
-                {language === "ko" ? "CD 구매" : "Order"}
-              </Link>
+          {isBandcampAvailable && (
+            <li>
+              <BuyingModal albumMeta={albumMeta} />
             </li>
           )}
         </ol>

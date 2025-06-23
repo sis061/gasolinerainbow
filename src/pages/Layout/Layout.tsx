@@ -11,7 +11,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import ScrollTopBtn from "@/pages/Layout/components/ScrollTopBtn";
 import GuideBtn from "@/pages/Layout/components/GuideBtn";
-import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
+import useDiscographyStore from "@/store/useDiscographyStore";
 import { getUserPlatformType } from "@/utils/globalHelper";
 import { useFooterVisibility } from "@/hooks/useFooterVisibility";
 
@@ -28,7 +28,8 @@ export default function Layout({ children }: { children: ReactNode }) {
   const isNotes = pathname.startsWith("/authornote");
   const isStreamRedirect = pathname.startsWith("/stream");
 
-  const { hasInteractiveTrackList } = useDiscographyGuideStore();
+  const { hasInteractiveTrackList, setHasInteractiveTrackList } =
+    useDiscographyStore();
 
   const backgroundColor =
     isDiscography || isNotes || isStreamRedirect
@@ -39,6 +40,9 @@ export default function Layout({ children }: { children: ReactNode }) {
     if (!pathname.startsWith("/authornote")) {
       sessionStorage.removeItem("authornotePage");
       sessionStorage.removeItem("authornoteScroll");
+    }
+    if (!isDiscography) {
+      setHasInteractiveTrackList(false);
     }
   }, [pathname]);
 

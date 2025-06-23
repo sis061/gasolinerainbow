@@ -39,7 +39,7 @@ const StreamingRedirect = () => {
           onLoad={() => setIsImageLoaded(true)}
         />
       </div>
-      <div className="inner flex-grow-0 h-full w-full flex flex-col items-start justify-between !p-6 z-10 max-lg:!pt-10 max-lg:!pb-20">
+      <div className="inner flex-grow-0 h-full w-full flex flex-col items-center justify-between !p-6 z-20 max-lg:!pt-10 max-lg:!pb-20">
         <ul className="w-full h-full flex items-center gap-10 max-lg:flex-col justify-center lg:justify-between ">
           <li className="relative overflow-hidden w-full h-full md:w-2/3 lg:w-[52.5%] !aspect-square shadow-lg shadow-[#999]/25">
             {!isImageLoaded && (
@@ -92,6 +92,11 @@ const StreamingRedirect = () => {
             <GoToDiscButton albumMeta={albumMeta} isOneline />
           </li>
         </ul>
+        <div className="absolute bottom-0 !pb-2">
+          <p className="text-xs !text-white/50">
+            &copy; 2025 HIMINN&#46; All Rights Reserved&#46;
+          </p>
+        </div>
       </div>
     </section>
   );

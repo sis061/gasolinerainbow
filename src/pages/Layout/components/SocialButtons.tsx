@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import { Link as LinkIcon } from "lucide-react";
 import { motion, AnimatePresence, easeOut, easeIn } from "framer-motion";
@@ -93,48 +93,21 @@ const SocialButtons = ({ bgBlackRoute }: { bgBlackRoute: boolean }) => {
   const minTablet = useMediaQuery({ minWidth: 768 });
   const isScrolled = useScrollState();
 
-  useEffect(() => {
-    const wrappers = document.querySelectorAll(".wrapper, .wrapper-full");
-    wrappers.forEach((el) => {
-      (el as HTMLElement).style.transition = "opacity 0.3s ease";
-      (el as HTMLElement).style.opacity = open ? "0.3" : "1";
-    });
-
-    const handleClickOutside = (e: MouseEvent | TouchEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(e.target as Node)
-      ) {
-        setOpen(false);
-      }
-    };
-
-    if (open) {
-      document.addEventListener("mousedown", handleClickOutside);
-      document.addEventListener("touchstart", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("touchstart", handleClickOutside);
-    };
-  }, [open]);
-
   if (!minTablet) {
     return (
-      <div ref={dropdownRef} className="relative overflow-visible">
+      <div ref={dropdownRef} className="relative overflow-visible ">
         <div
           role="button"
           id="trigger"
           onClick={() => setOpen(!open)}
           className={cx(
-            "w-8 h-8 lg:w-6 lg:h-6 xl:w-8 xl:h-8 rounded-full flex items-center justify-center !z-[999]",
+            "w-8 h-8 lg:w-6 lg:h-6 xl:w-8 xl:h-8 rounded-full flex items-center justify-center !z-[999] cursor-pointer",
             open ? "!bg-black" : "!bg-white"
           )}
         >
           <LinkIcon
             color={`${open ? "#fff" : "#000"}`}
-            className=" duration-150 max-w-4 max-h-4"
+            className=" duration-150 max-w-4 max-h-4 !z-[999]"
           />
         </div>
         <AnimatePresence>
@@ -146,7 +119,8 @@ const SocialButtons = ({ bgBlackRoute }: { bgBlackRoute: boolean }) => {
               variants={containerVariants}
               transition={{ duration: 0.2, ease: "easeInOut" }}
               style={{ pointerEvents: open ? "auto" : "none" }}
-              className="!p-1 absolute top-12 left-1/2 -translate-x-1/2 z-[99] "
+              className="fixed left-0 !top-0 w-screen h-screen z-[99] flex flex-col items-end !pr-2 sm:!pr-14 bg-black/65 !pt-16"
+              onClick={() => setOpen(false)}
             >
               {logos.map(({ Component, name, url }) => (
                 <motion.div
@@ -162,7 +136,8 @@ const SocialButtons = ({ bgBlackRoute }: { bgBlackRoute: boolean }) => {
                   >
                     <Component
                       className="w-full h-full duration-150 "
-                      fill={bgBlackRoute ? "#fff" : "#000"}
+                      // fill={bgBlackRoute ? "#fff" : "#000"}
+                      fill={"#fff"}
                     />
                   </a>
                 </motion.div>

@@ -140,7 +140,7 @@ const HomeAlbumOverview = ({
               )}
             />
             <h2 className="font-bold">
-              {language === "ko" ? "아래에서 듣기" : "Stream"}
+              {language === "ko" ? "아래에서 듣기" : "Listen"}
             </h2>
             {!minTablet && (
               <ChevronDown

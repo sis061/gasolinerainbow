@@ -11,7 +11,8 @@
   padding: 0;
   margin: 0;
   scrollbar-width: none;
-  font-family: "Pretendard", sans-serif !important;
+  font-family:
+    "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif !important;
   color: black;
 }
 

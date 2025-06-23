@@ -2,7 +2,7 @@ import { CircleHelp } from "lucide-react";
 
 import cx from "classnames";
 
-import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
+import useDiscographyStore from "@/store/useDiscographyStore";
 import { useCallback, useRef } from "react";
 
 export default function GuideBtn({
@@ -10,7 +10,7 @@ export default function GuideBtn({
 }: {
   isFooterVisible: boolean;
 }) {
-  const { showOverlayText, setShowOverlayText } = useDiscographyGuideStore();
+  const { showOverlayText, setShowOverlayText } = useDiscographyStore();
   const timeoutRef = useRef<number | null>(null);
 
   const flashOverlay = useCallback(() => {

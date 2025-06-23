@@ -30,13 +30,13 @@ const StreamingPlatformButtons = lazy(
 import useLanguageStore from "@/store/useLanguageStore";
 
 import type { Disk } from "@/types/discography";
-import { useScrollLock } from "@/hooks/useScrollLock";
+// import { useScrollLock } from "@/hooks/useScrollLock";
 
 const StreamingModal = ({ albumMeta }: { albumMeta: Disk }) => {
   const [open, setOpen] = useState<boolean>(false);
   const minTablet = useMediaQuery({ minWidth: 768 });
 
-  useScrollLock(open);
+  // useScrollLock(open);
 
   const { language } = useLanguageStore();
   const platforms = getStreamingPlatformInfo(albumMeta.urls);
@@ -48,9 +48,9 @@ const StreamingModal = ({ albumMeta }: { albumMeta: Disk }) => {
           <div className="w-full h-full flex items-center gap-2">
             <AudioLines
               size={16}
-              className="group-hover:animate-pulse origin-center "
+              className="group-hover:animate-bounce origin-center "
             />
-            {language === "ko" ? `듣기` : "Stream"}
+            {language === "ko" ? `듣기` : "Listen"}
           </div>
         </DialogTrigger>
         <DialogContent
@@ -59,7 +59,7 @@ const StreamingModal = ({ albumMeta }: { albumMeta: Disk }) => {
         >
           <DialogHeader>
             <DialogTitle className="!text-white !pb-6">
-              {language === "ko" ? "아래에서 듣기" : "Stream"} -{" "}
+              {language === "ko" ? "아래에서 듣기" : "Listen"} -{" "}
               {language === "ko" ? albumMeta.titleKr : albumMeta.titleEn}
             </DialogTitle>
           </DialogHeader>
@@ -96,7 +96,7 @@ const StreamingModal = ({ albumMeta }: { albumMeta: Disk }) => {
       <DrawerTrigger className="transition-all duration-200 hover:opacity-50 cursor-pointer">
         <div className="w-full h-full flex items-center gap-2">
           <AudioLines size={16} />
-          {language === "ko" ? `듣기` : "Stream"}
+          {language === "ko" ? `듣기` : "Listen"}
         </div>
       </DrawerTrigger>
       <DrawerContent

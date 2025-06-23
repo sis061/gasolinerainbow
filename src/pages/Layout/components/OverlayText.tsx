@@ -4,7 +4,7 @@ import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import { CircleAlert } from "lucide-react";
 
-import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
+import useDiscographyStore from "@/store/useDiscographyStore";
 // import { getUserPlatformType } from "@/utils/globalHelper";
 
 const OverlayText = ({
@@ -17,7 +17,7 @@ const OverlayText = ({
   const node = document.getElementById("root");
   if (!node) return null;
   const [pos, setPos] = useState<{ top: number; left: number } | null>(null);
-  const { hasInteractiveTrackList } = useDiscographyGuideStore();
+  const { hasInteractiveTrackList } = useDiscographyStore();
   //   const platformType = getUserPlatformType();
 
   useEffect(() => {

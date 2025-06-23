@@ -23,8 +23,8 @@ import Hoverable from "@/pages/Layout/components/Hoverable";
 import OverlayText from "@/pages/Layout/components/OverlayText";
 
 import useLanguageStore from "@/store/useLanguageStore";
-import useDiscographyGuideStore from "@/store/useDiscographyGuideStore";
-import { useScrollLock } from "@/hooks/useScrollLock";
+import useDiscographyStore from "@/store/useDiscographyStore";
+// import { useScrollLock } from "@/hooks/useScrollLock";
 import useScrollToIndexWhenReady from "@/hooks/useScrollToIndexWhenReady";
 
 import type { CarouselProps, Track } from "@/types/discography";
@@ -45,8 +45,8 @@ const AlbumCarousel = ({
   const minTablet = useMediaQuery({ minWidth: 768 });
 
   const { language } = useLanguageStore();
-  const { showOverlayText, setShowOverlayText } = useDiscographyGuideStore();
-  useScrollLock(open);
+  const { showOverlayText, setShowOverlayText } = useDiscographyStore();
+  // useScrollLock(open);
 
   const resetSelectionAndHideOverlay = () => {
     setTimeout(() => setSelectedTrack(null), 200);

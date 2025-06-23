@@ -6,15 +6,17 @@ import cx from "classnames";
 import { motion, AnimatePresence } from "framer-motion";
 
 import useLanguageStore from "@/store/useLanguageStore";
-// import HomeAlbumOverview from "./HomeAlbumOverview";
+import HomeAlbumOverview from "./HomeAlbumOverview";
 import type { CountdownRendererProps, CountdownTimerProps } from "@/types/home";
 
 const pad = (n: number) => String(n).padStart(2, "0");
+//상세보기 버튼 클릭 시 디스코그라피 > 해당 앨범 > 상세정보 슬라이드로 이동하기 위한 좌표
+const BIP_TARGET_CAROUSEL = { carouselIndex: 0, slideIndex: 1 };
 
 const HomeCountDown = ({
   releaseDate,
-  // albumMeta,
-  // videoId,
+  albumMeta,
+  videoId,
 }: CountdownTimerProps) => {
   const { language } = useLanguageStore();
 
@@ -32,7 +34,14 @@ const HomeCountDown = ({
     completed: boolean;
   }) => {
     if (completed) {
-      return <></>;
+      return (
+        <HomeAlbumOverview
+          isVideoRight
+          videoId={videoId}
+          albumMeta={albumMeta}
+          targetCarousel={BIP_TARGET_CAROUSEL}
+        />
+      );
     }
 
     return (
@@ -73,10 +82,10 @@ const CountdownRenderer = React.memo(
           return (
             <div
               key={d.en}
-              className="flex w-full flex-col items-center justify-center gap-1"
+              className="flex w-full flex-col items-center justify-center gap-1 *:!text-white/75"
               aria-label={`${d.count} ${language === "ko" ? d.kr : d.en}`}
             >
-              <div className="flex">
+              <div className="flex *:!text-white/75">
                 {/* 십의 자리 */}
                 <AnimatePresence mode="wait">
                   <motion.span

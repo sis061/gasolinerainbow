@@ -12,7 +12,7 @@ import useLanguageStore from "@/store/useLanguageStore";
 const Footer = () => {
   const { language } = useLanguageStore();
   return (
-    <footer className="z-[10] w-screen !px-3 md:!px-[2.25rem] max-md:!pb-20 max-lg:!pb-16 min-h-32 md:min-h-24 !mx-auto flex justify-center bg-[#010101] !shadow-2xl">
+    <footer className="!z-[30] *:!z-[30] w-screen !px-3 md:!px-[2.25rem] max-md:!pb-20 max-lg:!pb-16 min-h-32 md:min-h-24 !mx-auto flex justify-center !bg-[#010101] !shadow-2xl">
       <div className="wrapper w-full relative !p-3 !pt-4">
         <ul className="flex flex-col items-center justify-around h-full border-t-1 md:flex-row md:justify-between">
           <li>

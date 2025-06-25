@@ -42,7 +42,7 @@ Monkeys, cats, sardines.
 
 Everyone’s lethargy.
 Everyone’s worthlessness.
-Everyone’s goodbye to everyone.
+Everyone’s farewell to everyone.
 
 And still—we are.`,
     credits: `Produced by HIMINN
@@ -94,7 +94,7 @@ Artwork by namu 나무`,
 
 나는 너에게 모든 걸 주겠다
 
-대신 너는 그 모든 이별을 준비하 라
+대신 너는 그 모든 이별을 준비하    라
 
 
 이름없는 고양이의 겨울에
@@ -149,29 +149,38 @@ Artwork by namu 나무`,
         trackNo: 3,
         titleKr: "9호선",
         titleEn: "Line 9",
-        lyrics: `Fish in suits.
+        lyrics: `Fish in suits
 
 We’re all fish in suits
 
-in the tin box train,
+In the tin box train
 
-Roaming this city in gray.
-
-
-Packt in rows. stray, stray, stray.
-
-Yet we roam around around around...
-
-We gaze,
-
-But words never come. Words never come.
+Roaming this city in gray
 
 
-There’s a shimmer, shine, at the end of this track.
+Packt in rows
 
-But we never know, (they’ll never know)
+Stray, stray, stray
 
-Only go backwards. Underground.
+Yet we roam around around around around around around...
+
+We gaze
+
+But words never come
+
+Words never come
+
+
+There’s a shimmer, shine
+
+At the end of this track
+
+But we never know, (They’ll never know)
+
+Only go backwards
+
+Underground
+
 
 
 Awake, Commute, Work, Eat, Work, Commute, Sleep, Repeat,
@@ -209,17 +218,18 @@ Honey, Your dish is ready
 and BOOM!
 
 
+
 In plastic dreams
 
-Floating in ocean tides,
+Floating in ocean tides
 
-So bright and warm.
+So bright and warm
 
 Scattered light, Underwater
 
-We could go anywhere,
+We could go anywhere
 
-We could do everything,
+We could do everything
 
 
 Nobody tells
@@ -228,23 +238,24 @@ Now what should we do?
 
 Too bright to see
 
-Sink into the sweetest terror
+Sink into the sweet, sweetest terror
 
 We can’t take it anymore
 
-Wake me at the next station.
+Just wake me at the next station
 
 
-Chained, Still, Still, Still.
 
-Drained, Still, Still, Still.
+Chained, Still, Still, Still
 
-We're Still, Still, Still.
+Drained, Still, Still, Still
+
+We're Still, Still, Still
 
 
-Chained, Still, Still, Still.
+Chained, Still, Still, Still
 
-Prained, Still, Still, Still.`,
+Prained, Still, Still, Still`,
         tags: [],
       },
       {
@@ -253,27 +264,27 @@ Prained, Still, Still, Still.`,
         titleEn: "Ninth Life, Eleventh Night",
         lyrics: `우린 다시 만나자, 열한 번째 고양이의 밤에서
 
-비를 맞을 일도 없이, 따뜻한, 따뜻한.
+비를 맞을 일도 없이, 따뜻한, 따뜻한
 
 
 우린 뒤를 보진 말자
 
-담요 속에 얼굴을 파묻고 그냥 숨자.
+담요 속에 얼굴을 파묻고 그냥 숨자
 
-전화가 울려도 끝없이 위로, 위로만 가자.
+전화가 울려도 끝없이 위로, 위로만 가자
 
-누가 소리를 질러도 끝없이 안으로, 안으로.
+누가 소리를 질러도 끝없이 안으로, 안으로
 
 
-있잖아, 기다리지 말아, 나를,
+있잖아, 기다리지 말아, 나를
 
-있잖아, 기다리지 말아, 나를,
+있잖아, 기다리지 말아, 나를
 
-있잖아, 기다리지 말아, 나를,
+있잖아, 기다리지 말아, 나를
 
-있잖아, 기다리지...,
+있잖아, 기다리지...
 
-뜨문 뜨문 뜨문.`,
+뜨문 뜨문 뜨문`,
         tags: [],
       },
       {
@@ -282,20 +293,20 @@ Prained, Still, Still, Still.`,
         titleEn: "The Monkey/Mother-ship",
         lyrics: `Have I been thrown away?
 
-In a six-sides mirrored room.
+In a six-sides mirrored room
 
-Stand in an aisle,
+Stand in an aisle
 
-2 mothers in my view.
+2 mothers in my view
 
 
-My twin, you’ve grown up quite a lot,
+My twin, you’ve grown up quite a lot
 
-Then Haven’t I ?
+Then Haven’t I?
 
-Stand in an aisle,
+Stand in an aisle
 
-2 mothers in my view.
+2 mothers in my view
 
 
 Floating inside the mothership
@@ -304,7 +315,7 @@ Cold, artificial mother’s milk
 
 Warm you is the other thing
 
-Can’t tell fake from real.
+Can’t tell fake from real
 
 
 Floating inside the mothership
@@ -313,16 +324,16 @@ Cold, artificial love
 
 Warm you is the other thing
 
-Compassion exceeds comfort.
+Compassion exceeds comfort
 
 
-Oh, I was thrown away,
+Oh, I was thrown away
 
-but you are here now.
+but you are here now
 
-Stand in an aisle,
+Stand in an aisle
 
-We few happy family.`,
+We few happy family`,
         tags: [],
       },
       {
@@ -348,18 +359,18 @@ in silence
 
 Beef beef beef
 
-I want more beef.
+I want more beef
 
 
-I throw up,
+I throw up
 
-Rail against,
+Rail against
 
-Charge,
+Charge
 
-Ah, keep it.
+Ah, keep it
 
-Chagrin,
+Chagrin
 
 Epicure
 
@@ -381,42 +392,46 @@ Divulge
 
 Food food food
 
-Ah, shut up and just chew it.`,
+Ah, shut up and just chew it`,
         tags: [],
       },
       {
         trackNo: 7,
         titleKr: "Nudity",
         titleEn: "Nudity",
-        lyrics: `I’ve never loved my luv.
+        lyrics: `I’ve never loved my luv
 
 
-The Nudity,
+The Nudity
 
 Just let me go to sleep
 
-Far too easily,
+Far too easily
 
-Low comedy.
-
-
-Salivary,
-
-I don’t bloom again.
-
-Far too easily,
-
-No [Such] remedy.
+Low comedy
 
 
-I’ve never lived my life.
+Salivary
+
+I don’t bloom again
+
+Far too easily
+
+No Such remedy
 
 
-My property.
+I’ve never lived my life
 
-No more of that Lunatic.
 
-Far too easily.`,
+My property
+
+No more of that Lunatic
+
+Far too easily
+
+Far too easily
+
+Far too easily`,
         tags: [],
       },
       {
@@ -429,7 +444,7 @@ Far too easily.`,
 
 I have done, if nothing mattered
 
-가치 없는 꿈에 기대어.
+가치 없는 꿈에 기대어
 
 
 I have done nothing better
@@ -438,14 +453,14 @@ I have done nothing better
 
 I have done, if nothing mattered
 
-가치 없는 꿈에 날 깨워.`,
+가치 없는 꿈에 날 깨워`,
         tags: [],
       },
       {
         trackNo: 9,
         titleKr: "2025년 즈음에는 좋은 아이가 되어볼게요",
         titleEn: "Yr 2025 Problem",
-        lyrics: `2025년즈음에는 좋은 아이가 될게요
+        lyrics: `2025년 즈음에는 좋은 아이가 될게요
 
 큰 사람이 되지는 못할게요
 

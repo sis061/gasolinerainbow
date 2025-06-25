@@ -708,50 +708,57 @@ The melody only remains`,
       },
     ],
   },
-  // {
-  //   type: "album",
-  //   year: 2025,
-  //   titleKr: "평화로운 뇌와…",
-  //   titleEn: "A Brain In Peace &…",
-  //   image: diskImages.hm,
-  //   urls: {
-  //     bandcamp: "https://himinnn.bandcamp.com/album/hm",
-  //     spotify: "https://open.spotify.com/album/2kwKctIlNJCNK5mU9a0FEF",
-  //     youtubeMusic:
-  //       "https://music.youtube.com/playlist?list=OLAK5uy_mqSbyG7WqaMdeYnQmj7k1jfoqIOho5FUg&si=D_QEKJKzZXiNFTKh",
-  //     appleMusic: "https://music.apple.com/us/album/hm/1659621243",
-  //     melon: "https://www.melon.com/album/detail.htm?albumId=11121710",
-  //     bugs: "https://music.bugs.co.kr/album/20533309",
-  //     genie: "https://www.genie.co.kr/detail/albumInfo?axnm=83280159",
-  //   },
-  //   isCD: false,
-  //   cdUrl: null,
-  //   descriptionKr: `지하철, 침대, 라디오,
+  //   {
+  //     targetCarousel: { carouselIndex: 0, slideIndex: 1 },
+  //     type: "album",
+  //     year: 2025,
+  //     titleKr: "평화로운 뇌와…",
+  //     titleEn: "A Brain In Peace &…",
+  //     image: diskImages.hm,
+  //     urls: {
+  //       bandcamp: "https://himinnn.bandcamp.com/album/hm",
+  //       spotify: "https://open.spotify.com/album/2kwKctIlNJCNK5mU9a0FEF",
+  //       youtubeMusic:
+  //         "https://music.youtube.com/playlist?list=OLAK5uy_mqSbyG7WqaMdeYnQmj7k1jfoqIOho5FUg&si=D_QEKJKzZXiNFTKh",
+  //       appleMusic: "https://music.apple.com/us/album/hm/1659621243",
+  //       melon: "https://www.melon.com/album/detail.htm?albumId=11121710",
+  //       bugs: "https://music.bugs.co.kr/album/20533309",
+  //       genie: "https://www.genie.co.kr/detail/albumInfo?axnm=83280159",
+  //     },
+  //     isCD: false,
+  //     cdUrl: null,
+  //     descriptionKr: `지하철, 침대, 라디오,
   // 치사랑, 성애, 섭식장애,
+
   // 09시, 18시, 22시, 03시,
   // 원숭이, 고양이, 정어리,
+
   // 모두의 무기력,
   // 모두의 무가치함,
   // 모두의 모두에 대한 이별,
+
   // 그럼에도 우리는.`,
-  //   descriptionEn: `The subway, the bed, the radio.
+  //     descriptionEn: `The subway, the bed, the radio.
   // parental love, desire, disordered eating.
+
   // 9 a.m., 6 p.m., 10 p.m., 3 a.m.
   // Monkeys, cats, sardines.
+
   // Everyone’s lethargy.
   // Everyone’s worthlessness.
-  // Everyone’s goodbye to everyone.
+  // Everyone’s farewell to everyone.
+
   // And still—we are.`,
-  //   credits: `Produced by HIMINN
+  //     credits: `Produced by HIMINN
   // Recorded by Shinhwan @ Phoné Studio
   // Mixed & Mastered by Shinhwan @ Phoné Studio
   // Artwork by namu 나무`,
-  //   tracks: [
-  //     {
-  //       trackNo: 1,
-  //       titleKr: "가솔린 무지개",
-  //       titleEn: "Gasoline Rainbows",
-  //       lyrics: `어느 새벽, 작은 악마 하나가 찾아와 속삭였습니다.
+  //     tracks: [
+  //       {
+  //         trackNo: 1,
+  //         titleKr: "가솔린 무지개",
+  //         titleEn: "Gasoline Rainbows",
+  //         lyrics: `어느 새벽, 작은 악마 하나가 찾아와 속삭였습니다.
 
   // '너에게 내 모든 권능을 주고, 그 영광은 네가 가질 수 있게 해주겠다.
 
@@ -774,20 +781,20 @@ The melody only remains`,
   // 그 모든 이별에도 당신은 살아가고, 살아버립니다.
 
   // 참 불쌍하네요, 우린.`,
-  //       tags: [],
-  //     },
-  //     {
-  //       trackNo: 2,
-  //       titleKr: "Corns N Beans",
-  //       titleEn: "Corns N Beans",
-  //       lyrics: `
+  //         tags: [],
+  //       },
+  //       {
+  //         trackNo: 2,
+  //         titleKr: "Corns N Beans",
+  //         titleEn: "Corns N Beans",
+  //         lyrics: `
   // 나는 너에게 영광을 주겠다
 
   // 대신 너에게서 밤에 자는 잠을 뺏겠다
 
   // 나는 너에게 모든 걸 주겠다
 
-  // 대신 너는 그 모든 이별을 준비하 라
+  // 대신 너는 그 모든 이별을 준비하    라
 
   // 이름없는 고양이의 겨울에
 
@@ -830,75 +837,83 @@ The melody only remains`,
   // 살아는 지는게
 
   // (그 모든 이별에)`,
-  //       tags: [],
-  //     },
-  //     {
-  //       trackNo: 3,
-  //       titleKr: "9호선",
-  //       titleEn: "Line 9",
-  //       lyrics: `Fish in suits.
+  //         tags: [],
+  //       },
+  //       {
+  //         trackNo: 3,
+  //         titleKr: "9호선",
+  //         titleEn: "Line 9",
+  //         lyrics: `Fish in suits
 
   // We’re all fish in suits
 
-  // in the tin box train,
+  // In the tin box train
 
-  // Roaming this city in gray.
+  // Roaming this city in gray
 
-  // Packt in rows. stray, stray, stray.
+  // Packt in rows
 
-  // Yet we roam around around around...
+  // Stray, stray, stray
 
-  // We gaze,
+  // Yet we roam around around around around around around...
 
-  // But words never come. Words never come.
+  // We gaze
 
-  // There’s a shimmer, shine, at the end of this track.
+  // But words never come
 
-  // But we never know, (they’ll never know)
+  // Words never come
 
-  // Only go backwards. Underground.
+  // There’s a shimmer, shine
 
-  // awake, commute, work, Eat, Work, Commute, Sleep, repeat
+  // At the end of this track
 
-  // awake, commute, work, consume, Work, Commute, produce, repeat
+  // But we never know, (They’ll never know)
 
-  // Repeat, work, commute, consume, work, commute, produce, wrap it up!
+  // Only go backwards
 
-  // Bodies packed, chopped, sealed, wrapped, boxed, and then we’re on
+  // Underground
 
-  // Escalators, Escalators, Escalators, Escalators,
+  // Awake, Commute, Work, Eat, Work, Commute, Sleep, Repeat,
 
-  // turn
+  // Awake, Commute, Work, Consume, Work, Commute, Produce, Repeat,
 
-  // Escalators, Escalators, Escalators, Escalators,
+  // Repeat, Work, Commute, Consume, Work, Commute, Produce, Wrap it up!
 
-  // Escalators, Escalators, Escalators, Escalators,
-
-  // push
+  // Bodies Packed, Chopped, Sealed, Wrapped, Boxed, and then we’re on
 
   // Escalators, Escalators, Escalators, Escalators,
 
+  // TURN
+
   // Escalators, Escalators, Escalators, Escalators,
 
-  // burn
+  // Escalators, Escalators, Escalators, Escalators,
+
+  // PUSH
+
+  // Escalators, Escalators, Escalators, Escalators,
+
+  // Escalators, Escalators, Escalators, Escalators,
+
+  // BURN
 
   // Escalators, Escalators, Escalators, Escalators,
 
   // Honey, Your dish is ready
 
-  // and boom!
+  // and BOOM!
 
-  // in plastic dreams
+  // In plastic dreams
 
-  // Floating in ocean tides,
+  // Floating in ocean tides
 
-  // So bright and warm.
+  // So bright and warm
 
   // Scattered light, Underwater
 
-  // We could go anywhere,
+  // We could go anywhere
 
-  // We could do everything,
+  // We could do everything
 
   // Nobody tells
 
@@ -906,65 +921,69 @@ The melody only remains`,
 
   // Too bright to see
 
-  // Sink into the sweetest terror
+  // Sink into the sweet, sweetest terror
 
   // We can’t take it anymore
 
-  // Wake me at the next station.
+  // Just wake me at the next station
 
-  // Chained, Still, Still, Still.
+  // Chained, Still, Still, Still
 
-  // Drained, Still, Still, Still.
+  // Drained, Still, Still, Still
 
-  // We're Still, Still, Still.
+  // We're Still, Still, Still
 
-  // Chained, Still, Still, Still.
+  // Chained, Still, Still, Still
 
-  // Prained, Still, Still, Still.`,
-  //       tags: [],
-  //     },
-  //     {
-  //       trackNo: 4,
-  //       titleKr: "열한번째 고양이의 밤",
-  //       titleEn: "Ninth Life, Eleventh Night",
-  //       lyrics: `우린 다시 만나자, 열한 번째 고양이의 밤에서
+  // Prained, Still, Still, Still`,
+  //         tags: [],
+  //       },
+  //       {
+  //         trackNo: 4,
+  //         titleKr: "열한번째 고양이의 밤",
+  //         titleEn: "Ninth Life, Eleventh Night",
+  //         lyrics: `우린 다시 만나자, 열한 번째 고양이의 밤에서
 
-  // 비를 맞을 일도 없이, 따뜻한, 따뜻한.
+  // 비를 맞을 일도 없이, 따뜻한, 따뜻한
 
   // 우린 뒤를 보진 말자
 
-  // 담요 속에 얼굴을 파묻고 그냥 숨자.
+  // 담요 속에 얼굴을 파묻고 그냥 숨자
 
-  // 전화가 울려도 끝없이 위로, 위로만 가자.
+  // 전화가 울려도 끝없이 위로, 위로만 가자
 
-  // 누가 소리를 질러도 끝없이 안으로, 안으로.
+  // 누가 소리를 질러도 끝없이 안으로, 안으로
 
-  // 있잖아, 기다리지 말아, 나를,
+  // 있잖아, 기다리지 말아, 나를
 
-  // 있잖아, 기다리지 말아, 나를,
+  // 있잖아, 기다리지 말아, 나를
 
-  // 있잖아, 기다리지 말아, 나를,
+  // 있잖아, 기다리지 말아, 나를
 
-  // 있잖아, 기다리지...,
+  // 있잖아, 기다리지...
 
-  // 뜨문 뜨문 뜨문.`,
-  //       tags: [],
-  //     },
-  //     {
-  //       trackNo: 5,
-  //       titleKr: "The Monkey/Mother-ship",
-  //       titleEn: "The Monkey/Mother-ship",
-  //       lyrics: `Have I been thrown away?
+  // 뜨문 뜨문 뜨문`,
+  //         tags: [],
+  //       },
+  //       {
+  //         trackNo: 5,
+  //         titleKr: "The Monkey/Mother-ship",
+  //         titleEn: "The Monkey/Mother-ship",
+  //         lyrics: `Have I been thrown away?
 
-  // In a six-sides mirrored room.
+  // In a six-sides mirrored room
 
-  // Stand in an aisle, 2 mothers in my view.
+  // Stand in an aisle
 
-  // My twin, you’ve grown up quite a lot,
+  // 2 mothers in my view
 
-  // Then Haven’t I ?
+  // My twin, you’ve grown up quite a lot
 
-  // Stand in an aisle, 2 mothers in my view.
+  // Then Haven’t I?
+
+  // Stand in an aisle
+
+  // 2 mothers in my view
 
   // Floating inside the mothership
 
@@ -972,7 +991,7 @@ The melody only remains`,
 
   // Warm you is the other thing
 
-  // Can’t tell fake from real.
+  // Can’t tell fake from real
 
   // Floating inside the mothership
 
@@ -980,58 +999,60 @@ The melody only remains`,
 
   // Warm you is the other thing
 
-  // Compassion exceeds comfort.
+  // Compassion exceeds comfort
 
-  // Oh, I was thrown away,
+  // Oh, I was thrown away
 
-  // but you are here now.
+  // but you are here now
 
-  // Stand in an aisle, we few happy family.`,
-  //       tags: [],
-  //     },
-  //     {
-  //       trackNo: 6,
-  //       titleKr: "Dinner, the pill & the feast",
-  //       titleEn: "Dinner, the pill & the feast",
-  //       lyrics: `Devouring
+  // Stand in an aisle
+
+  // We few happy family`,
+  //         tags: [],
+  //       },
+  //       {
+  //         trackNo: 6,
+  //         titleKr: "Dinner, the pill & the feast",
+  //         titleEn: "Dinner, the pill & the feast",
+  //         lyrics: `Devouring
 
   // Anodyne
 
   // I woke up
 
-  // an emptiness
+  // An emptiness
 
   // Rue
 
-  // swell
+  // Swell
 
-  // exploded
+  // Exploded
 
   // in silence
 
   // Beef beef beef
 
-  // I want more beef.
+  // I want more beef
 
-  // I throw up,
+  // I throw up
 
-  // rail against,
+  // Rail against
 
-  // charge,
+  // Charge
 
-  // ah, keep it.
+  // Ah, keep it
 
-  // Chagrin,
+  // Chagrin
 
-  // epicure
+  // Epicure
 
-  // promiscuous
+  // Promiscuous
 
-  // light
+  // Light
 
   // Red light
 
-  // light
+  // Light
 
   // For you pigs
 
@@ -1041,35 +1062,49 @@ The melody only remains`,
 
   // Food food food
 
-  // Ah, shut up and just chew it.`,
-  //       tags: [],
-  //     },
-  //     {
-  //       trackNo: 7,
-  //       titleKr: "Nudity",
-  //       titleEn: "Nudity",
-  //       lyrics: `I’ve never loved my luv.
+  // Ah, shut up and just chew it`,
+  //         tags: [],
+  //       },
+  //       {
+  //         trackNo: 7,
+  //         titleKr: "Nudity",
+  //         titleEn: "Nudity",
+  //         lyrics: `I’ve never loved my luv
 
-  // The Nudity, Just let me go to sleep
+  // The Nudity
 
-  // Far too easily, Low comedy.
+  // Just let me go to sleep
 
-  // Salivary, I don’t bloom again.
+  // Far too easily
 
-  // Far too easily, No [Such] remedy.
+  // Low comedy
 
-  // I’ve never lived my life.
+  // Salivary
 
-  // My property. No more of that Lunatic.
+  // I don’t bloom again
+
+  // Far too easily
+
+  // No Such remedy
+
+  // I’ve never lived my life
+
+  // My property
+
+  // No more of that Lunatic
+
+  // Far too easily
+
+  // Far too easily
 
   // Far too easily`,
-  //       tags: [],
-  //     },
-  //     {
-  //       trackNo: 8,
-  //       titleKr: "V.",
-  //       titleEn: "V.",
-  //       lyrics: `I have done nothing better
+  //         tags: [],
+  //       },
+  //       {
+  //         trackNo: 8,
+  //         titleKr: "V.",
+  //         titleEn: "V.",
+  //         lyrics: `I have done nothing better
 
   // 널 이룰거란 기대 버려
 
@@ -1084,13 +1119,13 @@ The melody only remains`,
   // I have done, if nothing mattered
 
   // 가치 없는 꿈에 날 깨워`,
-  //       tags: [],
-  //     },
-  //     {
-  //       trackNo: 9,
-  //       titleKr: "2025년 즈음에는 좋은 아이가 되어볼게요",
-  //       titleEn: "Yr 2025 Problem",
-  //       lyrics: `2025년즈음에는 좋은 아이가 될게요
+  //         tags: [],
+  //       },
+  //       {
+  //         trackNo: 9,
+  //         titleKr: "2025년 즈음에는 좋은 아이가 되어볼게요",
+  //         titleEn: "Yr 2025 Problem",
+  //         lyrics: `2025년 즈음에는 좋은 아이가 될게요
 
   // 큰 사람이 되지는 못할게요
 
@@ -1141,10 +1176,10 @@ The melody only remains`,
   // 사람들은 앞으로 내지르고
 
   // 나는 가만히`,
-  //       tags: ["Title"],
-  //     },
-  //   ],
-  // },
+  //         tags: ["Title"],
+  //       },
+  //     ],
+  //   },
   {
     targetCarousel: { carouselIndex: 1, slideIndex: 1 },
     type: "remix",

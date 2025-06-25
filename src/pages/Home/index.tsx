@@ -5,10 +5,7 @@ import HomeAlbumOverview from "./components/HomeAlbumOverview";
 import HomeCountDown from "./components/HomeCountDown";
 
 export default function Home() {
-  // TODO: feature/1st_patch :: 발매 일자 나오면 수정하기
-
-  // const RELEASE_DATE = new Date("2025-07-18T12:00:00");
-  const RELEASE_DATE = new Date(Date.now() + 10000);
+  const RELEASE_DATE = new Date("2025-07-23T12:00:00");
 
   const HMVideoId: string = "q0RXd1Tj7tk";
 
@@ -27,6 +24,8 @@ export default function Home() {
 
   return (
     <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center">
+      <div className="inner flex-grow-0 w-full h-full !mb-10 !pt-4 md:!pt-10 max-md:!px-4 !space-y-10">
+        <HomeAlbumOverview videoId={HMVideoId} albumMeta={HMData} />
       <div className="inner flex-grow-0 w-full h-full !mb-10 !pt-4 md:!pt-10 max-md:!px-4 !space-y-20">
         <HomeCountDown
           releaseDate={RELEASE_DATE}
@@ -38,6 +37,7 @@ export default function Home() {
           videoId={HMVideoId}
           albumMeta={HMData}
         />
+
       </div>
     </section>
   );

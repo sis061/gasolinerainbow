@@ -88,8 +88,9 @@ const HomeAlbumOverview = ({
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.1 }}
+      // whileInView={{ opacity: 1, y: 0 }}
+      // viewport={{ once: true, amount: 0.1 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
       className="grid grid-rows-[auto_auto] grid-cols-4 w-full gap-2"
     >
@@ -113,7 +114,7 @@ const HomeAlbumOverview = ({
             isVideoRight ? "items-start" : "items-end"
           )}
         >
-          <span className="text-sm lg:!pl-1.5">
+          <span className="text-sm">
             {language === "ko" ? type.kr : type.en.toUpperCase()}
           </span>
           <h1 className="text-2xl">

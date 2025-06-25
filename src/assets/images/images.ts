@@ -47,6 +47,8 @@ import modify_4_3 from "@/assets/images/notes/modify_4_3_22_11zon.webp";
 import modify_4_4 from "@/assets/images/notes/modify_4_4_23_11zon.webp";
 import modify_4_5 from "@/assets/images/notes/modify_4_5_24_11zon.webp";
 
+import epilogue_1_0 from "@/assets/images/notes/epilogue_1_0.webp";
+
 // 공통 이미지
 import bg01Img from "@/assets/images/bg01Img.webp";
 import profileImg from "@/assets/images/profileImg.webp";
@@ -100,6 +102,7 @@ export const notesImages = {
   modify_4_3,
   modify_4_4,
   modify_4_5,
+  epilogue_1_0,
 };
 
 export const commonImages = {

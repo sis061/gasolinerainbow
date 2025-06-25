@@ -167,7 +167,7 @@ export const renderNewsTypeColor = (t: NewsType) => {
       colour = "#FF5722";
       break;
     case "release":
-      colour = "#2962FF";
+      colour = "#ff0000";
       break;
     case "performance":
       colour = "#D500F9";

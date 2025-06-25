@@ -48,16 +48,17 @@ const BuyingModal = ({ albumMeta }: { albumMeta: Disk }) => {
   const bandcampUrl = Object.fromEntries(
     Object.entries(urls).filter(([key]) => ["bandcamp"].includes(key))
   );
+  const isBandcampAvailable = bandcampUrl.bandcamp.length > 0;
   const bandcampBtn = bandcampUrl && getStreamingPlatformInfo(bandcampUrl);
 
-  const CDpurchaseData = [
-    {
-      labelKr: "6v6 Recordings",
-      labelEn: "6v6 Recordings",
-      color: "#FCDF32",
-      url: albumMeta?.cdUrl ? albumMeta?.cdUrl : "",
-    },
-  ];
+  const maansunPurchaseData = {
+    labelKr: "만선",
+    labelEn: "maansun",
+    color: "#D62C28",
+    url: albumMeta?.maansunUrl ? albumMeta?.maansunUrl : "",
+  };
+
+  const CDpurchaseData = albumMeta?.cdUrl;
 
   if (minTablet) {
     return (
@@ -100,23 +101,36 @@ const BuyingModal = ({ albumMeta }: { albumMeta: Disk }) => {
               <ul className=" w-full [&_>li]:*:!text-white [&_>li]:!space-y-3">
                 <li>
                   <h3>{language === "ko" ? "다운로드" : "Download"}</h3>
-                  <StreamingPlatformButtons
-                    customClassName={"!flex-col !w-full"}
-                    platforms={bandcampBtn}
-                    aria-describedby="drawer-description"
-                  />
+                  {!!albumMeta?.maansunUrl && (
+                    <div className="!py-3">
+                      <DirectButton
+                        cdUrl={maansunPurchaseData.url}
+                        labelKr={maansunPurchaseData.labelKr}
+                        labelEn={maansunPurchaseData.labelEn}
+                        bgColor={maansunPurchaseData.color}
+                        language={language}
+                      />
+                    </div>
+                  )}
+                  {isBandcampAvailable && (
+                    <StreamingPlatformButtons
+                      customClassName={"!flex-col !w-full"}
+                      platforms={bandcampBtn}
+                      aria-describedby="drawer-description"
+                    />
+                  )}
                 </li>
                 {isCD && albumMeta?.cdUrl && (
                   <li>
                     <Separator className="h-[0.5px] !bg-white/20 !my-6" />
                     <h3>CD</h3>
-                    <div>
+                    <div className="flex flex-col gap-3">
                       {map(CDpurchaseData, (cd) => (
-                        <CDButton
-                          key={cd.labelEn.toLowerCase()}
+                        <DirectButton
+                          key={cd.store.toLowerCase()}
                           cdUrl={cd.url}
-                          labelKr={cd.labelKr}
-                          labelEn={cd.labelEn}
+                          labelKr={cd.store}
+                          labelEn={cd.store}
                           bgColor={cd.color}
                           language={language}
                         />
@@ -165,23 +179,36 @@ const BuyingModal = ({ albumMeta }: { albumMeta: Disk }) => {
               <ul className=" w-full [&_>li]:*:!text-white [&_>li]:!space-y-3 [&_h3]:!text-left">
                 <li>
                   <h3>{language === "ko" ? "다운로드" : "Download"}</h3>
-                  <StreamingPlatformButtons
-                    customClassName={"!flex-col !w-full"}
-                    platforms={bandcampBtn}
-                    aria-describedby="drawer-description"
-                  />
+                  {!!albumMeta?.maansunUrl && (
+                    <div className="!py-3">
+                      <DirectButton
+                        cdUrl={maansunPurchaseData.url}
+                        labelKr={maansunPurchaseData.labelKr}
+                        labelEn={maansunPurchaseData.labelEn}
+                        bgColor={maansunPurchaseData.color}
+                        language={language}
+                      />
+                    </div>
+                  )}
+                  {isBandcampAvailable && (
+                    <StreamingPlatformButtons
+                      customClassName={"!flex-col !w-full"}
+                      platforms={bandcampBtn}
+                      aria-describedby="drawer-description"
+                    />
+                  )}
                 </li>
                 {isCD && albumMeta?.cdUrl && (
                   <li>
                     <Separator className="h-[0.5px] !bg-white/20 !my-6" />
                     <h3>CD</h3>
-                    <div>
+                    <div className="flex flex-col w-full gap-3">
                       {map(CDpurchaseData, (cd) => (
-                        <CDButton
-                          key={cd.labelEn.toLowerCase()}
+                        <DirectButton
+                          key={cd.store.toLowerCase()}
                           cdUrl={cd.url}
-                          labelKr={cd.labelKr}
-                          labelEn={cd.labelEn}
+                          labelKr={cd.store}
+                          labelEn={cd.store}
                           bgColor={cd.color}
                           language={language}
                         />
@@ -206,7 +233,7 @@ const BuyingModal = ({ albumMeta }: { albumMeta: Disk }) => {
 
 export default BuyingModal;
 
-const CDButton = ({
+const DirectButton = ({
   cdUrl,
   language,
   bgColor,

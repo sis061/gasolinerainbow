@@ -341,4 +341,57 @@ HIMINN (@himinn___)
 * 자세한 사항은 구글폼을 참고해주세요
 * 공연 관련 문의 : 인스타그램 @nnoots_ DM`,
   },
+  {
+    idx: 13,
+    type: "release",
+    date: "2025-07-16",
+    img: diskImages.foolsbox,
+    title: "싱글 [The Monkey/Mother-ship]",
+    content: `싱글 [The Monkey/Mother-ship]이 발매되었습니다.
+
+@himinn___ 프로필의 링크를 통해 원하시는 플랫폼에서 바로 들을 수 있습니다.
+도와주신 모든 분들께 감사드립니다.
+
+***
+
+미디어는(우리는) 치사랑에 대해 말하기 참 어려워해요.
+
+부모가 자식을 사랑하는 건 당연하고 아름답게 그려지지만,
+자식이 부모를 바라보는 감정은 종종 생략되거나, 하나의 덕목으로 강요됩니다.
+내리사랑과 치사랑 사이의 이 공백 속에서,
+‘애착’은 감히 무엇이라 단언할 수 있을까요?
+
+
+두 엄마 사이에 선 아가 원숭이(들)는
+우리를 돌보지만 차가운 존재, 동시에 따뜻하지만 비어 있는 존재 그 사이를 떠다닙니다.
+
+해리 할로우가 행한 유명한 애착 실험의 내용을 빌려, ‘사랑의 발동 조건’을 물어보려 했습니다.
+
+
+[Credit]
+
+Produced by HIMINN
+Composed by HIMINN
+Lyrics by HIMINN
+Arranged by HIMINN
+
+Vocal by HIMINN
+All instruments performed and programmed by HIMINN
+
+Recorded at Phoné Studio
+Mixed & Mastered by Shinhwan at Phoné Studio
+Artwork by namu 나무, HIMINN`,
+  },
+  {
+    idx: 14,
+    type: "release",
+    date: "2025-07-16",
+    img: diskImages.foolsbox,
+    title: "앨범 [평화로운 뇌와...] 선공개 @ 만선",
+    content: `정규 앨범 [평화로운 뇌와...]를 만선에서 선공개합니다.
+
+아래 링크(https://maansun.com/)를 통해 WAV 및 Mp3 파일을 다운로드 받아 먼저 들어보실 수 있습니다.
+
+감사합니다.`,
+  },
 ];

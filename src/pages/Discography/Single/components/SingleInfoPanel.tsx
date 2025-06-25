@@ -37,6 +37,8 @@ const SingleInfoPanel = ({
   const { language } = useLanguageStore();
   const type = renderDiskType(albumMeta.type);
   const isBandcampAvailable = Object.keys(albumMeta.urls).includes("bandcamp");
+  const isStreamingAvailable =
+    albumMeta.urls?.appleMusic && albumMeta.urls?.appleMusic?.length > 0;
   // const { ref, inView } = useInView({
   //   threshold: 0.5,
   //   triggerOnce: false,
@@ -83,11 +85,13 @@ const SingleInfoPanel = ({
                 <span>{albumMeta.year}</span>
                 <span>{language === "ko" ? type.kr : type.en}</span>
               </div>
-              <span className="text-3xl text-end !pb-4 max-md:text-2xl max-md:font-bold">
+              <span className="text-3xl text-end !pb-4 max-md:text-2xl max-md:font-bold w-full break-all">
                 {language === "ko" ? albumMeta.titleKr : albumMeta.titleEn}
               </span>
               <div className="flex flex-wrap justify-end gap-x-4 gap-y-0.5">
-                <StreamingModal albumMeta={albumMeta} />
+                {isStreamingAvailable && (
+                  <StreamingModal albumMeta={albumMeta} />
+                )}
                 {isBandcampAvailable && <BuyingModal albumMeta={albumMeta} />}
               </div>
             </li>

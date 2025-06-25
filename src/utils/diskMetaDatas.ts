@@ -12,17 +12,16 @@ const diskAlbumData: Disk[] = [
     titleEn: "A Brain In Peace &…",
     image: diskImages.hm,
     urls: {
-      bandcamp: "https://himinnn.bandcamp.com/album/hm",
-      spotify: "https://open.spotify.com/album/2kwKctIlNJCNK5mU9a0FEF",
-      youtubeMusic:
-        "https://music.youtube.com/playlist?list=OLAK5uy_mqSbyG7WqaMdeYnQmj7k1jfoqIOho5FUg&si=D_QEKJKzZXiNFTKh",
-      appleMusic: "https://music.apple.com/us/album/hm/1659621243",
-      melon: "https://www.melon.com/album/detail.htm?albumId=11121710",
-      bugs: "https://music.bugs.co.kr/album/20533309",
-      genie: "https://www.genie.co.kr/detail/albumInfo?axnm=83280159",
+      bandcamp: "",
+      spotify: "",
+      youtubeMusic: "",
+      appleMusic: "",
+      melon: "",
+      bugs: "",
+      genie: "",
     },
     isCD: false,
-    cdUrl: null,
+    maansunUrl: "https://maansun.com/",
     descriptionKr: `지하철, 침대, 라디오,
 치사랑, 성애, 섭식장애,
 
@@ -66,7 +65,7 @@ Artwork by namu 나무`,
       {
         trackNo: 1,
         titleKr: "가솔린 무지개",
-        titleEn: "Gasoline Rainbows",
+        titleEn: "Gasoline Rainbow",
         lyrics: `어느 새벽, 작은 악마 하나가 찾아와 속삭였습니다.
 
 '너에게 내 모든 권능을 주고, 그 영광은 네가 가질 수 있게 해주겠다.
@@ -553,7 +552,13 @@ I'd have done, if nothing mattered
       genie: "https://www.genie.co.kr/detail/albumInfo?axnm=83280159",
     },
     isCD: true,
-    cdUrl: "https://smartstore.naver.com/6v6recordings/products/9436037351",
+    cdUrl: [
+      {
+        store: "6v6 Recordings",
+        color: "#FCDF32",
+        url: "https://smartstore.naver.com/6v6recordings/products/9436037351",
+      },
+    ],
     descriptionKr: `저에게 제 노래는 일종의 방어입니다. 자신을 바라보고 제 속의 갈등—주로 고독 및 자기 비난—을 다시 곱게 빚어내는 자기 방어. \n\n 그러니 제가 저를 직접 내보이기는 아직도 부끄럽기에, 이번에는 마치 셀프 타이틀 같지 않은 셀프 타이틀 앨범 [HM]에 열한 곡의 노래들을 엮었습니다. \n\n 언제는 외로움에 어찌할 바를 모르다가도 또 가끔은 초연해지는, 저 그리고 모두가 가진 본연의 모습을 담고 싶었습니다.
 \n
   하나 : 새벽에, 혼자, 어둡게 그리고 정말 크게 들어주세요.
@@ -1259,7 +1264,6 @@ The melody only remains`,
       genie: "https://www.genie.co.kr/detail/albumInfo?axnm=83923238",
     },
     isCD: false,
-    cdUrl: null,
     descriptionKr: `HIMINN 의 정규 앨범 [HM] 의 수록곡을 다른 뮤지션들의 손으로 재조립한 리믹스 앨범
 
 “내밀한 이야기는 자랑하듯이 내놓았으면서
@@ -1673,6 +1677,113 @@ const diskOthersData: Disk[] = [
   {
     targetCarousel: { carouselIndex: 3, slideIndex: 1 },
     type: "single",
+    year: 2025,
+    titleKr: "The Monkey/Mother-ship",
+    titleEn: "The Monkey/Mother-ship",
+    image: diskImages.foolsbox,
+    urls: {
+      bandcamp: "",
+      spotify: "",
+      youtubeMusic: "",
+      appleMusic: "",
+      melon: "",
+      bugs: "",
+      genie: "",
+    },
+    isCD: false,
+    descriptionKr: `미디어는(우리는) 치사랑에 대해 말하기 참 어려워해요.
+
+부모가 자식을 사랑하는 건 당연하고 아름답게 그려지지만,
+자식이 부모를 바라보는 감정은 종종 생략되거나, 하나의 덕목으로 강요됩니다.
+내리사랑과 치사랑 사이의 이 공백 속에서,
+‘애착’은 감히 무엇이라 단언할 수 있을까요?
+
+
+두 엄마 사이에 선 아가 원숭이(들)는
+우리를 돌보지만 차가운 존재, 동시에 따뜻하지만 비어 있는 존재 그 사이를 떠다닙니다.
+
+해리 할로우가 행한 유명한 애착 실험의 내용을 빌려,
+‘사랑의 발동 조건’을 물어보려 했습니다.`,
+    descriptionEn: `Filial love is something the media (or we) rarely knows how to talk about.
+
+While a parent's love for their child is often depicted as natural and beautiful,
+a child's feelings toward their parent are frequently omitted—or else imposed as a moral obligation.
+In the space between love flowing downward and love reaching upward,
+how can we even begin to define attachment?
+
+
+The baby monkey(s) standing between two mothers,
+float between a caregiver who is cold yet dependable,
+and one who is warm but hollow.
+
+Borrowing from Harry Harlow’s famous attachment experiment,
+I tried to ask: What sets love in motion?`,
+    credits: `Produced by HIMINN
+Composed by HIMINN
+Lyrics by HIMINN
+Arranged by HIMINN
+
+Vocal by HIMINN
+All instruments performed and programmed by HIMINN
+
+Recorded at Phoné Studio
+Mixed & Mastered by Shinhwan at Phoné Studio
+Artwork by namu 나무, HIMINN`,
+    tracks: [
+      {
+        trackNo: 1,
+        titleKr: "The Monkey/Mother-ship",
+        titleEn: "The Monkey/Mother-ship",
+        lyrics: `Have I been thrown away?
+
+In a six-sides mirrored room
+
+Stand in an aisle
+
+2 mothers in my view
+
+
+My twin, you’ve grown up quite a lot
+
+Then Haven’t I?
+
+Stand in an aisle
+
+2 mothers in my view
+
+
+Floating inside the mothership
+
+Cold, artificial mother’s milk
+
+Warm you is the other thing
+
+Can’t tell fake from real
+
+
+Floating inside the mothership
+
+Cold, artificial love
+
+Warm you is the other thing
+
+Compassion exceeds comfort
+
+
+Oh, I was thrown away
+
+but you are here now
+
+Stand in an aisle
+
+We few happy family`,
+        tags: [],
+      },
+    ],
+  },
+  {
+    targetCarousel: { carouselIndex: 3, slideIndex: 2 },
+    type: "single",
     year: 2022,
     titleKr: "Fool's Box",
     titleEn: "Fool's Box",
@@ -1689,7 +1800,6 @@ const diskOthersData: Disk[] = [
       genie: "https://www.genie.co.kr/detail/albumInfo?axnm=82869798",
     },
     isCD: false,
-    cdUrl: null,
     descriptionKr: `진부하고 진부한 판도라의 상자 이야기를 빗대어 말하고 싶었습니다.
 후회하세요, 그리고 슬퍼하세요.
 
@@ -1770,7 +1880,7 @@ Vocal by HIMINN`,
     ],
   },
   {
-    targetCarousel: { carouselIndex: 3, slideIndex: 2 },
+    targetCarousel: { carouselIndex: 3, slideIndex: 3 },
     type: "EP",
     year: 2021,
     titleKr: "In The Need Of A Good Cry",
@@ -1788,7 +1898,6 @@ Vocal by HIMINN`,
       genie: "https://www.genie.co.kr/detail/albumInfo?axnm=82045830",
     },
     isCD: false,
-    cdUrl: null,
     descriptionKr: `눈물을 흘리는 것은 나약한 일일까? 그렇다 듣고, 또 그렇게 알며 살아왔다. 그러나 이제는 좋은 울음에 대해 이야기해보고 싶다. 달아오르는 눈시울을 자랑스럽게 여기지는 못해도 숨기지는 않겠다. 거창한 무언가를 해내겠다는 것은 아니다. 그저 담담하게 나의 이야기를, 동시에 어딘가 있을 또 다른 누군가들의 이야기를 적고 멜로디를 이었다. 그렇게 고독과 우울함, 반성과 부끄러움을 담은 다섯 곡을 엮어 ‘좋은 울음'에 대한 나름의 고민을 정리했다.
 
 1. Intro ; Extra
@@ -2213,7 +2322,6 @@ const diskOSTData: Disk[] = [
       bandcamp: "https://himinnn.bandcamp.com/album/mbc-ost",
     },
     isCD: false,
-    cdUrl: null,
     descriptionKr: ``,
     descriptionEn: ``,
     credits: ``,
@@ -2297,7 +2405,6 @@ const diskOSTData: Disk[] = [
       bandcamp: "https://himinnn.bandcamp.com/album/music-for-a-documentary",
     },
     isCD: false,
-    cdUrl: null,
     descriptionKr: ``,
     descriptionEn: ``,
     credits: ``,
@@ -2380,7 +2487,15 @@ export const DiskMetaDatas = {
 
 const allDisks: Disk[] = [...diskAlbumData, ...diskOSTData, ...diskOthersData];
 
-const normalize = (s: string) => s.toLowerCase().replace(/\s+/g, "-");
+const normalize = (s: string) =>
+  s
+    .normalize("NFKC")
+    .toLowerCase()
+    .trim()
+    .replace(/[^\p{L}\p{N}\s/-]/gu, "") // 하이픈 `/`을 임시로 허용
+    .replace(/[\/\s]+/g, "-") // 슬래시나 공백 → 하이픈
+    .replace(/-+/g, "-") // 연속된 하이픈 정리
+    .replace(/^-+|-+$/g, ""); // 양끝 하이픈 제거
 
 export const DiskMetaMap: Record<string, Disk> = Object.fromEntries(
   allDisks.map((disk) => [normalize(disk.titleEn), disk])

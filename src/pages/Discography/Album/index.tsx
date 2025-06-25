@@ -173,6 +173,7 @@ const AlbumCarousel = ({
               </li>
               {minTablet ? (
                 <LyricsPanel
+                  type="album"
                   lyricsRef={lyricsRef}
                   selectedTrack={selectedTrack}
                   albumMeta={albumMeta}

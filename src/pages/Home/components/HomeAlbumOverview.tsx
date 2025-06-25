@@ -109,12 +109,11 @@ const HomeAlbumOverview = ({
       >
         <div
           className={cx(
-            "!py-2 font-bold flex flex-col w-full",
+            "!py-2 font-bold flex flex-col w-full max-lg:!items-start",
             isVideoRight ? "items-start" : "items-end"
           )}
         >
           <span className="text-sm lg:!pl-1.5">
-
             {language === "ko" ? type.kr : type.en.toUpperCase()}
           </span>
           <h1 className="text-2xl">

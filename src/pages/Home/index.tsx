@@ -24,8 +24,6 @@ export default function Home() {
 
   return (
     <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center">
-      <div className="inner flex-grow-0 w-full h-full !mb-10 !pt-4 md:!pt-10 max-md:!px-4 !space-y-10">
-        <HomeAlbumOverview videoId={HMVideoId} albumMeta={HMData} />
       <div className="inner flex-grow-0 w-full h-full !mb-10 !pt-4 md:!pt-10 max-md:!px-4 !space-y-20">
         <HomeCountDown
           releaseDate={RELEASE_DATE}
@@ -37,7 +35,6 @@ export default function Home() {
           videoId={HMVideoId}
           albumMeta={HMData}
         />
-
       </div>
     </section>
   );

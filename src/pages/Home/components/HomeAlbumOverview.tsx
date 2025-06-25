@@ -109,15 +109,16 @@ const HomeAlbumOverview = ({
       >
         <div
           className={cx(
-            "!py-2 font-bold flex lg:flex-col w-full items-end",
-            isVideoRight ? "lg:items-start" : "lg:items-end"
+            "!py-2 font-bold flex flex-col w-full",
+            isVideoRight ? "items-start" : "items-end"
           )}
         >
-          <span className="text-lg lg:!pl-1.5">
+          <span className="text-sm lg:!pl-1.5">
+
             {language === "ko" ? type.kr : type.en.toUpperCase()}
           </span>
-          <h1 className="text-3xl !pl-1">
-            [ {language === "ko" ? albumMeta.titleKr : albumMeta.titleEn} ]
+          <h1 className="text-2xl">
+            {language === "ko" ? albumMeta.titleKr : albumMeta.titleEn}
           </h1>
         </div>
         <div className="!space-y-6 flex flex-col">

@@ -94,13 +94,13 @@ const HomeAlbumOverview = ({
       <div className="!aspect-video z-10 lg:!ml-3 row-start-1 overflow-hidden lg:col-start-2 col-span-4 lg:col-span-3 bg-black w-full h-auto [&_>div]:h-full shadow-xl">
         <HomeYoutubeEmbed id={videoId} img={albumMeta.image} />
       </div>
-      <div className="w-auto shadow-2xl row-start-2 col-start-1 col-span-4 bg-white/75 flex flex-col justify-between gap-10 !-mt-4 lg:!-mt-12 lg:!mr-12 !p-6 ">
-        <div className="!py-2 font-bold flex lg:flex-col w-full items-end lg:items-start">
-          <span className="text-lg lg:!pl-1.5">
+      <div className="w-auto shadow-2xl row-start-2 col-start-1 col-span-4 bg-white/75 flex flex-col justify-between gap-6 !-mt-4 lg:!-mt-12 lg:!mr-12 !p-6 ">
+        <div className="!py-2 font-bold flex flex-col w-full items-start ">
+          <span className="text-sm">
             {language === "ko" ? type.kr : type.en.toUpperCase()}
           </span>
-          <h1 className="text-3xl !pl-1">
-            [ {language === "ko" ? albumMeta.titleKr : albumMeta.titleEn} ]
+          <h1 className="text-2xl">
+            {language === "ko" ? albumMeta.titleKr : albumMeta.titleEn}
           </h1>
         </div>
         <div className="!space-y-6 flex flex-col">

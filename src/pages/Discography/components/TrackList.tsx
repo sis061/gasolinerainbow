@@ -18,7 +18,7 @@ import { ListX } from "lucide-react";
 
 const TrackList = ({
   tracks,
-  align = "left",
+  align = "center",
   onSelect,
   selectedTrack,
 }: TrackListProps) => {
@@ -32,7 +32,7 @@ const TrackList = ({
     <ol
       className={cx(
         "touch-pan-y w-full flex flex-col gap-2 [&_>li]:w-full [&_>li]:break-all",
-        isRight ? "relative text-right max-md:text-center" : "text-left"
+        isRight ? "relative text-right max-md:text-center" : "!text-center"
       )}
       onTouchStart={() => {
         // 터치가 시작되면, 혹시 포커스된 버튼이 있으면 모두 blur()
@@ -53,7 +53,7 @@ const TrackList = ({
                 onClick={() => onSelect(tr)}
                 className={cx(
                   "touch-pan-y cursor-pointer w-auto relative transition-all duration-200 hover:opacity-50 flex items-center justify-center gap-0.5",
-                  isRight ? "md:justify-end" : "!justify-start *:!text-left",
+                  isRight ? "md:justify-end" : "!justify-center *:!text-center",
                   minTablet &&
                     selectedTrack?.trackNo === i + 1 &&
                     " [&_>span]:!text-black"

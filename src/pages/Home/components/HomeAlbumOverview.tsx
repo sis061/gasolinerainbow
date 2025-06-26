@@ -51,9 +51,11 @@ const trimDescription = (
 };
 
 const HomeAlbumOverview = ({
+  isVideoRight = true,
   albumMeta,
   videoId,
 }: {
+  isVideoRight: boolean;
   albumMeta: Disk;
   videoId: string;
 }) => {
@@ -91,12 +93,28 @@ const HomeAlbumOverview = ({
       transition={{ duration: 0.5, ease: "easeInOut" }}
       className="grid grid-rows-[auto_auto] grid-cols-4 w-full gap-2"
     >
-      <div className="!aspect-video z-10 lg:!ml-3 row-start-1 overflow-hidden lg:col-start-2 col-span-4 lg:col-span-3 bg-black w-full h-auto [&_>div]:h-full shadow-xl">
+      <div
+        className={cx(
+          isVideoRight ? "lg:col-start-2 lg:!ml-3" : "lg:col-start-1 lg:!mr-3",
+          "!aspect-video z-10 row-start-1 overflow-hidden col-span-4 lg:col-span-3 bg-black w-full h-auto [&_>div]:h-full shadow-xl"
+        )}
+      >
         <HomeYoutubeEmbed id={videoId} img={albumMeta.image} />
       </div>
-      <div className="w-auto shadow-2xl row-start-2 col-start-1 col-span-4 bg-white/75 flex flex-col justify-between gap-6 !-mt-4 lg:!-mt-12 lg:!mr-12 !p-6 ">
-        <div className="!py-2 font-bold flex flex-col w-full items-start ">
-          <span className="text-sm">
+      <div
+        className={cx(
+          isVideoRight ? "lg:!mr-12 lg:!-mt-12" : "lg:!ml-12 lg:!-mt-12",
+          "w-auto shadow-2xl row-start-2 col-start-1 col-span-4 bg-white/75 flex flex-col justify-between gap-10 !-mt-4 !p-6 "
+        )}
+      >
+        <div
+          className={cx(
+            "!py-2 font-bold flex flex-col w-full",
+            isVideoRight ? "items-start" : "items-end"
+          )}
+        >
+          <span className="text-sm lg:!pl-1.5">
+
             {language === "ko" ? type.kr : type.en.toUpperCase()}
           </span>
           <h1 className="text-2xl">

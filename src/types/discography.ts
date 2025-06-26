@@ -74,6 +74,7 @@ export interface CarouselNavigationProps {
 }
 
 export interface LyricsPanelProps {
+  type: "album" | "others";
   lyricsRef: React.RefObject<HTMLLIElement | null>;
   selectedTrack: TrackOrNull;
   albumMeta: Disk;
@@ -81,7 +82,7 @@ export interface LyricsPanelProps {
 
 export interface TrackListProps {
   tracks: Track[];
-  align: "left" | "right";
+  align: "left" | "right" | "center";
   selectedTrack: TrackOrNull;
   onSelect: OnSelectTrackHandler;
 }

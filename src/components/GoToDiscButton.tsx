@@ -35,7 +35,7 @@ const GoToDiscButton = ({
     <button
       onClick={goToDiscography}
       className={cx(
-        "*:whitespace-break-spaces self-end !px-2 !max-w-38 !py-0.5 group flex justify-end gap-1 cursor-pointer max-lg:underline underline-offset-4 *:transition-all *:duration-200",
+        "*:whitespace-break-spaces w-auto self-end !px-2 !py-0.5 group flex justify-end gap-1 cursor-pointer max-lg:underline underline-offset-4 *:transition-all *:duration-200",
         language === "ko" ? "!items-start" : "!items-end",
         isOneline && "!self-center !max-w-full !no-underline"
       )}

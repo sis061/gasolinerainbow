@@ -102,7 +102,7 @@ const SingleInfoPanel = ({
               {language === "ko" ? albumMeta.titleKr : albumMeta.titleEn}
             </span>
             <div className="flex flex-wrap justify-end gap-x-4 gap-y-0.5">
-              <StreamingModal albumMeta={albumMeta} />
+              {isStreamingAvailable && <StreamingModal albumMeta={albumMeta} />}
               {isBandcampAvailable && <BuyingModal albumMeta={albumMeta} />}
             </div>
           </div>

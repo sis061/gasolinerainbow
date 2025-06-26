@@ -1,8 +1,10 @@
 import useLanguageStore from "@/store/useLanguageStore";
 import { type LyricsPanelProps } from "@/types/discography";
 import { motion, AnimatePresence } from "framer-motion";
+import cx from "classnames";
 
 const LyricsPanel = ({
+  type = "album",
   lyricsRef,
   selectedTrack,
   albumMeta,
@@ -13,7 +15,10 @@ const LyricsPanel = ({
   return (
     <li
       ref={lyricsRef}
-      className="w-1/2 max-h-[30rem] bg-white/75 overflow-scroll !p-10 shadow-xl flex-grow"
+      className={cx(
+        " bg-white/75 overflow-scroll !p-10 shadow-xl flex-grow",
+        type === "album" ? "w-1/2 max-h-[30rem]" : "w-full max-h-[25rem]"
+      )}
     >
       <div className="*:whitespace-break-spaces !space-y-3">
         <AnimatePresence mode="wait">

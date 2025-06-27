@@ -20,7 +20,7 @@ export default function Discography() {
 
   const location = useLocation();
   const state = location?.state as TargetCarouselProps | undefined;
-  const targetCarouselIndex = state?.carouselIndex ?? 0;
+  const targetCarouselIndex = state?.carouselIndex ?? -1;
   const targetSlideIndex = state?.slideIndex ?? 0;
 
   const minTablet = useMediaQuery({ minWidth: 768 });
@@ -49,7 +49,7 @@ export default function Discography() {
 
   useEffect(() => {
     const targetEl = carouselRefs.current[targetCarouselIndex];
-    if (!targetEl) {
+    if (targetCarouselIndex === -1 || !targetEl) {
       setCarouselReady(true);
       return;
     }

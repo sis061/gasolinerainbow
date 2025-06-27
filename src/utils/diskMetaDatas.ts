@@ -2439,7 +2439,15 @@ export const DiskMetaDatas = {
 
 const allDisks: Disk[] = [...diskAlbumData, ...diskOSTData, ...diskOthersData];
 
-const normalize = (s: string) => s.toLowerCase().replace(/\s+/g, "-");
+const normalize = (s: string) =>
+  s
+    .normalize("NFKC")
+    .toLowerCase()
+    .trim()
+    .replace(/[^\p{L}\p{N}\s/-]/gu, "") // 하이픈 `/`을 임시로 허용
+    .replace(/[\/\s]+/g, "-") // 슬래시나 공백 → 하이픈
+    .replace(/-+/g, "-") // 연속된 하이픈 정리
+    .replace(/^-+|-+$/g, ""); // 양끝 하이픈 제거
 
 export const DiskMetaMap: Record<string, Disk> = Object.fromEntries(
   allDisks.map((disk) => [normalize(disk.titleEn), disk])

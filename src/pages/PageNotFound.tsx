@@ -36,8 +36,8 @@ const PageNotFound = () => {
   }, []);
 
   return (
-    <section className="wrapper w-full min-h-[calc(100dvh-12rem)] overflow-x-hidden !mx-auto flex justify-center">
-      <div className="inner flex-grow-0 w-full flex items-center justify-center !mb-10 md:!pt-10 max-md:!px-4">
+    <section className="wrapper-full w-full min-h-screen !-mt-24 overflow-x-hidden !mx-auto flex justify-center bg-[#333] animate-pulse">
+      <div className="inner-full flex-grow-0 w-full flex items-center justify-center !mb-10 md:!pt-10 max-md:!px-4">
         <div className="flex flex-col gap-10 items-center justify-center w-full h-auto">
           {img && (
             <img
@@ -46,7 +46,7 @@ const PageNotFound = () => {
               className="opacity-50 max-w-72 "
             />
           )}
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-4 [&_*]:!text-white">
             <span className="font-bold text-xl md:text-2xl lg:text-5xl z-50">
               404 PAGE NOT FOUND
             </span>

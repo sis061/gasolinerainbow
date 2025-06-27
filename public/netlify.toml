@@ -7,3 +7,17 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
     Vary = "Accept-Encoding"
+
+# HTTP → HTTPS 리디렉션 (안전망)
+[[redirects]]
+  from = "http://grsbh.com/*"
+  to = "https://grsbh.com/:splat"
+  status = 301
+  force = true
+
+# www → non-www 리디렉션
+[[redirects]]
+  from = "https://www.grsbh.com/*"
+  to = "https://grsbh.com/:splat"
+  status = 301
+  force = true

@@ -62,7 +62,7 @@ export default function VideoBackground({ onReady }: Props) {
       playsInline
       onPlay={handleReady}
       onCanPlayThrough={handleReady}
-      // poster="/bg02.webp"
+      poster="/bg02.webp"
     >
       <source src="/bg02.mp4" type="video/mp4" />
     </video>

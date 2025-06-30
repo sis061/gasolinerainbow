@@ -34,10 +34,10 @@ const diskAlbumData: Disk[] = [
 
 그럼에도 우리는.`,
     descriptionEn: `The subway, the bed, the radio.
-parental love, desire, disordered eating.
+Filial love, desire, disordered eating.
 
 9 a.m., 6 p.m., 10 p.m., 3 a.m.
-Monkeys, cats, sardines.
+Monkey, cat, sardine.
 
 Everyone’s lethargy.
 Everyone’s worthlessness.
@@ -84,7 +84,7 @@ Artwork by namu 나무`,
 
 해가 졌음에도 당신은 달콤한 잠에 들지 못합니다.
 
-한때 같이 걷고, 같이 잠었지만 이들이 이제는 당신을 피해 달아나는 무수한 사람들을 보게 됩니다.
+한때 같이 걷고, 같이 잠들었지만 이제는 당신을 피해 달아나는 무수한 사람들을 보게 됩니다.
 
 
 악마는 참 잔인하게도 기억은 잃지 못하게 하는 장치를 심어 두었습니다.
@@ -115,16 +115,16 @@ Artwork by namu 나무`,
 
 부서지고 깨지고 무너지게
 
-그럼에도 우리는
+그럼에도 우리는...
 
 
 (그 모든 이별에)
 
-살아야 하는게
+살아야 하는 게
 
-살아만 가는게
+살아만 가는 게
 
-살아는 지는게
+살아는 지는 게
 
 
 나는 괜히 잠을 잤네
@@ -142,16 +142,16 @@ Artwork by namu 나무`,
 
 부서지고 베이고 스러지게
 
-그럼에도 우리는
+그럼에도 우리는...
 
 
 (그 모든 이별에)
 
-살아야 하는게
+살아야 하는 게
 
-살아만 가는게
+살아만 가는 게
 
-살아는 지는게
+살아는 지는 게
 
 
 (그 모든 이별에)`,
@@ -286,11 +286,11 @@ Prained, Still, Still, Still`,
 누가 소리를 질러도 끝없이 안으로, 안으로
 
 
-있잖아, 기다리지 말아, 나를
+있잖아, 기다리진 말아, 나를
 
-있잖아, 기다리지 말아, 나를
+있잖아, 기다리진 말아, 나를
 
-있잖아, 기다리지 말아, 나를
+있잖아, 기다리진 말아, 나를
 
 있잖아, 기다리지 말아, 나를
 
@@ -305,7 +305,7 @@ Prained, Still, Still, Still`,
         titleEn: "The Monkey/Mother-ship",
         lyrics: `Have I been thrown away?
 
-In a six-sides mirrored room
+In a six-sided mirrored room
 
 Stand in an aisle
 
@@ -314,7 +314,7 @@ Stand in an aisle
 
 My twin, you’ve grown up quite a lot
 
-Then Haven’t I?
+Then haven’t I?
 
 Stand in an aisle
 
@@ -350,8 +350,8 @@ We few happy family`,
       },
       {
         trackNo: 6,
-        titleKr: "Dinner, the pill & the feast",
-        titleEn: "Dinner, the pill & the feast",
+        titleKr: "Dinner, the Pill & the Feast",
+        titleEn: "Dinner, the Pill & the Feast",
         lyrics: `Devouring
 
 Anodyne
@@ -405,7 +405,7 @@ Divulge
 Food food food
 
 
-Ah, shut up and just chew it`,
+Ah, Shut up and just chew it`,
         tags: [],
       },
       {
@@ -482,13 +482,13 @@ I'd have done, if nothing mattered
 그 안에 더 많은 열 개의 눈이 날 봐요
 
 
-거꾸로 달리는 기차안에서
+거꾸로 달리는 기차 안에서
 
 사람들은 소리를 지르고
 
 나는 가만히 잠을 잤어요
 
-자다가 못 내리면 좋을텐데
+자다가 못 내리면 좋을 텐데
 
 
 같잖은 소음으로 노래하지 않을게요
@@ -500,13 +500,13 @@ I'd have done, if nothing mattered
 원하던 시험도 언제 한 번 쳐볼게요
 
 
-거꾸로 달리는 기차안에서
+거꾸로 달리는 기차 안에서
 
 사람들은 소리를 지르고
 
 나는 가만히 잠을 잤어요
 
-자다가 못 내리면 좋을텐데
+자다가 못 내리면 좋을 텐데
 
 
 라디오-친화적인 노래 위주로
@@ -515,10 +515,10 @@ I'd have done, if nothing mattered
 
 그래서 티비에는 언제 나오니?
 
-그래서 무대에 서지 말아볼게요
+그래서 무대에 서지 말아 볼게요
 
 
-거꾸로 달리는 기차안에서
+거꾸로 달리는 기차 안에서
 
 사람들은 소리를 지르고
 
@@ -1736,7 +1736,7 @@ Artwork by namu 나무, HIMINN`,
         titleEn: "The Monkey/Mother-ship",
         lyrics: `Have I been thrown away?
 
-In a six-sides mirrored room
+In a six-sided mirrored room
 
 Stand in an aisle
 
@@ -1745,7 +1745,7 @@ Stand in an aisle
 
 My twin, you’ve grown up quite a lot
 
-Then Haven’t I?
+Then haven’t I?
 
 Stand in an aisle
 

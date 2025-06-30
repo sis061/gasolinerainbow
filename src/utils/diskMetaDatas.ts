@@ -1709,7 +1709,7 @@ const diskOthersData: Disk[] = [
 While a parent's love for their child is often depicted as natural and beautiful,
 a child's feelings toward their parent are frequently omitted—or else imposed as a moral obligation.
 In the space between love flowing downward and love reaching upward,
-how can we even begin to define attachment?
+how can we even begin to define 'ATTACHMENT'?
 
 
 The baby monkey(s) standing between two mothers,

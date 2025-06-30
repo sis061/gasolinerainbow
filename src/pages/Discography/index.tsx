@@ -39,7 +39,12 @@ export default function Discography() {
     })),
     {
       key: "single",
-      component: <SingleCarousel albumMetas={DiskMetaDatas.othersMetaDatas} />,
+      component: (
+        <SingleCarousel
+          albumMetas={DiskMetaDatas.othersMetaDatas}
+          onChange={setHasInteractiveTrackList}
+        />
+      ),
     },
     {
       key: "ost",

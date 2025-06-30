@@ -2,13 +2,15 @@ import { useRef, useEffect, useState } from "react";
 
 import { Skeleton } from "@/components/ui/skeleton";
 import { Drawer, DrawerTrigger } from "@/components/ui/drawer";
+import { AnimatePresence } from "framer-motion";
 
 import cx from "classnames";
-// import { useInView } from "react-intersection-observer";
+import { useInView } from "react-intersection-observer";
 import { useMediaQuery } from "react-responsive";
 
 import { renderDiskType } from "@/utils/globalHelper";
 import useLanguageStore from "@/store/useLanguageStore";
+import useDiscographyStore from "@/store/useDiscographyStore";
 
 import TrackList from "../../components/TrackList";
 import LyricsPanel from "../../components/LyricsPanel";
@@ -16,8 +18,10 @@ import StreamingModal from "../../modals/StreamingModal";
 import MobileDrawer from "../../modals/MobileDrawer";
 import BuyingModal from "../../modals/BuyingModal";
 
-import type { SingleInfoPanelProps } from "@/types/discography";
 import Hoverable from "@/pages/Layout/components/Hoverable";
+import OverlayText from "@/pages/Layout/components/OverlayText";
+
+import type { SingleInfoPanelProps } from "@/types/discography";
 // import { useScrollLock } from "@/hooks/useScrollLock";
 
 const SingleInfoPanel = ({
@@ -25,7 +29,7 @@ const SingleInfoPanel = ({
   selectedTrack,
   setSelectedTrack,
   isHoverToolip = false,
-  // onChange,
+  onChange,
 }: SingleInfoPanelProps) => {
   const lyricsRef = useRef<HTMLLIElement | null>(null);
   const [open, setOpen] = useState<boolean>(false);
@@ -39,20 +43,20 @@ const SingleInfoPanel = ({
   const isBandcampAvailable = Object.keys(albumMeta.urls).includes("bandcamp");
   const isStreamingAvailable =
     albumMeta.urls?.appleMusic && albumMeta.urls?.appleMusic?.length > 0;
-  // const { ref, inView } = useInView({
-  //   threshold: 0.5,
-  //   triggerOnce: false,
-  // });
+  const { ref, inView } = useInView({
+    threshold: 0.5,
+    triggerOnce: false,
+  });
 
-  // useEffect(() => {
-  //   const timeout = setTimeout(() => {
-  //     if (onChange) {
-  //       onChange(inView);
-  //     }
-  //   }, 50);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (onChange) {
+        onChange(inView);
+      }
+    }, 50);
 
-  //   return () => clearTimeout(timeout);
-  // }, [inView]);
+    return () => clearTimeout(timeout);
+  }, [inView]);
 
   useEffect(() => {
     if (lyricsRef.current) {
@@ -89,6 +93,7 @@ const SingleInfoPanel = ({
                 language,
                 minTablet,
                 type,
+                ref,
               }}
             />
           </ol>
@@ -131,6 +136,7 @@ interface TriggerProps extends Omit<SingleInfoPanelProps, "onChange"> {
     kr: string;
     en: string;
   };
+  ref?: (node?: Element | null) => void;
 }
 
 const Trigger = (props: TriggerProps) => {
@@ -142,35 +148,61 @@ const Trigger = (props: TriggerProps) => {
     language,
     minTablet,
     type,
+    ref,
   } = props;
+  const triggerRef = useRef<HTMLDivElement | null>(null);
+  const { showOverlayText } = useDiscographyStore();
 
   return (
     <li className="flex flex-col gap-6 w-full items-center justify-center">
       <div
         id="trigger-observer"
-        // ref={ref}
+        ref={ref}
         className="flex flex-col justify-center items-center gap-2"
       >
-        <div
-          onClick={() => setSelectedTrack(null)}
-          className={cx(
-            "cursor-pointer relative w-auto transition-all duration-200 hover:opacity-50 ",
-            minTablet &&
-              !selectedTrack &&
-              "!bg-white/75 [&_>span]:!text-black !px-1"
-          )}
-        >
-          {minTablet ? (
-            <span>{language === "ko" ? `${type.kr} 소개` : `About`}</span>
-          ) : (
-            <DrawerTrigger className="touch-pan-y flex items-center gap-2">
-              <span>{language === "ko" ? `${type.kr} 소개` : `About`}</span>
-            </DrawerTrigger>
-          )}
-        </div>
         <Hoverable
           isActive={isHoverToolip}
-          area={{ top: 300, bottom: 100, left: 200, right: 300 }}
+          area={{ top: 150, bottom: 0, left: 150, right: 300 }}
+          tooltipText={
+            language === "ko"
+              ? "'싱글 소개'를 눌러 상세 보기"
+              : "Click 'About' to view details"
+          }
+        >
+          <div
+            ref={triggerRef}
+            onClick={() => setSelectedTrack(null)}
+            className={cx(
+              "cursor-pointer relative w-auto transition-all duration-200 hover:opacity-50 ",
+              minTablet &&
+                !selectedTrack &&
+                "!bg-white/75 [&_>span]:!text-black !px-1"
+            )}
+          >
+            {minTablet ? (
+              <span>{language === "ko" ? `${type.kr} 소개` : `About`}</span>
+            ) : (
+              <DrawerTrigger className="touch-pan-y flex items-center gap-2">
+                <span>{language === "ko" ? `${type.kr} 소개` : `About`}</span>
+              </DrawerTrigger>
+            )}
+            <AnimatePresence mode="wait">
+              {showOverlayText && (
+                <OverlayText
+                  targetRef={triggerRef}
+                  text={
+                    language === "ko"
+                      ? "소개를 눌러 상세 보기"
+                      : "Tab 'About' to view details"
+                  }
+                />
+              )}
+            </AnimatePresence>
+          </div>
+        </Hoverable>
+        <Hoverable
+          isActive={isHoverToolip}
+          area={{ top: 0, bottom: 150, left: 200, right: 300 }}
           tooltipText={
             language === "ko"
               ? "'노래 제목'을 눌러 가사 읽기"

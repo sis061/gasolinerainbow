@@ -19,7 +19,7 @@ const SingleCarousel = ({
   albumMetas,
   initialSlideIndex = 0,
   ready = false,
-  // , onChange
+  onChange,
 }: SingleCarouselsProps) => {
   const carouselRef = useRef<CarouselApi | null>(null);
   const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
@@ -49,8 +49,9 @@ const SingleCarousel = ({
               albumMeta={albumMeta}
               selectedTrack={selectedTrack}
               setSelectedTrack={setSelectedTrack}
-              isHoverToolip={false}
-              // onChange={onChange}
+              // isHoverToolip={false}
+              isHoverToolip={i === 0}
+              onChange={i === 0 ? onChange : undefined}
             />
           </CarouselItem>
         ))}

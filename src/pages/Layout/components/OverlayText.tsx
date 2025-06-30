@@ -7,12 +7,16 @@ import { CircleAlert } from "lucide-react";
 import useDiscographyStore from "@/store/useDiscographyStore";
 // import { getUserPlatformType } from "@/utils/globalHelper";
 
+type Direction = "top" | "bottom" | "left" | "right";
+
 const OverlayText = ({
   targetRef,
   text = "",
+  direction = "right",
 }: {
   targetRef: React.RefObject<HTMLElement | null>;
   text: string;
+  direction?: Direction;
 }) => {
   const node = document.getElementById("root");
   if (!node) return null;
@@ -24,19 +28,31 @@ const OverlayText = ({
     const updatePos = () => {
       if (targetRef?.current) {
         const rect = targetRef.current.getBoundingClientRect();
-        // const platformOffset = {
-        //   top:
-        //     platformType === "mobile" ? rect.height / 2 - 24 : rect.height / 2,
-        //   left: platformType === "mobile" ? rect.left + 48 : rect.right + 12,
-        // };
-        // setPos({
-        //   top: rect.top + platformOffset.top,
-        //   left: platformOffset.left,
-        // });
-        setPos({
-          top: rect.top + rect.height / 2,
-          left: rect.right + 12,
-        });
+
+        let top = 0;
+        let left = 0;
+
+        switch (direction) {
+          case "top":
+            top = rect.top - 8; // 위쪽에 약간 떨어지게
+            left = rect.left + rect.width / 2;
+            break;
+          case "bottom":
+            top = rect.bottom + 8;
+            left = rect.left + rect.width / 2;
+            break;
+          case "left":
+            top = rect.top + rect.height / 2;
+            left = rect.left - 8;
+            break;
+          case "right":
+          default:
+            top = rect.top + rect.height / 2;
+            left = rect.right + 8;
+            break;
+        }
+
+        setPos({ top, left });
       }
     };
     updatePos();
@@ -47,7 +63,7 @@ const OverlayText = ({
       window.removeEventListener("resize", updatePos);
       window.removeEventListener("scroll", updatePos);
     };
-  }, [targetRef]);
+  }, [targetRef, direction]);
 
   if (!pos) return null;
 
@@ -64,7 +80,14 @@ const OverlayText = ({
           style={{
             top: pos.top,
             left: pos.left,
-            transform: "translateY(-50%)",
+            transform:
+              direction === "top"
+                ? "translate(-50%, -100%)"
+                : direction === "bottom"
+                  ? "translate(-50%, 0)"
+                  : direction === "left"
+                    ? "translate(-100%, -50%)"
+                    : "translate(0, -50%)",
           }}
         >
           <div className="flex items-center gap-2 *:!text-white ">

@@ -65,7 +65,7 @@ const TrackList = ({
                       triggerRefs.current[i] = el;
                     }}
                     className={cx(
-                      "whitespace-break-spaces ",
+                      "whitespace-break-spaces",
                       minTablet &&
                         selectedTrack?.trackNo === i + 1 &&
                         "!bg-white/75 !px-1"
@@ -89,12 +89,15 @@ const TrackList = ({
               <AnimatePresence mode="wait">
                 {showOverlayText && (
                   <OverlayText
-                    targetRef={{ current: triggerRefs.current[2] }}
+                    targetRef={{
+                      current: triggerRefs.current[tracks.length === 1 ? 0 : 2],
+                    }}
                     text={
                       language === "ko"
                         ? "노래 제목을 눌러 가사 읽기"
                         : "Tab the 'Track Title' to view lyrics"
                     }
+                    direction={tracks.length === 1 ? "bottom" : "right"}
                   />
                 )}
               </AnimatePresence>

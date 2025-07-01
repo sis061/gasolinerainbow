@@ -52,7 +52,7 @@ Arranged by HIMINN
 
 Vocal by HIMINN
 All instruments performed and programmed by HIMINN
-  except orchestrations by 손다협 (see below)
+ except orchestrations by 손다협 (see below)
 
 Orchestrations
 - Track 8: Arranged and MIDI programmed by 손다협; re-edited by HIMINN
@@ -60,7 +60,9 @@ Orchestrations
 
 Recorded at Phoné Studio  (Track 2-6, 8-9)
 Mixed & Mastered by Shinhwan at Phoné Studio
-Artwork by namu 나무`,
+
+Artwork by namu 나무
+ except Typography by HIMINN`,
     tracks: [
       {
         trackNo: 1,
@@ -286,13 +288,11 @@ Prained, Still, Still, Still`,
 누가 소리를 질러도 끝없이 안으로, 안으로
 
 
-있잖아, 기다리진 말아, 나를
+있잖아, 기다리진 말아 나를
 
-있잖아, 기다리진 말아, 나를
+있잖아, 기다리진 말아 나를
 
-있잖아, 기다리진 말아, 나를
-
-있잖아, 기다리지 말아, 나를
+있잖아, 기다리진 말아 나를
 
 있잖아, 기다리지...
 
@@ -1718,7 +1718,8 @@ and one who is warm but hollow.
 
 Borrowing from Harry Harlow’s famous attachment experiment,
 I tried to ask: What sets love in motion?`,
-    credits: `Produced by HIMINN
+    credits: `
+Produced by HIMINN
 Composed by HIMINN
 Lyrics by HIMINN
 Arranged by HIMINN
@@ -1728,7 +1729,10 @@ All instruments performed and programmed by HIMINN
 
 Recorded at Phoné Studio
 Mixed & Mastered by Shinhwan at Phoné Studio
-Artwork by namu 나무, HIMINN`,
+
+Artwork
+- Illustration & Colouring by namu 나무
+- Digital Editing, Layout & Typography by After Midnight`,
     tracks: [
       {
         trackNo: 1,

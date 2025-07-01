@@ -1,12 +1,23 @@
-import useLanguageStore from "@/store/useLanguageStore";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import cx from "classnames";
+import useLanguageStore from "@/store/useLanguageStore";
 
 const PageNotFound = () => {
   const [img, setImg] = useState<string>("");
   const [timer, setTimer] = useState<number>(5);
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const { language } = useLanguageStore();
+
+  const isDiscography = pathname.startsWith("/discography");
+  const isNotes = pathname.startsWith("/authornote");
+  const isStreamRedirect = pathname.startsWith("/stream");
+
+  const backgroundColor =
+    isDiscography || isNotes || isStreamRedirect
+      ? "bg-transparent"
+      : "bg-black/75";
 
   useEffect(() => {
     import("../assets/images/PageNotFound.webp")
@@ -36,7 +47,12 @@ const PageNotFound = () => {
   }, []);
 
   return (
-    <section className="wrapper-full w-full min-h-screen !-mt-24 overflow-x-hidden !mx-auto flex justify-center bg-[#333] animate-pulse">
+    <section
+      className={cx(
+        "wrapper-full w-full min-h-screen !-mt-24 overflow-x-hidden !mx-auto flex justify-center",
+        backgroundColor
+      )}
+    >
       <div className="inner-full flex-grow-0 w-full flex items-center justify-center !mb-10 md:!pt-10 max-md:!px-4">
         <div className="flex flex-col gap-10 items-center justify-center w-full h-auto">
           {img && (

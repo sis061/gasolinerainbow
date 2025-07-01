@@ -5,6 +5,7 @@ import useLanguageStore from "@/store/useLanguageStore";
 import HomeAlbumOverview from "./components/HomeAlbumOverview";
 import { DiskMetaDatas } from "@/utils/diskMetaDatas";
 import type { Disk } from "@/types/discography";
+import type { JSX } from "react";
 // import HomeCountDown from "./components/HomeCountDown";
 
 export default function Home() {
@@ -109,17 +110,21 @@ const trimDescription = <T = void,>(
   const description =
     lang === "ko" ? albumMeta.descriptionKr : albumMeta.descriptionEn;
 
+  const DirBtn: JSX.Element = (
+    <button
+      onClick={() => dir(dirParam)}
+      className="!ml-1 cursor-pointer hover:!text-blue-800 transition-colors"
+      aria-label={lang === "ko" ? "상세 보기" : "View Detail"}
+    >
+      {"[...]"}
+    </button>
+  );
+
   if (!endSentence) {
     return (
       <>
         {description}
-        <button
-          onClick={() => dir(dirParam)}
-          className="!ml-1 cursor-pointer hover:!text-blue-800 transition-colors"
-          aria-label={lang === "ko" ? "상세 보기" : "View Detail"}
-        >
-          {"[...]"}
-        </button>
+        {DirBtn}
       </>
     );
   }
@@ -132,13 +137,7 @@ const trimDescription = <T = void,>(
   return (
     <>
       {trimmed}
-      <button
-        onClick={() => dir(dirParam)}
-        className="!ml-1 cursor-pointer hover:!text-blue-800 transition-colors"
-        aria-label={lang === "ko" ? "상세 보기" : "View Detail"}
-      >
-        {"[...]"}
-      </button>
+      {DirBtn}
     </>
   );
 };

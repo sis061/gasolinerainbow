@@ -10,7 +10,7 @@ const diskAlbumData: Disk[] = [
     year: 2025,
     titleKr: "평화로운 뇌와…",
     titleEn: "A Brain In Peace &…",
-    image: diskImages.hm,
+    image: diskImages.BIP,
     urls: {
       bandcamp: "",
       spotify: "",

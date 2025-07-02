@@ -1,7 +1,7 @@
 import { diskImages } from "@/assets/images/images";
 import type { Disk } from "@/types/discography";
 
-// TODO: 앨범커버, 링크 다 되면 데이터 업데이트
+// TODO: 링크 다 되면 데이터 업데이트
 
 const diskAlbumData: Disk[] = [
   {
@@ -44,8 +44,7 @@ Everyone’s worthlessness.
 Everyone’s farewell to everyone.
 
 And still—we are.`,
-    credits: `
-Produced by HIMINN
+    credits: `Produced by HIMINN
 Composed by HIMINN
 Lyrics by HIMINN
 Arranged by HIMINN
@@ -101,8 +100,7 @@ Artwork by namu 나무
         trackNo: 2,
         titleKr: "Corns N Beans",
         titleEn: "Corns N Beans",
-        lyrics: `
-나는 너에게 영광을 주겠다
+        lyrics: `나는 너에게 영광을 주겠다
 
 대신 너에게서 밤에 자는 잠을 뺏겠다
 

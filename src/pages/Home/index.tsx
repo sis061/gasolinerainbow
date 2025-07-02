@@ -16,7 +16,7 @@ export default function Home() {
 
   // // TODO: 앨범 발매 전 유튜브 업로드 하고 아이디 string 바꾸기
   const HMVideoId: string = "q0RXd1Tj7tk";
-  const TMMSVideoId: string = "q0RXd1Tj7tk";
+  const TMMSVideoId: string = "VwiyiS41qwo";
   // const BIPVideoId: string = "q0RXd1Tj7tk";
 
   const [HMData] = filter(

@@ -1732,7 +1732,8 @@ Mixed & Mastered by Shinhwan at Phoné Studio
 
 Artwork
 - Illustration & Colouring by namu 나무
-- Digital Editing, Layout & Typography by After Midnight`,
+- Digital Editing, Layout by namu 나무, After Midnight
+- Typography by After Midnight, HIMINN`,
     tracks: [
       {
         trackNo: 1,

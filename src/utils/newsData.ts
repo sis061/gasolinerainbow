@@ -345,7 +345,7 @@ HIMINN (@himinn___)
     idx: 13,
     type: "release",
     date: "2025-07-16",
-    img: diskImages.foolsbox,
+    img: diskImages.TMMS,
     title: "싱글 [The Monkey/Mother-ship]",
     content: `싱글 [The Monkey/Mother-ship]이 발매되었습니다.
 
@@ -380,7 +380,11 @@ All instruments performed and programmed by HIMINN
 
 Recorded at Phoné Studio
 Mixed & Mastered by Shinhwan at Phoné Studio
-Artwork by namu 나무, HIMINN`,
+
+Artwork
+- Illustration & Colouring by namu 나무
+- Digital Editing, Layout by namu 나무, After Midnight
+- Typography by After Midnight, HIMINN`,
   },
   {
     idx: 14,

@@ -1680,7 +1680,7 @@ const diskOthersData: Disk[] = [
     year: 2025,
     titleKr: "The Monkey/Mother-ship",
     titleEn: "The Monkey/Mother-ship",
-    image: diskImages.foolsbox,
+    image: diskImages.TMMS,
     urls: {
       bandcamp: "",
       spotify: "",

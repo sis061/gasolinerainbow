@@ -33,7 +33,6 @@ const OSTCarousel = ({
   const [imageLoadState, setImageLoadState] = useState<boolean[]>(
     Array(albumMetas.length).fill(false)
   );
-
   const { language } = useLanguageStore();
 
   // useEffect(() => {
@@ -60,6 +59,8 @@ const OSTCarousel = ({
           const isBandcampAvailable = Object.keys(albumMeta.urls).includes(
             "bandcamp"
           );
+          const isStreamingAvailable =
+            !!albumMeta.urls?.appleMusic || !!albumMeta.urls?.melon;
           return (
             <CarouselItem
               key={i}
@@ -96,7 +97,9 @@ const OSTCarousel = ({
                         : albumMeta.titleEn}
                     </span>
                     <div className="!space-x-4">
-                      <StreamingModal albumMeta={albumMeta} />
+                      {isStreamingAvailable && (
+                        <StreamingModal albumMeta={albumMeta} />
+                      )}
                       {isBandcampAvailable && (
                         <BuyingModal albumMeta={albumMeta} />
                       )}

@@ -25,16 +25,17 @@ export default function Layout({ children }: { children: ReactNode }) {
 
   const { pathname } = useLocation();
   const isDiscography = pathname.startsWith("/discography");
-  const isNotes = pathname.startsWith("/authornote");
+  // const isNotes = pathname.startsWith("/authornote");
   const isStreamRedirect = pathname.startsWith("/stream");
 
   const { hasInteractiveTrackList, setHasInteractiveTrackList } =
     useDiscographyStore();
 
-  const backgroundColor =
-    isDiscography || isNotes || isStreamRedirect
-      ? "rgba(0, 0, 0, 0.5)"
-      : "rgba(255, 255, 255, 0.25)";
+  // const backgroundColor =
+  //   isDiscography || isNotes || isStreamRedirect
+  //     ? "rgba(0, 0, 0, 0.5)"
+  //     : "rgba(255, 255, 255, 0.25)";
+  const backgroundColor = "rgba(174, 35, 35, 0.333)";
 
   useEffect(() => {
     if (!pathname.startsWith("/authornote")) {

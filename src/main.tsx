@@ -19,7 +19,11 @@ const GlobalFallback = ({ visible }: { visible: boolean }) => (
     initial={{ opacity: 1 }}
     animate={{ opacity: visible ? 1 : 0 }}
     transition={{ duration: 0.3 }}
-    className={`fixed inset-0 bg-black flex flex-col gap-6 items-center justify-center z-[9999] pointer-events-none`}
+    className={`fixed inset-0 flex flex-col gap-6 items-center justify-center z-[9999] pointer-events-none`}
+    style={{
+      backgroundImage:
+        "linear-gradient(to top right, #000 60%, #ae2323 100%, #000 0%)",
+    }}
   >
     <div className="w-auto min-h-16 flex flex-col items-center justify-center *:transition-all *:duration-300 hover:animate-pulse">
       <p className="text-lg font-extrabold !-mb-2 !mr-6 !text-white">

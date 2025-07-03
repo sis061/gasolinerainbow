@@ -42,7 +42,7 @@ const SingleInfoPanel = ({
   const type = renderDiskType(albumMeta.type);
   const isBandcampAvailable = Object.keys(albumMeta.urls).includes("bandcamp");
   const isStreamingAvailable =
-    albumMeta.urls?.appleMusic && albumMeta.urls?.appleMusic?.length > 0;
+    !!albumMeta.urls?.appleMusic || !!albumMeta.urls?.melon;
   const { ref, inView } = useInView({
     threshold: 0.5,
     triggerOnce: false,

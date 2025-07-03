@@ -1680,7 +1680,7 @@ const diskOthersData: Disk[] = [
     titleEn: "The Monkey/Mother-ship",
     image: diskImages.TMMS,
     urls: {
-      bandcamp: "",
+      bandcamp: "https://himinnn.bandcamp.com/track/the-monkey-mother-ship",
       spotify: "",
       youtubeMusic: "",
       appleMusic: "",

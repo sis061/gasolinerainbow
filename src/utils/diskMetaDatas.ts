@@ -1716,15 +1716,16 @@ Vocal by HIMINN`,
     titleEn: "In The Need Of A Good Cry",
     image: diskImages.firstEP,
     urls: {
-      spotify:
-        "https://open.spotify.com/album/7H2JpgtWZ0wYBfaJf75VOF?si=lB8D3YRESCGc186322_1Dw",
-      youtubeMusic:
-        "https://music.youtube.com/playlist?list=OLAK5uy_lVmPPnoad9olmyrexgevdzSsSyeJ0d5mM&si=Qbcxm0NXYzlcDwgt",
-      appleMusic:
-        "https://music.apple.com/us/album/in-the-need-of-a-good-cry-ep/1569826606",
-      melon: "https://www.melon.com/album/detail.htm?albumId=10607746",
-      bugs: "https://music.bugs.co.kr/album/20396693",
-      genie: "https://www.genie.co.kr/detail/albumInfo?axnm=82045830",
+      bandcamp: "https://himinnn.bandcamp.com/album/in-the-need-of-a-good-cry",
+      // spotify:
+      //   "https://open.spotify.com/album/7H2JpgtWZ0wYBfaJf75VOF?si=lB8D3YRESCGc186322_1Dw",
+      // youtubeMusic:
+      //   "https://music.youtube.com/playlist?list=OLAK5uy_lVmPPnoad9olmyrexgevdzSsSyeJ0d5mM&si=Qbcxm0NXYzlcDwgt",
+      // appleMusic:
+      //   "https://music.apple.com/us/album/in-the-need-of-a-good-cry-ep/1569826606",
+      // melon: "https://www.melon.com/album/detail.htm?albumId=10607746",
+      // bugs: "https://music.bugs.co.kr/album/20396693",
+      // genie: "https://www.genie.co.kr/detail/albumInfo?axnm=82045830",
     },
     isCD: false,
     cdUrl: null,
@@ -1890,6 +1891,8 @@ Weaving melodies from solitude, sadness, reflection, and shame.
 
 Five songs that gather these feelings,
 A personal meditation on what it means to cry well.
+
+...
 
 1. Intro ; Extra
 

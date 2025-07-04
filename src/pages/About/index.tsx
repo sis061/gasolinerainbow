@@ -31,7 +31,7 @@ const About = () => {
       <>
         Hello.
         <br />
-        HIMINN is usually described like :
+        HIMINN is usually described as :
         <br />
         <br />
         Unconventional sounds. I find it hard to label my genre. Usually, your

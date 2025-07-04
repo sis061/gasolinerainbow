@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from "framer-motion";
 import { CircleHelp } from "lucide-react";
 
 import cx from "classnames";
@@ -31,17 +32,23 @@ export default function GuideBtn({
   }, [showOverlayText]);
 
   return (
-    <button
-      className={cx(
-        "cursor-pointer rounded-full right-6 md:right-8 lg:right-12 z-50 bg-yellow-500/75 hover:bg-white text-black shadow-md transition-all duration-150",
-        isFooterVisible
-          ? "absolute -top-16 md:-top-16 lg:-top-18"
-          : "fixed bottom-20 md:bottom-20 lg:bottom-8"
-      )}
-      aria-label="Discography Info"
-      onClick={flashOverlay}
-    >
-      <CircleHelp size={40} className="animate-pulse" />
-    </button>
+    <AnimatePresence mode="wait">
+      <motion.button
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        className={cx(
+          "cursor-pointer rounded-full right-6 md:right-8 lg:right-12 z-50 bg-yellow-500/75 hover:bg-white text-black shadow-md transition-all duration-500",
+          isFooterVisible
+            ? "absolute -top-16 md:-top-16 lg:-top-18"
+            : "fixed bottom-20 md:bottom-20 lg:bottom-8"
+        )}
+        aria-label="Discography Info"
+        onClick={flashOverlay}
+      >
+        <CircleHelp size={40} className="animate-pulse" />
+      </motion.button>
+    </AnimatePresence>
   );
 }

@@ -24,8 +24,9 @@ const Header = () => {
   const minTablet = useMediaQuery({ minWidth: 768 });
 
   const { pathname } = useLocation();
-  const bgBlackRoute: boolean =
-    pathname === "/discography" || pathname.startsWith("/authornote");
+  // const bgBlackRoute: boolean =
+  //   pathname === "/discography" || pathname.startsWith("/authornote");
+  const bgBlackRoute = false;
 
   const isScrolled = useScrollState();
   const { language, setLanguage } = useLanguageStore();
@@ -153,7 +154,7 @@ const HeaderRight = ({
       <Languages
         size={28}
         color={"#000"}
-        className="duration-150 w-full h-full"
+        className="duration-150 w-full h-full xl:!p-0 max-lg:!p-0 max-xl:!p-[1.5px]"
       />
       <motion.div
         initial={false}

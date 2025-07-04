@@ -34,7 +34,8 @@ export interface Disk {
   image: string;
   urls: DiskUrls;
   isCD: boolean;
-  cdUrl?: string | null;
+  cdUrl?: [{ store: string; color: string; url: string }];
+  maansunUrl?: string;
   descriptionKr: string;
   descriptionEn: string;
   credits: string;
@@ -71,6 +72,8 @@ export interface SingleCarouselsProps {
 export interface CarouselNavigationProps {
   onPrev: () => void;
   onNext: () => void;
+  isFirst: boolean;
+  isLast: boolean;
 }
 
 export interface LyricsPanelProps {

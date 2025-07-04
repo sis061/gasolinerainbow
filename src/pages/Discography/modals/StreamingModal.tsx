@@ -54,7 +54,7 @@ const StreamingModal = ({ albumMeta }: { albumMeta: Disk }) => {
           </div>
         </DialogTrigger>
         <DialogContent
-          className="flex flex-col items-center !p-10 !bg-black/90 [&_>button>svg]:!stroke-white [&_>button]:cursor-pointer"
+          className="flex flex-col items-center !p-10 !bg-black/90 [&_>button>svg]:!stroke-white [&_>button]:cursor-pointer rounded-xs border-white/25"
           aria-describedby="drawer-description"
         >
           <DialogHeader>

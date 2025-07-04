@@ -14,6 +14,7 @@ const AlbumIntroPanel = ({ albumMeta }: { albumMeta: Disk }) => {
   const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
   const { language } = useLanguageStore();
   const isBandcampAvailable = Object.keys(urls).includes("bandcamp");
+  const isStreamingAvailable = urls?.appleMusic && urls?.appleMusic?.length > 0;
 
   return (
     <ul className="w-full h-full flex items-center gap-10 max-lg:flex-col justify-center lg:justify-between">
@@ -42,9 +43,11 @@ const AlbumIntroPanel = ({ albumMeta }: { albumMeta: Disk }) => {
         </span>
 
         <ol className="flex gap-6">
-          <li>
-            <StreamingModal albumMeta={albumMeta} />
-          </li>
+          {isStreamingAvailable && (
+            <li>
+              <StreamingModal albumMeta={albumMeta} />
+            </li>
+          )}
           {isBandcampAvailable && (
             <li>
               <BuyingModal albumMeta={albumMeta} />

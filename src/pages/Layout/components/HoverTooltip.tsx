@@ -17,7 +17,7 @@ const HoverTooltip = ({ text, x, y }: HoverTooltipProps) => {
       )}
       style={{ left: x + 12, top: y - 36 }}
     >
-      <div className="flex items-center gap-2 !px-4 !py-2 !text-base !font-medium *:!text-white bg-black/75 shadow-lg backdrop-blur-md max-w-xs">
+      <div className="flex items-center gap-2 !px-2 !py-2 !text-base !font-medium *:!text-white bg-black/75 shadow-lg backdrop-blur-md max-w-xs rounded-xs">
         <MessageCircleWarning size={18} color="yellow" />
         <span className="leading-tight break-words">{text}</span>
       </div>

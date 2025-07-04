@@ -131,7 +131,7 @@ const StreamingPlatformButtons = ({
             <Button
               variant="default"
               style={{ backgroundColor: color }}
-              className={`w-full min-w-fit !px-3 !py-2 hover:opacity-75 cursor-pointer`}
+              className={`w-full min-w-fit !px-3 !py-2 hover:opacity-75 cursor-pointer transition-all duration-150 rounded-xs`}
             >
               <Suspense fallback={<PuffLoader color="#fff" size={16} />}>
                 <Component fill="#fff" />

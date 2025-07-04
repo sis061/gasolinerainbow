@@ -24,8 +24,9 @@ const Header = () => {
   const minTablet = useMediaQuery({ minWidth: 768 });
 
   const { pathname } = useLocation();
-  const bgBlackRoute: boolean =
-    pathname === "/discography" || pathname.startsWith("/authornote");
+  // const bgBlackRoute: boolean =
+  //   pathname === "/discography" || pathname.startsWith("/authornote");
+  const bgBlackRoute = false;
 
   const isScrolled = useScrollState();
   const { language, setLanguage } = useLanguageStore();

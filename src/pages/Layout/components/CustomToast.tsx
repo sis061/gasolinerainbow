@@ -11,7 +11,7 @@ export interface CustomToastProps {
 
 const CustomToast = ({ t, icon, content }: CustomToastProps) => {
   return (
-    <div className="flex flex-col min-w-80 bg-accent !px-6 !py-4 relative border-1 border-black/75">
+    <div className="flex flex-col min-w-80 bg-accent !px-6 !py-4 relative border-1 border-black/75 rounded-xs">
       <button
         onClick={() => toast.dismiss(t)}
         className="absolute top-2 right-2 cursor-pointer hover:animate-pulse"

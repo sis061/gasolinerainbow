@@ -43,9 +43,9 @@ const About = () => {
   return (
     <section className="wrapper w-full min-h-[calc(100dvh-12rem)] overflow-x-hidden !mx-auto flex justify-center">
       <div className="inner flex-grow-0 w-full flex items-center justify-center !mb-10 !mt-2 max-md:!px-4">
-        <ul className="w-full h-full flex flex-col lg:flex-row items-center gap-6 lg:gap-0 justify-between lg:justify-center max-lg:!pt-6 bg-white/75 lg:bg-transparent shadow-2xl lg:shadow-none">
-          <li className="max-w-[90%] lg:max-w-1/2 h-1/2 z-10 relative !aspect-square lg:!mb-56 lg:!-mr-28">
-            <div className="bg-white/75 !p-1 flex items-center justify-center w-full h-full absolute inset-0">
+        <ul className="w-full flex flex-col lg:flex-row items-center gap-6 lg:gap-0 justify-center max-lg:!pt-6 bg-white/75 lg:bg-transparent shadow-2xl lg:shadow-none">
+          <li className="w-1/3 z-10 relative !aspect-square lg:!mb-32 lg:!-mr-48">
+            <div className="bg-white/25 lg:bg-white/75 !p-1 flex items-center justify-center w-full h-full absolute inset-0">
               {!isImageLoaded && (
                 <Skeleton className="w-full h-full rounded-none bg-[#333]" />
               )}
@@ -61,12 +61,12 @@ const About = () => {
               />
             </div>
           </li>
-          <li className="min-w-1/2 max-w-3/4 flex flex-col gap-12 items-center lg:items-start justify-center lg:bg-white/75 lg:!p-6 lg:!mt-56 lg:!-ml-28">
-            <div className="flex flex-col w-full items-center lg:items-end lg:!pr-5 xl:!pr-8">
-              <h1 className="text-2xl lg:text-3xl xl:text-4xl [&_>span]:text-3xl [&_>span]:lg:text-4xl [&_>span]:xl:text-5xl text-center">
+          <li className="min-w-1/2 max-w-3/4 flex flex-col lg:gap-12 items-center lg:items-start justify-center lg:bg-white/75 max-lg:!pt-3 lg:!p-6 lg:!mt-48 lg:!pl-12">
+            <div className="flex flex-col w-full items-center lg:items-start lg:!ml-52">
+              <h1 className="text-2xl lg:text-3xl xl:text-4xl [&_>span]:font-light [&_>span]:text-3xl [&_>span]:lg:text-4xl [&_>span]:xl:text-5xl text-center">
                 H<span>í</span>M<span>í</span>NN, HIMINN,
               </h1>
-              <h1 className="text-2xl lg:text-3xl xl:text-4xl text-center">
+              <h1 className="text-2xl lg:text-3xl xl:text-4xl text-center lg:!pl-2">
                 himinn,{" "}
                 <a
                   href="https://youtu.be/YVEo4jbA9QA?si=UvXN6osKgW3nHsyR"
@@ -81,7 +81,9 @@ const About = () => {
                 </a>
               </h1>
             </div>
-            <p className="max-lg:!p-6">{aboutDescription[language]}</p>
+            <p className="max-lg:!py-6 max-lg:!-mx-3">
+              {aboutDescription[language]}
+            </p>
           </li>
         </ul>
       </div>

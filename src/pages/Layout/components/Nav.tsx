@@ -31,10 +31,11 @@ const Nav = ({
           <Link
             to={to}
             className={cx(
-              "font-extrabold text-lg max-sm:text-sm hover:border-b-1 hover:opacity-100 transition-all border-[#1b2838] opacity-70",
+              "font-extrabold text-lg max-sm:text-sm  hover:opacity-100 transition-all  opacity-65",
               minTablet
                 ? (isScrolled || bgBlackRoute) && "!text-white !border-white"
                 : "!text-white !border-white",
+              // "border-[#1b2838] hover:border-b-1"
               pathname.startsWith(to) && "opacity-100"
             )}
           >

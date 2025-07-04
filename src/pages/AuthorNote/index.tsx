@@ -42,6 +42,7 @@ export default function AuthorNote() {
   });
   const navigate = useNavigate();
   const minMobile = useMediaQuery({ minWidth: 640 });
+  const minTablet = useMediaQuery({ minWidth: 768 });
   const { language } = useLanguageStore();
 
   const goDetail = (note: any) => {
@@ -49,7 +50,7 @@ export default function AuthorNote() {
   };
 
   // 페이지 수에 따른 목록 렌더링
-  const ROWS_PER_PAGE = minMobile ? 6 : 3;
+  const ROWS_PER_PAGE = minMobile ? (minTablet ? 6 : 4) : 3;
   const totalPages = Math.ceil(reversedNotes.length / ROWS_PER_PAGE);
   const currentGroup = Math.floor((page - 1) / PAGE_GROUP_SIZE);
   const startPage = currentGroup * PAGE_GROUP_SIZE + 1;
@@ -111,17 +112,17 @@ export default function AuthorNote() {
                   <TableCell className="order-1 !pr-2 md:!px-2 text-center">
                     {note.idx + 1}
                   </TableCell>
-                  <TableCell className="h-full whitespace-normal md:min-w-[10rem] max-md:absolute max-md:w-2/3 max-md:text-right top-1.5 right-0 order-3 md:order-2 max-md:text-xs !px-2">
+                  <TableCell className="h-full whitespace-normal md:min-w-[10rem] max-md:h-auto max-md:absolute max-md:w-full max-md:text-right top-1.5 right-0 order-3 md:order-2 max-md:text-xs !px-2">
                     <div
                       style={{
                         borderColor: renderNoteTypeColor(note.category),
                       }}
-                      className="border-r-2 md:border-r-0 md:border-l-2 md:!min-h-12 flex items-center justify-end md:justify-start "
+                      className="border-r-2 md:border-r-0 md:border-l-2 md:!min-h-12 flex items-center justify-end md:justify-start"
                     >
                       <span className="!px-1">{note.category}</span>
                     </div>
                   </TableCell>
-                  <TableCell className="order-2 md:order-3 !py-4 max-md:!py-6 flex flex-col gap-3 justify-center cursor-pointer !px-2">
+                  <TableCell className="order-2 md:order-3 !py-4 max-md:!py-6 flex flex-col gap-3 justify-center cursor-pointer !px-2 max-md:!mt-1">
                     <span className="text-xl lg:text-2xl font-semibold whitespace-normal line-clamp-1">
                       {note.title}
                     </span>
@@ -145,7 +146,11 @@ export default function AuthorNote() {
                     setPage(startPage - 1);
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
-                  className="hover:bg-transparent hover:[&_>svg]:stroke-accent *:transition-all duration-150 cursor-pointer rounded-none hover:animate-pulse"
+                  aria-disabled={page === startPage}
+                  className={cx(
+                    page === startPage && "[&_>svg]:stroke-black/25",
+                    "aria-disabled:!cursor-default aria-disabled:hover:[&_>svg]:stroke-black/25 hover:bg-transparent hover:[&_>svg]:stroke-accent *:transition-all duration-150 cursor-pointer rounded-xs hover:animate-pulse"
+                  )}
                 >
                   <ChevronsLeft className="h-4 w-4" />
                 </PaginationLink>
@@ -157,7 +162,11 @@ export default function AuthorNote() {
                 setPage((prev) => Math.max(prev - 1, 1));
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
-              className="hover:bg-transparent hover:[&_>svg]:stroke-accent *:transition-all duration-150 cursor-pointer rounded-none hover:animate-pulse"
+              aria-disabled={page === startPage}
+              className={cx(
+                page === startPage && "[&_>svg]:stroke-black/25",
+                "aria-disabled:!cursor-default aria-disabled:hover:[&_>svg]:stroke-black/25 hover:bg-transparent hover:[&_>svg]:stroke-accent *:transition-all duration-150 cursor-pointer rounded-xs hover:animate-pulse"
+              )}
             >
               <ChevronLeft className="h-4 w-4" />
             </PaginationLink>
@@ -174,7 +183,7 @@ export default function AuthorNote() {
                     page !== p
                       ? "cursor-pointer hover:bg-accent/25 hover:!text-accent"
                       : "bg-accent/25 hover:bg-accent/25",
-                    "rounded-none border-none *:transition-all duration-150"
+                    "rounded-xs border-none *:transition-all duration-150"
                   )}
                 >
                   {p}
@@ -190,7 +199,10 @@ export default function AuthorNote() {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
                 aria-disabled={page === totalPages}
-                className="hover:bg-transparent hover:[&_>svg]:stroke-accent *:transition-all duration-150 cursor-pointer rounded-none hover:animate-pulse"
+                className={cx(
+                  page === endPage && "[&_>svg]:stroke-black/25",
+                  "aria-disabled:!cursor-default aria-disabled:hover:[&_>svg]:stroke-black/25 hover:bg-transparent hover:[&_>svg]:stroke-accent *:transition-all duration-150 cursor-pointer rounded-xs hover:animate-pulse"
+                )}
               >
                 <ChevronRight className="h-4 w-4" />
               </PaginationLink>
@@ -203,7 +215,11 @@ export default function AuthorNote() {
                     setPage(endPage + 1);
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
-                  className="hover:bg-transparent hover:[&_>svg]:stroke-accent *:transition-all duration-150 cursor-pointer rounded-none hover:animate-pulse"
+                  aria-disabled={page === endPage}
+                  className={cx(
+                    page === endPage && "[&_>svg]:stroke-black/25",
+                    "aria-disabled:!cursor-default aria-disabled:hover:[&_>svg]:stroke-black/25 hover:bg-transparent hover:[&_>svg]:stroke-accent *:transition-all duration-150 cursor-pointer rounded-xs hover:animate-pulse"
+                  )}
                 >
                   <ChevronsRight className="h-4 w-4" />
                 </PaginationLink>

@@ -76,7 +76,7 @@ const OverlayText = ({
     >
       {hasInteractiveTrackList ? (
         <div
-          className="fixed z-[9999] bg-[#1B1B1B] !px-2 !py-1 text-xs rounded-xs rounded-bl-none"
+          className="fixed z-[9999] bg-[#1B1B1B] !px-1 !py-1 text-[10px] sm:text-xs rounded-xs rounded-bl-none"
           style={{
             top: pos.top,
             left: pos.left,
@@ -90,8 +90,8 @@ const OverlayText = ({
                     : "translate(0, -50%)",
           }}
         >
-          <div className="flex items-center gap-2 *:!text-white ">
-            <CircleAlert size={18} color="yellow" className="animate-pulse" />
+          <div className="flex items-center gap-1 sm:gap-1.5 *:!text-white ">
+            <CircleAlert size={16} color="yellow" className="animate-pulse" />
             <span className="leading-tight break-words">{text}</span>
           </div>
         </div>

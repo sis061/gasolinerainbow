@@ -35,7 +35,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   //   isDiscography || isNotes || isStreamRedirect
   //     ? "rgba(0, 0, 0, 0.5)"
   //     : "rgba(255, 255, 255, 0.25)";
-  const backgroundColor = "rgba(174, 35, 35, 0.333)";
+  const backgroundColor = "rgba(174, 35, 35, 0.5)";
 
   useEffect(() => {
     if (!pathname.startsWith("/authornote")) {

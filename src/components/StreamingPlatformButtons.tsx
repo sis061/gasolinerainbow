@@ -133,7 +133,27 @@ const StreamingPlatformButtons = ({
               style={{ backgroundColor: color }}
               className={`w-full min-w-fit !px-3 !py-2 hover:opacity-75 cursor-pointer`}
             >
-              <Suspense fallback={<PuffLoader color="#fff" size={16} />}>
+              <Suspense
+                fallback={
+                  <PuffLoader
+                    // color="#fff"
+                    size={16}
+                    className="
+      *:transition-all *:duration-300 animate-pulse
+  [&_>span:nth-child(1)]:!border-t-[#ae2323]
+  [&_>span:nth-child(1)]:!border-l-[#f26b38]
+  [&_>span:nth-child(2)]:!border-t-[#ffef7b]
+  [&_>span:nth-child(2)]:!border-l-[#6ec3ff]
+  [&_>span:nth-child(3)]:!border-t-[#a66dd4]
+  [&_>span:nth-child(3)]:!border-l-[#ff4e50]
+  [&_>span:nth-child(4)]:!border-t-[#f26b38]
+  [&_>span:nth-child(4)]:!border-l-[#ae2323]
+  [&_>span:nth-child(5)]:!border-t-[#6ec3ff]
+  [&_>span:nth-child(5)]:!border-l-[#ffef7b]
+"
+                  />
+                }
+              >
                 <Component fill="#fff" />
               </Suspense>
 

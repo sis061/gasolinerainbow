@@ -67,22 +67,24 @@ const SingleInfoPanel = ({
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <ul className="w-full h-full flex flex-col-reverse md:flex-row items-center justify-between gap-6 md:gap-0 !px-2 md:!px-0">
-        <li className="flex gap-6 w-full md:w-1/2 [&_*]:!text-white">
-          <ol className="flex flex-col items-center gap-4 md:gap-6">
-            <li className="w-full sm:w-3/4 lg:w-2/3 overflow-hidden relative !aspect-square ">
-              {!isImageLoaded && (
-                <Skeleton className="absolute inset-0 w-full h-full rounded-none bg-[#333]" />
-              )}
-              <img
-                src={albumMeta.image}
-                alt="앨범 아트워크"
-                className={cx(
-                  "w-full h-full object-cover transition-opacity duration-500",
-                  isImageLoaded ? "opacity-100" : "opacity-0"
+        <li className="flex gap-6 w-full h-full md:w-1/2 [&_*]:!text-white items-center justify-center">
+          <ol className="flex flex-col items-center gap-4 md:gap-6 w-full h-full">
+            <li className="w-full sm:w-3/4 lg:w-2/3 overflow-hidden relative !aspect-square">
+              <div className="absolute inset-0 w-full h-full">
+                {!isImageLoaded && (
+                  <Skeleton className="w-full h-full rounded-none bg-[#333]" />
                 )}
-                onLoad={() => setIsImageLoaded(true)}
-                loading="lazy"
-              />
+                <img
+                  src={albumMeta.image}
+                  alt="앨범 아트워크"
+                  className={cx(
+                    "absolute inset-0 w-full h-full object-cover transition-opacity duration-500",
+                    isImageLoaded ? "opacity-100" : "opacity-0"
+                  )}
+                  onLoad={() => setIsImageLoaded(true)}
+                  loading="lazy"
+                />
+              </div>
             </li>
             <Trigger
               {...{

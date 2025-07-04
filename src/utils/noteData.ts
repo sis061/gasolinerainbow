@@ -23,26 +23,26 @@ export const noteData = [
     category: "모디파이는 질병입니다.",
     title: "모디파이는 질병입니다. Volume 1",
     content: `- 맨 처음 소개하는 친구는 저의 풀할로우기타입니다. 어쿠스틱 기타처럼 보이겠지만 제가 풀할로우가 되어라 라고 했기 때문에 이젠 풀할로우기타입니다.
-<img src=${notesImages.modify_1_0} alt="note image" loading="lazy" />
+<img src=${notesImages.modify_1_0} alt="note image.modify_1_0" loading="lazy" />
 - 처음 만나게 된 때는 2013~2014년 그 사이 언제즈음. 순정 그 자체의 이 아이는 학교 선배의 아버지가 치시던 세종 기타였습니다.
 아버지께서 다른 기타를 사신다고 저에게 반값에 준다고 한 형, 그리고 냉큼 20만원을 주고 생에 첫 통키타를 덜컥 가진 나.
 아아. 십 년이 지난 지금, 민섭이형이 지금의 기타를 마주한다면 어떠한 생각을 할까요..? 불쌍함에 눈물을 흘릴까요?
 
 참고로 저 날 집에 가자마자 픽가드가 거추장스럽다고 긁어떼어버렸습니다. 몇 달 지나지 않아 픽가드 뗀 자리가 쩍쩍 달라붙는다고 스티커로 도배도 했습니다 (…)
 
-<img src=${notesImages.modify_1_1} alt="note image" loading="lazy" />
+<img src=${notesImages.modify_1_1} alt="note image.modify_1_1" loading="lazy" />
 
 - 그리고 몇 년 채 지나지 않아, 데미안 라이스가 간지나게 깨진 어쿠스틱에 험버커를 달아 연주하는 걸 직접 보게 된 나.
 
 수 일 간의 뮬질을 통해 구현해주겠다는 악기사를 만나게 됩니다. 따라한다고 다 데미안 라이스가 되는게 아닌데, 밥은 잘 축내는 놈으로 자라긴 했습니다.
 
-<img src=${notesImages.modify_1_2} alt="note image" loading="lazy" />
+<img src=${notesImages.modify_1_2} alt="note image.modify_1_2" loading="lazy" />
 
 ’픽업을 달아주세요‘ 픽업을 달기 위해 아크릴판을 짜서 만들었습니다.
 ‘저 기존에 달린 피에조도 쓰고싶어요.’ 그래서 넥-험버커, 브릿지-피에조 가 달린 미친 기타를 만들었습니다.
 ‘킬스위치도 가능할까요..?’ - 오락실 버튼이 달린 기타가 되었습니다.
 
-<img src=${notesImages.modify_1_3} alt="note image" loading="lazy" />
+<img src=${notesImages.modify_1_3} alt="note image.modify_1_3" loading="lazy" />
 
 - ’테일피스는 존나 멋있다!‘
 2015-2016년 사이 제가 한 생각입니다. 생각에서 끝났으면 좋았을텐데. 테일피스를 샀습니다. 샤인기타 사장님이 플랫한 탑에선 못쓴다고 하네요.
@@ -50,21 +50,21 @@ export const noteData = [
 
 - 2023년. 저는 던컨 픽업에 질려가고 있었습니다. 그 때 너바나 라이브를 보지 말았어야했는데. TV존스 픽업이 갖고 싶어졌습니다. 그레치에 달린 고-급 픽업이..
 
-<img src=${notesImages.modify_1_5} alt="note image" loading="lazy" />
+<img src=${notesImages.modify_1_5} alt="note image.modify_1_5" loading="lazy" />
 
 3개월을 넘게 존버했습니다. 복이 있는 자는 기다린다고 하죠. 당장 손에 쥐고 기타샵으로 갔습니다. 저의 수많은 변태가학적 기타들은 봐온 분당악기 사장님. 이젠 그도 조금 즐기시는게 아닐까 싶었어요.(아닙니다.)
 
 아아.. 이 자본에서 나오는 따뜻한 티비존스 클래식의 소리…
 
-<img src=${notesImages.modify_1_6} alt="note image" loading="lazy" />
+<img src=${notesImages.modify_1_6} alt="note image.modify_1_6" loading="lazy" />
 
 - 그러고 사흘 전. 저는 문득, 스티커가 보기 싫어졌습니다. 딱히 이유는 없고, 꿈에서 기타가 숨이 갑갑하다고 했거든요. 진실인지 아닌지 판단은 여러분의 몫입니다.
 
-<img src=${notesImages.modify_1_7} alt="note image" loading="lazy" />
+<img src=${notesImages.modify_1_7} alt="note image.modify_1_7" loading="lazy" />
 
 이 기타는 10년을 저랑 함께했습니다. 보시다 싶이 군데군데 까지고, 어떤 부분은 실수 한 번하면 회생이 불가능할 정도의 상태이기도 하네요. 그러니까 딱 이십 년만 나랑 더 함께하자…
 
-<img src=${notesImages.modify_1_4} alt="note image" loading="lazy" />
+<img src=${notesImages.modify_1_4} alt="note image.modify_1_4" loading="lazy" />
 
 `,
   },
@@ -270,7 +270,7 @@ VS
 내리사랑과 치사랑 사이의 이 공백 속에서,
 ‘애착’은 감히 무엇이라 단언할 수 있을까요?
 
-<img src=${notesImages.epilogue_1_0} alt="note image" loading="lazy" />
+<img src=${notesImages.epilogue_1_0} alt="note image.epilogue_1_0" loading="lazy" />
 
 두 엄마 사이에 선 아가 원숭이(들)는
 우리를 돌보지만 차가운 존재, 동시에 따뜻하지만 비어 있는 존재 그 사이를 떠다닙니다.

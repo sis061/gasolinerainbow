@@ -38,8 +38,8 @@ export default function Note() {
     return note.content.replace(
       /<img /g,
       `<img
-      class="skeleton !mx-auto !my-6 md:w-2/3 w-full h-auto"
-      onload="this.classList.remove('skeleton')"
+    class="skeleton !mx-auto !my-6 md:w-2/3 w-full h-auto"
+    onload="this.classList.remove('skeleton')"
     `
     );
   }, [note?.content]);
@@ -77,10 +77,10 @@ export default function Note() {
             className="w-full whitespace-pre-wrap !py-6"
             dangerouslySetInnerHTML={{ __html: styledContent }}
           />
-          <div className="w-full flex justify-end ">
+          <div className="w-full flex justify-end">
             <Button
               variant="ghost"
-              className="!px-4 cursor-pointer hover:!bg-accent/50 rounded-xs"
+              className="!px-4 cursor-pointer hover:!bg-accent/25 rounded-xs"
               onClick={() => navigate("/authornote")}
             >
               <ArrowLeft />

@@ -92,26 +92,28 @@ const OSTCarousel = ({
             >
               <ul className="w-full h-auto md:h-full flex max-md:flex-col gap-10 items-center justify-center max-md:!px-2.5">
                 <li className="md:w-2/3 w-full h-auto flex md:flex-col md:gap-10 gap-5 items-center justify-between md:justify-start">
-                  <div className="max-w-1/2 md:max-w-3/4 xl:w-1/2 overflow-hidden relative aspect-square">
-                    {!imageLoadState[i] && (
-                      <Skeleton className="absolute inset-0 w-full h-full rounded-none bg-[#333]" />
-                    )}
-                    <img
-                      src={albumMeta.image}
-                      alt="앨범 아트워크"
-                      className={cx(
-                        "w-full h-full object-cover transition-opacity duration-500",
-                        imageLoadState[i] ? "opacity-100" : "opacity-0"
+                  <div className="w-1/2 md:w-3/4 xl:w-1/2 overflow-hidden relative !aspect-square">
+                    <div className="absolute inset-0 w-full h-full">
+                      {!imageLoadState[i] && (
+                        <Skeleton className="w-full h-full rounded-none bg-[#333]" />
                       )}
-                      onLoad={() => {
-                        setImageLoadState((prev) => {
-                          const next = [...prev];
-                          next[i] = true;
-                          return next;
-                        });
-                      }}
-                      loading="lazy"
-                    />
+                      <img
+                        src={albumMeta.image}
+                        alt="앨범 아트워크"
+                        className={cx(
+                          "absolute inset-0 w-full h-full object-cover transition-opacity duration-500",
+                          imageLoadState[i] ? "opacity-100" : "opacity-0"
+                        )}
+                        onLoad={() => {
+                          setImageLoadState((prev) => {
+                            const next = [...prev];
+                            next[i] = true;
+                            return next;
+                          });
+                        }}
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
                   <div className="flex flex-col w-1/2 md:w-full justify-center items-center max-md:items-start gap-2 [&_*]:!text-white ">
                     <span className="text-sm">{albumMeta.year}</span>

@@ -76,7 +76,7 @@ const OverlayText = ({
     >
       {hasInteractiveTrackList ? (
         <div
-          className="fixed z-[9999] bg-[#1B1B1B] !px-2 !py-1 text-xs rounded-md rounded-bl-none"
+          className="fixed z-[9999] bg-[#1B1B1B] !px-2 !py-1 text-xs rounded-xs rounded-bl-none"
           style={{
             top: pos.top,
             left: pos.left,

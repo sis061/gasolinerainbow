@@ -153,7 +153,7 @@ const HeaderRight = ({
       <Languages
         size={28}
         color={"#000"}
-        className="duration-150 w-full h-full"
+        className="duration-150 w-full h-full xl:!p-0 max-lg:!p-0 max-xl:!p-[1.5px]"
       />
       <motion.div
         initial={false}

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import cx from "classnames";
 
@@ -33,7 +33,28 @@ const OSTCarousel = ({
   const [imageLoadState, setImageLoadState] = useState<boolean[]>(
     Array(albumMetas.length).fill(false)
   );
+  const [isApiReady, setIsApiReady] = useState<boolean>(false);
+  const [selectedIndex, setSelectedIndex] = useState<number>(initialSlideIndex);
+  const [lastIndex, setLastIndex] = useState<number>(0);
   const { language } = useLanguageStore();
+
+  useEffect(() => {
+    if (!isApiReady || !carouselRef.current) return;
+    const api = carouselRef.current;
+
+    setSelectedIndex(api.selectedScrollSnap());
+    setLastIndex(api.scrollSnapList().length - 1);
+
+    const handleSelect = () => {
+      setSelectedIndex(api.selectedScrollSnap());
+    };
+
+    api.on("select", handleSelect);
+
+    return () => {
+      api.off("select", handleSelect);
+    };
+  }, [isApiReady]);
 
   // useEffect(() => {
   //   onChange && onChange(false);
@@ -43,7 +64,10 @@ const OSTCarousel = ({
 
   return (
     <Carousel
-      setApi={(api) => (carouselRef.current = api)}
+      setApi={(api) => {
+        carouselRef.current = api;
+        setIsApiReady(true);
+      }}
       opts={{ loop: true, watchDrag: true }}
       className="w-full h-full relative !p-10 lg:!p-20"
     >
@@ -145,6 +169,8 @@ const OSTCarousel = ({
         onNext={() => {
           carouselRef.current?.scrollNext();
         }}
+        isFirst={selectedIndex === 0}
+        isLast={selectedIndex === lastIndex}
       />
     </Carousel>
   );

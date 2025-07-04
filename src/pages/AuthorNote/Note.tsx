@@ -63,7 +63,7 @@ export default function Note() {
                 backgroundColor: renderNoteTypeColor(note.category),
               }}
               variant="outline"
-              className="!text-white border-none !py-1 !px-2 rounded-tr-none"
+              className="!text-white border-none !py-1 !px-2 rounded-xs rounded-tr-none"
             >
               {note.category}
             </Badge>
@@ -80,7 +80,7 @@ export default function Note() {
           <div className="w-full flex justify-end ">
             <Button
               variant="ghost"
-              className="!px-4 cursor-pointer hover:!bg-accent/50"
+              className="!px-4 cursor-pointer hover:!bg-accent/50 rounded-xs"
               onClick={() => navigate("/authornote")}
             >
               <ArrowLeft />

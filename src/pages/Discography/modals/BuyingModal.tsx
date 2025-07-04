@@ -73,7 +73,7 @@ const BuyingModal = ({ albumMeta }: { albumMeta: Disk }) => {
           </div>
         </DialogTrigger>
         <DialogContent
-          className="flex flex-col items-center !p-10 !bg-black/90 [&_>button>svg]:!stroke-white [&_>button]:cursor-pointer"
+          className="flex flex-col items-center !p-10 !bg-black/90 [&_>button>svg]:!stroke-white [&_>button]:cursor-pointer rounded-xs border-white/25"
           aria-describedby="drawer-description"
         >
           <DialogHeader>
@@ -148,7 +148,7 @@ const BuyingModal = ({ albumMeta }: { albumMeta: Disk }) => {
 
   return (
     <Drawer open={open} onOpenChange={setOpen}>
-      <DrawerTrigger className="transition-all duration-200 hover:opacity-50 cursor-pointer">
+      <DrawerTrigger className="transition-all duration-200 hover:opacity-50 cursor-pointer ">
         <div className="w-full h-full flex items-center gap-2">
           <Disc3 size={16} />
           {language === "ko" ? "구매" : "Order"}
@@ -251,7 +251,7 @@ const DirectButton = ({
       <Button
         variant="default"
         style={{ backgroundColor: bgColor }}
-        className={`w-full min-w-fit !px-3 !py-2 hover:opacity-75 cursor-pointer`}
+        className={`w-full min-w-fit !px-3 !py-2 hover:opacity-75 cursor-pointer rounded-xs`}
       >
         <span
           className={cx("!text-white text-sm", language === "en" && "text-xs")}

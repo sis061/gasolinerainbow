@@ -72,6 +72,8 @@ export interface SingleCarouselsProps {
 export interface CarouselNavigationProps {
   onPrev: () => void;
   onNext: () => void;
+  isFirst: boolean;
+  isLast: boolean;
 }
 
 export interface LyricsPanelProps {

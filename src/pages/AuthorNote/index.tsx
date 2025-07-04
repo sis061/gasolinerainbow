@@ -145,7 +145,7 @@ export default function AuthorNote() {
                     setPage(startPage - 1);
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
-                  className="hover:bg-accent hover:text-accent-foreground cursor-pointer"
+                  className="hover:bg-transparent hover:[&_>svg]:stroke-accent *:transition-all duration-150 cursor-pointer rounded-none hover:animate-pulse"
                 >
                   <ChevronsLeft className="h-4 w-4" />
                 </PaginationLink>
@@ -157,7 +157,7 @@ export default function AuthorNote() {
                 setPage((prev) => Math.max(prev - 1, 1));
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
-              className="hover:bg-accent hover:text-accent-foreground cursor-pointer"
+              className="hover:bg-transparent hover:[&_>svg]:stroke-accent *:transition-all duration-150 cursor-pointer rounded-none hover:animate-pulse"
             >
               <ChevronLeft className="h-4 w-4" />
             </PaginationLink>
@@ -170,7 +170,12 @@ export default function AuthorNote() {
                     setPage(p);
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
-                  className={cx(page !== p && "cursor-pointer")}
+                  className={cx(
+                    page !== p
+                      ? "cursor-pointer hover:bg-accent/25 hover:!text-accent"
+                      : "bg-accent/25 hover:bg-accent/25",
+                    "rounded-none border-none *:transition-all duration-150"
+                  )}
                 >
                   {p}
                 </PaginationLink>
@@ -185,7 +190,7 @@ export default function AuthorNote() {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
                 aria-disabled={page === totalPages}
-                className="hover:bg-accent hover:text-accent-foreground cursor-pointer"
+                className="hover:bg-transparent hover:[&_>svg]:stroke-accent *:transition-all duration-150 cursor-pointer rounded-none hover:animate-pulse"
               >
                 <ChevronRight className="h-4 w-4" />
               </PaginationLink>
@@ -198,7 +203,7 @@ export default function AuthorNote() {
                     setPage(endPage + 1);
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
-                  className="hover:bg-accent hover:text-accent-foreground cursor-pointer"
+                  className="hover:bg-transparent hover:[&_>svg]:stroke-accent *:transition-all duration-150 cursor-pointer rounded-none hover:animate-pulse"
                 >
                   <ChevronsRight className="h-4 w-4" />
                 </PaginationLink>

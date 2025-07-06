@@ -57,9 +57,9 @@ function Root() {
 const GlobalFallback = ({ visible }: { visible: boolean }) => {
   return (
     <motion.div
-      initial={{ opacity: 1, y: 0 }}
-      animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : -99 }}
-      transition={{ duration: 0.75, delay: 1 }}
+      initial={{ opacity: 1 }}
+      animate={{ opacity: visible ? 1 : 0 }}
+      transition={{ duration: 0.5, delay: 0.75 }}
       className="fixed inset-0 bg-black flex flex-col gap-6 items-center justify-center z-[9999] pointer-events-none"
     >
       <div

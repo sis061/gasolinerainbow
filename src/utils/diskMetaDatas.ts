@@ -57,7 +57,7 @@ Orchestrations
 - Track 8: Arranged and MIDI programmed by 손다협; re-edited by HIMINN
 - Track 9: Written by HIMINN; MIDI programmed by 손다협
 
-Recorded at Phoné Studio  (Track 2-6, 8-9)
+Recorded at Phoné Studio (Track 2-6, 8-9); by HIMINN (Track 1, 7)
 Mixed & Mastered by Shinhwan at Phoné Studio
 
 Artwork by namu 나무

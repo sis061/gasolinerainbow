@@ -40,7 +40,7 @@ const Footer = () => {
                 align="start"
                 alignOffset={25}
                 arrowPadding={1}
-                className="bg-black !p-1 rounded-xs rounded-bl-none border-white/25"
+                className="bg-black !p-1 rounded-xs rounded-bl-none border-white/75"
               >
                 <DropdownMenuItem className="!p-2 hover:!bg-white/15 rounded-xs">
                   <a

@@ -55,6 +55,29 @@ function Root() {
 }
 
 const GlobalFallback = ({ visible }: { visible: boolean }) => {
+  const _p = [
+    {
+      StrongContent: "G",
+      Pcontent: "asoline",
+      durationT: 0.5,
+    },
+    {
+      StrongContent: "R",
+      Pcontent: "ainbow",
+      durationT: 0.3,
+    },
+    {
+      StrongContent: "S",
+      Pcontent: "pilled",
+      durationT: 0.6,
+    },
+    {
+      StrongContent: "b",
+      Pcontent: "y",
+      durationT: 0.7,
+    },
+  ];
+
   return (
     <motion.div
       initial={{ opacity: 1 }}
@@ -66,92 +89,48 @@ const GlobalFallback = ({ visible }: { visible: boolean }) => {
         className="w-auto min-h-16 flex flex-col items-start justify-center !pl-12
           [&_*]:!text-white [&_>p]:text-lg [&_>p]:!text-white/25 [&_>p]:font-extrabold"
       >
-        <p>
-          <motion.strong
-            key={visible ? "pulse" : "static"}
-            initial={{ opacity: 0.25 }}
-            animate={{
-              opacity: 1,
-              transition: {
-                duration: 0.5,
-                repeat: visible ? Infinity : 0,
-                repeatType: "reverse",
-              },
-            }}
-          >
-            G
-          </motion.strong>
-          asoline
-        </p>
-        <p>
-          <motion.strong
-            key={visible ? "pulse" : "static"}
-            initial={{ opacity: 0.25 }}
-            animate={{
-              opacity: 1,
-              transition: {
-                duration: 0.3,
-                repeat: visible ? Infinity : 0,
-                repeatType: "reverse",
-              },
-            }}
-          >
-            R
-          </motion.strong>
-          ainbow
-        </p>
-        <p>
-          <motion.strong
-            key={visible ? "pulse" : "static"}
-            initial={{ opacity: 0.25 }}
-            animate={{
-              opacity: 1,
-              transition: {
-                duration: 0.6,
-                repeat: visible ? Infinity : 0,
-                repeatType: "reverse",
-              },
-            }}
-          >
-            S
-          </motion.strong>
-          pilled
-        </p>
-        <p>
-          <motion.strong
-            key={visible ? "pulse" : "static"}
-            initial={{ opacity: 0.25 }}
-            animate={{
-              opacity: 1,
-              transition: {
-                duration: 0.7,
-                repeat: visible ? Infinity : 0,
-                repeatType: "reverse",
-              },
-            }}
-          >
-            b
-          </motion.strong>
-          y
-        </p>
+        {_p.map((p) => (
+          <p>
+            <AnimatedStrong
+              visible={visible}
+              duration={p.durationT}
+              content={p.StrongContent}
+            />
+            {p.Pcontent}
+          </p>
+        ))}
         <p className="[&_>span]:text-2xl [&_>span]:!text-white/25 [&_>span]:font-normal !-mt-0.5">
-          <motion.strong
-            key={visible ? "pulse" : "static"}
-            initial={{ opacity: 0.25 }}
-            animate={{
-              opacity: 1,
-              transition: {
-                duration: 0.4,
-                repeat: visible ? Infinity : 0,
-                repeatType: "reverse",
-              },
-            }}
-          >
-            H
-          </motion.strong>
+          <AnimatedStrong visible={visible} duration={0.4} content="H" />
           <span>í</span>M<span>í</span>NN
         </p>
       </div>
     </motion.div>
+  );
+};
+
+const AnimatedStrong = ({
+  visible,
+  duration,
+  content,
+}: {
+  visible: boolean;
+  duration: number;
+  content: string;
+}) => {
+  return (
+    <motion.strong
+      key={visible ? "pulse" : "static"}
+      initial={{ opacity: 0.25 }}
+      animate={{
+        opacity: 1,
+        transition: {
+          duration: duration,
+          repeat: visible ? Infinity : 0,
+          repeatType: "reverse",
+        },
+      }}
+    >
+      {content}
+    </motion.strong>
   );
 };

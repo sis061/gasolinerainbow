@@ -81,7 +81,7 @@ export default Header;
 
 const Logo = ({ useWhiteText }: { useWhiteText: boolean }) => (
   <Link to="/">
-    <div className="w-auto min-h-16 flex flex-col items-center justify-center *:transition-all *:duration-300 hover:animate-pulse">
+    <div className="w-auto min-h-16 flex flex-col items-center justify-center *:transition-all *:duration-200 hover:animate-pulse">
       <p
         style={{
           backgroundImage: useWhiteText ? "" : `url(${LogoBg})`,
@@ -100,7 +100,7 @@ const Logo = ({ useWhiteText }: { useWhiteText: boolean }) => (
           backgroundImage: useWhiteText ? "" : `url(${LogoBg})`,
         }}
         className={cx(
-          "text-md font-extrabold !ml-5 [&_>span]:text-xl [&_>span]:font-normal *:transition-all *:duration-300",
+          "text-md font-extrabold !ml-5 [&_>span]:text-xl [&_>span]:font-normal *:transition-all *:duration-200",
           useWhiteText
             ? "!text-white [&_>span]:!text-white"
             : `!bg-clip-text !text-transparent bg-center bg-cover [&_>span]:!bg-clip-text [&_>span]:!text-transparent`

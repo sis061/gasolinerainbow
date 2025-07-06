@@ -31,12 +31,13 @@ const Nav = ({
           <Link
             to={to}
             className={cx(
-              "font-extrabold text-lg max-sm:text-sm  hover:opacity-100 transition-all  opacity-65",
+              "font-extrabold text-lg max-sm:text-sm  hover:opacity-100 transition-all duration-150 opacity-50",
               minTablet
                 ? (isScrolled || bgBlackRoute) && "!text-white !border-white"
                 : "!text-white !border-white",
               // "border-[#1b2838] hover:border-b-1"
-              pathname.startsWith(to) && "opacity-100"
+              pathname.startsWith(to) && "opacity-100",
+              pathname === "/" && "!opacity-75 hover:!opacity-100"
             )}
           >
             {language === "ko" ? labelKr : labelEn.toUpperCase()}

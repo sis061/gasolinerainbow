@@ -44,7 +44,7 @@ const About = () => {
     <section className="wrapper w-full min-h-[calc(100dvh-12rem)] overflow-x-hidden !mx-auto flex justify-center">
       <div className="inner flex-grow-0 w-full flex items-center justify-center !mb-10 !mt-2 max-md:!px-4">
         <ul className="w-full flex flex-col lg:flex-row items-center gap-6 lg:gap-0 justify-center max-lg:!pt-6 bg-white/75 lg:bg-transparent shadow-2xl lg:shadow-none">
-          <li className="w-1/3 z-10 relative !aspect-square lg:!mb-32 lg:!-mr-48">
+          <li className="w-1/3 z-10 relative !aspect-square lg:!mb-36 lg:!-mr-48">
             <div className="bg-white/25 lg:bg-white/75 !p-1 flex items-center justify-center w-full h-full absolute inset-0">
               {!isImageLoaded && (
                 <Skeleton className="w-full h-full rounded-none bg-[#333]" />
@@ -62,7 +62,7 @@ const About = () => {
             </div>
           </li>
           <li className="min-w-1/2 max-w-3/4 flex flex-col lg:gap-12 items-center lg:items-start justify-center lg:bg-white/75 max-lg:!pt-3 lg:!p-6 lg:!mt-48 lg:!pl-12">
-            <div className="flex flex-col w-full items-center lg:items-start lg:!ml-52">
+            <div className="flex flex-col w-full items-center lg:items-start lg:!ml-48">
               <h1 className="text-2xl lg:text-3xl xl:text-4xl [&_>span]:font-light [&_>span]:text-3xl [&_>span]:lg:text-4xl [&_>span]:xl:text-5xl text-center">
                 H<span>í</span>M<span>í</span>NN, HIMINN,
               </h1>
@@ -77,7 +77,7 @@ const About = () => {
                     pluse
                   )}
                 >
-                  /ˈhɪː.mɪn/
+                  /'hɪː.mɪn/
                 </a>
               </h1>
             </div>

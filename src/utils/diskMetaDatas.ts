@@ -55,7 +55,7 @@ All instruments performed and programmed by HIMINN
 
 Orchestrations
 - Track 8: Arranged and MIDI programmed by 손다협; re-edited by HIMINN
-- Track 9: Written by HIMINN; MIDI programmed by 손다협
+- Track 9: Written by HIMINN; Arranged and MIDI programmed by 손다협
 
 Recorded at Phoné Studio (Track 2-6, 8-9); by HIMINN (Track 1, 7)
 Mixed & Mastered by Shinhwan at Phoné Studio
@@ -85,7 +85,7 @@ Artwork by namu 나무
 
 해가 졌음에도 당신은 달콤한 잠에 들지 못합니다.
 
-한때 같이 걷고, 같이 잠들었지만 이제는 당신을 피해 달아나는 무수한 사람들을 보게 됩니다.
+한때 같이 걷고 같이 잠들었지만, 이제는 당신을 피해 달아나는 무수한 사람들을 보게 됩니다.
 
 
 악마는 참 잔인하게도 기억은 잃지 못하게 하는 장치를 심어 두었습니다.
@@ -152,6 +152,9 @@ Artwork by namu 나무
 살아만 가는 게
 
 살아는 지는 게
+
+
+(그 모든 이별에)
 
 
 (그 모든 이별에)`,
@@ -270,7 +273,7 @@ Prained, Still, Still, Still`,
       },
       {
         trackNo: 4,
-        titleKr: "열한번째 고양이의 밤",
+        titleKr: "열한 번째 고양이의 밤",
         titleEn: "Ninth Life, Eleventh Night",
         lyrics: `우린 다시 만나자, 열한 번째 고양이의 밤에서
 
@@ -453,7 +456,7 @@ Far too easily`,
 
 널 이룰거란 기대 버려
 
-I'd have done, if nothing mattered
+I'd have done ..., if nothing mattered
 
 가치 없는 꿈에 기대어
 
@@ -462,7 +465,7 @@ I have done nothing better
 
 널 이룰거란 기대 버려
 
-I'd have done, if nothing mattered
+I'd have done ..., if nothing mattered
 
 가치 없는 꿈에 날 깨워`,
         tags: [],

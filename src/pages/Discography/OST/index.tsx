@@ -22,12 +22,13 @@ import type { SingleCarouselsProps } from "@/types/discography";
 import useScrollToIndexWhenReady from "@/hooks/useScrollToIndexWhenReady";
 import useLanguageStore from "@/store/useLanguageStore";
 import CustomToast from "@/pages/Layout/components/CustomToast";
+import { Image } from "@/components/Image";
 
 const OSTCarousel = ({
   albumMetas,
   initialSlideIndex = 0,
   ready = false,
-  // , onChange
+  // onChange,
 }: SingleCarouselsProps) => {
   const carouselRef = useRef<CarouselApi | null>(null);
   const [imageLoadState, setImageLoadState] = useState<boolean[]>(
@@ -97,7 +98,7 @@ const OSTCarousel = ({
                       {!imageLoadState[i] && (
                         <Skeleton className="w-full h-full rounded-none bg-[#333]" />
                       )}
-                      <img
+                      <Image
                         src={albumMeta.image}
                         alt="앨범 아트워크"
                         className={cx(

@@ -6,6 +6,7 @@ import cx from "classnames";
 import useLanguageStore from "@/store/useLanguageStore";
 import StreamingModal from "../../modals/StreamingModal";
 import BuyingModal from "../../modals/BuyingModal";
+import { Image } from "@/components/Image";
 
 import type { Disk } from "@/types/discography";
 
@@ -22,7 +23,7 @@ const AlbumIntroPanel = ({ albumMeta }: { albumMeta: Disk }) => {
         {!isImageLoaded && (
           <Skeleton className="absolute inset-0 w-full h-full rounded-none bg-[#333]" />
         )}
-        <img
+        <Image
           src={image}
           alt="앨범 아트워크"
           className={cx(

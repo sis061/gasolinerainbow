@@ -9,6 +9,8 @@ import cx from "classnames";
 import PageNotFound from "../PageNotFound";
 import { DiskMetaMap } from "@/utils/diskMetaDatas";
 import useLanguageStore from "@/store/useLanguageStore";
+
+import { Image } from "@/components/Image";
 import StreamingPlatformButtons, {
   getStreamingPlatformInfo,
 } from "@/components/StreamingPlatformButtons";
@@ -45,7 +47,7 @@ const StreamingRedirect = () => {
             {!isImageLoaded && (
               <Skeleton className="absolute inset-0 w-full h-full rounded-none bg-[#333]" />
             )}
-            <img
+            <Image
               src={albumMeta?.image}
               alt="앨범 아트워크"
               className={cx(

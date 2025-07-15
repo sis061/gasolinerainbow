@@ -17,6 +17,7 @@ import LyricsPanel from "../../components/LyricsPanel";
 import StreamingModal from "../../modals/StreamingModal";
 import MobileDrawer from "../../modals/MobileDrawer";
 import BuyingModal from "../../modals/BuyingModal";
+import { Image } from "@/components/Image";
 
 import Hoverable from "@/pages/Layout/components/Hoverable";
 import OverlayText from "@/pages/Layout/components/OverlayText";
@@ -74,7 +75,7 @@ const SingleInfoPanel = ({
                 {!isImageLoaded && (
                   <Skeleton className="w-full h-full rounded-none bg-[#333]" />
                 )}
-                <img
+                <Image
                   src={albumMeta.image}
                   alt="앨범 아트워크"
                   className={cx(

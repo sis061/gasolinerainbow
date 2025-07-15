@@ -90,7 +90,7 @@ const GlobalFallback = ({ visible }: { visible: boolean }) => {
           [&_*]:!text-white [&_>p]:text-lg [&_>p]:!text-white/25 [&_>p]:font-extrabold"
       >
         {_p.map((p) => (
-          <p>
+          <p key={p.StrongContent}>
             <AnimatedStrong
               visible={visible}
               duration={p.durationT}

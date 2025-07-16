@@ -349,7 +349,8 @@ HIMINN (@himinn___)
     title: "싱글 [The Monkey/Mother-ship]",
     content: `싱글 [The Monkey/Mother-ship]이 발매되었습니다.
 
-@himinn___ 프로필의 링크를 통해 원하시는 플랫폼에서 바로 들을 수 있습니다.
+원하시는 모든 플랫폼에서 바로 들을 수 있습니다.
+https://grsbh.com/stream/the-monkey-mother-ship 에서 찾아보세요 :)
 도와주신 모든 분들께 감사드립니다.
 
 ***
@@ -390,11 +391,11 @@ Artwork
     idx: 14,
     type: "release",
     date: "2025-07-16",
-    img: diskImages.foolsbox,
+    img: newsImages.bip_maansun,
     title: "앨범 [평화로운 뇌와...] 선공개 @ 만선",
-    content: `정규 앨범 [평화로운 뇌와...]를 만선에서 선공개합니다.
+    content: `정규 앨범 [평화로운 뇌와...]를 만선에서 가장 이르게 공개합니다.
 
-아래 링크(https://maansun.com/)를 통해 WAV 및 Mp3 파일을 다운로드 받아 먼저 들어보실 수 있습니다.
+(https://maansun.com/catalogue/99)를 통해 WAV 및 Mp3 파일을 다운로드 받아 먼저 들어보실 수 있습니다.
 
 감사합니다.`,
   },

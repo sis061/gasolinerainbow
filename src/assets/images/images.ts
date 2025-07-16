@@ -18,6 +18,7 @@ import gmsFest from "@/assets/images/news/gmsFest_5_11zon.webp";
 import onstage from "@/assets/images/news/onstage_7_11zon.webp";
 import rainlight from "@/assets/images/news/rainlight_8_11zon.webp";
 import thedreamer from "@/assets/images/news/thedreamer_9_11zon.webp";
+import bip_maansun from "@/assets/images/news/bip_maansun.webp";
 
 // Notes 이미지
 import modify_1_0 from "@/assets/images/notes/modify_1_0.webp";
@@ -78,6 +79,7 @@ export const newsImages = {
   onstage,
   rainlight,
   thedreamer,
+  bip_maansun,
 };
 
 export const notesImages = {

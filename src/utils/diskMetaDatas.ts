@@ -21,7 +21,7 @@ const diskAlbumData: Disk[] = [
       genie: "",
     },
     isCD: false,
-    maansunUrl: "https://maansun.com/",
+    maansunUrl: "https://maansun.com/catalogue/99",
     descriptionKr: `지하철, 침대, 라디오,
 치사랑, 성애, 섭식장애,
 
@@ -1684,12 +1684,15 @@ const diskOthersData: Disk[] = [
     image: diskImages.TMMS,
     urls: {
       bandcamp: "https://himinnn.bandcamp.com/track/the-monkey-mother-ship",
-      spotify: "",
-      youtubeMusic: "",
-      appleMusic: "",
-      melon: "",
-      bugs: "",
-      genie: "",
+      spotify:
+        "https://open.spotify.com/album/1MqEgVtlwVE2483sR0uRbi?si=ATRaL9nMQiWbqSQeWM3FLA",
+      youtubeMusic:
+        "https://music.youtube.com/playlist?list=OLAK5uy_ngPZ3oHSS-qCkzTzDZaDBRxCJN2jwzUhs&si=eyMCf_7tGf3BYIyM",
+      appleMusic:
+        "https://music.apple.com/us/album/the-monkey-mother-ship-single/1826459592",
+      melon: "https://www.melon.com/album/detail.htm?albumId=11895590",
+      bugs: "https://music.bugs.co.kr/album/20740388",
+      genie: "https://www.genie.co.kr/detail/albumInfo?axnm=86504281",
     },
     isCD: false,
     descriptionKr: `미디어는(우리는) 치사랑에 대해 말하기 참 어려워해요.

@@ -6,6 +6,7 @@ import cx from "classnames";
 import useLanguageStore from "@/store/useLanguageStore";
 import StreamingModal from "../../modals/StreamingModal";
 import BuyingModal from "../../modals/BuyingModal";
+import { Image } from "@/components/Image";
 
 import type { Disk } from "@/types/discography";
 
@@ -14,6 +15,7 @@ const AlbumIntroPanel = ({ albumMeta }: { albumMeta: Disk }) => {
   const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
   const { language } = useLanguageStore();
   const isBandcampAvailable = Object.keys(urls).includes("bandcamp");
+  const isStreamingAvailable = urls?.appleMusic && urls?.appleMusic?.length > 0;
 
   return (
     <ul className="w-full h-full flex items-center gap-10 max-lg:flex-col justify-center lg:justify-between">
@@ -21,7 +23,7 @@ const AlbumIntroPanel = ({ albumMeta }: { albumMeta: Disk }) => {
         {!isImageLoaded && (
           <Skeleton className="absolute inset-0 w-full h-full rounded-none bg-[#333]" />
         )}
-        <img
+        <Image
           src={image}
           alt="앨범 아트워크"
           className={cx(
@@ -42,9 +44,11 @@ const AlbumIntroPanel = ({ albumMeta }: { albumMeta: Disk }) => {
         </span>
 
         <ol className="flex gap-6">
-          <li>
-            <StreamingModal albumMeta={albumMeta} />
-          </li>
+          {isStreamingAvailable && (
+            <li>
+              <StreamingModal albumMeta={albumMeta} />
+            </li>
+          )}
           {isBandcampAvailable && (
             <li>
               <BuyingModal albumMeta={albumMeta} />

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import cx from "classnames";
 
@@ -22,19 +22,40 @@ import type { SingleCarouselsProps } from "@/types/discography";
 import useScrollToIndexWhenReady from "@/hooks/useScrollToIndexWhenReady";
 import useLanguageStore from "@/store/useLanguageStore";
 import CustomToast from "@/pages/Layout/components/CustomToast";
+import { Image } from "@/components/Image";
 
 const OSTCarousel = ({
   albumMetas,
   initialSlideIndex = 0,
   ready = false,
-  // , onChange
+  // onChange,
 }: SingleCarouselsProps) => {
   const carouselRef = useRef<CarouselApi | null>(null);
   const [imageLoadState, setImageLoadState] = useState<boolean[]>(
     Array(albumMetas.length).fill(false)
   );
-
+  const [isApiReady, setIsApiReady] = useState<boolean>(false);
+  const [selectedIndex, setSelectedIndex] = useState<number>(initialSlideIndex);
+  const [lastIndex, setLastIndex] = useState<number>(0);
   const { language } = useLanguageStore();
+
+  useEffect(() => {
+    if (!isApiReady || !carouselRef.current) return;
+    const api = carouselRef.current;
+
+    setSelectedIndex(api.selectedScrollSnap());
+    setLastIndex(api.scrollSnapList().length - 1);
+
+    const handleSelect = () => {
+      setSelectedIndex(api.selectedScrollSnap());
+    };
+
+    api.on("select", handleSelect);
+
+    return () => {
+      api.off("select", handleSelect);
+    };
+  }, [isApiReady]);
 
   // useEffect(() => {
   //   onChange && onChange(false);
@@ -44,7 +65,10 @@ const OSTCarousel = ({
 
   return (
     <Carousel
-      setApi={(api) => (carouselRef.current = api)}
+      setApi={(api) => {
+        carouselRef.current = api;
+        setIsApiReady(true);
+      }}
       opts={{ loop: true, watchDrag: true }}
       className="w-full h-full relative !p-10 lg:!p-20"
     >
@@ -60,6 +84,8 @@ const OSTCarousel = ({
           const isBandcampAvailable = Object.keys(albumMeta.urls).includes(
             "bandcamp"
           );
+          const isStreamingAvailable =
+            !!albumMeta.urls?.appleMusic || !!albumMeta.urls?.melon;
           return (
             <CarouselItem
               key={i}
@@ -67,26 +93,28 @@ const OSTCarousel = ({
             >
               <ul className="w-full h-auto md:h-full flex max-md:flex-col gap-10 items-center justify-center max-md:!px-2.5">
                 <li className="md:w-2/3 w-full h-auto flex md:flex-col md:gap-10 gap-5 items-center justify-between md:justify-start">
-                  <div className="max-w-1/2 md:max-w-3/4 xl:w-1/2 overflow-hidden relative aspect-square">
-                    {!imageLoadState[i] && (
-                      <Skeleton className="absolute inset-0 w-full h-full rounded-none bg-[#333]" />
-                    )}
-                    <img
-                      src={albumMeta.image}
-                      alt="앨범 아트워크"
-                      className={cx(
-                        "w-full h-full object-cover transition-opacity duration-500",
-                        imageLoadState[i] ? "opacity-100" : "opacity-0"
+                  <div className="w-1/2 md:w-3/4 xl:w-1/2 overflow-hidden relative !aspect-square">
+                    <div className="absolute inset-0 w-full h-full">
+                      {!imageLoadState[i] && (
+                        <Skeleton className="w-full h-full rounded-none bg-[#333]" />
                       )}
-                      onLoad={() => {
-                        setImageLoadState((prev) => {
-                          const next = [...prev];
-                          next[i] = true;
-                          return next;
-                        });
-                      }}
-                      loading="lazy"
-                    />
+                      <Image
+                        src={albumMeta.image}
+                        alt="앨범 아트워크"
+                        className={cx(
+                          "absolute inset-0 w-full h-full object-cover transition-opacity duration-500",
+                          imageLoadState[i] ? "opacity-100" : "opacity-0"
+                        )}
+                        onLoad={() => {
+                          setImageLoadState((prev) => {
+                            const next = [...prev];
+                            next[i] = true;
+                            return next;
+                          });
+                        }}
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
                   <div className="flex flex-col w-1/2 md:w-full justify-center items-center max-md:items-start gap-2 [&_*]:!text-white ">
                     <span className="text-sm">{albumMeta.year}</span>
@@ -96,7 +124,9 @@ const OSTCarousel = ({
                         : albumMeta.titleEn}
                     </span>
                     <div className="!space-x-4">
-                      <StreamingModal albumMeta={albumMeta} />
+                      {isStreamingAvailable && (
+                        <StreamingModal albumMeta={albumMeta} />
+                      )}
                       {isBandcampAvailable && (
                         <BuyingModal albumMeta={albumMeta} />
                       )}
@@ -142,6 +172,8 @@ const OSTCarousel = ({
         onNext={() => {
           carouselRef.current?.scrollNext();
         }}
+        isFirst={selectedIndex === 0}
+        isLast={selectedIndex === lastIndex}
       />
     </Carousel>
   );

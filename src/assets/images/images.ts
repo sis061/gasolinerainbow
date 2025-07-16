@@ -5,6 +5,8 @@ import devilFishDisk from "@/assets/images/disk/devilFishDisk_2_11zon.webp";
 import foolsbox from "@/assets/images/disk/foolsbox_3_11zon.webp";
 import gimbapDisk from "@/assets/images/disk/gimbap_disk_4_11zon.webp";
 import hmRemixes from "@/assets/images/disk/hmremixes_6_11zon.webp";
+import TMMS from "@/assets/images/disk/TMMS.webp";
+import BIP from "@/assets/images/disk/BIP.webp";
 
 // News 이미지
 import hmcd from "@/assets/images/news/HMCD_6_11zon.webp";
@@ -16,6 +18,7 @@ import gmsFest from "@/assets/images/news/gmsFest_5_11zon.webp";
 import onstage from "@/assets/images/news/onstage_7_11zon.webp";
 import rainlight from "@/assets/images/news/rainlight_8_11zon.webp";
 import thedreamer from "@/assets/images/news/thedreamer_9_11zon.webp";
+import bip_maansun from "@/assets/images/news/bip_maansun.webp";
 
 // Notes 이미지
 import modify_1_0 from "@/assets/images/notes/modify_1_0.webp";
@@ -47,6 +50,8 @@ import modify_4_3 from "@/assets/images/notes/modify_4_3_22_11zon.webp";
 import modify_4_4 from "@/assets/images/notes/modify_4_4_23_11zon.webp";
 import modify_4_5 from "@/assets/images/notes/modify_4_5_24_11zon.webp";
 
+import epilogue_1_0 from "@/assets/images/notes/epilogue_1_0.webp";
+
 // 공통 이미지
 import bg01Img from "@/assets/images/bg01Img.webp";
 import profileImg from "@/assets/images/profileImg.webp";
@@ -60,6 +65,8 @@ export const diskImages = {
   foolsbox,
   gimbapDisk,
   hmRemixes,
+  TMMS,
+  BIP,
 };
 
 export const newsImages = {
@@ -72,6 +79,7 @@ export const newsImages = {
   onstage,
   rainlight,
   thedreamer,
+  bip_maansun,
 };
 
 export const notesImages = {
@@ -100,6 +108,7 @@ export const notesImages = {
   modify_4_3,
   modify_4_4,
   modify_4_5,
+  epilogue_1_0,
 };
 
 export const commonImages = {

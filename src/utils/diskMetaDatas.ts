@@ -1,9 +1,542 @@
 import { diskImages } from "@/assets/images/images";
 import type { Disk } from "@/types/discography";
 
+// TODO: 링크 다 되면 데이터 업데이트
+
 const diskAlbumData: Disk[] = [
   {
     targetCarousel: { carouselIndex: 0, slideIndex: 1 },
+    type: "album",
+    year: 2025,
+    titleKr: "평화로운 뇌와…",
+    titleEn: "A Brain In Peace &…",
+    image: diskImages.BIP,
+    urls: {
+      bandcamp: "",
+      spotify: "",
+      youtubeMusic: "",
+      appleMusic: "",
+      melon: "",
+      bugs: "",
+      genie: "",
+    },
+    isCD: false,
+    maansunUrl: "https://maansun.com/catalogue/99",
+    descriptionKr: `지하철, 침대, 라디오,
+치사랑, 성애, 섭식장애,
+
+09시, 18시, 22시, 03시,
+원숭이, 고양이, 정어리,
+
+모두의 무기력,
+모두의 무가치함,
+모두의 모두에 대한 이별,
+
+그럼에도 우리는.`,
+    descriptionEn: `The subway, the bed, the radio.
+Filial love, desire, disordered eating.
+
+9 a.m., 6 p.m., 10 p.m., 3 a.m.
+Monkey, cat, sardine.
+
+Everyone’s lethargy.
+Everyone’s worthlessness.
+Everyone’s farewell to everyone.
+
+And still—we are.`,
+    credits: `Produced by HIMINN
+Composed by HIMINN
+Lyrics by HIMINN
+Arranged by HIMINN
+
+Vocal by HIMINN
+All instruments performed and programmed by HIMINN
+ except orchestrations by 손다협 (see below)
+
+Orchestrations
+- Track 8: Arranged and MIDI programmed by 손다협; re-edited by HIMINN
+- Track 9: Written by HIMINN; Arranged and MIDI programmed by 손다협
+
+Recorded at Phoné Studio (Track 2-6, 8-9); by HIMINN (Track 1, 7)
+Mixed & Mastered by Shinhwan at Phoné Studio
+
+Artwork by namu 나무
+ except Typography by HIMINN`,
+    tracks: [
+      {
+        trackNo: 1,
+        titleKr: "가솔린 무지개",
+        titleEn: "Gasoline Rainbow",
+        lyrics: `어느 새벽, 작은 악마 하나가 찾아와 속삭였습니다.
+
+'너에게 내 모든 권능을 주고, 그 영광은 네가 가질 수 있게 해주겠다.
+
+대신 나머지 모든 것들은 언제든 잃어버리게 될 것이다.'
+
+당신은 별 대수롭지 않게 여기며 그의 제안을 승낙합니다.
+
+
+놀랍게도 몇 년을 고민하던 이야기를 쉬이 풀어내게 되었습니다. 당신은 기뻐 금치 못합니다.
+
+하지만 당신은 곧 알게 됩니다. 악마가 취해 간 것들을.
+
+
+길을 걷다 마주친 고양이들은 두 번 다시 눈길을 주지 않습니다.
+
+해가 졌음에도 당신은 달콤한 잠에 들지 못합니다.
+
+한때 같이 걷고 같이 잠들었지만, 이제는 당신을 피해 달아나는 무수한 사람들을 보게 됩니다.
+
+
+악마는 참 잔인하게도 기억은 잃지 못하게 하는 장치를 심어 두었습니다.
+
+그 모든 이별에도 당신은 살아가고, 살아버립니다.
+
+
+참 불쌍하네요, 우린.`,
+        tags: [],
+      },
+      {
+        trackNo: 2,
+        titleKr: "Corns N Beans",
+        titleEn: "Corns N Beans",
+        lyrics: `나는 너에게 영광을 주겠다
+
+대신 너에게서 밤에 자는 잠을 뺏겠다
+
+나는 너에게 모든 걸 주겠다
+
+대신 너는 그 모든 이별을 준비하    라
+
+
+이름없는 고양이의 겨울에
+
+달아나는 당신의 뒷모습에
+
+부서지고 깨지고 무너지게
+
+그럼에도 우리는...
+
+
+(그 모든 이별에)
+
+살아야 하는 게
+
+살아만 가는 게
+
+살아는 지는 게
+
+
+나는 괜히 잠을 잤네
+
+나는 괜히 밤을 걷네
+
+나는 괜히 멀리 갔네
+
+나는 괜히 너랑
+
+
+꺼져가는 불씨가 아쉬울 때
+
+마지막엔 차마 눈감음에
+
+부서지고 베이고 스러지게
+
+그럼에도 우리는...
+
+
+(그 모든 이별에)
+
+살아야 하는 게
+
+살아만 가는 게
+
+살아는 지는 게
+
+
+(그 모든 이별에)
+
+
+(그 모든 이별에)`,
+        tags: [],
+      },
+      {
+        trackNo: 3,
+        titleKr: "9호선",
+        titleEn: "Line 9",
+        lyrics: `Fish in suits
+
+We’re all fish in suits
+
+In the tin box train
+
+Roaming this city in gray
+
+
+Packt in rows
+
+Stray, stray, stray
+
+Yet we roam around around around around around around...
+
+We gaze
+
+But words never come
+
+Words never come
+
+
+There’s a shimmer, shine
+
+At the end of this track
+
+But we never know, (They’ll never know)
+
+Only go backwards
+
+Underground
+
+
+
+Awake, Commute, Work, Eat, Work, Commute, Sleep, Repeat,
+
+Awake, Commute, Work, Consume, Work, Commute, Produce, Repeat,
+
+Repeat, Work, Commute, Consume, Work, Commute, Produce, Wrap it up!
+
+Bodies Packed, Chopped, Sealed, Wrapped, Boxed, and then we’re on
+
+
+Escalators, Escalators, Escalators, Escalators,
+
+TURN
+
+Escalators, Escalators, Escalators, Escalators,
+
+Escalators, Escalators, Escalators, Escalators,
+
+PUSH
+
+Escalators, Escalators, Escalators, Escalators,
+
+Escalators, Escalators, Escalators, Escalators,
+
+BURN
+
+Escalators, Escalators, Escalators, Escalators,
+
+
+Honey, Your dish is ready
+
+and BOOM!
+
+
+
+In plastic dreams
+
+Floating in ocean tides
+
+So bright and warm
+
+Scattered light, Underwater
+
+We could go anywhere
+
+We could do everything
+
+
+Nobody tells
+
+Now what should we do?
+
+Too bright to see
+
+Sink into the sweet, sweetest terror
+
+We can’t take it anymore
+
+Just wake me at the next station
+
+
+
+Chained, Still, Still, Still
+
+Drained, Still, Still, Still
+
+We're Still, Still, Still
+
+
+Chained, Still, Still, Still
+
+Prained, Still, Still, Still`,
+        tags: [],
+      },
+      {
+        trackNo: 4,
+        titleKr: "열한 번째 고양이의 밤",
+        titleEn: "Ninth Life, Eleventh Night",
+        lyrics: `우린 다시 만나자, 열한 번째 고양이의 밤에서
+
+비를 맞을 일도 없이, 따뜻한, 따뜻한
+
+
+우린 뒤를 보진 말자
+
+담요 속에 얼굴을 파묻고 그냥 숨자
+
+전화가 울려도 끝없이 위로, 위로만 가자
+
+누가 소리를 질러도 끝없이 안으로, 안으로
+
+
+있잖아, 기다리진 말아 나를
+
+있잖아, 기다리진 말아 나를
+
+있잖아, 기다리진 말아 나를
+
+있잖아, 기다리지...
+
+뜨문 뜨문 뜨문`,
+        tags: [],
+      },
+      {
+        trackNo: 5,
+        titleKr: "The Monkey/Mother-ship",
+        titleEn: "The Monkey/Mother-ship",
+        lyrics: `Have I been thrown away?
+
+In a six-sided mirrored room
+
+Stand in an aisle
+
+2 mothers in my view
+
+
+My twin, you’ve grown up quite a lot
+
+Then haven’t I?
+
+Stand in an aisle
+
+2 mothers in my view
+
+
+Floating inside the mothership
+
+Cold, artificial mother’s milk
+
+Warm you is the other thing
+
+Can’t tell fake from real
+
+
+Floating inside the mothership
+
+Cold, artificial love
+
+Warm you is the other thing
+
+Compassion exceeds comfort
+
+
+Oh, I was thrown away
+
+but you are here now
+
+Stand in an aisle
+
+We few happy family`,
+        tags: [],
+      },
+      {
+        trackNo: 6,
+        titleKr: "Dinner, the Pill & the Feast",
+        titleEn: "Dinner, the Pill & the Feast",
+        lyrics: `Devouring
+
+Anodyne
+
+I woke up
+
+An emptiness
+
+Rue
+
+Swell
+
+Exploded
+
+in silence
+
+
+Beef beef beef
+
+I want more beef
+
+
+I throw up
+
+Rail against
+
+Charge
+
+Ah, keep it
+
+Chagrin
+
+Epicure
+
+Promiscuous
+
+
+Light
+
+Red light
+
+Light
+
+For you pigs
+
+
+Words for words
+
+Divulge
+
+Food food food
+
+
+Ah, Shut up and just chew it`,
+        tags: [],
+      },
+      {
+        trackNo: 7,
+        titleKr: "Nudity",
+        titleEn: "Nudity",
+        lyrics: `I’ve never loved my luv
+
+
+The Nudity
+
+Just let me go to sleep
+
+Far too easily
+
+Low comedy
+
+
+Salivary
+
+I don’t bloom again
+
+Far too easily
+
+No such remedy
+
+
+I’ve never lived my life
+
+
+My property
+
+No more of that Lunatic
+
+Far too easily
+
+Far too easily
+
+Far too easily`,
+        tags: [],
+      },
+      {
+        trackNo: 8,
+        titleKr: "V.",
+        titleEn: "V.",
+        lyrics: `I have done nothing better
+
+널 이룰거란 기대 버려
+
+I'd have done ..., if nothing mattered
+
+가치 없는 꿈에 기대어
+
+
+I have done nothing better
+
+널 이룰거란 기대 버려
+
+I'd have done ..., if nothing mattered
+
+가치 없는 꿈에 날 깨워`,
+        tags: [],
+      },
+      {
+        trackNo: 9,
+        titleKr: "2025년 즈음에는 좋은 아이가 되어볼게요",
+        titleEn: "Yr 2025 Problem",
+        lyrics: `2025년 즈음에는 좋은 아이가 될게요
+
+큰 사람이 되지는 못할게요
+
+지하철에 수많은 신발들이 날 노려봐요
+
+그 안에 더 많은 열 개의 눈이 날 봐요
+
+
+거꾸로 달리는 기차 안에서
+
+사람들은 소리를 지르고
+
+나는 가만히 잠을 잤어요
+
+자다가 못 내리면 좋을 텐데
+
+
+같잖은 소음으로 노래하지 않을게요
+
+이것도 음악인지 잘 모르겠다구요
+
+일다운 일을 해보려 할게요
+
+원하던 시험도 언제 한 번 쳐볼게요
+
+
+거꾸로 달리는 기차 안에서
+
+사람들은 소리를 지르고
+
+나는 가만히 잠을 잤어요
+
+자다가 못 내리면 좋을 텐데
+
+
+라디오-친화적인 노래 위주로
+
+라디오 그 근처도 못 가겠지만
+
+그래서 티비에는 언제 나오니?
+
+그래서 무대에 서지 말아 볼게요
+
+
+거꾸로 달리는 기차 안에서
+
+사람들은 소리를 지르고
+
+나는 가만히 잠을 잤어요
+
+
+거꾸로 달리는 전철 안에서
+
+사람들은 앞으로 내지르고
+
+나는 가만히`,
+        tags: ["Title"],
+      },
+    ],
+  },
+  {
+    targetCarousel: { carouselIndex: 1, slideIndex: 1 },
     type: "album",
     year: 2022,
     titleKr: "HM",
@@ -20,7 +553,13 @@ const diskAlbumData: Disk[] = [
       genie: "https://www.genie.co.kr/detail/albumInfo?axnm=83280159",
     },
     isCD: true,
-    cdUrl: "https://smartstore.naver.com/6v6recordings/products/9436037351",
+    cdUrl: [
+      {
+        store: "6v6 Recordings",
+        color: "#FCDF32",
+        url: "https://smartstore.naver.com/6v6recordings/products/9436037351",
+      },
+    ],
     descriptionKr: `저에게 제 노래는 일종의 방어입니다. 자신을 바라보고 제 속의 갈등—주로 고독 및 자기 비난—을 다시 곱게 빚어내는 자기 방어. \n\n 그러니 제가 저를 직접 내보이기는 아직도 부끄럽기에, 이번에는 마치 셀프 타이틀 같지 않은 셀프 타이틀 앨범 [HM]에 열한 곡의 노래들을 엮었습니다. \n\n 언제는 외로움에 어찌할 바를 모르다가도 또 가끔은 초연해지는, 저 그리고 모두가 가진 본연의 모습을 담고 싶었습니다.
 \n
   하나 : 새벽에, 혼자, 어둡게 그리고 정말 크게 들어주세요.
@@ -708,480 +1247,8 @@ The melody only remains`,
       },
     ],
   },
-  //   {
-  //     targetCarousel: { carouselIndex: 0, slideIndex: 1 },
-  //     type: "album",
-  //     year: 2025,
-  //     titleKr: "평화로운 뇌와…",
-  //     titleEn: "A Brain In Peace &…",
-  //     image: diskImages.hm,
-  //     urls: {
-  //       bandcamp: "https://himinnn.bandcamp.com/album/hm",
-  //       spotify: "https://open.spotify.com/album/2kwKctIlNJCNK5mU9a0FEF",
-  //       youtubeMusic:
-  //         "https://music.youtube.com/playlist?list=OLAK5uy_mqSbyG7WqaMdeYnQmj7k1jfoqIOho5FUg&si=D_QEKJKzZXiNFTKh",
-  //       appleMusic: "https://music.apple.com/us/album/hm/1659621243",
-  //       melon: "https://www.melon.com/album/detail.htm?albumId=11121710",
-  //       bugs: "https://music.bugs.co.kr/album/20533309",
-  //       genie: "https://www.genie.co.kr/detail/albumInfo?axnm=83280159",
-  //     },
-  //     isCD: false,
-  //     cdUrl: null,
-  //     descriptionKr: `지하철, 침대, 라디오,
-  // 치사랑, 성애, 섭식장애,
-
-  // 09시, 18시, 22시, 03시,
-  // 원숭이, 고양이, 정어리,
-
-  // 모두의 무기력,
-  // 모두의 무가치함,
-  // 모두의 모두에 대한 이별,
-
-  // 그럼에도 우리는.`,
-  //     descriptionEn: `The subway, the bed, the radio.
-  // parental love, desire, disordered eating.
-
-  // 9 a.m., 6 p.m., 10 p.m., 3 a.m.
-  // Monkeys, cats, sardines.
-
-  // Everyone’s lethargy.
-  // Everyone’s worthlessness.
-  // Everyone’s farewell to everyone.
-
-  // And still—we are.`,
-  //     credits: `Produced by HIMINN
-  // Recorded by Shinhwan @ Phoné Studio
-  // Mixed & Mastered by Shinhwan @ Phoné Studio
-  // Artwork by namu 나무`,
-  //     tracks: [
-  //       {
-  //         trackNo: 1,
-  //         titleKr: "가솔린 무지개",
-  //         titleEn: "Gasoline Rainbows",
-  //         lyrics: `어느 새벽, 작은 악마 하나가 찾아와 속삭였습니다.
-
-  // '너에게 내 모든 권능을 주고, 그 영광은 네가 가질 수 있게 해주겠다.
-
-  // 대신 나머지 모든 것들은 언제든 잃어버리게 될 것이다.'
-
-  // 당신은 별 대수롭지 않게 여기며 그의 제안을 승낙합니다.
-
-  // 놀랍게도 몇 년을 고민하던 이야기를 쉬이 풀어내게 되었습니다. 당신은 기뻐 금치 못합니다.
-
-  // 하지만 당신은 곧 알게 됩니다. 악마가 취해 간 것들을.
-
-  // 길을 걷다 마주친 고양이들은 두 번 다시 눈길을 주지 않습니다.
-
-  // 해가 졌음에도 당신은 달콤한 잠에 들지 못합니다.
-
-  // 한때 같이 걷고, 같이 잠었지만 이들이 이제는 당신을 피해 달아나는 무수한 사람들을 보게 됩니다.
-
-  // 악마는 참 잔인하게도 기억은 잃지 못하게 하는 장치를 심어 두었습니다.
-
-  // 그 모든 이별에도 당신은 살아가고, 살아버립니다.
-
-  // 참 불쌍하네요, 우린.`,
-  //         tags: [],
-  //       },
-  //       {
-  //         trackNo: 2,
-  //         titleKr: "Corns N Beans",
-  //         titleEn: "Corns N Beans",
-  //         lyrics: `
-  // 나는 너에게 영광을 주겠다
-
-  // 대신 너에게서 밤에 자는 잠을 뺏겠다
-
-  // 나는 너에게 모든 걸 주겠다
-
-  // 대신 너는 그 모든 이별을 준비하    라
-
-  // 이름없는 고양이의 겨울에
-
-  // 달아나는 당신의 뒷모습에
-
-  // 부서지고 깨지고 무너지게
-
-  // 그럼에도 우리는
-
-  // (그 모든 이별에)
-
-  // 살아야 하는게
-
-  // 살아만 가는게
-
-  // 살아는 지는게
-
-  // 나는 괜히 잠을 잤네
-
-  // 나는 괜히 밤을 걷네
-
-  // 나는 괜히 멀리 갔네
-
-  // 나는 괜히 너랑
-
-  // 꺼져가는 불씨가 아쉬울 때
-
-  // 마지막엔 차마 눈감음에
-
-  // 부서지고 베이고 스러지게
-
-  // 그럼에도 우리는
-
-  // (그 모든 이별에)
-
-  // 살아야 하는게
-
-  // 살아만 가는게
-
-  // 살아는 지는게
-
-  // (그 모든 이별에)`,
-  //         tags: [],
-  //       },
-  //       {
-  //         trackNo: 3,
-  //         titleKr: "9호선",
-  //         titleEn: "Line 9",
-  //         lyrics: `Fish in suits
-
-  // We’re all fish in suits
-
-  // In the tin box train
-
-  // Roaming this city in gray
-
-  // Packt in rows
-
-  // Stray, stray, stray
-
-  // Yet we roam around around around around around around...
-
-  // We gaze
-
-  // But words never come
-
-  // Words never come
-
-  // There’s a shimmer, shine
-
-  // At the end of this track
-
-  // But we never know, (They’ll never know)
-
-  // Only go backwards
-
-  // Underground
-
-  // Awake, Commute, Work, Eat, Work, Commute, Sleep, Repeat,
-
-  // Awake, Commute, Work, Consume, Work, Commute, Produce, Repeat,
-
-  // Repeat, Work, Commute, Consume, Work, Commute, Produce, Wrap it up!
-
-  // Bodies Packed, Chopped, Sealed, Wrapped, Boxed, and then we’re on
-
-  // Escalators, Escalators, Escalators, Escalators,
-
-  // TURN
-
-  // Escalators, Escalators, Escalators, Escalators,
-
-  // Escalators, Escalators, Escalators, Escalators,
-
-  // PUSH
-
-  // Escalators, Escalators, Escalators, Escalators,
-
-  // Escalators, Escalators, Escalators, Escalators,
-
-  // BURN
-
-  // Escalators, Escalators, Escalators, Escalators,
-
-  // Honey, Your dish is ready
-
-  // and BOOM!
-
-  // In plastic dreams
-
-  // Floating in ocean tides
-
-  // So bright and warm
-
-  // Scattered light, Underwater
-
-  // We could go anywhere
-
-  // We could do everything
-
-  // Nobody tells
-
-  // Now what should we do?
-
-  // Too bright to see
-
-  // Sink into the sweet, sweetest terror
-
-  // We can’t take it anymore
-
-  // Just wake me at the next station
-
-  // Chained, Still, Still, Still
-
-  // Drained, Still, Still, Still
-
-  // We're Still, Still, Still
-
-  // Chained, Still, Still, Still
-
-  // Prained, Still, Still, Still`,
-  //         tags: [],
-  //       },
-  //       {
-  //         trackNo: 4,
-  //         titleKr: "열한번째 고양이의 밤",
-  //         titleEn: "Ninth Life, Eleventh Night",
-  //         lyrics: `우린 다시 만나자, 열한 번째 고양이의 밤에서
-
-  // 비를 맞을 일도 없이, 따뜻한, 따뜻한
-
-  // 우린 뒤를 보진 말자
-
-  // 담요 속에 얼굴을 파묻고 그냥 숨자
-
-  // 전화가 울려도 끝없이 위로, 위로만 가자
-
-  // 누가 소리를 질러도 끝없이 안으로, 안으로
-
-  // 있잖아, 기다리지 말아, 나를
-
-  // 있잖아, 기다리지 말아, 나를
-
-  // 있잖아, 기다리지 말아, 나를
-
-  // 있잖아, 기다리지...
-
-  // 뜨문 뜨문 뜨문`,
-  //         tags: [],
-  //       },
-  //       {
-  //         trackNo: 5,
-  //         titleKr: "The Monkey/Mother-ship",
-  //         titleEn: "The Monkey/Mother-ship",
-  //         lyrics: `Have I been thrown away?
-
-  // In a six-sides mirrored room
-
-  // Stand in an aisle
-
-  // 2 mothers in my view
-
-  // My twin, you’ve grown up quite a lot
-
-  // Then Haven’t I?
-
-  // Stand in an aisle
-
-  // 2 mothers in my view
-
-  // Floating inside the mothership
-
-  // Cold, artificial mother’s milk
-
-  // Warm you is the other thing
-
-  // Can’t tell fake from real
-
-  // Floating inside the mothership
-
-  // Cold, artificial love
-
-  // Warm you is the other thing
-
-  // Compassion exceeds comfort
-
-  // Oh, I was thrown away
-
-  // but you are here now
-
-  // Stand in an aisle
-
-  // We few happy family`,
-  //         tags: [],
-  //       },
-  //       {
-  //         trackNo: 6,
-  //         titleKr: "Dinner, the pill & the feast",
-  //         titleEn: "Dinner, the pill & the feast",
-  //         lyrics: `Devouring
-
-  // Anodyne
-
-  // I woke up
-
-  // An emptiness
-
-  // Rue
-
-  // Swell
-
-  // Exploded
-
-  // in silence
-
-  // Beef beef beef
-
-  // I want more beef
-
-  // I throw up
-
-  // Rail against
-
-  // Charge
-
-  // Ah, keep it
-
-  // Chagrin
-
-  // Epicure
-
-  // Promiscuous
-
-  // Light
-
-  // Red light
-
-  // Light
-
-  // For you pigs
-
-  // Words for words
-
-  // Divulge
-
-  // Food food food
-
-  // Ah, shut up and just chew it`,
-  //         tags: [],
-  //       },
-  //       {
-  //         trackNo: 7,
-  //         titleKr: "Nudity",
-  //         titleEn: "Nudity",
-  //         lyrics: `I’ve never loved my luv
-
-  // The Nudity
-
-  // Just let me go to sleep
-
-  // Far too easily
-
-  // Low comedy
-
-  // Salivary
-
-  // I don’t bloom again
-
-  // Far too easily
-
-  // No Such remedy
-
-  // I’ve never lived my life
-
-  // My property
-
-  // No more of that Lunatic
-
-  // Far too easily
-
-  // Far too easily
-
-  // Far too easily`,
-  //         tags: [],
-  //       },
-  //       {
-  //         trackNo: 8,
-  //         titleKr: "V.",
-  //         titleEn: "V.",
-  //         lyrics: `I have done nothing better
-
-  // 널 이룰거란 기대 버려
-
-  // I have done, if nothing mattered
-
-  // 가치 없는 꿈에 기대어
-
-  // I have done nothing better
-
-  // 널 이룰거란 기대 버려
-
-  // I have done, if nothing mattered
-
-  // 가치 없는 꿈에 날 깨워`,
-  //         tags: [],
-  //       },
-  //       {
-  //         trackNo: 9,
-  //         titleKr: "2025년 즈음에는 좋은 아이가 되어볼게요",
-  //         titleEn: "Yr 2025 Problem",
-  //         lyrics: `2025년 즈음에는 좋은 아이가 될게요
-
-  // 큰 사람이 되지는 못할게요
-
-  // 지하철에 수많은 신발들이 날 노려봐요
-
-  // 그 안에 더 많은 열 개의 눈이 날 봐요
-
-  // 거꾸로 달리는 기차안에서
-
-  // 사람들은 소리를 지르고
-
-  // 나는 가만히 잠을 잤어요
-
-  // 자다가 못 내리면 좋을텐데
-
-  // 같잖은 소음으로 노래하지 않을게요
-
-  // 이것도 음악인지 잘 모르겠다구요
-
-  // 일다운 일을 해보려 할게요
-
-  // 원하던 시험도 언제 한 번 쳐볼게요
-
-  // 거꾸로 달리는 기차안에서
-
-  // 사람들은 소리를 지르고
-
-  // 나는 가만히 잠을 잤어요
-
-  // 자다가 못 내리면 좋을텐데
-
-  // 라디오-친화적인 노래 위주로
-
-  // 라디오 그 근처도 못 가겠지만
-
-  // 그래서 티비에는 언제 나오니?
-
-  // 그래서 무대에 서지 말아볼게요
-
-  // 거꾸로 달리는 기차안에서
-
-  // 사람들은 소리를 지르고
-
-  // 나는 가만히 잠을 잤어요
-
-  // 거꾸로 달리는 전철 안에서
-
-  // 사람들은 앞으로 내지르고
-
-  // 나는 가만히`,
-  //         tags: ["Title"],
-  //       },
-  //     ],
-  //   },
   {
-    targetCarousel: { carouselIndex: 1, slideIndex: 1 },
+    targetCarousel: { carouselIndex: 2, slideIndex: 1 },
     type: "remix",
     year: 2023,
     titleKr: "HM REMIXES",
@@ -1198,7 +1265,6 @@ The melody only remains`,
       genie: "https://www.genie.co.kr/detail/albumInfo?axnm=83923238",
     },
     isCD: false,
-    cdUrl: null,
     descriptionKr: `HIMINN 의 정규 앨범 [HM] 의 수록곡을 다른 뮤지션들의 손으로 재조립한 리믹스 앨범
 
 “내밀한 이야기는 자랑하듯이 내놓았으면서
@@ -1610,7 +1676,122 @@ Indeed`,
 
 const diskOthersData: Disk[] = [
   {
-    targetCarousel: { carouselIndex: 2, slideIndex: 1 },
+    targetCarousel: { carouselIndex: 3, slideIndex: 1 },
+    type: "single",
+    year: 2025,
+    titleKr: "The Monkey/Mother-ship",
+    titleEn: "The Monkey/Mother-ship",
+    image: diskImages.TMMS,
+    urls: {
+      bandcamp: "https://himinnn.bandcamp.com/track/the-monkey-mother-ship",
+      spotify:
+        "https://open.spotify.com/album/1MqEgVtlwVE2483sR0uRbi?si=ATRaL9nMQiWbqSQeWM3FLA",
+      youtubeMusic:
+        "https://music.youtube.com/playlist?list=OLAK5uy_ngPZ3oHSS-qCkzTzDZaDBRxCJN2jwzUhs&si=eyMCf_7tGf3BYIyM",
+      appleMusic:
+        "https://music.apple.com/us/album/the-monkey-mother-ship-single/1826459592",
+      melon: "https://www.melon.com/album/detail.htm?albumId=11895590",
+      bugs: "https://music.bugs.co.kr/album/20740388",
+      genie: "https://www.genie.co.kr/detail/albumInfo?axnm=86504281",
+    },
+    isCD: false,
+    descriptionKr: `미디어는(우리는) 치사랑에 대해 말하기 참 어려워해요.
+
+부모가 자식을 사랑하는 건 당연하고 아름답게 그려지지만,
+자식이 부모를 바라보는 감정은 종종 생략되거나, 하나의 덕목으로 강요됩니다.
+내리사랑과 치사랑 사이의 이 공백 속에서,
+‘애착’은 감히 무엇이라 단언할 수 있을까요?
+
+
+두 엄마 사이에 선 아가 원숭이(들)는
+우리를 돌보지만 차가운 존재, 동시에 따뜻하지만 비어 있는 존재 그 사이를 떠다닙니다.
+
+해리 할로우가 행한 유명한 애착 실험의 내용을 빌려,
+‘사랑의 발동 조건’을 물어보려 했습니다.`,
+    descriptionEn: `Filial love is something the media (or we) rarely knows how to talk about.
+
+While a parent's love for their child is often depicted as natural and beautiful,
+a child's feelings toward their parent are frequently omitted—or else imposed as a moral obligation.
+In the space between love flowing downward and love reaching upward,
+how can we even begin to define 'ATTACHMENT'?
+
+
+The baby monkey(s) standing between two mothers,
+float between a caregiver who is cold yet dependable,
+and one who is warm but hollow.
+
+Borrowing from Harry Harlow’s famous attachment experiment,
+I tried to ask: What sets love in motion?`,
+    credits: `
+Produced by HIMINN
+Composed by HIMINN
+Lyrics by HIMINN
+Arranged by HIMINN
+
+Vocal by HIMINN
+All instruments performed and programmed by HIMINN
+
+Recorded at Phoné Studio
+Mixed & Mastered by Shinhwan at Phoné Studio
+
+Artwork
+- Illustration & Colouring by namu 나무
+- Digital Editing, Layout by namu 나무, After Midnight
+- Typography by After Midnight, HIMINN`,
+    tracks: [
+      {
+        trackNo: 1,
+        titleKr: "The Monkey/Mother-ship",
+        titleEn: "The Monkey/Mother-ship",
+        lyrics: `Have I been thrown away?
+
+In a six-sided mirrored room
+
+Stand in an aisle
+
+2 mothers in my view
+
+
+My twin, you’ve grown up quite a lot
+
+Then haven’t I?
+
+Stand in an aisle
+
+2 mothers in my view
+
+
+Floating inside the mothership
+
+Cold, artificial mother’s milk
+
+Warm you is the other thing
+
+Can’t tell fake from real
+
+
+Floating inside the mothership
+
+Cold, artificial love
+
+Warm you is the other thing
+
+Compassion exceeds comfort
+
+
+Oh, I was thrown away
+
+but you are here now
+
+Stand in an aisle
+
+We few happy family`,
+        tags: [],
+      },
+    ],
+  },
+  {
+    targetCarousel: { carouselIndex: 3, slideIndex: 2 },
     type: "single",
     year: 2022,
     titleKr: "Fool's Box",
@@ -1628,7 +1809,6 @@ const diskOthersData: Disk[] = [
       genie: "https://www.genie.co.kr/detail/albumInfo?axnm=82869798",
     },
     isCD: false,
-    cdUrl: null,
     descriptionKr: `진부하고 진부한 판도라의 상자 이야기를 빗대어 말하고 싶었습니다.
 후회하세요, 그리고 슬퍼하세요.
 
@@ -1709,7 +1889,7 @@ Vocal by HIMINN`,
     ],
   },
   {
-    targetCarousel: { carouselIndex: 2, slideIndex: 2 },
+    targetCarousel: { carouselIndex: 3, slideIndex: 3 },
     type: "EP",
     year: 2021,
     titleKr: "In The Need Of A Good Cry",
@@ -1728,7 +1908,6 @@ Vocal by HIMINN`,
       // genie: "https://www.genie.co.kr/detail/albumInfo?axnm=82045830",
     },
     isCD: false,
-    cdUrl: null,
     descriptionKr: `눈물을 흘리는 것은 나약한 일일까? 그렇다 듣고, 또 그렇게 알며 살아왔다.
 
 그러나 이제는 좋은 울음에 대해 이야기해보고 싶다.
@@ -2265,7 +2444,7 @@ Crawl into your space generously in silence but definitely.`,
 
 const diskOSTData: Disk[] = [
   {
-    targetCarousel: { carouselIndex: 3, slideIndex: 1 },
+    targetCarousel: { carouselIndex: 4, slideIndex: 1 },
     type: "ost",
     year: 2024,
     titleKr: "악마의 생선 OST",
@@ -2275,7 +2454,6 @@ const diskOSTData: Disk[] = [
       bandcamp: "https://himinnn.bandcamp.com/album/mbc-ost",
     },
     isCD: false,
-    cdUrl: null,
     descriptionKr: ``,
     descriptionEn: ``,
     credits: ``,
@@ -2349,7 +2527,7 @@ const diskOSTData: Disk[] = [
     ],
   },
   {
-    targetCarousel: { carouselIndex: 3, slideIndex: 2 },
+    targetCarousel: { carouselIndex: 4, slideIndex: 2 },
     type: "ost",
     year: 2025,
     titleKr: "김밥의 천국 OST",
@@ -2359,7 +2537,6 @@ const diskOSTData: Disk[] = [
       bandcamp: "https://himinnn.bandcamp.com/album/music-for-a-documentary",
     },
     isCD: false,
-    cdUrl: null,
     descriptionKr: ``,
     descriptionEn: ``,
     credits: ``,

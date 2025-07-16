@@ -2,7 +2,7 @@ import type { JSX } from "react";
 import { lazy, Suspense } from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { BarLoader } from "react-spinners";
+import { CircleLoader } from "react-spinners";
 import { Route, Routes, useLocation } from "react-router-dom";
 
 import { preloadImages } from "./utils/withImagePreload";
@@ -150,7 +150,23 @@ const pageVariants = {
 
 const Fallback = () => (
   <div className="min-h-[calc(100dvh-12rem)] w-screen flex items-center justify-center">
-    <BarLoader color="#BFBFBF" height={10} speedMultiplier={1} width={200} />
+    <CircleLoader
+      size={75}
+      speedMultiplier={0.75}
+      className="
+      *:transition-all *:duration-300 animate-pulse
+  [&_>span:nth-child(1)]:!border-t-[#ae2323]
+  [&_>span:nth-child(1)]:!border-l-[#f26b38]
+  [&_>span:nth-child(2)]:!border-t-[#ffef7b]
+  [&_>span:nth-child(2)]:!border-l-[#6ec3ff]
+  [&_>span:nth-child(3)]:!border-t-[#a66dd4]
+  [&_>span:nth-child(3)]:!border-l-[#ff4e50]
+  [&_>span:nth-child(4)]:!border-t-[#f26b38]
+  [&_>span:nth-child(4)]:!border-l-[#ae2323]
+  [&_>span:nth-child(5)]:!border-t-[#6ec3ff]
+  [&_>span:nth-child(5)]:!border-l-[#ffef7b]
+"
+    />
   </div>
 );
 

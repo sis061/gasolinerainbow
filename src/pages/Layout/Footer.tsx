@@ -40,9 +40,9 @@ const Footer = () => {
                 align="start"
                 alignOffset={25}
                 arrowPadding={1}
-                className="bg-black !p-1 rounded-bl-none"
+                className="bg-black !p-1 rounded-xs rounded-bl-none border-white/75"
               >
-                <DropdownMenuItem className="!p-2 hover:!bg-[#272727]">
+                <DropdownMenuItem className="!p-2 hover:!bg-white/15 rounded-xs">
                   <a
                     href="mailto:himinnjeong@gmail.com"
                     className="flex items-center justify-start gap-2 w-full"
@@ -53,7 +53,7 @@ const Footer = () => {
                     </span>
                   </a>
                 </DropdownMenuItem>
-                <DropdownMenuItem className="!p-2 hover:!bg-[#272727]">
+                <DropdownMenuItem className="!p-2 hover:!bg-white/15 rounded-xs">
                   <a
                     href="https://www.instagram.com/himinn___/"
                     target="_blank"

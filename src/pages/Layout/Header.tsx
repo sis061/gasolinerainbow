@@ -24,8 +24,9 @@ const Header = () => {
   const minTablet = useMediaQuery({ minWidth: 768 });
 
   const { pathname } = useLocation();
-  const bgBlackRoute: boolean =
-    pathname === "/discography" || pathname.startsWith("/authornote");
+  // const bgBlackRoute: boolean =
+  //   pathname === "/discography" || pathname.startsWith("/authornote");
+  const bgBlackRoute = false;
 
   const isScrolled = useScrollState();
   const { language, setLanguage } = useLanguageStore();
@@ -80,7 +81,7 @@ export default Header;
 
 const Logo = ({ useWhiteText }: { useWhiteText: boolean }) => (
   <Link to="/">
-    <div className="w-auto min-h-16 flex flex-col items-center justify-center *:transition-all *:duration-300 hover:animate-pulse">
+    <div className="w-auto min-h-16 flex flex-col items-center justify-center *:transition-all *:duration-200 hover:animate-pulse">
       <p
         style={{
           backgroundImage: useWhiteText ? "" : `url(${LogoBg})`,
@@ -99,7 +100,7 @@ const Logo = ({ useWhiteText }: { useWhiteText: boolean }) => (
           backgroundImage: useWhiteText ? "" : `url(${LogoBg})`,
         }}
         className={cx(
-          "text-md font-extrabold !ml-5 [&_>span]:text-xl [&_>span]:font-normal *:transition-all *:duration-300",
+          "text-md font-extrabold !ml-5 [&_>span]:text-xl [&_>span]:font-normal *:transition-all *:duration-200",
           useWhiteText
             ? "!text-white [&_>span]:!text-white"
             : `!bg-clip-text !text-transparent bg-center bg-cover [&_>span]:!bg-clip-text [&_>span]:!text-transparent`
@@ -153,7 +154,7 @@ const HeaderRight = ({
       <Languages
         size={28}
         color={"#000"}
-        className="duration-150 w-full h-full"
+        className="duration-150 w-full h-full xl:!p-0 max-lg:!p-0 max-xl:!p-[1.5px]"
       />
       <motion.div
         initial={false}

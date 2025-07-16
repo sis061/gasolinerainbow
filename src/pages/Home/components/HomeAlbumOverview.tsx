@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense, useState, type JSX } from "react";
 
 import { motion } from "framer-motion";
 import cx from "classnames";
@@ -6,7 +6,6 @@ import { AudioLines, ChevronDown } from "lucide-react";
 
 import { ScaleLoader } from "react-spinners";
 import { useMediaQuery } from "react-responsive";
-import { useNavigate } from "react-router-dom";
 
 import useLanguageStore from "@/store/useLanguageStore";
 import { renderDiskType } from "@/utils/globalHelper";
@@ -20,82 +19,60 @@ import HomeYoutubeEmbed from "./HomeYoutubeEmbed";
 import type { Disk } from "@/types/discography";
 import GoToDiscButton from "@/components/GoToDiscButton";
 
-const trimDescription = (
-  description: string,
-  lang: "ko" | "en",
-  dir: () => void
-) => {
-  const endSentence: string =
-    lang === "ko"
-      ? "본연의 모습을 담고 싶었습니다."
-      : "I believe we all carry.";
-  const endIndex = description.indexOf(endSentence);
-  if (endIndex === -1) return <>{description}</>;
-  const trimmed = description.slice(0, endIndex + endSentence.length).trim();
-  return (
-    <>
-      {trimmed}
-      <button
-        onClick={dir}
-        className="!ml-1 cursor-pointer hover:!text-blue-800 transition-colors"
-        aria-label={
-          lang === "ko"
-            ? "디스코그라피에서 전체 보기"
-            : "View full in discography"
-        }
-      >
-        [...]
-      </button>
-    </>
-  );
-};
-
 const HomeAlbumOverview = ({
+  isVideoRight = true,
   albumMeta,
   videoId,
+  trimmedDescription = <></>,
 }: {
+  isVideoRight: boolean;
   albumMeta: Disk;
   videoId: string;
+  trimmedDescription?: JSX.Element;
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const navigate = useNavigate();
   const minTablet = useMediaQuery({ minWidth: 768 });
   const { language } = useLanguageStore();
 
   const platforms = getStreamingPlatformInfo(albumMeta.urls);
   const type = renderDiskType(albumMeta.type);
 
-  const goToDiscography = () => {
-    navigate("/discography", {
-      state: {
-        carouselIndex: albumMeta?.targetCarousel.carouselIndex,
-        slideIndex: albumMeta?.targetCarousel.slideIndex,
-      },
-    });
-  };
-
-  const descTranslated =
-    language === "ko" ? albumMeta.descriptionKr : albumMeta.descriptionEn;
-  const trimmedDescription = trimDescription(
-    descTranslated,
-    language,
-    goToDiscography
-  );
+  const description = trimmedDescription
+    ? trimmedDescription
+    : language === "ko"
+      ? albumMeta.descriptionKr
+      : albumMeta.descriptionEn;
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.1 }}
+      // whileInView={{ opacity: 1, y: 0 }}
+      // viewport={{ once: true, amount: 0.1 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
       className="grid grid-rows-[auto_auto] grid-cols-4 w-full gap-2"
     >
-      <div className="!aspect-video z-10 lg:!ml-3 row-start-1 overflow-hidden lg:col-start-2 col-span-4 lg:col-span-3 bg-black w-full h-auto [&_>div]:h-full shadow-xl">
+      <div
+        className={cx(
+          isVideoRight ? "lg:col-start-2 lg:!ml-3" : "lg:col-start-1 lg:!mr-3",
+          "!aspect-video z-10 row-start-1 overflow-hidden col-span-4 lg:col-span-3 bg-black w-full h-auto [&_>div]:h-full shadow-xl"
+        )}
+      >
         <HomeYoutubeEmbed id={videoId} img={albumMeta.image} />
       </div>
-      <div className="w-auto shadow-2xl row-start-2 col-start-1 col-span-4 bg-white/75 flex flex-col justify-between gap-6 !-mt-4 lg:!-mt-12 lg:!mr-12 !p-6 ">
-        <div className="!py-2 font-bold flex flex-col w-full items-start ">
+      <div
+        className={cx(
+          isVideoRight ? "lg:!mr-12 lg:!-mt-12" : "lg:!ml-12 lg:!-mt-12",
+          "w-auto shadow-2xl row-start-2 col-start-1 col-span-4 bg-white/75 flex flex-col justify-between gap-10 !-mt-4 !p-6 "
+        )}
+      >
+        <div
+          className={cx(
+            "!py-2 font-bold flex flex-col w-full max-lg:!items-start",
+            isVideoRight ? "items-start" : "items-end"
+          )}
+        >
           <span className="text-sm">
             {language === "ko" ? type.kr : type.en.toUpperCase()}
           </span>
@@ -104,7 +81,7 @@ const HomeAlbumOverview = ({
           </h1>
         </div>
         <div className="!space-y-6 flex flex-col">
-          <p className="w-full whitespace-break-spaces">{trimmedDescription}</p>
+          <p className="w-full whitespace-break-spaces">{description}</p>
           <GoToDiscButton albumMeta={albumMeta} />
         </div>
         <hr className="border-black/20 !-my-2" />

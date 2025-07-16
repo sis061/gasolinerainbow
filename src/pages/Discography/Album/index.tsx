@@ -41,11 +41,15 @@ const AlbumCarousel = ({
   const triggerRef = useRef<HTMLDivElement | null>(null);
   const [open, setOpen] = useState<boolean>(false);
   const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
+  const [isApiReady, setIsApiReady] = useState<boolean>(false);
+  const [selectedIndex, setSelectedIndex] = useState<number>(initialSlideIndex);
+  const [lastIndex, setLastIndex] = useState<number>(0);
 
   const minTablet = useMediaQuery({ minWidth: 768 });
 
   const { language } = useLanguageStore();
   const { showOverlayText, setShowOverlayText } = useDiscographyStore();
+
   // useScrollLock(open);
 
   const resetSelectionAndHideOverlay = () => {
@@ -84,11 +88,32 @@ const AlbumCarousel = ({
     }
   }, [selectedTrack?.lyrics]);
 
+  useEffect(() => {
+    if (!isApiReady || !carouselRef.current) return;
+    const api = carouselRef.current;
+
+    setSelectedIndex(api.selectedScrollSnap());
+    setLastIndex(api.scrollSnapList().length - 1);
+
+    const handleSelect = () => {
+      setSelectedIndex(api.selectedScrollSnap());
+    };
+
+    api.on("select", handleSelect);
+
+    return () => {
+      api.off("select", handleSelect);
+    };
+  }, [isApiReady]);
+
   useScrollToIndexWhenReady(carouselRef, initialSlideIndex, ready);
 
   return (
     <Carousel
-      setApi={(api) => (carouselRef.current = api)}
+      setApi={(api) => {
+        carouselRef.current = api;
+        setIsApiReady(true);
+      }}
       opts={{ loop: true, watchDrag: true }}
       className="w-full h-full relative !p-10 lg:!p-20 touch-pan-y "
     >
@@ -189,7 +214,12 @@ const AlbumCarousel = ({
         </CarouselItem>
       </CarouselContent>
 
-      <CarouselNavigation onPrev={handlePrev} onNext={handleNext} />
+      <CarouselNavigation
+        onPrev={handlePrev}
+        onNext={handleNext}
+        isFirst={selectedIndex === 0}
+        isLast={selectedIndex === lastIndex}
+      />
     </Carousel>
   );
 };

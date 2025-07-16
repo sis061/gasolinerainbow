@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import { PuffLoader } from "react-spinners";
+import { CircleLoader } from "react-spinners";
 import { useMediaQuery } from "react-responsive";
 import { useLocation } from "react-router-dom";
 import cx from "classnames";
@@ -39,17 +39,26 @@ export default function Discography() {
     })),
     {
       key: "single",
-      component: <SingleCarousel albumMetas={DiskMetaDatas.othersMetaDatas} />,
+      component: (
+        <SingleCarousel
+          albumMetas={DiskMetaDatas.othersMetaDatas}
+          onChange={setHasInteractiveTrackList}
+        />
+      ),
     },
     {
       key: "ost",
-      component: <OSTCarousel albumMetas={DiskMetaDatas.ostMetaDatas} />,
+      component: (
+        <OSTCarousel
+          albumMetas={DiskMetaDatas.ostMetaDatas}
+          // onChange={setHasInteractiveTrackList}
+        />
+      ),
     },
   ];
 
   useEffect(() => {
     const targetEl = carouselRefs.current[targetCarouselIndex];
-
     if (targetCarouselIndex === -1 || !targetEl) {
       setCarouselReady(true);
       return;
@@ -83,10 +92,22 @@ export default function Discography() {
     >
       {GoToDiscActive ? (
         <div className="inner-full fixed top-16 md:top-24 w-full h-[calc(100dvh-6rem)] z-10 !p-4">
-          <PuffLoader
+          <CircleLoader
             size={minTablet ? 45 : 30}
-            color="#eab308bf"
-            speedMultiplier={2}
+            speedMultiplier={0.75}
+            className="
+      *:transition-all *:duration-300 animate-pulse
+  [&_>span:nth-child(1)]:!border-t-[#ae2323]
+  [&_>span:nth-child(1)]:!border-l-[#f26b38]
+  [&_>span:nth-child(2)]:!border-t-[#ffef7b]
+  [&_>span:nth-child(2)]:!border-l-[#6ec3ff]
+  [&_>span:nth-child(3)]:!border-t-[#a66dd4]
+  [&_>span:nth-child(3)]:!border-l-[#ff4e50]
+  [&_>span:nth-child(4)]:!border-t-[#f26b38]
+  [&_>span:nth-child(4)]:!border-l-[#ae2323]
+  [&_>span:nth-child(5)]:!border-t-[#6ec3ff]
+  [&_>span:nth-child(5)]:!border-l-[#ffef7b]
+"
           />
         </div>
       ) : (

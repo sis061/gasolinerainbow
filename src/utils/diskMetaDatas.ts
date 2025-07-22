@@ -12,7 +12,7 @@ const diskAlbumData: Disk[] = [
     titleEn: "A Brain In Peace &…",
     image: diskImages.BIP,
     urls: {
-      bandcamp: "",
+      bandcamp: "https://himinnn.bandcamp.com/album/a-brain-in-peace",
       spotify: "",
       youtubeMusic: "",
       appleMusic: "",

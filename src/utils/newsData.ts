@@ -399,4 +399,54 @@ Artwork
 
 감사합니다.`,
   },
+  {
+    idx: 15,
+    type: "release",
+    date: "2025-07-23",
+    img: diskImages.BIP,
+    title: "앨범 [평화로운 뇌와...]",
+    content: `앨범 [평화로운 뇌와...]가 발매되었습니다.
+
+모든 스트리밍 플랫폼에서 만나보실 수 있습니다.
+https://grsbh.com/stream/a-brain-in-peace 에서 원하시는 플랫폼을 찾아보세요.
+
+도와주신 모든 분들께 깊이 감사드립니다.
+새벽에, 혼자, 적당히 큰 볼륨, 좋은 스피커/헤드폰으로(?) 들어주세요.
+
+***
+
+지하철, 침대, 라디오,
+치사랑, 성애, 섭식장애,
+
+09시, 18시, 22시, 03시,
+원숭이, 고양이, 정어리,
+
+모두의 무기력,
+모두의 무가치함,
+모두의 모두에 대한 이별,
+
+그럼에도 우리는.
+
+
+[Credit]
+
+Produced by HIMINN
+Composed by HIMINN
+Lyrics by HIMINN
+Arranged by HIMINN
+
+Vocal by HIMINN
+All instruments performed and programmed by HIMINN
+ except orchestrations by 손다협 (see below)
+
+Orchestrations
+- Track 8: Arranged and MIDI programmed by 손다협; re-edited by HIMINN
+- Track 9: Written by HIMINN; Arranged and MIDI programmed by 손다협
+
+Recorded at Phoné Studio (Track 2-6, 8-9); by HIMINN (Track 1, 7)
+Mixed & Mastered by Shinhwan at Phoné Studio
+
+Artwork by namu 나무
+ except Typography by HIMINN`,
+  },
 ];

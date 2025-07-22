@@ -23,6 +23,7 @@ import {
   renderNewsTypeColor,
 } from "@/utils/globalHelper";
 import type { News } from "@/types/news";
+import CustomBadge from "@/components/CustomBadge";
 
 const ITEMS_PER_PAGE = 4;
 const REVERSED_NEWS = [...newsData].slice().reverse();
@@ -131,7 +132,12 @@ const News = () => {
                 className="!pb-10 w-full !border-0"
                 onClick={() => scrollToItem(i)}
               >
-                <AccordionTrigger className="w-full !-mt-0.5 [&>svg]:hidden group hover:shadow-md ">
+                <AccordionTrigger className="relative w-full !-mt-0.5 [&>svg]:hidden group hover:shadow-md ">
+                  <CustomBadge
+                    label="N"
+                    startDate={news?.date}
+                    expireIn="1month"
+                  />
                   <div className="relative w-full min-h-48 lg:min-h-64 flex items-end justify-start group cursor-pointer overflow-hidden transition-all duration-200 hover:opacity-90">
                     {!imageLoaded[i] && (
                       <Skeleton className="absolute inset-0 w-full h-full rounded-none bg-[#333]" />

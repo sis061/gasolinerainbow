@@ -23,6 +23,7 @@ import Hoverable from "@/pages/Layout/components/Hoverable";
 import OverlayText from "@/pages/Layout/components/OverlayText";
 
 import type { SingleInfoPanelProps } from "@/types/discography";
+import CustomBadge from "@/components/CustomBadge";
 // import { useScrollLock } from "@/hooks/useScrollLock";
 
 const SingleInfoPanel = ({
@@ -71,6 +72,11 @@ const SingleInfoPanel = ({
         <li className="flex gap-6 w-full h-full md:w-1/2 [&_*]:!text-white items-center justify-center">
           <ol className="flex flex-col items-center gap-4 md:gap-6 w-full h-full">
             <li className="w-full sm:w-3/4 lg:w-2/3 overflow-hidden relative !aspect-square">
+              <CustomBadge
+                label="N"
+                startDate={albumMeta?.date}
+                expireIn="1month"
+              />
               <div className="absolute inset-0 w-full h-full">
                 {!isImageLoaded && (
                   <Skeleton className="w-full h-full rounded-none bg-[#333]" />

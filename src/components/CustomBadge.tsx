@@ -73,7 +73,7 @@ const CustomBadge = ({
     <Badge
       variant={variant}
       className={cx(
-        "absolute !z-[999] !text-white border-none !py-1 !px-2 rounded-full animate-pulse",
+        "absolute !z-[999] !text-white border-b-1 border-b-white/25 !py-1 !px-2 rounded-full animate-pulse shadow-2xl",
         getPlacementClasses(placement)
       )}
     >

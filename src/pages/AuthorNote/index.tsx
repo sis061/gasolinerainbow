@@ -110,15 +110,15 @@ export default function AuthorNote() {
                   }}
                   className="flex md:table-row w-full items-center relative"
                 >
-                  {!minTablet && (
-                    <CustomBadge
-                      placement="top-left"
-                      label="N"
-                      startDate={note?.date}
-                      expireIn="2weeks"
-                    />
-                  )}
                   <TableCell className="order-1 !pr-2 md:!px-2 text-center">
+                    {!minTablet && (
+                      <CustomBadge
+                        placement="top-left"
+                        label="N"
+                        startDate={note?.date}
+                        expireIn="2weeks"
+                      />
+                    )}
                     {note.idx + 1}
                   </TableCell>
                   <TableCell className="h-full whitespace-normal md:min-w-[10rem] max-md:h-auto max-md:absolute max-md:w-full max-md:text-right top-1.5 right-0 order-3 md:order-2 max-md:text-xs !px-2">

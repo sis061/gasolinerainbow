@@ -115,7 +115,9 @@ const News = () => {
           {map(visibleNews, (news, i) => {
             const { ref: imgRef, inView: imgInView } = inViewHooks[i];
             const sanitizeContent = DOMPurify.sanitize(
-              linkify(news?.content ?? ""),
+              language === "ko"
+                ? linkify(news?.contentKr ?? "")
+                : linkify(news?.contentEn ?? ""),
               {
                 ADD_ATTR: ["target"],
               }
@@ -147,7 +149,7 @@ const News = () => {
                       <>
                         <img
                           src={news.img}
-                          alt={news.title}
+                          alt={news.titleKr}
                           className="hidden"
                           onLoad={() => handleImageLoad(i)}
                           loading="eager"
@@ -166,7 +168,7 @@ const News = () => {
                       style={{ borderColor: renderNewsTypeColor(news.type) }}
                       className="relative z-10 !text-white !text-md md:text-lg lg:text-xl bg-[#000] opacity-80 border-l-5 !p-3 !m-3 duration-200 group-hover:opacity-100"
                     >
-                      {news.title}
+                      {language === "ko" ? news.titleKr : news.titleEn}
                     </span>
                   </div>
                 </AccordionTrigger>

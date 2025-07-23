@@ -1,8 +1,6 @@
 import { newsImages, diskImages } from "@/assets/images/images";
 import type { News } from "@/types/news";
 
-// TODO: 소식글 작성 & 앨범커버 & 크레딧 완료되면 아래에 데이터 추가.
-
 export const newsData: News[] = [
   {
     idx: 0,

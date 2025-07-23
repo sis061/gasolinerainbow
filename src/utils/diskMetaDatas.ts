@@ -1,8 +1,6 @@
 import { diskImages } from "@/assets/images/images";
 import type { Disk } from "@/types/discography";
 
-// TODO: 링크 다 되면 데이터 업데이트
-
 const diskAlbumData: Disk[] = [
   {
     targetCarousel: { carouselIndex: 0, slideIndex: 1 },
@@ -15,11 +13,13 @@ const diskAlbumData: Disk[] = [
     urls: {
       bandcamp: "https://himinnn.bandcamp.com/album/a-brain-in-peace",
       spotify: "",
-      youtubeMusic: "",
-      appleMusic: "",
-      melon: "",
-      bugs: "",
-      genie: "",
+      youtubeMusic:
+        "https://music.youtube.com/playlist?list=OLAK5uy_llP1iKE_qZykaK5WiV6mxYJ0MX_x0gjj4&si=CUx5dwf5-kcCGBox",
+      appleMusic:
+        "https://music.apple.com/us/album/a-brain-in-peace/1828184269",
+      melon: "https://www.melon.com/album/detail.htm?albumId=11928929",
+      bugs: "https://music.bugs.co.kr/album/20742432",
+      genie: "https://www.genie.co.kr/detail/albumInfo?axnm=86537633",
     },
     isCD: false,
     maansunUrl: "https://maansun.com/catalogue/99",

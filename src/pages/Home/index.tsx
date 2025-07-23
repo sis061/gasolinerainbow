@@ -14,14 +14,14 @@ export default function Home() {
 
   // const RELEASE_DATE = new Date("2025-07-23T12:00:00");
 
-  const HMVideoId: string = "q0RXd1Tj7tk";
+  // const HMVideoId: string = "q0RXd1Tj7tk";
   const TMMSVideoId: string = "VwiyiS41qwo";
-  // const BIPVideoId: string = "PpuMhJWT0qg";
+  const BIPVideoId: string = "PpuMhJWT0qg";
 
-  const [HMData] = filter(
-    DiskMetaDatas.albumMetaDatas,
-    (data) => data.titleEn.toLowerCase() === "Hm".toLowerCase()
-  );
+  // const [HMData] = filter(
+  //   DiskMetaDatas.albumMetaDatas,
+  //   (data) => data.titleEn.toLowerCase() === "Hm".toLowerCase()
+  // );
 
   const [TMMSData] = filter(
     DiskMetaDatas.othersMetaDatas,
@@ -29,36 +29,36 @@ export default function Home() {
       data.titleEn.toLowerCase() === "The Monkey/Mother-ship".toLowerCase()
   );
 
-  // const [BIPData] = filter(
-  //   DiskMetaDatas.albumMetaDatas,
-  //   (data) => data.titleKr.toLowerCase() === "평화로운 뇌와…".toLowerCase()
-  // );
+  const [BIPData] = filter(
+    DiskMetaDatas.albumMetaDatas,
+    (data) => data.titleKr.toLowerCase() === "평화로운 뇌와…".toLowerCase()
+  );
 
-  const goToDiscography = (albumMeta: Disk) => {
-    navigate("/discography", {
-      state: {
-        carouselIndex: albumMeta?.targetCarousel.carouselIndex,
-        slideIndex: albumMeta?.targetCarousel.slideIndex,
-      },
-    });
-  };
+  // const goToDiscography = (albumMeta: Disk) => {
+  //   navigate("/discography", {
+  //     state: {
+  //       carouselIndex: albumMeta?.targetCarousel.carouselIndex,
+  //       slideIndex: albumMeta?.targetCarousel.slideIndex,
+  //     },
+  //   });
+  // };
 
   const goToNote = (t: number) => {
     navigate(`/authornote/${t}`);
   };
 
-  const HMEndSentence: string =
-    language === "ko"
-      ? "본연의 모습을 담고 싶었습니다."
-      : "I believe we all carry.";
+  // const HMEndSentence: string =
+  //   language === "ko"
+  //     ? "본연의 모습을 담고 싶었습니다."
+  //     : "I believe we all carry.";
 
-  const HMTrimmedDescription = trimDescription(
-    HMData,
-    language,
-    goToDiscography,
-    HMData,
-    HMEndSentence
-  );
+  // const HMTrimmedDescription = trimDescription(
+  //   HMData,
+  //   language,
+  //   goToDiscography,
+  //   HMData,
+  //   HMEndSentence
+  // );
   const TMMSTrimmedDescription = trimDescription(
     TMMSData,
     language,
@@ -66,7 +66,7 @@ export default function Home() {
     6
   );
 
-  // const BIPTrimmedDescription = trimDescription(BIPData, language, goToNote, 5);
+  const BIPTrimmedDescription = trimDescription(BIPData, language, goToNote, 5);
 
   return (
     <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-x-hidden !mx-auto flex justify-center">
@@ -76,24 +76,24 @@ export default function Home() {
           albumMeta={BIPData}
           videoId={BIPVideoId}
         /> */}
-        {/* <HomeAlbumOverview
+        <HomeAlbumOverview
           isVideoRight
           videoId={BIPVideoId}
           albumMeta={BIPData}
           trimmedDescription={BIPTrimmedDescription}
-        /> */}
+        />
         <HomeAlbumOverview
-          isVideoRight
+          isVideoRight={false}
           videoId={TMMSVideoId}
           albumMeta={TMMSData}
           trimmedDescription={TMMSTrimmedDescription}
         />
-        <HomeAlbumOverview
+        {/* <HomeAlbumOverview
           isVideoRight={false}
           videoId={HMVideoId}
           albumMeta={HMData}
           trimmedDescription={HMTrimmedDescription}
-        />
+        /> */}
       </div>
     </section>
   );

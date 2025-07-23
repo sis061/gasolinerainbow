@@ -31,6 +31,7 @@ import { useMediaQuery } from "react-responsive";
 import { noteData } from "@/utils/noteData";
 import { filterHTMLTags, renderNoteTypeColor } from "@/utils/globalHelper";
 import useLanguageStore from "@/store/useLanguageStore";
+import CustomBadge from "@/components/CustomBadge";
 
 const PAGE_GROUP_SIZE = 5;
 const reversedNotes = [...noteData].slice().reverse();
@@ -110,6 +111,14 @@ export default function AuthorNote() {
                   className="flex md:table-row w-full items-center relative"
                 >
                   <TableCell className="order-1 !pr-2 md:!px-2 text-center">
+                    {!minTablet && (
+                      <CustomBadge
+                        placement="top-left"
+                        label="N"
+                        startDate={note?.date}
+                        expireIn="2weeks"
+                      />
+                    )}
                     {note.idx + 1}
                   </TableCell>
                   <TableCell className="h-full whitespace-normal md:min-w-[10rem] max-md:h-auto max-md:absolute max-md:w-full max-md:text-right top-1.5 right-0 order-3 md:order-2 max-md:text-xs !px-2">
@@ -122,7 +131,15 @@ export default function AuthorNote() {
                       <span className="!px-1">{note.category}</span>
                     </div>
                   </TableCell>
-                  <TableCell className="order-2 md:order-3 !py-4 max-md:!py-6 flex flex-col gap-3 justify-center cursor-pointer !px-2 max-md:!mt-1">
+                  <TableCell className="relative order-2 md:order-3 !py-4 max-md:!py-6 flex flex-col gap-3 justify-center cursor-pointer !px-2 max-md:!mt-1">
+                    {minTablet && (
+                      <CustomBadge
+                        placement="top-right"
+                        label="N"
+                        startDate={note?.date}
+                        expireIn="2weeks"
+                      />
+                    )}
                     <span className="text-xl lg:text-2xl font-semibold whitespace-normal line-clamp-1">
                       {note.title}
                     </span>

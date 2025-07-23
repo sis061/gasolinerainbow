@@ -23,6 +23,7 @@ import useScrollToIndexWhenReady from "@/hooks/useScrollToIndexWhenReady";
 import useLanguageStore from "@/store/useLanguageStore";
 import CustomToast from "@/pages/Layout/components/CustomToast";
 import { Image } from "@/components/Image";
+import CustomBadge from "@/components/CustomBadge";
 
 const OSTCarousel = ({
   albumMetas,
@@ -94,6 +95,11 @@ const OSTCarousel = ({
               <ul className="w-full h-auto md:h-full flex max-md:flex-col gap-10 items-center justify-center max-md:!px-2.5">
                 <li className="md:w-2/3 w-full h-auto flex md:flex-col md:gap-10 gap-5 items-center justify-between md:justify-start">
                   <div className="w-1/2 md:w-3/4 xl:w-1/2 overflow-hidden relative !aspect-square">
+                    <CustomBadge
+                      label="N"
+                      startDate={albumMeta?.date}
+                      expireIn="1month"
+                    />
                     <div className="absolute inset-0 w-full h-full">
                       {!imageLoadState[i] && (
                         <Skeleton className="w-full h-full rounded-none bg-[#333]" />

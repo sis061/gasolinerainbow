@@ -14,7 +14,9 @@ import { useInView } from "react-intersection-observer";
 import map from "lodash/map";
 import DOMPurify from "dompurify";
 
+import CustomBadge from "@/components/CustomBadge";
 import useLanguageStore from "@/store/useLanguageStore";
+
 import { withImagePreload } from "@/utils/withImagePreload";
 import { newsData } from "@/utils/newsData";
 import {
@@ -22,6 +24,7 @@ import {
   linkify,
   renderNewsTypeColor,
 } from "@/utils/globalHelper";
+
 import type { News } from "@/types/news";
 
 const ITEMS_PER_PAGE = 4;
@@ -114,7 +117,9 @@ const News = () => {
           {map(visibleNews, (news, i) => {
             const { ref: imgRef, inView: imgInView } = inViewHooks[i];
             const sanitizeContent = DOMPurify.sanitize(
-              linkify(news?.content ?? ""),
+              language === "ko"
+                ? linkify(news?.contentKr ?? "")
+                : linkify(news?.contentEn ?? ""),
               {
                 ADD_ATTR: ["target"],
               }
@@ -131,7 +136,12 @@ const News = () => {
                 className="!pb-10 w-full !border-0"
                 onClick={() => scrollToItem(i)}
               >
-                <AccordionTrigger className="w-full !-mt-0.5 [&>svg]:hidden group hover:shadow-md ">
+                <AccordionTrigger className="relative w-full !-mt-0.5 [&>svg]:hidden group hover:shadow-md ">
+                  <CustomBadge
+                    label="N"
+                    startDate={news?.date}
+                    expireIn="1month"
+                  />
                   <div className="relative w-full min-h-48 lg:min-h-64 flex items-end justify-start group cursor-pointer overflow-hidden transition-all duration-200 hover:opacity-90">
                     {!imageLoaded[i] && (
                       <Skeleton className="absolute inset-0 w-full h-full rounded-none bg-[#333]" />
@@ -141,7 +151,7 @@ const News = () => {
                       <>
                         <img
                           src={news.img}
-                          alt={news.title}
+                          alt={news.titleKr}
                           className="hidden"
                           onLoad={() => handleImageLoad(i)}
                           loading="eager"
@@ -160,7 +170,7 @@ const News = () => {
                       style={{ borderColor: renderNewsTypeColor(news.type) }}
                       className="relative z-10 !text-white !text-md md:text-lg lg:text-xl bg-[#000] opacity-80 border-l-5 !p-3 !m-3 duration-200 group-hover:opacity-100"
                     >
-                      {news.title}
+                      {language === "ko" ? news.titleKr : news.titleEn}
                     </span>
                   </div>
                 </AccordionTrigger>

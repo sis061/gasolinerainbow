@@ -5,6 +5,8 @@ export interface News {
   type: NewsType;
   date: string;
   img: string;
-  title: string;
-  content: string;
+  titleKr: string;
+  titleEn: string;
+  contentKr: string;
+  contentEn: string;
 }

@@ -102,7 +102,7 @@ const BuyingModal = ({ albumMeta }: { albumMeta: Disk }) => {
                 <li>
                   <h3>{language === "ko" ? "다운로드" : "Download"}</h3>
                   {!!albumMeta?.maansunUrl && (
-                    <div className="!py-3">
+                    <div>
                       <DirectButton
                         cdUrl={maansunPurchaseData.url}
                         labelKr={maansunPurchaseData.labelKr}
@@ -180,7 +180,7 @@ const BuyingModal = ({ albumMeta }: { albumMeta: Disk }) => {
                 <li>
                   <h3>{language === "ko" ? "다운로드" : "Download"}</h3>
                   {!!albumMeta?.maansunUrl && (
-                    <div className="!py-3">
+                    <div>
                       <DirectButton
                         cdUrl={maansunPurchaseData.url}
                         labelKr={maansunPurchaseData.labelKr}

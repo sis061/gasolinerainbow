@@ -7,9 +7,9 @@ import useLanguageStore from "@/store/useLanguageStore";
 import StreamingModal from "../../modals/StreamingModal";
 import BuyingModal from "../../modals/BuyingModal";
 import { Image } from "@/components/Image";
+import CustomBadge from "@/components/CustomBadge";
 
 import type { Disk } from "@/types/discography";
-import CustomBadge from "@/components/CustomBadge";
 
 const AlbumIntroPanel = ({ albumMeta }: { albumMeta: Disk }) => {
   const { image, titleKr, titleEn, year, urls, date } = albumMeta;

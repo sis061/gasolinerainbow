@@ -18,12 +18,12 @@ import StreamingModal from "../../modals/StreamingModal";
 import MobileDrawer from "../../modals/MobileDrawer";
 import BuyingModal from "../../modals/BuyingModal";
 import { Image } from "@/components/Image";
+import CustomBadge from "@/components/CustomBadge";
 
 import Hoverable from "@/pages/Layout/components/Hoverable";
 import OverlayText from "@/pages/Layout/components/OverlayText";
 
 import type { SingleInfoPanelProps } from "@/types/discography";
-import CustomBadge from "@/components/CustomBadge";
 // import { useScrollLock } from "@/hooks/useScrollLock";
 
 const SingleInfoPanel = ({

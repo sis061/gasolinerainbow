@@ -14,7 +14,9 @@ import { useInView } from "react-intersection-observer";
 import map from "lodash/map";
 import DOMPurify from "dompurify";
 
+import CustomBadge from "@/components/CustomBadge";
 import useLanguageStore from "@/store/useLanguageStore";
+
 import { withImagePreload } from "@/utils/withImagePreload";
 import { newsData } from "@/utils/newsData";
 import {
@@ -22,8 +24,8 @@ import {
   linkify,
   renderNewsTypeColor,
 } from "@/utils/globalHelper";
+
 import type { News } from "@/types/news";
-import CustomBadge from "@/components/CustomBadge";
 
 const ITEMS_PER_PAGE = 4;
 const REVERSED_NEWS = [...newsData].slice().reverse();

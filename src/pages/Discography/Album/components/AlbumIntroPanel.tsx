@@ -7,11 +7,12 @@ import useLanguageStore from "@/store/useLanguageStore";
 import StreamingModal from "../../modals/StreamingModal";
 import BuyingModal from "../../modals/BuyingModal";
 import { Image } from "@/components/Image";
+import CustomBadge from "@/components/CustomBadge";
 
 import type { Disk } from "@/types/discography";
 
 const AlbumIntroPanel = ({ albumMeta }: { albumMeta: Disk }) => {
-  const { image, titleKr, titleEn, year, urls } = albumMeta;
+  const { image, titleKr, titleEn, year, urls, date } = albumMeta;
   const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
   const { language } = useLanguageStore();
   const isBandcampAvailable = Object.keys(urls).includes("bandcamp");
@@ -20,6 +21,7 @@ const AlbumIntroPanel = ({ albumMeta }: { albumMeta: Disk }) => {
   return (
     <ul className="w-full h-full flex items-center gap-10 max-lg:flex-col justify-center lg:justify-between">
       <li className="relative overflow-hidden w-full h-full md:w-2/3 lg:w-[52.5%] !aspect-square">
+        <CustomBadge label="N" startDate={date} expireIn="1month" />
         {!isImageLoaded && (
           <Skeleton className="absolute inset-0 w-full h-full rounded-none bg-[#333]" />
         )}

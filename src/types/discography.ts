@@ -29,6 +29,7 @@ export interface Disk {
   targetCarousel: TargetCarouselProps;
   type: DiskType;
   year: number;
+  date: string;
   titleKr: string;
   titleEn: string;
   image: string;

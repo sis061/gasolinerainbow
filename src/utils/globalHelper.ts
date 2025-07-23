@@ -59,6 +59,16 @@ export const filterHTMLTags = (content: string): string => {
 };
 
 /**
+ * @description YYYY-MM-DD 문자열을 Date 객체로 변환
+ * @param {string} dateStr - "2025-07-23" 형식의 문자열
+ * @returns {Date}
+ */
+export const parseDateString = (dateStr: string): Date => {
+  const [year, month, day] = dateStr.split("-").map(Number);
+  return new Date(year, month - 1, day); // month는 0-based
+};
+
+/**
  * @description 밀리세컨드 => DD-MM-YYYY 변환기
  * @param {millis lang} 밀리초, 현재 언어
  * @returns {string} DD-MM-YYYY

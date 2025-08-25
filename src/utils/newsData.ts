@@ -816,4 +816,48 @@ Mixed & Mastered by Shinhwan at Phoné Studio
 Artwork by namu 나무
  except Typography by HIMINN`,
   },
+  {
+    idx: 16,
+    type: "others",
+    date: "2025-08-19",
+    img: newsImages.interviewSubriot,
+    titleKr: "인터뷰 - SUB RIOT",
+    titleEn: "Interview with SUB RIOT",
+    contentKr: `좋은 기회가 있어 '서브라이엇!'과의 인터뷰를 가졌습니다.
+
+자세한 내용은 @himinn___ 혹은 @sub_riot 에서 확인해주세요.
+( https://www.instagram.com/p/DNhnzqNxbKG/?img_index=1 )
+
+...
+
+🎤𝐀𝐫𝐭𝐢𝐬𝐭 𝐈𝐧𝐭𝐞𝐫𝐯𝐢𝐞𝐰 𝐰𝐢𝐭𝐡 HIMINN🎤
+
+자꾸만 평화롭지 않은 뇌,
+그 불안과 반복 속에서 혼란의 기록을 음악으로 풀어낸 HIMINN(@himinn___)과 인터뷰를 진행했습니다.
+
+올해 발매된 정규 앨범 『평화로운 뇌와…』의 비하인드부터 '9호선', '2025년 즈음에는 좋은 아이가 되어볼게요' 같은 주요 트랙에 얽힌 이야기까지.
+
+HIMINN이 펼쳐 보이는 내면의 풍경, 지금 바로 만나보세요.
+•
+•
+💌 에디터: 서브라이엇 7기 서포터즈 주주`,
+    contentEn: `I had the great opportunity to sit down for an interview with SUB RIOT.
+
+You can find the full story on @himinn___ or @sub_riot .
+( https://www.instagram.com/p/DNhnzqNxbKG/?img_index=1 )
+
+...
+
+🎤 Artist Interview with HIMINN 🎤
+
+A mind that refuses to stay at peace—
+HIMINN (@himinn___) unravels the confusion born of anxiety and repetition through music.
+
+In this interview, we dive into the stories behind the full-length album 『A Brain in Peace &…』, released earlier this year, as well as key tracks like 'Line 9' and 'Yr 2025 Problem'.
+
+Step into the inner landscapes HIMINN lays bare—discover them now.
+•
+•
+💌 Editor: 주주 Juju, Subriot 7th Gen Supporters`,
+  },
 ];

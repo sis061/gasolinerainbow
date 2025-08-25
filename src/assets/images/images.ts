@@ -19,6 +19,7 @@ import onstage from "@/assets/images/news/onstage_7_11zon.webp";
 import rainlight from "@/assets/images/news/rainlight_8_11zon.webp";
 import thedreamer from "@/assets/images/news/thedreamer_9_11zon.webp";
 import bip_maansun from "@/assets/images/news/bip_maansun.webp";
+import interviewSubriot from "@/assets/images/news/subriot.webp";
 
 // Notes 이미지
 import modify_1_0 from "@/assets/images/notes/modify_1_0.webp";
@@ -51,6 +52,7 @@ import modify_4_4 from "@/assets/images/notes/modify_4_4_23_11zon.webp";
 import modify_4_5 from "@/assets/images/notes/modify_4_5_24_11zon.webp";
 
 import epilogue_1_0 from "@/assets/images/notes/epilogue_1_0.webp";
+import epilogue_2_0 from "@/assets/images/notes/epilogue_2_0.webp";
 
 // 공통 이미지
 import bg01Img from "@/assets/images/bg01Img.webp";
@@ -80,6 +82,7 @@ export const newsImages = {
   rainlight,
   thedreamer,
   bip_maansun,
+  interviewSubriot,
 };
 
 export const notesImages = {
@@ -109,6 +112,7 @@ export const notesImages = {
   modify_4_4,
   modify_4_5,
   epilogue_1_0,
+  epilogue_2_0,
 };
 
 export const commonImages = {

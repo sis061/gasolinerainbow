@@ -2626,7 +2626,11 @@ export const DiskMetaDatas = {
   ostMetaDatas: diskOSTData,
 };
 
-const allDisks: Disk[] = [...diskAlbumData, ...diskOSTData, ...diskOthersData];
+export const allDisks: Disk[] = [
+  ...diskAlbumData,
+  ...diskOSTData,
+  ...diskOthersData,
+];
 
 const normalize = (s: string) =>
   s

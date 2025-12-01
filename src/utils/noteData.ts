@@ -21,6 +21,7 @@ export const noteData = [
   {
     idx: 0,
     date: "2024-01-01",
+    image: notesImages.modify_1_0,
     category: "모디파이는 질병입니다.",
     title: "모디파이는 질병입니다. Volume 1",
     content: `- 맨 처음 소개하는 친구는 저의 풀할로우기타입니다. 어쿠스틱 기타처럼 보이겠지만 제가 풀할로우가 되어라 라고 했기 때문에 이젠 풀할로우기타입니다.
@@ -72,6 +73,7 @@ export const noteData = [
   {
     idx: 1,
     date: "2024-01-01",
+    image: notesImages.modify_2_3,
     category: "모디파이는 질병입니다.",
     title: "모디파이는 질병입니다. Volume 2",
     content: `- 돌아온 <모디파이는 질병입니다> 두 번째 시간입니다. 오늘의 친구는 함부로 사면 안된다는 바로 그 기타입니다.
@@ -144,6 +146,7 @@ export const noteData = [
   {
     idx: 3,
     date: "2024-01-01",
+    image: notesImages.modify_3_1,
     category: "모디파이는 질병입니다.",
     title: "모디파이는 질병입니다. Volume 3",
     content: `- 오랜만에 돌아온 모디파이는 질병입니다 시리즈, 그 세 번째 시간입니다. 오늘은 특별히 두 친구를 동시에 소개합니다.
@@ -190,6 +193,7 @@ export const noteData = [
   {
     idx: 4,
     date: "2024-01-01",
+    image: notesImages.modify_4_1,
     category: "모디파이는 질병입니다.",
     title: "모디파이는 질병입니다. Volume 4",
     content: `- 정말 오랜만에 돌아온 ‘모디파이는 질병입니다’ 네 번째 시간입니다. 조니 그린우드는 아주 나쁜 사람이에요.
@@ -270,6 +274,7 @@ VS
   {
     idx: 6,
     date: "2025-07-16",
+    image: notesImages.epilogue_1_0,
     category: "에필로그",
     title: "미디어는(우리는) 치사랑에 대해 말하기 참 어려워해요.",
     content: `부모가 자식을 사랑하는 건 당연하고 아름답게 그려지지만,
@@ -434,6 +439,7 @@ S씨는 지하철 손잡이만 있으면 서서도 잠을 잘자시네요! 정�
   {
     idx: 11,
     date: "2025-08-25",
+    image: notesImages.epilogue_2_0,
     category: "커피하우스 토크",
     title: "여담 20250725 - 20250825",
     content: `<img src=${notesImages.epilogue_2_0} alt="note image.epilogue_2_0" loading="lazy" />

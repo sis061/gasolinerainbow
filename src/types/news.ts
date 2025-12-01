@@ -4,7 +4,7 @@ export interface News {
   idx: number;
   type: NewsType;
   date: string;
-  img: string;
+  image: string;
   titleKr: string;
   titleEn: string;
   contentKr: string;

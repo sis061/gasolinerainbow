@@ -6,7 +6,7 @@ export const newsData: News[] = [
     idx: 0,
     type: "release",
     date: "2021-05-14",
-    img: diskImages.firstEP,
+    image: diskImages.firstEP,
     titleKr: "EP [In The Need Of A Good Cry]",
     titleEn: "EP [In The Need Of A Good Cry]",
     contentKr: `EP [In The Need Of A Good Cry]가 발매되었습니다.
@@ -47,7 +47,7 @@ A personal meditation on what it means to cry well.`,
   //   {
   //     idx: 1,
   //     date: "2022-05-19",
-  //     img: newsImages.onstage,
+  //     image: newsImages.onstage,
   //     title: "브로큰티스 온스테이지 세션",
   //     content: `슈게이징 라이징스타. -K-evin Shields
   // @brokenteeth99 님의 온스테이지 무대에
@@ -61,7 +61,7 @@ A personal meditation on what it means to cry well.`,
     idx: 2,
     type: "release",
     date: "2022-08-04",
-    img: diskImages.foolsbox,
+    image: diskImages.foolsbox,
     titleKr: "싱글 [Fool’s Box]",
     titleEn: "Single [Fool’s Box]",
     contentKr: `싱글 [Fool’s Box] 가 발매되었습니다.
@@ -123,7 +123,7 @@ All Instruments by HIMINN`,
     idx: 3,
     type: "release",
     date: "2022-12-14",
-    img: diskImages.hm,
+    image: diskImages.hm,
     titleKr: "앨범 [HM]",
     titleEn: "Album [HM]",
     contentKr: `앨범 [HM]
@@ -168,7 +168,7 @@ Artwork by namu 나무`,
     idx: 4,
     type: "performance",
     date: "2023-02-23",
-    img: newsImages.btShowcase,
+    image: newsImages.btShowcase,
     titleKr: "추락은 천천히, 인생도 천천히",
     titleEn: "추락은 천천히, 인생도 천천히",
     contentKr: `BrokenTeeth 2집 '추락은 천천히' 발매 기념 쇼케이스
@@ -230,7 +230,7 @@ Brokenteeth 님의 2집 쇼케이스 공연에 오프닝 무대를 꾸밉니다.
     idx: 5,
     type: "release",
     date: "2023-06-15",
-    img: diskImages.hmRemixes,
+    image: diskImages.hmRemixes,
     titleKr: "HM REMIXES",
     titleEn: "HM REMIXES",
     contentKr: `작년 겨울 발매한 정규 앨범 ‘HM’ 의 리믹스 앨범이 발매되었습니다.
@@ -314,7 +314,7 @@ Artwork by HIMINN`,
     idx: 6,
     type: "release",
     date: "2023-10-26",
-    img: newsImages.hmcd,
+    image: newsImages.hmcd,
     titleKr: "앨범 [HM] CD 발매",
     titleEn: "Album [HM] CD Release",
     contentKr: `정규앨범 [HM]을 발매한 지가 작년 12월, 어언 일 년이 되어가네요. 노래들은 한 번 배설(‘유통’이라는 단어는 그 끝의 처절함을 표현하기 다소 매끄럽기에)하고 나면 수정하기도 어렵고 전적으로 듣는 사람들의 것이 되기에, 보통은 다시 돌아보지 않는 편입니다.
@@ -366,7 +366,7 @@ As always, I’m deeply grateful to everyone who helped make this possible.`,
     idx: 7,
     type: "performance",
     date: "2023-11-06",
-    img: newsImages.daerimYeoinsook,
+    image: newsImages.daerimYeoinsook,
     titleKr: "대전여인숙 @ 소리들",
     titleEn: "대전여인숙 @ 소리들",
     contentKr: `댊숙 파견근무. 대전에 어쿠스틱 뭐시깽이 셋으로 갑니다.
@@ -404,7 +404,7 @@ himinn, BrokenTeeth, nokjo의 합동 공연을 소리들에서 만나보세요.
     idx: 8,
     type: "collaboration",
     date: "2023-12-30",
-    img: newsImages.devilfish,
+    image: newsImages.devilfish,
     titleKr: "다큐멘터리 [악마의 생선] 참여",
     titleEn: "다큐멘터리 [악마의 생선] 참여",
     contentKr: `MBC 경남의 특집 다큐멘터리 <악마의생선>에 음악감독으로 참여했습니다.
@@ -430,7 +430,7 @@ MBC경남 지상파 방송과 유튜브 채널 ’엠키타카‘를 통해 시�
     idx: 9,
     type: "performance",
     date: "2024-07-13",
-    img: newsImages.gmsFest,
+    image: newsImages.gmsFest,
     titleKr: "그먼씹 하꼬음악 페스티벌 @ 고라니특공대",
     titleEn: "그먼씹 하꼬음악 페스티벌 @ 고라니특공대",
     contentKr: `밥
@@ -458,7 +458,7 @@ MBC경남 지상파 방송과 유튜브 채널 ’엠키타카‘를 통해 시�
     idx: 10,
     type: "performance",
     date: "2024-10-25",
-    img: newsImages.thedreamer,
+    image: newsImages.thedreamer,
     titleKr: "The Dreamer @ 언플러그드 홍대",
     titleEn: "The Dreamer @ 언플러그드 홍대",
     contentKr: `꿈을 꾸러 홍대에 갑니다. 기타 한 대(와 소박한? 페달보드)를 챙겨갑니다.
@@ -522,7 +522,7 @@ HIMINN @himinn___
     idx: 11,
     type: "collaboration",
     date: "2024-11-27",
-    img: newsImages.gimbapNews,
+    image: newsImages.gimbapNews,
     titleKr: "다큐멘터리 [김밥의 천국] 참여",
     titleEn: "다큐멘터리 [김밥의 천국] 참여",
     contentKr: `세계 최초의 김밥 다큐멘터리, MBC 경남 [김밥의 천국]에 음악감독으로 참여했습니다. 두 번이나 좋은 기회를 받았네요.
@@ -556,7 +556,7 @@ MBC경남 TV와 공식 유튜브 채널 ‘엠키타카’ 라이브를 통해 �
     idx: 12,
     type: "performance",
     date: "2025-03-21",
-    img: newsImages.rainlight,
+    image: newsImages.rainlight,
     titleKr: "Rainlight @ 언플러그드 라운지",
     titleEn: "Rainlight @ 언플러그드 라운지",
     contentKr: `흐린 날, 조용히 번지는 빛과 소리.
@@ -618,7 +618,7 @@ HIMINN (@himinn___)
     idx: 13,
     type: "release",
     date: "2025-07-16",
-    img: diskImages.TMMS,
+    image: diskImages.TMMS,
     titleKr: "싱글 [The Monkey/Mother-ship]",
     titleEn: "Single [The Monkey/Mother-ship]",
     contentKr: `싱글 [The Monkey/Mother-ship]이 발매되었습니다.
@@ -707,7 +707,7 @@ Artwork
     idx: 14,
     type: "release",
     date: "2025-07-16",
-    img: newsImages.bip_maansun,
+    image: newsImages.bip_maansun,
     titleKr: "앨범 [평화로운 뇌와…] 선공개 @ 만선",
     titleEn: "Album [A Brain In Peace &…] Pre-Release @ Maansun",
     contentKr: `정규 앨범 [평화로운 뇌와…]를 만선에서 가장 이르게 공개합니다.
@@ -726,7 +726,7 @@ Thank you.`,
     idx: 15,
     type: "release",
     date: "2025-07-23",
-    img: diskImages.BIP,
+    image: diskImages.BIP,
     titleKr: "앨범 [평화로운 뇌와…]",
     titleEn: "Album [A Brain In Peace &…]",
     contentKr: `앨범 [평화로운 뇌와…]가 발매되었습니다.
@@ -820,13 +820,13 @@ Artwork by namu 나무
     idx: 16,
     type: "others",
     date: "2025-08-19",
-    img: newsImages.interviewSubriot,
+    image: newsImages.interviewSubriot,
     titleKr: "인터뷰 - SUB RIOT",
     titleEn: "Interview with SUB RIOT",
     contentKr: `좋은 기회가 있어 '서브라이엇!'과의 인터뷰를 가졌습니다.
 
 자세한 내용은 @himinn___ 혹은 @sub_riot 에서 확인해주세요.
-( https://www.instagram.com/p/DNhnzqNxbKG/?img_index=1 )
+( https://www.instagram.com/p/DNhnzqNxbKG/?image_index=1 )
 
 ...
 
@@ -844,7 +844,7 @@ HIMINN이 펼쳐 보이는 내면의 풍경, 지금 바로 만나보세요.
     contentEn: `I had the great opportunity to sit down for an interview with SUB RIOT.
 
 You can find the full story on @himinn___ or @sub_riot .
-( https://www.instagram.com/p/DNhnzqNxbKG/?img_index=1 )
+( https://www.instagram.com/p/DNhnzqNxbKG/?image_index=1 )
 
 ...
 
@@ -864,7 +864,7 @@ Step into the inner landscapes HIMINN lays bare—discover them now.
     idx: 17,
     type: "performance",
     date: "2025-11-26",
-    img: newsImages.delayrelay,
+    image: newsImages.delayrelay,
     titleKr: "딜레이 릴레이 페스티벌 @ 인피니티클럽",
     titleEn: "Delay Relay Festival @ 1nfinity club",
     contentKr: `기타 한 대랑 딜레이 페달 최소 3개 정도 챙겨갑니다…
@@ -918,7 +918,7 @@ Step into the inner landscapes HIMINN lays bare—discover them now.
     idx: 18,
     type: "collaboration",
     date: "2025-11-28",
-    img: newsImages.gutsNews,
+    image: newsImages.gutsNews,
     titleKr: "다큐멘터리 [창자] 참여",
     titleEn: "다큐멘터리 [창자] 참여",
     contentKr: `다큐멘터리 명가, MBC 경남의 새로운 다큐멘터리 [창자]에 음악 감독으로 참여했습니다.

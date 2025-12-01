@@ -10,7 +10,12 @@ import { commonImages } from "./assets/images/images";
 
 /*----------------------------------*/
 
-const Home = lazy(() => import("./pages/Home"));
+// const Home = lazy(() => import("./pages/Home"));
+const HomeV2 = lazy(() =>
+  import("@/utils/newsPreload").then(({ preloadNewsResources }) =>
+    preloadNewsResources().then(() => import("./pages/HomeV2"))
+  )
+);
 const About = lazy(() =>
   preloadImages([commonImages.profileImg]).then(() => import("./pages/About"))
 );
@@ -47,7 +52,7 @@ const Routers: React.FC<any> = ({
           path="/"
           element={suspenseWrapper(
             <PageWrapper>
-              <Home />
+              <HomeV2 />
             </PageWrapper>
           )}
         />

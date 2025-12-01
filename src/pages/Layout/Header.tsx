@@ -26,7 +26,7 @@ const Header = () => {
   const { pathname } = useLocation();
   // const bgBlackRoute: boolean =
   //   pathname === "/discography" || pathname.startsWith("/authornote");
-  const bgBlackRoute = false;
+  const bgBlackRoute = true;
 
   const isScrolled = useScrollState();
   const { language, setLanguage } = useLanguageStore();
@@ -46,8 +46,8 @@ const Header = () => {
         className={cx(
           "z-50 w-screen h-16 md:h-24 sticky top-0 flex justify-between items-center gap-2 duration-150",
           "max-sm:!pl-8 max-sm:!pr-4 !px-0 sm:!px-16 md:!px-[3rem] lg:!px-[6rem] xl:!px-[10rem]",
-          (isScrolled || bgBlackRoute) &&
-            "bg-[#000]/50 backdrop-blur-sm shadow-2xl"
+          // (isScrolled || bgBlackRoute) &&
+          isScrolled && "bg-[#000]/50 backdrop-blur-sm shadow-2xl"
         )}
       >
         <Logo useWhiteText={useWhiteText} />

@@ -12,7 +12,7 @@ interface CustomBadgeProps {
   placement?: Placement;
   label: string;
   startDate: string;
-  expireIn: ExpireIn;
+  expireIn?: ExpireIn;
 }
 
 const TODAY = new Date();

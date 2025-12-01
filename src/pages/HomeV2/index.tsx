@@ -18,6 +18,7 @@ import { getUserPlatformType } from "@/utils/globalHelper";
 import { withImagePreload } from "@/utils/withImagePreload";
 import useLanguageStore from "@/store/useLanguageStore";
 import useDiscographyStore from "@/store/useDiscographyStore";
+import CustomBadge from "@/components/CustomBadge";
 
 interface HomeItemBase {
   date: string;
@@ -185,6 +186,11 @@ const HomeV2 = () => {
               aspect-square md:aspect-3/4 transition-opacity duration-300 cursor-pointer"
               onClick={() => redirectByType(item)}
             >
+              <CustomBadge
+                label="N"
+                startDate={item?.date}
+                placement={isUserAgentPC ? "top-right" : "bottom-right"}
+              />
               {!imageLoaded[index] && (
                 <Skeleton className="absolute inset-0 w-full h-full rounded-none bg-[#333]" />
               )}

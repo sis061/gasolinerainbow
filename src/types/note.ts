@@ -4,4 +4,5 @@ export interface Note {
   category: string;
   title: string;
   content: string;
+  image?: string;
 }

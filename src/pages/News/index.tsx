@@ -11,6 +11,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { ScaleLoader } from "react-spinners";
 import { useMediaQuery } from "react-responsive";
 import { useInView } from "react-intersection-observer";
+import { useSearchParams } from "react-router-dom";
 import map from "lodash/map";
 import DOMPurify from "dompurify";
 
@@ -30,7 +31,7 @@ import type { News } from "@/types/news";
 const ITEMS_PER_PAGE = 4;
 const REVERSED_NEWS = [...newsData].slice().reverse();
 const preloadUrls = REVERSED_NEWS.slice(0, ITEMS_PER_PAGE).map(
-  (item) => item.img
+  (item) => item.image
 );
 
 const News = () => {
@@ -42,6 +43,9 @@ const News = () => {
     new Array(REVERSED_NEWS.length).fill(false)
   );
   const [page, setPage] = useState<number>(1);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedValue = searchParams.get("idx") ?? undefined;
+
   const fallbackTimer = useRef<NodeJS.Timeout | null>(null);
   const [showFallback, setShowFallback] = useState(false);
   const minTablet = useMediaQuery({ minWidth: 768 });
@@ -102,6 +106,26 @@ const News = () => {
     };
   }, [visibleNews]);
 
+  useEffect(() => {
+    if (!selectedValue) return;
+
+    const targetIdxNum = Number(selectedValue);
+    if (Number.isNaN(targetIdxNum)) return;
+
+    const targetIndex = REVERSED_NEWS.findIndex((n) => n.idx === targetIdxNum);
+    if (targetIndex === -1) return;
+
+    const requiredPage = Math.floor(targetIndex / ITEMS_PER_PAGE) + 1;
+
+    setPage(requiredPage);
+    setVisibleNews(REVERSED_NEWS.slice(0, requiredPage * ITEMS_PER_PAGE));
+
+    setTimeout(() => {
+      scrollToItem(targetIndex);
+    }, 100);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedValue, scrollToItem]);
+
   const loadMore = () => {
     const nextPage = page + 1;
     const nextItems = REVERSED_NEWS.slice(0, nextPage * ITEMS_PER_PAGE);
@@ -113,7 +137,23 @@ const News = () => {
   return (
     <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-scroll !mx-auto flex justify-center">
       <div className="inner flex-grow-0 w-full flex flex-col md:!pt-10 items-start justify-between max-md:!px-4 max-md:!mt-4">
-        <Accordion type="single" collapsible className="max-w-full w-full">
+        <Accordion
+          type="single"
+          collapsible
+          className="max-w-full w-full"
+          value={selectedValue}
+          onValueChange={(val) => {
+            const next = new URLSearchParams(searchParams);
+
+            if (val) {
+              next.set("idx", val);
+            } else {
+              next.delete("idx");
+            }
+
+            setSearchParams(next, { replace: true });
+          }}
+        >
           {map(visibleNews, (news, i) => {
             const { ref: imgRef, inView: imgInView } = inViewHooks[i];
             const sanitizeContent = DOMPurify.sanitize(
@@ -150,7 +190,7 @@ const News = () => {
                     {imgInView && (
                       <>
                         <img
-                          src={news.img}
+                          src={news.image}
                           alt={news.titleKr}
                           className="hidden"
                           onLoad={() => handleImageLoad(i)}
@@ -159,7 +199,7 @@ const News = () => {
                         <div
                           className="absolute inset-0 bg-center bg-no-repeat bg-cover transform scale-105 group-hover:scale-100 transition-transform duration-300 ease-out"
                           style={{
-                            backgroundImage: `url(${news.img})`,
+                            backgroundImage: `url(${news.image})`,
                             opacity: imageLoaded[i] ? 1 : 0,
                           }}
                         />

@@ -860,4 +860,102 @@ Step into the inner landscapes HIMINN lays bare—discover them now.
 •
 💌 Editor: 주주 Juju, Subriot 7th Gen Supporters`,
   },
+  {
+    idx: 17,
+    type: "performance",
+    date: "2025-11-26",
+    img: newsImages.delayrelay,
+    titleKr: "딜레이 릴레이 페스티벌 @ 인피니티클럽",
+    titleEn: "Delay Relay Festival @ 1nfinity club",
+    contentKr: `기타 한 대랑 딜레이 페달 최소 3개 정도 챙겨갑니다…
+
+무슨 노래를 할 진 모르겠지만
+일단 내년 1월 25일 일요일 저녁, 신촌에서 만나요.
+
+———————————————
+
+딜레이 릴레이 @delay_relay
+<마음의 색채>
+
+주말권 판매는 현재 진행 중이며 1일권 선예매 티켓팅은
+11/26(수) 오후 3시에 출시됩니다.
+
+👟 WEEK 3 👟
+
+📅 DAY 8: 2026.01.25(일) 5:30 PM
+⏰ 5:15 PM 입장
+👁️ 유리조각소년 @glass___boy
+👁️ HIMINN @himinn___
+👁️ 소실 @headlesssosil
+👁️ 김반월키 @kimbanourke
+
+📍 @1nfntclb`,
+    contentEn: `기타 한 대랑 딜레이 페달 최소 3개 정도 챙겨갑니다…
+
+무슨 노래를 할 진 모르겠지만
+일단 내년 1월 25일 일요일 저녁, 신촌에서 만나요.
+
+———————————————
+
+딜레이 릴레이 @delay_relay
+<마음의 색채>
+
+주말권 판매는 현재 진행 중이며 1일권 선예매 티켓팅은
+11/26(수) 오후 3시에 출시됩니다.
+
+👟 WEEK 3 👟
+
+📅 DAY 8: 2026.01.25(일) 5:30 PM
+⏰ 5:15 PM 입장
+👁️ 유리조각소년 @glass___boy
+👁️ HIMINN @himinn___
+👁️ 소실 @headlesssosil
+👁️ 김반월키 @kimbanourke
+
+📍 @1nfntclb`,
+  },
+  {
+    idx: 18,
+    type: "collaboration",
+    date: "2025-11-28",
+    img: newsImages.gutsNews,
+    titleKr: "다큐멘터리 [창자] 참여",
+    titleEn: "다큐멘터리 [창자] 참여",
+    contentKr: `다큐멘터리 명가, MBC 경남의 새로운 다큐멘터리 [창자]에 음악 감독으로 참여했습니다.
+
+피 튀기는 비주얼과 피 튀기는 내용에 어울리는, 그런 피 튀기는 음악을 좀 녹여봤습니다.
+
+경남 지역권 내에서는 MBC 경남 TV 방송을, 지역권 외에서는 유튜브 채널 ‘엠키타카‘를 통해 만나보세요.
+
+- 편곡 & 오케스트레이션에 이성훈 @hunseongl
+- 마스터링에 김신환 at 포네 스튜디오 @studio_pho.ne
+
+———————————————
+
+세계 최초 창자 요리만 다루는 고어물
+창자로 되새김질하는, 애쓰며 산 사람들 이야기
+MBC경남 특집 다큐멘터리 [창자]
+
+⚫파트1
+-[엠키타카] 11월 29일(토) 밤 10시 25분 ( https://youtu.be/fwInncN4qyM?si=C7EXhKuIhJq8WWVc )
+-[TV] 11월 29일(토) 오전 10시 25분`,
+    contentEn: `다큐멘터리 명가, MBC 경남의 새로운 다큐멘터리 [창자]에 음악 감독으로 참여했습니다.
+
+피 튀기는 비주얼과 피 튀기는 내용에 어울리는, 그런 피 튀기는 음악을 좀 녹여봤습니다.
+
+경남 지역권 내에서는 MBC 경남 TV 방송을, 지역권 외에서는 유튜브 채널 ‘엠키타카‘를 통해 만나보세요.
+
+- 편곡 & 오케스트레이션에 이성훈 @hunseongl
+- 마스터링에 김신환 at 포네 스튜디오 @studio_pho.ne
+
+———————————————
+
+세계 최초 창자 요리만 다루는 고어물
+창자로 되새김질하는, 애쓰며 산 사람들 이야기
+MBC경남 특집 다큐멘터리 [창자]
+
+⚫파트1
+-[엠키타카] 11월 29일(토) 밤 10시 25분 ( https://youtu.be/fwInncN4qyM?si=C7EXhKuIhJq8WWVc )
+-[TV] 11월 29일(토) 오전 10시 25분`,
+  },
 ];

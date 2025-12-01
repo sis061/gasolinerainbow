@@ -20,6 +20,8 @@ import rainlight from "@/assets/images/news/rainlight_8_11zon.webp";
 import thedreamer from "@/assets/images/news/thedreamer_9_11zon.webp";
 import bip_maansun from "@/assets/images/news/bip_maansun.webp";
 import interviewSubriot from "@/assets/images/news/subriot.webp";
+import gutsNews from "@/assets/images/news/gutsNews.webp";
+import delayrelay from "@/assets/images/news/delayrelay.webp";
 
 // Notes 이미지
 import modify_1_0 from "@/assets/images/notes/modify_1_0.webp";
@@ -83,6 +85,8 @@ export const newsImages = {
   thedreamer,
   bip_maansun,
   interviewSubriot,
+  gutsNews,
+  delayrelay,
 };
 
 export const notesImages = {

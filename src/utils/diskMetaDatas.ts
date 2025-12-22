@@ -2618,6 +2618,99 @@ const diskOSTData: Disk[] = [
       },
     ],
   },
+  {
+    targetCarousel: { carouselIndex: 4, slideIndex: 3 },
+    type: "ost",
+    year: 2025,
+    date: "2025-12-23",
+    titleKr: "창자 OST",
+    titleEn: "Guts OST",
+    image: diskImages.gutsDisk,
+    urls: {
+      bandcamp: "https://himinnn.bandcamp.com/album/music-for-a-documentary-2",
+    },
+    isCD: false,
+    descriptionKr: `MBC 경남의 다큐멘터리 <창자>를 위한 오리지널 사운드트랙`,
+    descriptionEn: `An original soundtrack album for the documentary <Guts> from MBC 경남`,
+    credits: `Composed by HIMINN
+Arranged, Orchestrations by HIMINN, 이성훈
+Mixed by HIMINN
+Mastered by Shinhwan @ Phoné Studio`,
+    tracks: [
+      {
+        trackNo: 1,
+        titleKr: "단장",
+        titleEn: "Cut the Guts",
+        lyrics: ``,
+      },
+      {
+        trackNo: 2,
+        titleKr: "궁극",
+        titleEn: "The Ultimate",
+        lyrics: ``,
+      },
+      {
+        trackNo: 3,
+        titleKr: "유산",
+        titleEn: "Legacy",
+        lyrics: ``,
+      },
+      {
+        trackNo: 4,
+        titleKr: "애환",
+        titleEn: "Bittersweet",
+        lyrics: ``,
+      },
+      {
+        trackNo: 5,
+        titleKr: "분투",
+        titleEn: "Endeavor",
+        lyrics: ``,
+      },
+      {
+        trackNo: 6,
+        titleKr: "미식",
+        titleEn: "Gastronomy",
+        lyrics: ``,
+      },
+      {
+        trackNo: 7,
+        titleKr: "잔치",
+        titleEn: "Feast",
+        lyrics: ``,
+      },
+      {
+        trackNo: 8,
+        titleKr: "저장",
+        titleEn: "Preservation",
+        lyrics: ``,
+      },
+      {
+        trackNo: 9,
+        titleKr: "식량",
+        titleEn: "Sustenance",
+        lyrics: ``,
+      },
+      {
+        trackNo: 10,
+        titleKr: "세계",
+        titleEn: "The World",
+        lyrics: ``,
+      },
+      {
+        trackNo: 11,
+        titleKr: "최애",
+        titleEn: "Beloved",
+        lyrics: ``,
+      },
+      {
+        trackNo: 12,
+        titleKr: "가업",
+        titleEn: "Inheritance",
+        lyrics: ``,
+      },
+    ],
+  },
 ];
 
 export const DiskMetaDatas = {

@@ -7,6 +7,7 @@ import gimbapDisk from "@/assets/images/disk/gimbap_disk_4_11zon.webp";
 import hmRemixes from "@/assets/images/disk/hmremixes_6_11zon.webp";
 import TMMS from "@/assets/images/disk/TMMS.webp";
 import BIP from "@/assets/images/disk/BIP.webp";
+import gutsDisk from "@/assets/images/disk/guts.webp";
 
 // News 이미지
 import hmcd from "@/assets/images/news/HMCD_6_11zon.webp";
@@ -71,6 +72,7 @@ export const diskImages = {
   hmRemixes,
   TMMS,
   BIP,
+  gutsDisk,
 };
 
 export const newsImages = {

@@ -56,6 +56,7 @@ import modify_4_5 from "@/assets/images/notes/modify_4_5_24_11zon.webp";
 
 import epilogue_1_0 from "@/assets/images/notes/epilogue_1_0.webp";
 import epilogue_2_0 from "@/assets/images/notes/epilogue_2_0.webp";
+import epilogue_3_0 from "@/assets/images/notes/epilogue_3_0.webp";
 
 // 공통 이미지
 import bg01Img from "@/assets/images/bg01Img.webp";
@@ -119,6 +120,7 @@ export const notesImages = {
   modify_4_5,
   epilogue_1_0,
   epilogue_2_0,
+  epilogue_3_0,
 };
 
 export const commonImages = {

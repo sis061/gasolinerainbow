@@ -54,7 +54,7 @@ const News = () => {
   // main inView for "load more" trigger
   const { ref, inView } = useInView();
 
-  // ❗ 각 뉴스 아이템에 대한 inView hook을 미리 만들어둠
+  // 각 뉴스 아이템에 대한 inView hook을 미리 만들어둠
   const inViewHooks = REVERSED_NEWS.map(() =>
     useInView({ triggerOnce: true, threshold: 0.2 })
   );

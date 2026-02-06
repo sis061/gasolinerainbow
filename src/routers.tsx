@@ -8,6 +8,8 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { preloadImages } from "./utils/withImagePreload";
 import { commonImages } from "./assets/images/images";
 
+import Admin from "./pages/Admin/index";
+
 /*----------------------------------*/
 
 // const Home = lazy(() => import("./pages/Home"));
@@ -140,6 +142,7 @@ const Routers: React.FC<any> = ({
             )}
           />
         </Route>
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </AnimatePresence>
   );

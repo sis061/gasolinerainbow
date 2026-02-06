@@ -22,21 +22,38 @@ import {
   ChevronsRight,
 } from "lucide-react";
 
+import { supabase } from "@/lib/supabase";
 import { useNavigate } from "react-router-dom";
 import cx from "classnames";
 import map from "lodash/map";
 import range from "lodash/range";
 import { useMediaQuery } from "react-responsive";
 
-import { noteData } from "@/utils/noteData";
 import { filterHTMLTags, renderNoteTypeColor } from "@/utils/globalHelper";
 import useLanguageStore from "@/store/useLanguageStore";
 import CustomBadge from "@/components/CustomBadge";
 
+import type { Note as NoteInterface } from "@/types/note";
+
 const PAGE_GROUP_SIZE = 5;
-const reversedNotes = [...noteData].slice().reverse();
 
 export default function AuthorNote() {
+  const [noteData, setNoteData] = useState<NoteInterface[]>([]);
+
+  useEffect(() => {
+    const fetchAllNotes = async () => {
+      const { data, error } = await supabase
+        .from("notes")
+        .select("*")
+        .order("id", { ascending: false });
+
+      if (!error && data) {
+        setNoteData(data);
+      }
+    };
+    fetchAllNotes();
+  }, []);
+
   const [page, setPage] = useState<number>(() => {
     const restored = Number(sessionStorage.getItem("authornotePage"));
     return restored > 0 ? restored : 1;
@@ -47,12 +64,12 @@ export default function AuthorNote() {
   const { language } = useLanguageStore();
 
   const goDetail = (note: any) => {
-    navigate(`/authornote/${note.idx}`);
+    navigate(`/authornote/${note.id}`);
   };
 
   // 페이지 수에 따른 목록 렌더링
   const ROWS_PER_PAGE = minMobile ? (minTablet ? 6 : 4) : 3;
-  const totalPages = Math.ceil(reversedNotes.length / ROWS_PER_PAGE);
+  const totalPages = Math.ceil(noteData.length / ROWS_PER_PAGE);
   const currentGroup = Math.floor((page - 1) / PAGE_GROUP_SIZE);
   const startPage = currentGroup * PAGE_GROUP_SIZE + 1;
   const endPage = Math.min(startPage + PAGE_GROUP_SIZE - 1, totalPages);
@@ -62,8 +79,8 @@ export default function AuthorNote() {
     const start = (page - 1) * ROWS_PER_PAGE;
     const end = start + ROWS_PER_PAGE;
 
-    return reversedNotes.slice(start, end);
-  }, [page, reversedNotes, ROWS_PER_PAGE]);
+    return noteData.slice(start, end);
+  }, [page, noteData, ROWS_PER_PAGE]);
 
   // 디테일 페이지에서 뒤로가기 시 목록 restore 위해 세션스토리지 저장
   useEffect(() => {
@@ -104,7 +121,7 @@ export default function AuthorNote() {
             {map(tableLists, (note) => {
               return (
                 <TableRow
-                  key={note.idx}
+                  key={note.id}
                   onClick={() => {
                     goDetail(note);
                   }}
@@ -119,7 +136,7 @@ export default function AuthorNote() {
                         expireIn="2weeks"
                       />
                     )}
-                    {note.idx + 1}
+                    {note.id}
                   </TableCell>
                   <TableCell className="h-full whitespace-normal md:min-w-[10rem] max-md:h-auto max-md:absolute max-md:w-full max-md:text-right top-1.5 right-0 order-3 md:order-2 max-md:text-xs !px-2">
                     <div

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft } from "lucide-react";
 
+import { supabase } from "@/lib/supabase";
 import { useNavigate, useParams } from "react-router-dom";
 
 import useLanguageStore from "@/store/useLanguageStore";
@@ -15,22 +16,29 @@ export default function Note() {
   const imgRef = useRef<HTMLDivElement | null>(null);
   /************/
   const navigate = useNavigate();
-  const { idx } = useParams<{ idx: string }>();
+  const { id } = useParams<{ id: string }>();
   const { language } = useLanguageStore();
 
   useEffect(() => {
-    if (!idx) return;
+    if (!id) return;
+    const fetchNote = async () => {
+      const { data, error } = await supabase
+        .from("notes")
+        .select("*")
+        .eq("id", Number(id))
+        .single();
 
-    import("@/utils/noteData").then(({ noteData }) => {
-      const foundNote = noteData.find((n) => n.idx === Number(idx));
-      if (!foundNote) {
-        // 노트가 없으면 목록으로
+      if (!data || error) {
         navigate("/authornote", { replace: true });
-      } else {
-        setNote(foundNote);
+        console.log(error);
+        return;
       }
-    });
-  }, [idx]);
+
+      setNote(data);
+    };
+
+    fetchNote();
+  }, [id]);
 
   const styledContent = useMemo(() => {
     if (!note?.content) return "";

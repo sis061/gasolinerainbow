@@ -1,5 +1,5 @@
 export interface Note {
-  idx: number;
+  id: number;
   date: string;
   category: string;
   title: string;

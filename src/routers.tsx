@@ -9,28 +9,17 @@ import { preloadImages } from "./utils/withImagePreload";
 import { commonImages } from "./assets/images/images";
 
 import HomeV2 from "./pages/HomeV2";
-import News from "./pages/News";
-import Admin from "./pages/Admin/index";
 
 /*----------------------------------*/
 
-// const Home = lazy(() => import("./pages/Home"));
-// const HomeV2 = lazy(() =>
-//   import("@/utils/newsPreload").then(({ preloadNewsResources }) =>
-//     preloadNewsResources().then(() => import("./pages/HomeV2"))
-//   )
-// );
 const About = lazy(() =>
   preloadImages([commonImages.profileImg]).then(() => import("./pages/About"))
 );
 const Discography = lazy(() => import("./pages/Discography"));
+const News = lazy(() => import("./pages/News"));
 const AuthorNote = lazy(() => import("./pages/AuthorNote"));
 const Note = lazy(() => import("./pages/AuthorNote/Note"));
-// const News = lazy(() =>
-//   import("@/utils/newsPreload").then(({ preloadNewsResources }) =>
-//     preloadNewsResources().then(() => import("./pages/News"))
-//   )
-// );
+const Admin = lazy(() => import("./pages/Admin"));
 const StreamingRedirect = lazy(() => import("./pages/StreamingRedirect"));
 
 const PageNotFound = lazy(() => import("./pages/PageNotFound"));
@@ -94,7 +83,7 @@ const Routers: React.FC<any> = ({
             )}
           />
           <Route
-            path=":idx"
+            path=":id"
             element={suspenseWrapper(
               <PageWrapper>
                 <Note />

@@ -9,6 +9,9 @@ import { preloadImages } from "./utils/withImagePreload";
 import { commonImages } from "./assets/images/images";
 
 import HomeV2 from "./pages/HomeV2";
+import AuthCallback from "./pages/AuthCallback";
+import RequireAdmin from "./lib/auth/RequireAdmin";
+import Login from "./pages/Login";
 
 /*----------------------------------*/
 
@@ -133,7 +136,16 @@ const Routers: React.FC<any> = ({
             )}
           />
         </Route>
-        <Route path="/admin" element={<Admin />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/auth/callback" element={<AuthCallback />} />
+        <Route
+          path="/admin"
+          element={
+            <RequireAdmin>
+              <Admin />
+            </RequireAdmin>
+          }
+        />
       </Routes>
     </AnimatePresence>
   );

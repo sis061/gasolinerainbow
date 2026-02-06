@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 import { allDisks } from "@/utils/diskMetaDatas";
-import { newsData } from "@/utils/newsData";
 import { noteData } from "@/utils/noteData";
 import defaultImg from "@/assets/images/homeDefaultImg.webp";
 
@@ -14,8 +13,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import cx from "classnames";
 import { useNavigate } from "react-router-dom";
 
+import { supabase } from "@/lib/supabase";
 import { getUserPlatformType } from "@/utils/globalHelper";
-import { withImagePreload } from "@/utils/withImagePreload";
 import useLanguageStore from "@/store/useLanguageStore";
 import useDiscographyStore from "@/store/useDiscographyStore";
 import CustomBadge from "@/components/CustomBadge";
@@ -59,7 +58,7 @@ function StripNewsItems(news: News[]) {
     titleKr: item.titleKr,
     titleEn: item.titleEn,
     image: item.image ?? defaultImg,
-    redirectTo: `/news?idx=${item.idx}`,
+    redirectTo: `/news?id=${item.id}`,
   }));
 }
 
@@ -100,12 +99,6 @@ function renderByType(type: string) {
   return result;
 }
 
-const HOME_ITEMS: HomeItemProps[] = [
-  ...StripDiskItems(allDisks),
-  ...StripNewsItems(newsData),
-  ...StripNotesItems(noteData),
-].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
 const getPreloadCount = () => {
   if (typeof window === "undefined") {
     // 혹시 모듈 로드 시점에 안전용 디폴트
@@ -123,11 +116,29 @@ const getPreloadCount = () => {
 const INITIAL_PAGE_SIZE = getPreloadCount();
 const PAGE_SIZE = INITIAL_PAGE_SIZE / 4;
 
-const preloadUrls = HOME_ITEMS.slice(0, INITIAL_PAGE_SIZE).map(
-  (item) => item.image
-);
-
 const HomeV2 = () => {
+  const [newsData, setNewsData] = useState<News[]>([]);
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      const { data, error } = await supabase
+        .from("news")
+        .select("*")
+        .order("id", { ascending: false });
+
+      if (!error && data) {
+        setNewsData(data);
+      }
+    };
+    fetchNews();
+  }, []);
+
+  const HOME_ITEMS: HomeItemProps[] = [
+    ...StripDiskItems(allDisks),
+    ...StripNewsItems(newsData),
+    ...StripNotesItems(noteData),
+  ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
   const navigate = useNavigate();
   const { language } = useLanguageStore();
   const { setGoToDiscActive } = useDiscographyStore();
@@ -247,4 +258,4 @@ const HomeV2 = () => {
   );
 };
 
-export default withImagePreload(HomeV2, preloadUrls);
+export default HomeV2;

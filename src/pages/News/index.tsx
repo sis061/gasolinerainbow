@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import {
   Accordion,
@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/accordion";
 import { Skeleton } from "@/components/ui/skeleton";
 
+import { supabase } from "@/lib/supabase";
 import { ScaleLoader } from "react-spinners";
 import { useMediaQuery } from "react-responsive";
 import { useInView } from "react-intersection-observer";
@@ -18,46 +19,58 @@ import DOMPurify from "dompurify";
 import CustomBadge from "@/components/CustomBadge";
 import useLanguageStore from "@/store/useLanguageStore";
 
-import { withImagePreload } from "@/utils/withImagePreload";
-import { newsData } from "@/utils/newsData";
 import {
   formatDateByLang,
   linkify,
   renderNewsTypeColor,
 } from "@/utils/globalHelper";
 
-import type { News } from "@/types/news";
+import type { News as NewsInterface } from "@/types/news";
 
 const ITEMS_PER_PAGE = 4;
-const REVERSED_NEWS = [...newsData].slice().reverse();
-const preloadUrls = REVERSED_NEWS.slice(0, ITEMS_PER_PAGE).map(
-  (item) => item.image
-);
 
 const News = () => {
-  const accordionRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [visibleNews, setVisibleNews] = useState(
-    REVERSED_NEWS.slice(0, ITEMS_PER_PAGE)
-  );
-  const [imageLoaded, setImageLoaded] = useState<boolean[]>(
-    new Array(REVERSED_NEWS.length).fill(false)
-  );
+  const [newsData, setNewsData] = useState<NewsInterface[]>([]);
   const [page, setPage] = useState<number>(1);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const selectedValue = searchParams.get("idx") ?? undefined;
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedValue = searchParams.get("id") ?? undefined;
+
+  const accordionRefs = useRef<(HTMLDivElement | null)[]>([]);
   const fallbackTimer = useRef<NodeJS.Timeout | null>(null);
   const [showFallback, setShowFallback] = useState(false);
+
+  const [imageLoaded, setImageLoaded] = useState<boolean[]>([]);
+
   const minTablet = useMediaQuery({ minWidth: 768 });
   const { language } = useLanguageStore();
 
   // main inView for "load more" trigger
   const { ref, inView } = useInView();
 
-  // 각 뉴스 아이템에 대한 inView hook을 미리 만들어둠
-  const inViewHooks = REVERSED_NEWS.map(() =>
-    useInView({ triggerOnce: true, threshold: 0.2 })
-  );
+  useEffect(() => {
+    const fetchNews = async () => {
+      const { data, error } = await supabase
+        .from("news")
+        .select("*")
+        .order("id", { ascending: false });
+
+      if (!error && data) {
+        setNewsData(data);
+      }
+    };
+    fetchNews();
+  }, []);
+
+  const visibleNews = useMemo(() => {
+    return newsData.slice(0, page * ITEMS_PER_PAGE);
+  }, [newsData, page]);
+
+  useEffect(() => {
+    setImageLoaded(new Array(newsData.length).fill(false));
+    setPage(1);
+    setShowFallback(false);
+  }, [newsData.length]);
 
   const setRef = useCallback((el: HTMLDivElement | null, index: number) => {
     accordionRefs.current[index] = el;
@@ -67,14 +80,12 @@ const News = () => {
     (index: number) => {
       const el = accordionRefs.current[index];
       if (!el) return;
+
       const offset = minTablet ? 98 : 64;
       const y = el.getBoundingClientRect().top + window.scrollY - offset;
 
       setTimeout(() => {
-        window.scrollTo({
-          top: y,
-          behavior: "smooth",
-        });
+        window.scrollTo({ top: y, behavior: "smooth" });
       }, 100);
     },
     [minTablet]
@@ -88,51 +99,49 @@ const News = () => {
     });
   };
 
+  const loadMore = useCallback(() => {
+    setPage((prev) => prev + 1);
+    setShowFallback(false);
+  }, []);
+
+  // inView로 자동 loadMore
   useEffect(() => {
     if (inView && visibleNews.length < newsData.length) {
       loadMore();
     }
-  }, [inView]);
+  }, [inView, visibleNews.length, newsData.length, loadMore]);
 
+  // fallback 버튼 타이머
   useEffect(() => {
     if (visibleNews.length < newsData.length) {
-      fallbackTimer.current = setTimeout(() => {
-        setShowFallback(true);
-      }, 4000);
+      fallbackTimer.current = setTimeout(() => setShowFallback(true), 4000);
     }
 
     return () => {
       if (fallbackTimer.current) clearTimeout(fallbackTimer.current);
     };
-  }, [visibleNews]);
+  }, [visibleNews.length, newsData.length]);
 
+  // URL의 id로 들어왔을 때: 데이터 로드된 후에도 반드시 다시 실행되게 의존성에 newsData 추가
   useEffect(() => {
     if (!selectedValue) return;
+    if (newsData.length === 0) return;
 
-    const targetIdxNum = Number(selectedValue);
-    if (Number.isNaN(targetIdxNum)) return;
+    const targetId = Number(selectedValue);
+    if (Number.isNaN(targetId)) return;
 
-    const targetIndex = REVERSED_NEWS.findIndex((n) => n.idx === targetIdxNum);
+    const targetIndex = newsData.findIndex((n) => n.id === targetId);
     if (targetIndex === -1) return;
 
     const requiredPage = Math.floor(targetIndex / ITEMS_PER_PAGE) + 1;
 
     setPage(requiredPage);
-    setVisibleNews(REVERSED_NEWS.slice(0, requiredPage * ITEMS_PER_PAGE));
 
+    // page 세팅 후 DOM 업데이트 타이밍을 조금 벌어줌
     setTimeout(() => {
       scrollToItem(targetIndex);
-    }, 100);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedValue, scrollToItem]);
-
-  const loadMore = () => {
-    const nextPage = page + 1;
-    const nextItems = REVERSED_NEWS.slice(0, nextPage * ITEMS_PER_PAGE);
-    setVisibleNews(nextItems);
-    setPage(nextPage);
-    setShowFallback(false);
-  };
+    }, 150);
+  }, [selectedValue, newsData, scrollToItem]);
 
   return (
     <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-scroll !mx-auto flex justify-center">
@@ -146,16 +155,16 @@ const News = () => {
             const next = new URLSearchParams(searchParams);
 
             if (val) {
-              next.set("idx", val);
+              next.set("id", val);
             } else {
-              next.delete("idx");
+              next.delete("id");
             }
 
             setSearchParams(next, { replace: true });
           }}
         >
           {map(visibleNews, (news, i) => {
-            const { ref: imgRef, inView: imgInView } = inViewHooks[i];
+            // const { ref: imgRef, inView: imgInView } = inViewHooks[i];
             const sanitizeContent = DOMPurify.sanitize(
               language === "ko"
                 ? linkify(news?.contentKr ?? "")
@@ -169,10 +178,10 @@ const News = () => {
               <AccordionItem
                 ref={(el) => {
                   setRef(el, i);
-                  imgRef(el);
+                  // imgRef(el);
                 }}
-                key={news.idx}
-                value={`${news.idx}`}
+                key={news.id}
+                value={`${news.id}`}
                 className="!pb-10 w-full !border-0"
                 onClick={() => scrollToItem(i)}
               >
@@ -187,24 +196,20 @@ const News = () => {
                       <Skeleton className="absolute inset-0 w-full h-full rounded-none bg-[#333]" />
                     )}
 
-                    {imgInView && (
-                      <>
-                        <img
-                          src={news.image}
-                          alt={news.titleKr}
-                          className="hidden"
-                          onLoad={() => handleImageLoad(i)}
-                          loading="eager"
-                        />
-                        <div
-                          className="absolute inset-0 bg-center bg-no-repeat bg-cover transform scale-105 group-hover:scale-100 transition-transform duration-300 ease-out"
-                          style={{
-                            backgroundImage: `url(${news.image})`,
-                            opacity: imageLoaded[i] ? 1 : 0,
-                          }}
-                        />
-                      </>
-                    )}
+                    <img
+                      src={news.image}
+                      alt={news.titleKr}
+                      className="hidden"
+                      onLoad={() => handleImageLoad(i)}
+                      loading="eager"
+                    />
+                    <div
+                      className="absolute inset-0 bg-center bg-no-repeat bg-cover transform scale-105 group-hover:scale-100 transition-transform duration-300 ease-out"
+                      style={{
+                        backgroundImage: `url(${news.image})`,
+                        opacity: imageLoaded[i] ? 1 : 0,
+                      }}
+                    />
 
                     <span
                       style={{ borderColor: renderNewsTypeColor(news.type) }}
@@ -259,4 +264,4 @@ const News = () => {
   );
 };
 
-export default withImagePreload(News, preloadUrls);
+export default News;

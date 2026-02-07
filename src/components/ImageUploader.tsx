@@ -5,6 +5,7 @@ import { supabase } from "@/lib/supabase";
 type Props = {
   onChange: (file: string | null) => void;
   folder?: "news" | "notes";
+  onUploadingChange?: (uploading: boolean) => void;
 };
 
 /* -----------------------------------------------
@@ -14,13 +15,29 @@ type Props = {
 
 const BUCKET = "media";
 
-export default function ImageUploader({ onChange, folder }: Props) {
+const makeUUID = () => {
+  // iOS 구버전 대비 fallback
+  if (typeof crypto !== "undefined" && "randomUUID" in crypto) {
+    // @ts-ignore
+    return crypto.randomUUID();
+  }
+  // fallback: timestamp + random
+  return `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+};
+
+export default function ImageUploader({
+  onChange,
+  folder,
+  onUploadingChange,
+}: Props) {
   const [coverImage, setCoverImage] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
+  const [uploading, setUploading] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
 
   const uploadToSupabase = async (file: File) => {
     const ext = "webp";
-    const name = `${crypto.randomUUID()}.${ext}`;
+    const name = `${makeUUID()}.${ext}`;
     const path = `${folder}/${name}`;
 
     const { error } = await supabase.storage.from(BUCKET).upload(path, file, {
@@ -35,14 +52,29 @@ export default function ImageUploader({ onChange, folder }: Props) {
   };
 
   const handleInsertImage = async (file: File) => {
-    const webp = await toWebp(file);
-    const url = await uploadToSupabase(webp);
-    setPreview((prev) => {
-      if (prev) URL.revokeObjectURL(prev);
-      return URL.createObjectURL(webp);
-    });
-    setCoverImage(webp);
-    onChange(url);
+    setErr(null);
+    setUploading(true);
+    onUploadingChange?.(true);
+
+    try {
+      const webp = await toWebp(file);
+      const url = await uploadToSupabase(webp);
+
+      setPreview((prev) => {
+        if (prev) URL.revokeObjectURL(prev);
+        return URL.createObjectURL(webp);
+      });
+
+      setCoverImage(webp);
+      onChange(url);
+    } catch (e: any) {
+      console.log(e);
+      onChange(null);
+      setErr("이미지 업로드 실패. 다시 시도");
+    } finally {
+      setUploading(false);
+      onUploadingChange?.(false);
+    }
   };
 
   useEffect(() => {
@@ -56,6 +88,7 @@ export default function ImageUploader({ onChange, folder }: Props) {
       <input
         type="file"
         accept="image/*,.heic,.heif"
+        disabled={uploading}
         onChange={async (e) => {
           const file = e.target.files?.[0];
           if (!file) return;
@@ -63,6 +96,12 @@ export default function ImageUploader({ onChange, folder }: Props) {
         }}
         className="border !px-4 !py-1 max-w-full !bg-white rounded-md"
       />
+
+      {err ? <p className="text-red-500 text-sm">{err}</p> : null}
+      {uploading ? (
+        <p className="text-sm opacity-70">이미지 처리/업로드 중…</p>
+      ) : null}
+
       <div className="flex gap-4 items-center w-full justify-center">
         {preview && <img src={preview} className="max-w-48" />}
         {coverImage && <p>{Math.round(coverImage.size / 1024)}KB</p>}

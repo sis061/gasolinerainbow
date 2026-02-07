@@ -32,6 +32,7 @@ export default function FormNews() {
 
   const [submitting, setSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [imageUploading, setImageUploading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -126,7 +127,11 @@ export default function FormNews() {
 
       <div className="fle flex-col items-start gap-4 !space-y-4">
         <h3>대표이미지</h3>
-        <ImageUploader onChange={setCoverImage} folder="news" />
+        <ImageUploader
+          onChange={setCoverImage}
+          folder="news"
+          onUploadingChange={setImageUploading}
+        />
       </div>
 
       <div className="flex items-center gap-4 max-sm:flex-col max-sm:items-start">
@@ -172,9 +177,13 @@ export default function FormNews() {
       <button
         type="submit"
         className="border !p-2 bg-black !text-white disabled:opacity-50"
-        disabled={submitting}
+        disabled={submitting || imageUploading}
       >
-        {submitting ? "업로드 중..." : "업로드"}
+        {submitting
+          ? "업로드 중..."
+          : imageUploading
+            ? "이미지 처리 중..."
+            : "업로드"}
       </button>
     </form>
   );

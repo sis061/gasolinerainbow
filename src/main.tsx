@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 
 import { BrowserRouter } from "react-router-dom";
 import AutoScrollToTop from "./utils/AutoScrollToTop.tsx";
+import { AuthProvider } from "./lib/auth/useAuth.tsx";
 const VideoBackground = lazy(
   () => import("./pages/Layout/components/VideoBackground")
 );
@@ -44,11 +45,13 @@ function Root() {
       <div
         className={videoReady ? "opacity-100" : "opacity-0 pointer-events-none"}
       >
-        <BrowserRouter>
-          <AutoScrollToTop />
-          <VideoBackground onReady={() => setVideoReady(true)} />
-          <App isInitialLoad={isInitialLoad} />
-        </BrowserRouter>
+        <AuthProvider>
+          <BrowserRouter>
+            <AutoScrollToTop />
+            <VideoBackground onReady={() => setVideoReady(true)} />
+            <App isInitialLoad={isInitialLoad} />
+          </BrowserRouter>
+        </AuthProvider>
       </div>
     </>
   );

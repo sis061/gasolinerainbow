@@ -4,33 +4,67 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft } from "lucide-react";
 
+import { supabase } from "@/lib/supabase";
 import { useNavigate, useParams } from "react-router-dom";
+import { useAuth } from "@/lib/auth/useAuth";
 
 import useLanguageStore from "@/store/useLanguageStore";
 import type { Note } from "@/types/note";
 import { renderNoteTypeColor } from "@/utils/globalHelper";
 
 export default function Note() {
+  const { user } = useAuth();
+  const [isAdmin, setIsAdmin] = useState<null | boolean>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    (async () => {
+      if (!user) {
+        setIsAdmin(null);
+        return;
+      }
+
+      const { data, error } = await supabase.rpc("is_admin_email");
+
+      if (cancelled) return;
+
+      if (error) setIsAdmin(false);
+      else setIsAdmin(!!data);
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [user]);
+
   const [note, setNote] = useState<Note | null>(null);
   const imgRef = useRef<HTMLDivElement | null>(null);
   /************/
   const navigate = useNavigate();
-  const { idx } = useParams<{ idx: string }>();
+  const { id } = useParams<{ id: string }>();
   const { language } = useLanguageStore();
 
-  useEffect(() => {
-    if (!idx) return;
+  const fetchNote = async () => {
+    const { data, error } = await supabase
+      .from("notes")
+      .select("*")
+      .eq("id", Number(id))
+      .is("deleted_at", null)
+      .single();
 
-    import("@/utils/noteData").then(({ noteData }) => {
-      const foundNote = noteData.find((n) => n.idx === Number(idx));
-      if (!foundNote) {
-        // 노트가 없으면 목록으로
-        navigate("/authornote", { replace: true });
-      } else {
-        setNote(foundNote);
-      }
-    });
-  }, [idx]);
+    if (!data || error) {
+      navigate("/authornote", { replace: true });
+      console.log(error);
+      return;
+    }
+
+    setNote(data);
+  };
+  useEffect(() => {
+    if (!id) return;
+    fetchNote();
+  }, [id]);
 
   const styledContent = useMemo(() => {
     if (!note?.content) return "";
@@ -40,9 +74,28 @@ export default function Note() {
       `<img
     class="skeleton !mx-auto !my-6 md:w-2/3 w-full h-auto"
     onload="this.classList.remove('skeleton')"
-    `
+    `,
     );
   }, [note?.content]);
+
+  const deleteNote = async (id: number) => {
+    if (!confirm("진짜 지울거?")) return;
+
+    if (!user) return;
+    if (!isAdmin) return;
+
+    const { error } = await supabase
+      .from("notes")
+      .update({ deleted_at: new Date().toISOString() })
+      .eq("id", id);
+
+    if (error) {
+      console.error("Delete failed:", error.message);
+      return;
+    }
+
+    fetchNote();
+  };
 
   if (!note) {
     return null; // 리다이렉트 중이므로 UI 렌더링 안함
@@ -78,6 +131,14 @@ export default function Note() {
             dangerouslySetInnerHTML={{ __html: styledContent }}
           />
           <div className="w-full flex justify-end">
+            {isAdmin && (
+              <button
+                className="border bg-red-500 !px-2 max-w-32 !text-white"
+                onClick={() => deleteNote(Number(id))}
+              >
+                삭제
+              </button>
+            )}
             <Button
               variant="ghost"
               className="!px-4 cursor-pointer hover:!bg-accent/25 rounded-xs"

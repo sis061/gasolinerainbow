@@ -1,7 +1,8 @@
 export type NewsType = "performance" | "release" | "collaboration" | "others";
 
 export interface News {
-  idx: number;
+  idx?: number;
+  id: number;
   type: NewsType;
   date: string;
   image: string;

@@ -70,7 +70,7 @@ export default function ImageUploader({
     } catch (e: any) {
       console.log(e);
       onChange(null);
-      setErr("이미지 업로드 실패. 다시 시도");
+      setErr(`이미지 업로드 실패. ${e?.message}`);
     } finally {
       setUploading(false);
       onUploadingChange?.(false);

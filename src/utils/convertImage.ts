@@ -33,7 +33,7 @@ export const toWebp = async (file: File) => {
 
   const webpBlob = await imageCompression(f, {
     maxSizeMB: 1,
-    useWebWorker: !isIOS(), // iOS에서는 worker 끔(안정성)
+    useWebWorker: !isIOS() && typeof Worker === "function", // iOS에서는 worker 끔(안정성)
     fileType: "image/webp",
     initialQuality: 0.85,
     maxWidthOrHeight: maxSide,

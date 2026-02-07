@@ -6,12 +6,38 @@ import { ArrowLeft } from "lucide-react";
 
 import { supabase } from "@/lib/supabase";
 import { useNavigate, useParams } from "react-router-dom";
+import { useAuth } from "@/lib/auth/useAuth";
 
 import useLanguageStore from "@/store/useLanguageStore";
 import type { Note } from "@/types/note";
 import { renderNoteTypeColor } from "@/utils/globalHelper";
 
 export default function Note() {
+  const { user } = useAuth();
+  const [isAdmin, setIsAdmin] = useState<null | boolean>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    (async () => {
+      if (!user) {
+        setIsAdmin(null);
+        return;
+      }
+
+      const { data, error } = await supabase.rpc("is_admin_email");
+
+      if (cancelled) return;
+
+      if (error) setIsAdmin(false);
+      else setIsAdmin(!!data);
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [user]);
+
   const [note, setNote] = useState<Note | null>(null);
   const imgRef = useRef<HTMLDivElement | null>(null);
   /************/
@@ -19,24 +45,24 @@ export default function Note() {
   const { id } = useParams<{ id: string }>();
   const { language } = useLanguageStore();
 
+  const fetchNote = async () => {
+    const { data, error } = await supabase
+      .from("notes")
+      .select("*")
+      .eq("id", Number(id))
+      .is("deleted_at", null)
+      .single();
+
+    if (!data || error) {
+      navigate("/authornote", { replace: true });
+      console.log(error);
+      return;
+    }
+
+    setNote(data);
+  };
   useEffect(() => {
     if (!id) return;
-    const fetchNote = async () => {
-      const { data, error } = await supabase
-        .from("notes")
-        .select("*")
-        .eq("id", Number(id))
-        .single();
-
-      if (!data || error) {
-        navigate("/authornote", { replace: true });
-        console.log(error);
-        return;
-      }
-
-      setNote(data);
-    };
-
     fetchNote();
   }, [id]);
 
@@ -48,9 +74,28 @@ export default function Note() {
       `<img
     class="skeleton !mx-auto !my-6 md:w-2/3 w-full h-auto"
     onload="this.classList.remove('skeleton')"
-    `
+    `,
     );
   }, [note?.content]);
+
+  const deleteNote = async (id: number) => {
+    if (!confirm("진짜 지울거?")) return;
+
+    if (!user) return;
+    if (!isAdmin) return;
+
+    const { error } = await supabase
+      .from("notes")
+      .update({ deleted_at: new Date().toISOString() })
+      .eq("id", id);
+
+    if (error) {
+      console.error("Delete failed:", error.message);
+      return;
+    }
+
+    fetchNote();
+  };
 
   if (!note) {
     return null; // 리다이렉트 중이므로 UI 렌더링 안함
@@ -86,6 +131,14 @@ export default function Note() {
             dangerouslySetInnerHTML={{ __html: styledContent }}
           />
           <div className="w-full flex justify-end">
+            {isAdmin && (
+              <button
+                className="border bg-red-500 !px-2 max-w-32 !text-white"
+                onClick={() => deleteNote(Number(id))}
+              >
+                삭제
+              </button>
+            )}
             <Button
               variant="ghost"
               className="!px-4 cursor-pointer hover:!bg-accent/25 rounded-xs"

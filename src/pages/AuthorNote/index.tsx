@@ -45,6 +45,7 @@ export default function AuthorNote() {
       const { data, error } = await supabase
         .from("notes")
         .select("*")
+        .is("deleted_at", null)
         .order("id", { ascending: false });
 
       if (!error && data) {
@@ -183,7 +184,7 @@ export default function AuthorNote() {
                   aria-disabled={page === startPage}
                   className={cx(
                     page === startPage && "[&_>svg]:stroke-black/25",
-                    "aria-disabled:!cursor-default aria-disabled:hover:[&_>svg]:stroke-black/25 hover:bg-transparent hover:[&_>svg]:stroke-accent *:transition-all duration-150 cursor-pointer rounded-xs hover:animate-pulse"
+                    "aria-disabled:!cursor-default aria-disabled:hover:[&_>svg]:stroke-black/25 hover:bg-transparent hover:[&_>svg]:stroke-accent *:transition-all duration-150 cursor-pointer rounded-xs hover:animate-pulse",
                   )}
                 >
                   <ChevronsLeft className="h-4 w-4" />
@@ -199,7 +200,7 @@ export default function AuthorNote() {
               aria-disabled={page === startPage}
               className={cx(
                 page === startPage && "[&_>svg]:stroke-black/25",
-                "aria-disabled:!cursor-default aria-disabled:hover:[&_>svg]:stroke-black/25 hover:bg-transparent hover:[&_>svg]:stroke-accent *:transition-all duration-150 cursor-pointer rounded-xs hover:animate-pulse"
+                "aria-disabled:!cursor-default aria-disabled:hover:[&_>svg]:stroke-black/25 hover:bg-transparent hover:[&_>svg]:stroke-accent *:transition-all duration-150 cursor-pointer rounded-xs hover:animate-pulse",
               )}
             >
               <ChevronLeft className="h-4 w-4" />
@@ -217,7 +218,7 @@ export default function AuthorNote() {
                     page !== p
                       ? "cursor-pointer hover:bg-accent/25 hover:!text-accent"
                       : "bg-accent/25 hover:bg-accent/25",
-                    "rounded-xs border-none *:transition-all duration-150"
+                    "rounded-xs border-none *:transition-all duration-150",
                   )}
                 >
                   {p}
@@ -235,7 +236,7 @@ export default function AuthorNote() {
                 aria-disabled={page === totalPages}
                 className={cx(
                   page === endPage && "[&_>svg]:stroke-black/25",
-                  "aria-disabled:!cursor-default aria-disabled:hover:[&_>svg]:stroke-black/25 hover:bg-transparent hover:[&_>svg]:stroke-accent *:transition-all duration-150 cursor-pointer rounded-xs hover:animate-pulse"
+                  "aria-disabled:!cursor-default aria-disabled:hover:[&_>svg]:stroke-black/25 hover:bg-transparent hover:[&_>svg]:stroke-accent *:transition-all duration-150 cursor-pointer rounded-xs hover:animate-pulse",
                 )}
               >
                 <ChevronRight className="h-4 w-4" />
@@ -252,7 +253,7 @@ export default function AuthorNote() {
                   aria-disabled={page === endPage}
                   className={cx(
                     page === endPage && "[&_>svg]:stroke-black/25",
-                    "aria-disabled:!cursor-default aria-disabled:hover:[&_>svg]:stroke-black/25 hover:bg-transparent hover:[&_>svg]:stroke-accent *:transition-all duration-150 cursor-pointer rounded-xs hover:animate-pulse"
+                    "aria-disabled:!cursor-default aria-disabled:hover:[&_>svg]:stroke-black/25 hover:bg-transparent hover:[&_>svg]:stroke-accent *:transition-all duration-150 cursor-pointer rounded-xs hover:animate-pulse",
                   )}
                 >
                   <ChevronsRight className="h-4 w-4" />

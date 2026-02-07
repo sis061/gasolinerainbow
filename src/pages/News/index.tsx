@@ -26,15 +26,41 @@ import {
 } from "@/utils/globalHelper";
 
 import type { News as NewsInterface } from "@/types/news";
+import { useAuth } from "@/lib/auth/useAuth";
 
 const ITEMS_PER_PAGE = 4;
 
 const News = () => {
+  const { user } = useAuth();
+  const [isAdmin, setIsAdmin] = useState<null | boolean>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    (async () => {
+      if (!user) {
+        setIsAdmin(null);
+        return;
+      }
+
+      const { data, error } = await supabase.rpc("is_admin_email");
+
+      if (cancelled) return;
+
+      if (error) setIsAdmin(false);
+      else setIsAdmin(!!data);
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [user]);
+
   const [newsData, setNewsData] = useState<NewsInterface[]>([]);
   const [page, setPage] = useState<number>(1);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const selectedValue = searchParams.get("id") ?? undefined;
+  const selectedValue = searchParams.get("id") ?? "";
 
   const accordionRefs = useRef<(HTMLDivElement | null)[]>([]);
   const fallbackTimer = useRef<NodeJS.Timeout | null>(null);
@@ -48,17 +74,18 @@ const News = () => {
   // main inView for "load more" trigger
   const { ref, inView } = useInView();
 
-  useEffect(() => {
-    const fetchNews = async () => {
-      const { data, error } = await supabase
-        .from("news")
-        .select("*")
-        .order("id", { ascending: false });
+  const fetchNews = async () => {
+    const { data, error } = await supabase
+      .from("news")
+      .select("*")
+      .is("deleted_at", null)
+      .order("id", { ascending: false });
 
-      if (!error && data) {
-        setNewsData(data);
-      }
-    };
+    if (!error && data) {
+      setNewsData(data);
+    }
+  };
+  useEffect(() => {
     fetchNews();
   }, []);
 
@@ -88,7 +115,7 @@ const News = () => {
         window.scrollTo({ top: y, behavior: "smooth" });
       }, 100);
     },
-    [minTablet]
+    [minTablet],
   );
 
   const handleImageLoad = (index: number) => {
@@ -143,6 +170,25 @@ const News = () => {
     }, 150);
   }, [selectedValue, newsData, scrollToItem]);
 
+  const deleteNews = async (id: number) => {
+    if (!confirm("진짜 지울거?")) return;
+
+    if (!user) return;
+    if (!isAdmin) return;
+
+    const { error } = await supabase
+      .from("news")
+      .update({ deleted_at: new Date().toISOString() })
+      .eq("id", id);
+
+    if (error) {
+      console.error("Delete failed:", error.message);
+      return;
+    }
+
+    fetchNews();
+  };
+
   return (
     <section className="wrapper w-full min-h-[calc(100dvh-8rem)] overflow-scroll !mx-auto flex justify-center">
       <div className="inner flex-grow-0 w-full flex flex-col md:!pt-10 items-start justify-between max-md:!px-4 max-md:!mt-4">
@@ -171,7 +217,7 @@ const News = () => {
                 : linkify(news?.contentEn ?? ""),
               {
                 ADD_ATTR: ["target"],
-              }
+              },
             );
 
             return (
@@ -230,6 +276,14 @@ const News = () => {
                     </span>
                     <AccordionTrigger className="flex items-center justify-center *:w-5 *:h-5 cursor-pointer" />
                   </div>
+                  {isAdmin && (
+                    <button
+                      className="border bg-red-500 !px-2 max-w-32 !text-white"
+                      onClick={() => deleteNews(news.id)}
+                    >
+                      삭제
+                    </button>
+                  )}
                 </AccordionContent>
               </AccordionItem>
             );

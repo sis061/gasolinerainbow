@@ -131,10 +131,12 @@ const HomeV2 = () => {
         supabase
           .from("news")
           .select(`id,date,image,titleKr, titleEn`)
+          .is("deleted_at", null)
           .order("id", { ascending: false }),
         supabase
           .from("notes")
           .select(`id,date,image,title`)
+          .is("deleted_at", null)
           .order("id", { ascending: false }),
       ]);
 
@@ -199,8 +201,8 @@ const HomeV2 = () => {
     setVisibleCount((prev) =>
       Math.min(
         Math.max(prev, INITIAL_PAGE_SIZE),
-        HOME_ITEMS.length || INITIAL_PAGE_SIZE
-      )
+        HOME_ITEMS.length || INITIAL_PAGE_SIZE,
+      ),
     );
   }, [HOME_ITEMS.length]);
 
@@ -313,7 +315,7 @@ const HomeV2 = () => {
                   "absolute *:!text-white *:text-sm bg-[#000] border-l-2 !px-2 !py-1.5 !space-y-1 transition-all duration-300 ease-in-out ",
                   isUserAgentPC
                     ? "bottom-0 opacity-0 group-hover/item:opacity-90 -translate-x-6  group-hover/item:translate-x-0"
-                    : "top-0 opacity-75 group-hover/item:opacity-90 group-active/item:opacity-90 !m-1 group-hover/item:!m-0 group-active/item:!m-0"
+                    : "top-0 opacity-75 group-hover/item:opacity-90 group-active/item:opacity-90 !m-1 group-hover/item:!m-0 group-active/item:!m-0",
                 )}
               >
                 <span className="!font-bold !text-xs block">

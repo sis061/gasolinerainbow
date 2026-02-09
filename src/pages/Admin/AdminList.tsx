@@ -36,7 +36,7 @@ interface NewsList extends News {
   deleted_at: string | null; // ISO 8601 timestamp
 }
 interface NoteList extends Note {
-  listType: "note";
+  listType: "notes";
   deleted_at: string | null; // ISO 8601 timestamp
 }
 
@@ -84,7 +84,7 @@ export default function AdminList({
         const { data, error } = notesRes.value;
         if (!error && data)
           setNoteData(
-            data.map((el) => ({ ...el, listType: "note" })) as NoteList[],
+            data.map((el) => ({ ...el, listType: "notes" })) as NoteList[],
           );
         else setNoteData([]);
       } else {
@@ -102,29 +102,29 @@ export default function AdminList({
   const deleteItem = async (item: NewsList | NoteList) => {
     if (!confirm("진짜 지울거?")) return;
 
-    if (item.listType === "news") {
-      const { error } = await supabase
-        .from("news")
-        .update({ deleted_at: new Date().toISOString() })
-        .eq("id", item?.id);
-      window.location.reload();
+    const { error } = await supabase
+      .from(item.listType)
+      .update({ deleted_at: new Date().toISOString() })
+      .eq("id", item?.id);
+    window.location.reload();
 
-      if (error) {
-        console.error("Delete failed:", error.message);
-        return;
-      }
+    if (error) {
+      console.error("Delete failed:", error.message);
       return;
-    } else {
-      const { error } = await supabase
-        .from("notes")
-        .update({ deleted_at: new Date().toISOString() })
-        .eq("id", item?.id);
-      window.location.reload();
+    }
+  };
 
-      if (error) {
-        console.error("Delete failed:", error.message);
-        return;
-      }
+  const restoreItem = async (item: NewsList | NoteList) => {
+    if (!confirm("진짜 복구?")) return;
+
+    const { error } = await supabase
+      .from(item.listType)
+      .update({ deleted_at: null })
+      .eq("id", item?.id);
+    window.location.reload();
+
+    if (error) {
+      console.error("restore failed:", error.message);
       return;
     }
   };
@@ -199,18 +199,18 @@ export default function AdminList({
                     {item?.deleted_at && (
                       <span className="text-sm !text-red-500">[삭제됨]</span>
                     )}{" "}
-                    {item?.listType === "note" ? item?.title : item?.titleKr}
+                    {item?.listType === "notes" ? item?.title : item?.titleKr}
                   </span>
                 </TableCell>
                 <TableCell className="!pr-2 md:!px-2 text-center md:min-w-[10rem] max-md:h-auto max-md:absolute max-md:w-full max-md:text-right bottom-1.5 right-0 md:order-3">
                   <div className="w-full h-full flex items-center justify-end gap-2 [&_button]:!px-2 [&_button]:!py-1">
                     <button onClick={() => onEdit(item)}>수정</button>/
                     <button
-                      disabled={!!item?.deleted_at}
-                      onClick={() => deleteItem(item)}
-                      className="[data-disabled]:bg-red-500"
+                      onClick={() =>
+                        !item?.deleted_at ? deleteItem(item) : restoreItem(item)
+                      }
                     >
-                      삭제
+                      {!item?.deleted_at ? "삭제" : "복구"}
                     </button>
                   </div>
                 </TableCell>

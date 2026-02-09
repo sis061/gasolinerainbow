@@ -7,7 +7,7 @@ import { useState } from "react";
 
 type EditTarget =
   | { type: "news"; id: number }
-  | { type: "note"; id: number }
+  | { type: "notes"; id: number }
   | null;
 
 export default function Admin() {
@@ -16,13 +16,13 @@ export default function Admin() {
   const [tab, setTab] = useState<"list" | "news" | "notes">("list");
   const [editTarget, setEditTarget] = useState<EditTarget>(null);
 
-  const startEdit = (item: { listType: "news" | "note"; id: number }) => {
+  const startEdit = (item: { listType: "news" | "notes"; id: number }) => {
     if (!confirm("수정할거?")) return;
     if (item.listType === "news") {
       setEditTarget({ type: "news", id: item.id });
       setTab("news");
     } else {
-      setEditTarget({ type: "note", id: item.id });
+      setEditTarget({ type: "notes", id: item.id });
       setTab("notes");
     }
   };
@@ -80,9 +80,9 @@ export default function Admin() {
             </TabsContent>
             <TabsContent value="notes" className="w-full h-full">
               <FormNotes
-                mode={editTarget?.type === "note" ? "edit" : "create"}
+                mode={editTarget?.type === "notes" ? "edit" : "create"}
                 initialId={
-                  editTarget?.type === "note" ? editTarget.id : undefined
+                  editTarget?.type === "notes" ? editTarget.id : undefined
                 }
                 onCancel={() => {
                   clearEdit();

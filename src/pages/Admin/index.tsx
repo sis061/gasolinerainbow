@@ -2,6 +2,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import FormNews from "./FormNews";
 import FormNotes from "./FormNotes";
 import { useAuth } from "@/lib/auth/useAuth";
+import AdminList from "./AdminList";
 
 export default function Admin() {
   const { user, signOut } = useAuth();
@@ -11,10 +12,16 @@ export default function Admin() {
       <div className="inner flex-grow-0 w-full h-full flex items-center justify-center bg-white/75 !p-6 shadow-2xl">
         <div className="flex flex-col items-center justify-center gap-8 w-full h-full">
           <Tabs
-            defaultValue="news"
+            defaultValue="list"
             className="w-full flex flex-col items-center justify-center h-full gap-12"
           >
-            <TabsList className="flex gap-4 max-w-48 items-center justify-center">
+            <TabsList className="flex gap-4 items-center justify-center">
+              <TabsTrigger
+                value="list"
+                className="!py-1 !px-2 text-lg cursor-pointer"
+              >
+                목록
+              </TabsTrigger>
               <TabsTrigger
                 value="news"
                 className="!py-1 !px-2 text-lg cursor-pointer"
@@ -28,6 +35,9 @@ export default function Admin() {
                 작가의 말
               </TabsTrigger>
             </TabsList>
+            <TabsContent value="list" className="w-full h-full">
+              <AdminList />
+            </TabsContent>
             <TabsContent value="news" className="w-full h-full">
               <FormNews />
             </TabsContent>

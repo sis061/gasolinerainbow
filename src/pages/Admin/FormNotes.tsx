@@ -2,7 +2,7 @@ import AdminSelector from "@/components/AdminSelector";
 import ImageUploader from "@/components/ImageUploader";
 import TextEditor from "@/components/TextEditor";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useNavigate } from "react-router-dom";
 
@@ -13,6 +13,13 @@ const TYPE = [
   "에필로그",
   "직접입력",
 ];
+
+type Props = {
+  mode: "create" | "edit";
+  initialId?: number;
+  onDone?: () => void;
+  onCancel?: () => void;
+};
 
 const formatDate = (date: Date): string => {
   const day = String(date.getDate()).padStart(2, "0");
@@ -27,7 +34,12 @@ const stripHtml = (html: string) =>
     .replace(/&nbsp;/g, " ")
     .trim();
 
-export default function FormNotes() {
+export default function FormNotes({
+  mode,
+  initialId,
+  onDone,
+  onCancel,
+}: Props) {
   const [date, setDate] = useState(formatDate(new Date()));
   const [category, setCategory] = useState<string | null>(null);
   const [coverImage, setCoverImage] = useState<string | null>(null);
@@ -39,6 +51,32 @@ export default function FormNotes() {
   const [imageUploading, setImageUploading] = useState(false);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (mode !== "edit" || !initialId) return;
+
+    let alive = true;
+    (async () => {
+      const { data, error } = await supabase
+        .from("notes")
+        .select("*")
+        .eq("id", initialId)
+        .single();
+
+      if (!alive) return;
+      if (error || !data) return;
+
+      setDate(data.date);
+      setCategory(data.category);
+      setCoverImage(data.image);
+      setTitle(data.title);
+      setContent(data.content);
+    })();
+
+    return () => {
+      alive = false;
+    };
+  }, [mode, initialId]);
 
   const validate = () => {
     if (!category) return "타입 필드 없음.";
@@ -77,7 +115,10 @@ export default function FormNotes() {
         content,
       };
 
-      const { error } = await supabase.from("notes").insert(payload);
+      const { error } =
+        mode === "edit" && initialId
+          ? await supabase.from("notes").update(payload).eq("id", initialId)
+          : await supabase.from("notes").insert(payload);
 
       if (error) {
         const msg =
@@ -90,6 +131,7 @@ export default function FormNotes() {
       }
 
       reset();
+      onDone?.();
       setTimeout(() => {
         navigate("/authornote");
       }, 500);
@@ -120,12 +162,18 @@ export default function FormNotes() {
       </div>
       <div className="flex items-center gap-4 max-sm:flex-col max-sm:items-start">
         <h3>카테고리</h3>
-        <AdminSelector items={TYPE} onChange={setCategory} isInputAvaliable />
+        <AdminSelector
+          items={TYPE}
+          onChange={setCategory}
+          isInputAvaliable
+          defaultValue={category}
+        />
       </div>
 
       <div className="fle flex-col items-start gap-4 !space-y-4">
         <h3>대표이미지</h3>
         <ImageUploader
+          value={coverImage}
           onChange={setCoverImage}
           folder="notes"
           onUploadingChange={setImageUploading}
@@ -163,6 +211,15 @@ export default function FormNotes() {
             ? "이미지 처리 중..."
             : "업로드"}
       </button>
+      {mode === "edit" && (
+        <button
+          className="border !p-2 bg-black !text-white disabled:opacity-50"
+          disabled={submitting || imageUploading}
+          onClick={onCancel}
+        >
+          수정 취소
+        </button>
+      )}
     </form>
   );
 }

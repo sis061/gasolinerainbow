@@ -2,11 +2,18 @@ import AdminSelector from "@/components/AdminSelector";
 import ImageUploader from "@/components/ImageUploader";
 import TextEditor from "@/components/TextEditor";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useNavigate } from "react-router-dom";
 
 const TYPE = ["performance", "release", "collaboration", "others"];
+
+type Props = {
+  mode: "create" | "edit";
+  initialId?: number;
+  onDone?: () => void;
+  onCancel?: () => void;
+};
 
 const formatDate = (date: Date): string => {
   const day = String(date.getDate()).padStart(2, "0");
@@ -21,7 +28,7 @@ const stripHtml = (html: string) =>
     .replace(/&nbsp;/g, " ")
     .trim();
 
-export default function FormNews() {
+export default function FormNews({ mode, initialId, onDone, onCancel }: Props) {
   const [date, setDate] = useState(formatDate(new Date()));
   const [type, setType] = useState<string | null>(null);
   const [coverImage, setCoverImage] = useState<string | null>(null);
@@ -35,6 +42,34 @@ export default function FormNews() {
   const [imageUploading, setImageUploading] = useState(false);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (mode !== "edit" || !initialId) return;
+
+    let alive = true;
+    (async () => {
+      const { data, error } = await supabase
+        .from("news")
+        .select("*")
+        .eq("id", initialId)
+        .single();
+
+      if (!alive) return;
+      if (error || !data) return;
+
+      setDate(data.date);
+      setType(data.type);
+      setCoverImage(data.image);
+      setTitleKr(data.titleKr);
+      setTitleEn(data.titleEn);
+      setContentKr(data.contentKr);
+      setContentEn(data.contentEn);
+    })();
+
+    return () => {
+      alive = false;
+    };
+  }, [mode, initialId]);
 
   const validate = () => {
     if (!type) return "타입 필드 없음.";
@@ -80,7 +115,10 @@ export default function FormNews() {
         contentEn,
       };
 
-      const { error } = await supabase.from("news").insert(payload);
+      const { error } =
+        mode === "edit" && initialId
+          ? await supabase.from("news").update(payload).eq("id", initialId)
+          : await supabase.from("news").insert(payload);
 
       if (error) {
         const msg =
@@ -93,6 +131,7 @@ export default function FormNews() {
       }
 
       reset();
+      onDone?.();
       setTimeout(() => {
         navigate("/news");
       }, 500);
@@ -122,12 +161,13 @@ export default function FormNews() {
       </div>
       <div className="flex items-center gap-4 max-sm:flex-col max-sm:items-start">
         <h3>타입</h3>
-        <AdminSelector items={TYPE} onChange={setType} />
+        <AdminSelector items={TYPE} onChange={setType} defaultValue={type} />
       </div>
 
       <div className="fle flex-col items-start gap-4 !space-y-4">
         <h3>대표이미지</h3>
         <ImageUploader
+          value={coverImage}
           onChange={setCoverImage}
           folder="news"
           onUploadingChange={setImageUploading}
@@ -185,6 +225,16 @@ export default function FormNews() {
             ? "이미지 처리 중..."
             : "업로드"}
       </button>
+
+      {mode === "edit" && (
+        <button
+          className="border !p-2 bg-black !text-white disabled:opacity-50"
+          disabled={submitting || imageUploading}
+          onClick={onCancel}
+        >
+          수정 취소
+        </button>
+      )}
     </form>
   );
 }

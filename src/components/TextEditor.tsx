@@ -4,7 +4,7 @@ import Placeholder from "@tiptap/extension-placeholder";
 import Image from "@tiptap/extension-image";
 import { supabase } from "@/lib/supabase";
 import { toWebp } from "@/utils/convertImage";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 type Props = {
   value: string;
@@ -38,6 +38,24 @@ export default function TextEditor({
   });
 
   if (!editor) return null;
+
+  // value → editor 동기화
+  const lastHtmlRef = useRef<string>("");
+
+  useEffect(() => {
+    if (!editor) return;
+    if (!value) return;
+
+    // 무한루프 방지: 에디터가 이미 같은 내용을 갖고 있으면 스킵
+    const current = editor.getHTML();
+    if (current === value) return;
+
+    // 더 강하게 막고 싶으면 ref도 같이 사용
+    if (lastHtmlRef.current === value) return;
+
+    editor.commands.setContent(value); // false: history에 안 쌓음
+    lastHtmlRef.current = value;
+  }, [editor, value]);
 
   const uploadToSupabase = async (file: File) => {
     const ext = "webp";

@@ -42,7 +42,11 @@ interface NoteList extends Note {
 
 const PAGE_GROUP_SIZE = 5;
 
-export default function AdminList() {
+export default function AdminList({
+  onEdit,
+}: {
+  onEdit: (item: NewsList | NoteList) => void;
+}) {
   const [newsData, setNewsData] = useState<NewsList[]>([]);
   const [noteData, setNoteData] = useState<NoteList[]>([]);
 
@@ -200,7 +204,7 @@ export default function AdminList() {
                 </TableCell>
                 <TableCell className="!pr-2 md:!px-2 text-center md:min-w-[10rem] max-md:h-auto max-md:absolute max-md:w-full max-md:text-right bottom-1.5 right-0 md:order-3">
                   <div className="w-full h-full flex items-center justify-end gap-2 [&_button]:!px-2 [&_button]:!py-1">
-                    <button>수정</button>/
+                    <button onClick={() => onEdit(item)}>수정</button>/
                     <button
                       disabled={!!item?.deleted_at}
                       onClick={() => deleteItem(item)}

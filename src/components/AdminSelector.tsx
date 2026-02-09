@@ -6,22 +6,29 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function AdminSelector({
+  defaultValue,
   isInputAvaliable = false,
   items,
   onChange,
 }: {
+  defaultValue?: string | null;
   isInputAvaliable?: boolean;
   items: string[];
   onChange: (v: string) => void;
 }) {
   const [value, setValue] = useState("");
 
+  useEffect(() => {
+    setValue(defaultValue ?? "");
+  }, [defaultValue]);
+
   return (
     <>
       <Select
+        value={value}
         onValueChange={(v) => {
           setValue(v);
           onChange(v);

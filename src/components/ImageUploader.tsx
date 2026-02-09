@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 
 type Props = {
+  value: string | null;
   onChange: (file: string | null) => void;
   folder?: "news" | "notes";
   onUploadingChange?: (uploading: boolean) => void;
@@ -26,6 +27,7 @@ const makeUUID = () => {
 };
 
 export default function ImageUploader({
+  value,
   onChange,
   folder,
   onUploadingChange,
@@ -34,6 +36,10 @@ export default function ImageUploader({
   const [preview, setPreview] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
   const [err, setErr] = useState<string | null>(null);
+
+  useEffect(() => {
+    setPreview(value);
+  }, [value]);
 
   const uploadToSupabase = async (file: File) => {
     const ext = "webp";

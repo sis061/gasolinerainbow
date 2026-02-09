@@ -167,6 +167,7 @@ export default function FormNews({ mode, initialId, onDone, onCancel }: Props) {
       <div className="fle flex-col items-start gap-4 !space-y-4">
         <h3>대표이미지</h3>
         <ImageUploader
+          value={coverImage}
           onChange={setCoverImage}
           folder="news"
           onUploadingChange={setImageUploading}

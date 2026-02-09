@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -6,24 +6,57 @@ import { Languages } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import cx from "classnames";
-import { Link, useLocation } from "react-router-dom";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  type NavigateFunction,
+} from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
+import { supabase } from "@/lib/supabase";
 
 import Nav from "./components/Nav";
 import SocialButtons from "./components/SocialButtons";
 import { commonImages } from "@/assets/images/images";
 import { useScrollState } from "@/hooks/useScrollState";
 import useLanguageStore from "@/store/useLanguageStore";
+import { useAuth } from "@/lib/auth/useAuth";
 
 const LogoBg = commonImages.bg01Img;
 
 const Header = () => {
+  const { user } = useAuth();
+  const [isAdmin, setIsAdmin] = useState<null | boolean>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    (async () => {
+      if (!user) {
+        setIsAdmin(null);
+        return;
+      }
+
+      const { data, error } = await supabase.rpc("is_admin_email");
+
+      if (cancelled) return;
+
+      if (error) setIsAdmin(false);
+      else setIsAdmin(!!data);
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [user]);
+
   const [justChanged, setJustChanged] = useState<boolean>(false);
 
   const minLaptop = useMediaQuery({ minWidth: 1024 });
   const minTablet = useMediaQuery({ minWidth: 768 });
 
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   // const bgBlackRoute: boolean =
   //   pathname === "/discography" || pathname.startsWith("/authornote");
   const bgBlackRoute = true;
@@ -47,7 +80,7 @@ const Header = () => {
           "z-50 w-screen h-16 md:h-24 sticky top-0 flex justify-between items-center gap-2 duration-150",
           "max-sm:!pl-8 max-sm:!pr-4 !px-0 sm:!px-16 md:!px-[3rem] lg:!px-[6rem] xl:!px-[10rem]",
           // (isScrolled || bgBlackRoute) &&
-          isScrolled && "bg-[#000]/50 backdrop-blur-sm shadow-2xl"
+          isScrolled && "bg-[#000]/50 backdrop-blur-sm shadow-2xl",
         )}
       >
         <Logo useWhiteText={useWhiteText} />
@@ -59,11 +92,13 @@ const Header = () => {
           />
         )}
         <HeaderRight
+          isAdmin={isAdmin}
           language={language}
           justChanged={justChanged}
           handleChangeLanguage={handleChangeLanguage}
           minTablet={minTablet}
           bgBlackRoute={bgBlackRoute}
+          navigate={navigate}
         />
       </header>
       {!minLaptop && (
@@ -90,7 +125,7 @@ const Logo = ({ useWhiteText }: { useWhiteText: boolean }) => (
           "text-lg font-extrabold !-mb-2 !-ml-6",
           useWhiteText
             ? "!text-white"
-            : `!bg-clip-text !text-transparent bg-center bg-cover`
+            : `!bg-clip-text !text-transparent bg-center bg-cover`,
         )}
       >
         GasolineRainbow
@@ -103,7 +138,7 @@ const Logo = ({ useWhiteText }: { useWhiteText: boolean }) => (
           "text-md font-extrabold !ml-5 [&_>span]:text-xl [&_>span]:font-normal *:transition-all *:duration-200",
           useWhiteText
             ? "!text-white [&_>span]:!text-white"
-            : `!bg-clip-text !text-transparent bg-center bg-cover [&_>span]:!bg-clip-text [&_>span]:!text-transparent`
+            : `!bg-clip-text !text-transparent bg-center bg-cover [&_>span]:!bg-clip-text [&_>span]:!text-transparent`,
         )}
       >
         SpilledbyH<span>í</span>M<span>í</span>NN
@@ -133,17 +168,21 @@ const HeaderCenter = ({
 );
 
 const HeaderRight = ({
+  isAdmin,
   language,
   justChanged,
   handleChangeLanguage,
   minTablet,
   bgBlackRoute,
+  navigate,
 }: {
+  isAdmin: null | boolean;
   language: "ko" | "en";
   justChanged: boolean;
   handleChangeLanguage: () => any;
   minTablet: boolean;
   bgBlackRoute: boolean;
+  navigate: NavigateFunction;
 }) => (
   <div className="flex items-center justify-end w-auto gap-3 max-lg:w-[169px]">
     <Button
@@ -184,6 +223,15 @@ const HeaderRight = ({
       </AnimatePresence>
     </Button>
     {!minTablet && <SocialButtons bgBlackRoute={bgBlackRoute} />}
+    {isAdmin && (
+      <Button
+        variant={"ghost"}
+        className="w-8 h-8 lg:w-6 lg:h-6 xl:w-8 xl:h-8 rounded-full !bg-red-500 !text-white cursor-pointer relative !text-[8px]"
+        onClick={() => navigate("/admin")}
+      >
+        관리자
+      </Button>
+    )}
   </div>
 );
 

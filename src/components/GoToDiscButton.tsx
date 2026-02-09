@@ -37,7 +37,7 @@ const GoToDiscButton = ({
       className={cx(
         "*:whitespace-break-spaces w-auto self-end !px-2 !py-0.5 group flex justify-end gap-1 cursor-pointer max-lg:underline underline-offset-4 *:transition-all *:duration-200",
         language === "ko" ? "!items-start" : "!items-end",
-        isOneline && "!self-center !max-w-full !no-underline"
+        isOneline && "!self-center !max-w-full !no-underline",
       )}
     >
       {isOneline ? (
@@ -70,7 +70,7 @@ const GoToDiscButton = ({
             size={16}
             className={cx(
               "animate-spin group-hover:animate-none",
-              language === "ko" ? "!mt-1" : "!mb-1"
+              language === "ko" ? "!mt-1" : "!mb-1",
             )}
           />
           <div className="flex flex-col">
@@ -85,7 +85,7 @@ const GoToDiscButton = ({
             <span
               className={cx(
                 "!text-right",
-                language === "en" && "!font-bold group-hover:underline"
+                language === "en" && "!font-bold group-hover:underline",
               )}
             >
               {language === "ko" ? "자세히 보기" : "DISCOGRAPHY"}

@@ -43,8 +43,6 @@ export default function FormNews({ mode, initialId, onDone, onCancel }: Props) {
 
   const navigate = useNavigate();
 
-  console.log(coverImage);
-
   useEffect(() => {
     if (mode !== "edit" || !initialId) return;
 

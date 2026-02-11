@@ -230,21 +230,51 @@ export const renderNoteTypeColor = (t: string) => {
  */
 
 export function linkify(text: string): string {
+  /* =========================
+     0. 기존 <a> 태그 보호 (2026-02-12 추가)
+     ========================= */
+  const anchorPlaceholders: string[] = [];
+  let result = text.replace(
+    /<a\b([^>]*?)href="([^"]+)"([^>]*?)>([\s\S]*?)<\/a>/gi,
+    (full, _pre, href, _post, innerHtml) => {
+      const innerText = innerHtml.replace(/<[^>]+>/g, "").trim(); // 혹시 내부에 태그가 있어도 대비
+
+      const isMention =
+        innerText.startsWith("@") && /instagram\.com/i.test(href);
+
+      const className = isMention ? "mention-link" : "url-link";
+
+      // class가 이미 있으면 유지하고, 없으면 추가
+      const hasClass = /\bclass=/.test(full);
+      const normalized = hasClass
+        ? full
+        : `<a href="${href}" target="_blank" rel="noopener noreferrer" class="${className}">${innerHtml}</a>`;
+
+      const placeholder = `__ANCHOR_PLACEHOLDER_${anchorPlaceholders.length}__`;
+      anchorPlaceholders.push(normalized);
+      return placeholder;
+    },
+  );
+
   const urlRegex = /((https?:\/\/|www\.)[^\s<>"'()]+(\([^\s<>"']*\))?)/gi;
-  const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b/g;
+  const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/g;
   const instagramRegex = /@([a-zA-Z0-9._]+)/g;
 
-  // 1. 이메일 먼저 링크화 & 보호
+  /* =========================
+     1. 이메일 링크화
+     ========================= */
   const emailPlaceholders: string[] = [];
-  let result = text.replace(emailRegex, (email) => {
+  result = result.replace(emailRegex, (email) => {
     const placeholder = `__EMAIL_PLACEHOLDER_${emailPlaceholders.length}__`;
     emailPlaceholders.push(
-      `<a href="mailto:${email}" class="email-link">${email}</a>`
+      `<a href="mailto:${email}" class="email-link">${email}</a>`,
     );
     return placeholder;
   });
 
-  // 2. URL 링크화 (괄호 처리 포함)
+  /* =========================
+     2. URL 링크화
+     ========================= */
   function processUrl(url: string): { link: string; tail: string } {
     const bracketPairs: [string, string][] = [
       ["(", ")"],
@@ -275,17 +305,29 @@ export function linkify(text: string): string {
   result = result.replace(urlRegex, (url) => {
     const { link, tail } = processUrl(url);
     const href = link.startsWith("http") ? link : `https://${link}`;
+
     return `<a href="${href}" target="_blank" rel="noopener noreferrer" class="url-link">${link}</a>${tail}`;
   });
 
-  // 3. 인스타그램 @링크화 (이메일 부분 제외됨)
+  /* =========================
+     3. 인스타그램 @ 링크화
+     ========================= */
   result = result.replace(instagramRegex, (_match, username) => {
     return `<a href="https://instagram.com/${username}" target="_blank" rel="noopener noreferrer" class="mention-link">@${username}</a>`;
   });
 
-  // 4. 이메일 placeholder 복원
+  /* =========================
+     4. 이메일 placeholder 복원
+     ========================= */
   emailPlaceholders.forEach((tag, i) => {
     result = result.replace(`__EMAIL_PLACEHOLDER_${i}__`, tag);
+  });
+
+  /* =========================
+     5. 기존 <a> 태그 복원 (2026-02-12 추가)
+     ========================= */
+  anchorPlaceholders.forEach((aTag, i) => {
+    result = result.replace(`__ANCHOR_PLACEHOLDER_${i}__`, aTag);
   });
 
   return result;

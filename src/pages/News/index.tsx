@@ -216,7 +216,7 @@ const News = () => {
                 ? linkify(news?.contentKr ?? "")
                 : linkify(news?.contentEn ?? ""),
               {
-                ADD_ATTR: ["target"],
+                ADD_ATTR: ["target", "rel", "class"],
               },
             );
 

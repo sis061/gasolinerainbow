@@ -22,7 +22,21 @@ const diskAlbumData: Disk[] = [
       bugs: "https://music.bugs.co.kr/album/20742432",
       genie: "https://www.genie.co.kr/detail/albumInfo?axnm=86537633",
     },
-    isCD: false,
+    isCD: true,
+    cdUrl: [
+      {
+        store: "6v6 Recordings",
+        color: "#FCDF32",
+        url: "https://",
+        // TODO: 여기에 6v6 URL 입력
+      },
+      {
+        store: "GIMBAB RECORDS",
+        color: "#BF041D",
+        url: "https://",
+        // TODO: 여기에 김밥 URL 입력
+      },
+    ],
     maansunUrl: "https://maansun.com/catalogue/99",
     descriptionKr: `지하철, 침대, 라디오,
 치사랑, 성애, 섭식장애,
@@ -561,6 +575,12 @@ I'd have done ..., if nothing mattered
         store: "6v6 Recordings",
         color: "#FCDF32",
         url: "https://smartstore.naver.com/6v6recordings/products/9436037351",
+      },
+      {
+        store: "GIMBAB RECORDS",
+        color: "#BF041D",
+        url: "https://",
+        // TODO: 여기에 김밥 URL 입력
       },
     ],
     descriptionKr: `저에게 제 노래는 일종의 방어입니다. 자신을 바라보고 제 속의 갈등—주로 고독 및 자기 비난—을 다시 곱게 빚어내는 자기 방어. \n\n 그러니 제가 저를 직접 내보이기는 아직도 부끄럽기에, 이번에는 마치 셀프 타이틀 같지 않은 셀프 타이틀 앨범 [HM]에 열한 곡의 노래들을 엮었습니다. \n\n 언제는 외로움에 어찌할 바를 모르다가도 또 가끔은 초연해지는, 저 그리고 모두가 가진 본연의 모습을 담고 싶었습니다.
@@ -2736,5 +2756,5 @@ const normalize = (s: string) =>
     .replace(/^-+|-+$/g, ""); // 양끝 하이픈 제거
 
 export const DiskMetaMap: Record<string, Disk> = Object.fromEntries(
-  allDisks.map((disk) => [normalize(disk.titleEn), disk])
+  allDisks.map((disk) => [normalize(disk.titleEn), disk]),
 );

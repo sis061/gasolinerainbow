@@ -35,12 +35,18 @@ export interface Disk {
   image: string;
   urls: DiskUrls;
   isCD: boolean;
-  cdUrl?: [{ store: string; color: string; url: string }];
+  cdUrl?: OnlineStore[];
   maansunUrl?: string;
   descriptionKr: string;
   descriptionEn: string;
   credits: string;
   tracks: Track[];
+}
+
+export interface OnlineStore {
+  store: string;
+  color: string;
+  url: string;
 }
 
 // ──────────────────────공통 유틸 타입───────────────────────

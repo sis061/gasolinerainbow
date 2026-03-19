@@ -24,12 +24,11 @@ const diskAlbumData: Disk[] = [
     },
     isCD: true,
     cdUrl: [
-      // TODO: 여기에 6v6 URL 입력
-      // {
-      //   store: "6v6 Recordings",
-      //   color: "#FCDF32",
-      //   url: "https://",
-      // },
+      {
+        store: "6v6 Recordings",
+        color: "#FCDF32",
+        url: "https://smartstore.naver.com/6v6recordings/products/13266289404",
+      },
       {
         store: "GIMBAB RECORDS",
         color: "#BF041D",

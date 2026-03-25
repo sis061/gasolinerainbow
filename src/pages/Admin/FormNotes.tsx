@@ -5,6 +5,7 @@ import TextEditor from "@/components/TextEditor";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useNavigate } from "react-router-dom";
+import { normalizeEditorHtml } from "./FormNews";
 
 const TYPE = [
   "모디파이는 질병입니다.",
@@ -112,7 +113,7 @@ export default function FormNotes({
         category,
         image: coverImage,
         title,
-        content,
+        content: normalizeEditorHtml(content),
       };
 
       const { error } =

@@ -28,6 +28,19 @@ const stripHtml = (html: string) =>
     .replace(/&nbsp;/g, " ")
     .trim();
 
+export const normalizeEditorHtml = (html: string) => {
+  if (!html) return "";
+
+  return (
+    html
+      // 1. 완전히 비어있는 p (속성 포함) → <p><br></p>
+      .replace(/<p\b[^>]*>(?:\s|&nbsp;)*<\/p>/g, "<p><br></p>")
+
+      // 2. p 안에 공백 + <br> 여러 개 꼬인 경우 → 하나로 정리
+      .replace(/<p><br\s*\/?><\/p>/g, "<p><br></p>")
+  );
+};
+
 export default function FormNews({ mode, initialId, onDone, onCancel }: Props) {
   const [date, setDate] = useState(formatDate(new Date()));
   const [type, setType] = useState<string | null>(null);
@@ -111,8 +124,8 @@ export default function FormNews({ mode, initialId, onDone, onCancel }: Props) {
         image: coverImage,
         titleKr,
         titleEn,
-        contentKr,
-        contentEn,
+        contentKr: normalizeEditorHtml(contentKr),
+        contentEn: normalizeEditorHtml(contentEn),
       };
 
       const { error } =

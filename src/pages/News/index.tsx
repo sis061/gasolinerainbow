@@ -267,7 +267,7 @@ const News = () => {
                 </AccordionTrigger>
                 <AccordionContent className="!p-6 !z-10 flex flex-col gap-6 bg-white/75">
                   <p
-                    className="w-full whitespace-pre-wrap"
+                    className="w-full whitespace-pre-wrap [&_hr]:my-6"
                     dangerouslySetInnerHTML={{ __html: sanitizeContent }}
                   />
                   <div className="flex w-full items-center justify-between !px-2">
@@ -278,7 +278,7 @@ const News = () => {
                   </div>
                   {isAdmin && (
                     <button
-                      className="border bg-red-500 !px-2 max-w-32 !text-white"
+                      className="border !px-2 max-w-32 !text-white"
                       onClick={() => deleteNews(news.id)}
                     >
                       삭제

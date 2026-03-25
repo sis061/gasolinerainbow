@@ -278,7 +278,7 @@ const News = () => {
                   </div>
                   {isAdmin && (
                     <button
-                      className="border !px-2 max-w-32 !text-white"
+                      className="border bg-red-500 !px-2 max-w-32 !text-white"
                       onClick={() => deleteNews(news.id)}
                     >
                       삭제
